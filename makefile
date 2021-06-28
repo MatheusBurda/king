@@ -1,48 +1,42 @@
-# Name of the project
-PROJECT_NAME=game
+# Project Name
+PROJECT := sistemaAcademico
 
-# .cpp Files
-CPP_SOURCE=$(wildcard ./source/*.cpp)
+# Source, Objects and Binaries folder
+SRC_DIR := src
+OBJ_DIR := obj
+BIN_DIR := bin
 
-# .h Files
-H_SOURCE=$(wildcard ./source/*.h)
-
-# Object Files
-OBJ=$(subst .cpp,.o,$(subst source,objects,$(CPP_SOURCE)))
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 # Compiler
-CC=g++
+CC := g++
 
-# Flags for Compiler
-CC_FLAGS=-c
+# Flags
+CPPFLAGS := -Iinclude # -I folder_to_includes
+CFLAGS   := -Wall
+LDFLAGS  := -Llib
+LDLIBS   := -lm
 
+.PHONY: all clean build
 
-# Linker Flags
-LINKER_FLAGS=-Wwrite-strings
+all: build $(PROJECT)
 
+$(PROJECT): $(OBJ)
+	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	@ echo '============================ Finished building ============================'
 
-# Compilation and linking
-all: objFolder $(PROJECT_NAME)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-$(PROJECT_NAME):	$(OBJ)
-				@ echo 'Bulding binary using G++ linker: $@'
-				$(CC) -o $@ $^ $(LINKER_FLAGS)
-				@ echo 'Finished buiding binary: $@'
-				@ echo ' '
+$(BIN_DIR) $(OBJ_DIR):
+	@ mkdir -p $@
 
-./objects/%.o: ./source/%.cpp ./source/%.h
-				@ echo 'Building target using G++ compiler: $<'
-				$(CC) -o $@ $< $(CC_FLAGS)
-				@ echo ' '
-
-./objects/main.o: ./source/main.cpp $(H_SOURCE)
-		    @ echo 'Building target using G++ compiler: $<'
-		    $(CC) -o $@ $< $(CC_FLAGS)
-		    @ echo ' '
-
-objFolder:
-				@ mkdir -p objects
+build:
+	@ echo '=============== Started building project using g++ compiler ==============='
+	@ $(RM) $(OBJ_DIR)/main.o
 
 clean:
-		    @ $(RM) ./objects/*.o $(PROJECT_NAME) *~
-		    @ rmdir objects
+	@ $(RM) -r $(OBJ_DIR) $(PROJECT) $(BIN_DIR)
+
+-include $(OBJ:.o=.d)
