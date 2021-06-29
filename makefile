@@ -1,5 +1,5 @@
 # Project Name
-PROJECT := sistemaAcademico
+PROJECT := game
 
 # Source, Objects and Binaries folder
 SRC_DIR := src
@@ -16,7 +16,7 @@ CC := g++
 CPPFLAGS := -Iinclude # -I folder_to_includes
 CFLAGS   := -Wall
 LDFLAGS  := -Llib
-LDLIBS   := -lm
+LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system
 
 .PHONY: all clean build
 
