@@ -30,19 +30,13 @@
 *.exe
 *.out
 *.app
-game
-obj
 
-# Visual studio stuff
 .vs
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
-x64
 Debug
-.vscode
-
 SFML-2.5.1
 
 openal32.dll
