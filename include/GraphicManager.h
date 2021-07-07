@@ -10,9 +10,9 @@ private:
 public:
     GraphicManager();
     ~GraphicManager();
-
     sf::RenderWindow* getWindow();
     void display();
     void clear();
+
 };
 
