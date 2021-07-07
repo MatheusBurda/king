@@ -31,6 +31,7 @@
 *.out
 *.app
 game
+obj
 
 # Visual studio stuff
 .vs
@@ -40,4 +41,3 @@ game
 *.vcxproj.user
 Debug
 .vscode
-
