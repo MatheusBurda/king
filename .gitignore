@@ -30,15 +30,20 @@
 *.exe
 *.out
 *.app
+obj
+game
 
+# VS stuff
+.vscode
 .vs
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
 Debug
-SFML-2.5.1
 
+# SFML stuff
+SFML-2.5.1
 openal32.dll
 sfml-graphics-d-2.lib
 sfml-window-d-2.lib

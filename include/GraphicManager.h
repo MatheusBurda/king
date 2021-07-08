@@ -5,7 +5,7 @@
 class GraphicManager
 {
 private:
-    sf::RenderWindow *window;
+    sf::RenderWindow window;
 
 public:
     GraphicManager();
@@ -13,6 +13,7 @@ public:
     sf::RenderWindow* getWindow();
     void display();
     void clear();
+    bool isWindowOpen();
 
 };
 

@@ -1,7 +1,11 @@
 #pragma once
+
 #include "stdafx.h"
 #include"GraphicManager.h"
+#include "Id.h"
+
 using namespace sf;
+
 class Entity {
 protected:
 	Vector2f position;
@@ -9,8 +13,10 @@ protected:
 	Vector2f hitbox;
 	RectangleShape body;
 	RenderWindow* window;
+	ID::ids id;
 
 public:
+	Entity(ID::ids id);
 	Entity();
 	~Entity();
 	void setPosition(sf::Vector2f pos);
@@ -24,4 +30,5 @@ public:
 	void setWindow(RenderWindow *wind) {
 		window = wind;
 	}
+	ID::ids getId();
 };

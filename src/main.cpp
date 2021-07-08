@@ -1,16 +1,17 @@
-#include"stdafx.h"
+#include "GraphicManager.h"
 #include "Player.h"
+#include "stdafx.h"
+
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "king++");
+    GraphicManager graphicM;
+   
     Player Burda;
-    Burda.setWindow(&window);
+    Burda.setWindow(graphicM.getWindow());
 
-
-
-    while(1){
-        window.clear();
+    while (graphicM.isWindowOpen()) {
+        graphicM.clear();
         Burda.update();
-        window.display();
+        graphicM.display();
     }
 
     return 0;

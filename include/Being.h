@@ -1,8 +1,14 @@
 #pragma once
+
 #include"Entity.h"
+
 class Being : public Entity
 {
-private:
+public:
+	Being();
+	~Being();
+
+protected:
 	virtual void update() {
 
 	}

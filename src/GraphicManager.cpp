@@ -1,19 +1,24 @@
 #include "GraphicManager.h"
 
-GraphicManager::GraphicManager() {
+GraphicManager::GraphicManager() :
+    window(sf::VideoMode(800, 600), "king++") {
 }
 
 GraphicManager::~GraphicManager() {
 }
 
 sf::RenderWindow* GraphicManager::getWindow() {
-    return window;
+    return &window;
 }
 
 void GraphicManager::display() {
-    window->display();
+    window.display();
 }
 
 void GraphicManager::clear() {
-    window->clear();
+    window.clear();
+}
+
+bool GraphicManager::isWindowOpen() {
+    return window.isOpen();
 }
