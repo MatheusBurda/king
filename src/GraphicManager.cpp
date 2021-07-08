@@ -7,6 +7,7 @@ GraphicManager::~GraphicManager() {
 }
 
 sf::RenderWindow* GraphicManager::getWindow() {
+    return window;
 }
 
 void GraphicManager::display() {

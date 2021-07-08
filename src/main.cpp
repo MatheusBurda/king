@@ -1,4 +1,7 @@
-#include "stdafx.h"
+
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "king++");

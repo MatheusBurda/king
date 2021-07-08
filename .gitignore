@@ -39,5 +39,15 @@ obj
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+x64
 Debug
 .vscode
+
+SFML-2.5.1
+
+openal32.dll
+sfml-graphics-d-2.lib
+sfml-window-d-2.lib
+sfml-audio-d-2.lib
+sfml-network-d-2.lib
+sfml-system-d-2.lib
