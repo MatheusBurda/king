@@ -1,12 +1,13 @@
 #pragma once
 
-#include "List.h"
 #include "Entity.h"
+#include "List.h"
+#include "stdafx.h"
 
-class EntityList
-{
+class EntityList {
 private:
     List<Entity> list;
+
 public:
     EntityList();
     ~EntityList();

@@ -1,11 +1,10 @@
-#pragma once 
+#pragma once
 
 #include "stdafx.h"
 
-class GraphicManager
-{
+class GraphicManager {
 private:
-    sf::RenderWindow window;
+    sf::RenderWindow* window;
 
 public:
     GraphicManager();
@@ -14,6 +13,4 @@ public:
     void display();
     void clear();
     bool isWindowOpen();
-
 };
-

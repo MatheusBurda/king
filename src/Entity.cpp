@@ -47,10 +47,9 @@ ID::ids Entity::getId() {
     return id;
 }
 
-void Entity::update() { 
-
+void Entity::update() {
 }
 
-void Entity::render() { 
+void Entity::render() {
     window->draw(body);
 }

@@ -11,18 +11,18 @@ int main() {
 
     Player Burda;
     Entity Dalpra;
+
     Dalpra.setWindow(graphicM.getWindow());
     Burda.setWindow(graphicM.getWindow());
-
-    //Dalpra.setPosition(sf::Vector2f(200.f, 100.f));
 
     _list.addEntity(&Burda);
     _list.addEntity(&Dalpra);
 
     while (graphicM.isWindowOpen()) {
         graphicM.clear();
-        
+
         _list.updateAll();
+
         _list.renderAll();
 
         graphicM.display();

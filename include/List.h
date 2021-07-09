@@ -5,7 +5,7 @@
 template <class TL>
 class List {
 private:
-    /* Node to use as node of the list */
+    /* template Node to use as node of the list */
     template <class TE>
     class Node {
     private:
@@ -28,11 +28,13 @@ private:
         void setNext(Node<TE>* pNext) { this->pNext = pNext; }
         /* Get next node of the list */
         Node<TE>* getNext() { return pNext; }
-
+        /* Set previous node */
         void setPrevious(Node<TE>* pPrevious) { this->pPrevious = pPrevious; }
+        /* Get previous node */
         Node<TE>* getPrevious() { return pPrevious; }
-
+        /* Sets the pointer the template Node points to*/
         void setInfo(TE* pInfo) { this->pInfo = pInfo; }
+        /* Returns the pointer the template Node points to. */
         TE* getInfo() { return pInfo; }
     };
 
@@ -45,13 +47,14 @@ public:
     ~List();
 
     void clear();
-    void setNode(Node<TL>* pNode);
     void append(TL* pInfo);
     int length() { return size; }
+    TL* operator[](int x);
 
+private:
+    void setNode(Node<TL>* pNode);
     Node<TL>* getpFirst() { return pFirst; }
     Node<TL>* getpLast() { return pLast; }
-    TL* operator[](int x);
 };
 
 template <class TL>
@@ -117,6 +120,7 @@ void List<TL>::append(TL* pInfo) {
     }
 }
 
+/* Iterate through the list, similar to a static vector. Returns the pointer the template list points to.  */
 template <class TL>
 TL* List<TL>::operator[](int x) {
     if (x >= size) {
