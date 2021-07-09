@@ -5061,6 +5061,24 @@
 											"height": 13,
 											"text": "+removeEntity(pDel: Entity*): void",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF6i6eeRRBCksA=",
+											"_parent": {
+												"$ref": "AAAAAAF6VKJvvJJk9V4="
+											},
+											"model": {
+												"$ref": "AAAAAAF6i6eeARA/PJM="
+											},
+											"fillColor": "#ff952b",
+											"font": "Arial;13;0",
+											"left": 2469,
+											"top": 455,
+											"width": 194.71435546875,
+											"height": 13,
+											"text": "+clearAll(): void",
+											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#ff952b",
@@ -5068,7 +5086,7 @@
 									"left": 2464,
 									"top": 360,
 									"width": 204.71435546875,
-									"height": 98
+									"height": 113
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -11571,7 +11589,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1703,
+									"left": 1671,
 									"top": 233,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -11592,7 +11610,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1718,
+									"left": 1686,
 									"top": 233,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -11613,7 +11631,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1673,
+									"left": 1641,
 									"top": 234,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -11786,7 +11804,7 @@
 							"tail": {
 								"$ref": "AAAAAAF6X2S9K9RodV4="
 							},
-							"points": "1008:352;1008:240;1688:240;1688:1056;1776:1056",
+							"points": "1008:352;1008:240;1656:240;1656:1056;1776:1056",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF6Z0e0y8djLq8="
@@ -17982,6 +18000,25 @@
 											"_id": "AAAAAAF6i12i3W4vd0E=",
 											"_parent": {
 												"$ref": "AAAAAAF6i100o2zOgr8="
+											},
+											"type": "void",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF6i6eeARA/PJM=",
+									"_parent": {
+										"$ref": "AAAAAAF6VKJvu5Jb2rQ="
+									},
+									"name": "clearAll",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF6i6fNGBJuNOk=",
+											"_parent": {
+												"$ref": "AAAAAAF6i6eeARA/PJM="
 											},
 											"type": "void",
 											"direction": "return"

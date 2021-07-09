@@ -16,4 +16,5 @@ public:
     void renderAll();
     void addEntity(Entity* pNew);
     void removeEntity(Entity* pDel);
+    void clearAll();
 };

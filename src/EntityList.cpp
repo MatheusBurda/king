@@ -5,6 +5,7 @@ EntityList::EntityList() :
 }
 
 EntityList::~EntityList() {
+    list.clear();
 }
 
 void EntityList::updateAll() {
@@ -30,4 +31,8 @@ void EntityList::addEntity(Entity* pNew) {
 }
 
 void EntityList::removeEntity(Entity* pDel) {
+}
+
+void EntityList::clearAll() {
+    list.clear();
 }
