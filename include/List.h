@@ -58,7 +58,7 @@ private:
 };
 
 template <class TL>
-List<TL>::List() {
+List<TL>::List():pFirst(), pLast(), size(0) {
     clear();
 }
 

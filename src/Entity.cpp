@@ -1,3 +1,4 @@
+
 #include "Entity.h"
 
 Entity::Entity(ID::ids id) {
