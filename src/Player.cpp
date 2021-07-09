@@ -11,13 +11,9 @@ Player::Player() {
 void Player::update() {
     Event event;
     while (window->pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            window->close();
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             body.move(10.f, 0.0f);
         }
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             body.move(-10.f, 0.0f);
         }
@@ -28,7 +24,6 @@ void Player::update() {
             body.move(0.f, 10.0f);
         }
     }
-    render();
 }
 
 void Player::render() {
