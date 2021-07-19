@@ -9,6 +9,7 @@ EntityList::~EntityList() {
 }
 
 void EntityList::updateAll() {
+
     int size = list.length();
     Entity* pAux;
     for (int i = 0; i < size; i++) {

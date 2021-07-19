@@ -19,6 +19,7 @@ int main() {
     _list.addEntity(&Dalpra);
 
     while (graphicM.isWindowOpen()) {
+
         graphicM.clear();
 
         _list.updateAll();

@@ -10,24 +10,37 @@ Player::Player() {
 
 void Player::update() {
     Event event;
+
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window->close();
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            body.move(10.f, 0.0f);
+            velocity = Vector2f(10, velocity.y);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            body.move(-10.f, 0.0f);
+            velocity = Vector2f(-10, velocity.y);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            body.move(0.f, -10.0f);
+            velocity = Vector2f(velocity.x, -10);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-            body.move(0.f, 10.0f);
+            velocity = Vector2f(velocity.x, 10);
         }
+        time2 = clock();
+        if ((time2 - time1) >= 10) {
+            velocity = Vector2f(velocity.x, velocity.y + 1);
+            time1 = clock();
+            time2 = clock();
+
+        }
+        body.move(velocity);
     }
+
+
 }
 
 void Player::render() {
+   
     window->draw(body);
 }

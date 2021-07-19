@@ -9,12 +9,13 @@ Entity::Entity(ID::ids id) {
     body.setPosition(Vector2f(200, 500));
 }
 
-Entity::Entity() {
+Entity::Entity(): time1(), time2() {
     this->id = ID::empty;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);
     body.setFillColor(Color::Red);
     body.setPosition(Vector2f(200, 500));
+
 }
 
 Entity::~Entity() {

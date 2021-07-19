@@ -4,3 +4,4 @@
 #include <SFML/Window.hpp>
 
 #include <stdio.h>
+#include<stdlib.h>

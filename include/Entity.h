@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include"GraphicManager.h"
 #include "Id.h"
+#include <time.h>
 
 using namespace sf;
 
@@ -13,6 +14,9 @@ protected:
 	RectangleShape body;
 	RenderWindow* window;
 	ID::ids id;
+	clock_t time1, time2;
+
+
 
 public:
 	Entity(ID::ids id);
