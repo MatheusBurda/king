@@ -12,7 +12,7 @@ public:
     EntityList();
     ~EntityList();
 
-    void updateAll();
+    void updateAll(float dt);
     void renderAll();
     void addEntity(Entity* pNew);
     void removeEntity(Entity* pDel);

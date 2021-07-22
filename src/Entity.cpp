@@ -9,7 +9,7 @@ Entity::Entity(ID::ids id) {
     body.setPosition(Vector2f(200, 500));
 }
 
-Entity::Entity(): time1(), time2() {
+Entity::Entity(){
     this->id = ID::empty;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);
@@ -21,7 +21,7 @@ Entity::Entity(): time1(), time2() {
 Entity::~Entity() {
 }
 
-void Entity::setPosition(Vector2f pos) {
+void Entity::changePosition(Vector2f pos) {
     position = pos;
 }
 
@@ -49,7 +49,7 @@ ID::ids Entity::getId() {
     return id;
 }
 
-void Entity::update() {
+void Entity::update(float dt) {
 }
 
 void Entity::render() {

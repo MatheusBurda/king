@@ -8,13 +8,13 @@ EntityList::~EntityList() {
     list.clear();
 }
 
-void EntityList::updateAll() {
+void EntityList::updateAll(float dt) {
 
     int size = list.length();
     Entity* pAux;
     for (int i = 0; i < size; i++) {
         pAux = list[i];
-        pAux->update();
+        pAux->update(dt);
     }
 }
 

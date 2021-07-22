@@ -14,7 +14,7 @@ protected:
 	RectangleShape body;
 	RenderWindow* window;
 	ID::ids id;
-	clock_t time1, time2;
+
 
 
 
@@ -22,13 +22,13 @@ public:
 	Entity(ID::ids id);
 	Entity();
 	~Entity();
-	void setPosition(sf::Vector2f pos);
+	void changePosition(sf::Vector2f pos);
 	Vector2f getPosition();
 	void setVelocity(Vector2f vel);
 	Vector2f getVelocity();
 	void setHitbox(Vector2f vel);
 	Vector2f getHitbox();
-	virtual void update();
+	virtual void update(float dt);
 	virtual void render();
 	void setWindow(RenderWindow *wind) {
 		window = wind;

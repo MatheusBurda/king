@@ -11,7 +11,9 @@ int main() {
 
     Player Burda;
     Entity Dalpra;
-
+    sf:: Clock time;
+    float dt;
+    
     Dalpra.setWindow(graphicM.getWindow());
     Burda.setWindow(graphicM.getWindow());
 
@@ -19,10 +21,10 @@ int main() {
     _list.addEntity(&Dalpra);
 
     while (graphicM.isWindowOpen()) {
-
+        dt = time.getElapsedTime().asSeconds();
         graphicM.clear();
 
-        _list.updateAll();
+        _list.updateAll(dt);
 
         _list.renderAll();
 
