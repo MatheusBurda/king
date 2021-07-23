@@ -1,6 +1,8 @@
 #include "Player.h"
 
-Player::Player(): life(100), damage(25) {
+Player::Player() {
+    life = 100;
+    damage = 25;
     id = ID::player;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);
@@ -43,15 +45,4 @@ void Player::render() {
     window->draw(body);
 }
 
-//
-int Player::attack() {
-    return damage;
-}
-void Player::getHurt(int enemydmg) {
-    life -= enemydmg;
-}
-bool Player::amAlive() {
-    if (life > 0)
-        return true;
-    return false;
-}
+

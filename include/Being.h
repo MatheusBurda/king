@@ -4,11 +4,18 @@
 
 class Being : public Entity
 {
+
+
 public:
 	Being();
 	~Being();
+	int attack();
+	void getHurt(int enemydmg);
+	bool amAlive();
 
 protected:
+	int life;
+	int damage;
 	virtual void update() {
 
 	}
