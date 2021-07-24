@@ -5,13 +5,24 @@
 #include "Player.h"
 #include "stdafx.h"
 
+
 int main() {
     GraphicManager graphicM;
 
     EntityList _list;
 
-    Platform ground(sf::Vector2f(150.f,150.f));
+    /*-------------BACKGROUND TEMPORÁRIO-------------*/
+    sf::Texture textureback;
+    sf::RectangleShape background(sf::Vector2f(WIDTH, HEIGHT));
+    background.setPosition(0, 0);
+    if (!textureback.loadFromFile("./assets/Backgrounds/background1.jpg")) {
+        exit(9);
+    }
+    background.setTexture(&textureback);
 
+    /*-------------------------------------------------*/
+
+    Platform ground(sf::Vector2f(150.f,150.f));
     Player Burda;
     Entity Dalpra;
     sf::Clock time;
@@ -27,10 +38,14 @@ int main() {
 
 
     while (graphicM.isWindowOpen()) {
+
         dt = time.getElapsedTime().asSeconds();
         /* cout << dt << endl; */
         time.restart();
         graphicM.clear();
+
+        //DESENHANDO BACKGROUND
+        graphicM.getWindow()->draw(background);
 
         _list.updateAll(dt);
 
