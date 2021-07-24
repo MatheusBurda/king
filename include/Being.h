@@ -18,4 +18,5 @@ protected:
     }
     virtual void render() {
     }
+    virtual void colliding(Entity *ent){}
 };

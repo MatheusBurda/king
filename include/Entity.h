@@ -15,6 +15,8 @@ protected:
     RectangleShape body;
     RenderWindow* window;
     ID::ids id;
+    bool stopx;
+    bool stopy;
 
 public:
     Entity(ID::ids id);
@@ -32,4 +34,5 @@ public:
         window = wind;
     }
     ID::ids getId();
+    virtual void colliding(Entity *ent){}
 };

@@ -4,6 +4,8 @@
 #include "GraphicManager.h"
 
 Entity::Entity(ID::ids id) {
+    stopx = false;
+    stopy = false;
     this->id = id;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);
@@ -12,6 +14,8 @@ Entity::Entity(ID::ids id) {
 }
 
 Entity::Entity() {
+       stopx = false;
+    stopy = false;
     this->id = ID::empty;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);

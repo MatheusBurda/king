@@ -27,9 +27,16 @@ using std::endl;
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
+#define PLAYER_WIDTH 50
+#define PLAYER_HEIGHT 50
 
 /* =================================================== */
 /*                        MAP                          */
 /* =================================================== */
 
 #define GRAVITY 980.f
+/* =================================================== */
+/*                      PLATFORM                       */
+/* =================================================== */
+#define PLATFORM_WIDTH 300
+#define PLATFORM_HEIGHT 150

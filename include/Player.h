@@ -10,6 +10,6 @@ public:
     Player();
     void update(float dt);
     void render();
-    
+    void colliding(Entity *ent);
 
 };

@@ -22,7 +22,7 @@ int main() {
 
     /*-------------------------------------------------*/
 
-    Platform ground(sf::Vector2f(150.f,150.f));
+    Platform ground(sf::Vector2f(50,100));
     Player Burda;
     Entity Dalpra;
     sf::Clock time;
@@ -43,7 +43,7 @@ int main() {
         /* cout << dt << endl; */
         time.restart();
         graphicM.clear();
-
+        Burda.colliding(&ground);
         //DESENHANDO BACKGROUND
         graphicM.getWindow()->draw(background);
 
