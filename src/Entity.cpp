@@ -1,6 +1,8 @@
 
 #include "Entity.h"
 
+#include "GraphicManager.h"
+
 Entity::Entity(ID::ids id) {
     this->id = id;
     setHitbox(Vector2f(50, 50));
@@ -9,13 +11,12 @@ Entity::Entity(ID::ids id) {
     body.setPosition(Vector2f(200, 500));
 }
 
-Entity::Entity(){
+Entity::Entity() {
     this->id = ID::empty;
     setHitbox(Vector2f(50, 50));
     body.setSize(hitbox);
     body.setFillColor(Color::Red);
     body.setPosition(Vector2f(200, 500));
-
 }
 
 Entity::~Entity() {

@@ -1,11 +1,18 @@
 #include "GraphicManager.h"
 
 GraphicManager::GraphicManager() :
-    window(new sf::RenderWindow(sf::VideoMode(800, 600), "king++")) {
+window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "king++")),
+pEntityList(NULL) {
+    window->setVerticalSyncEnabled(true);
+    window->setFramerateLimit(FRAME_RATE);
 }
 
 GraphicManager::~GraphicManager() {
     delete (window);
+}
+
+void GraphicManager::setEntityList(EntityList* pList) {
+    pEntityList = pList;
 }
 
 sf::RenderWindow* GraphicManager::getWindow() {

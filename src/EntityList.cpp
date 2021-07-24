@@ -34,6 +34,6 @@ void EntityList::addEntity(Entity* pNew) {
 void EntityList::removeEntity(Entity* pDel) {
 }
 
-void EntityList::clearAll() {
+void EntityList::deleteAll() {
     list.clear();
 }

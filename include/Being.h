@@ -1,26 +1,21 @@
 #pragma once
 
-#include"Entity.h"
+#include "Entity.h"
 
-class Being : public Entity
-{
-
+class Being : public Entity {
 
 public:
-	Being();
-	~Being();
-	int attack();
-	void getHurt(int enemydmg);
-	bool amAlive();
+    Being();
+    ~Being();
+    int attack();
+    void getHurt(int enemydmg);
+    bool amAlive();
 
 protected:
-	int life;
-	int damage;
-	virtual void update() {
-
-	}
-	virtual void render() {
-
-	}
+    int life;
+    int damage;
+    virtual void update() {
+    }
+    virtual void render() {
+    }
 };
-

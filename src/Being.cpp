@@ -1,6 +1,7 @@
 #include "Being.h"
 
-Being::Being(): life(-1), damage(-1) {
+Being::Being() :
+life(-1), damage(-1) {
 }
 
 Being::~Being() {
