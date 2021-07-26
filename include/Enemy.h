@@ -5,6 +5,7 @@ class Enemy :   public Character
     
 
 public:
-
+    Enemy(GraphicManager* GM);
+    ~Enemy();
 };
 

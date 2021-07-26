@@ -10,8 +10,7 @@ Entity::Entity(ID::ids id, GraphicManager* GM) {
 }
 
 Entity::Entity() {
-    stopx = false;
-    stopy = false;
+
     this->id = ID::empty;
     pGraphicManager = NULL;
 }
@@ -46,4 +45,8 @@ Vector2f Entity::getHitbox() const {
 
 ID::ids Entity::getId() const {
     return id;
+}
+void Entity:: Move(sf::Vector2f vec) {
+    body.move(vec);
+    position = sf::Vector2f(position.x + vec.x, position.y + vec.y);
 }

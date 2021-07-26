@@ -15,8 +15,7 @@ protected:
     sf::RectangleShape body;
     GraphicManager* pGraphicManager;
     ID::ids id;
-    bool stopx;
-    bool stopy;
+    bool stopx, stopy;
 
 public:
     Entity(ID::ids id, GraphicManager* GM);
@@ -36,5 +35,12 @@ public:
     virtual void render() = 0;
 
     ID::ids getId() const;
-    virtual void colliding(Entity* ent) = 0;
+    void Move(sf::Vector2f vec);
+
+    void setStopX(bool val) {
+        stopx = val;
+    }
+    void setStopY(bool val) {
+        stopy = val;
+    }
 };

@@ -123,7 +123,7 @@ void List<TL>::append(TL* pInfo) {
 /* Iterate through the list, similar to a static vector. Returns the pointer the template list points to.  */
 template <class TL>
 TL* List<TL>::operator[](int x) {
-    if (x >= size) {
+    if (x >= size || x<0) {
         std::cout << "ERROR: Segmentation fault on template list. Exceeded boundaries." << std::endl;
         exit(1);
     }

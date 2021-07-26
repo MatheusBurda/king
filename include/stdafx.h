@@ -29,6 +29,7 @@ using std::endl;
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 80
 #define PLAYER_HEIGHT 80
+#define PLAYER_JUMP 100
 
 /* =================================================== */
 /*                        MAP                          */

@@ -37,3 +37,12 @@ void EntityList::removeEntity(Entity* pDel) {
 void EntityList::deleteAll() {
     list.clear();
 }
+Entity* EntityList::operator[](int x) {
+
+    if (x >= list.length() || x < 0) {
+        std::cout << "ERROR: Segmentation fault on Entity. Exceeded boundaries." << std::endl;
+        exit(1);
+    }
+    Entity* aux = list[x];
+    return aux;
+}
