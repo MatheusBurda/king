@@ -20,5 +20,4 @@ public:
     const List<Entity>* getList() { return &list; }
     int getSize() { return list.length(); }
     Entity* operator[](int x);
-
 };

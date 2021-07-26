@@ -1,6 +1,7 @@
 #include "Player.h"
 
 #include "GraphicManager.h"
+#include <math.h>
 
 Player::Player(GraphicManager* GM) :
 Character(ID::player, GM) {
@@ -22,8 +23,8 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
-    velocity = Vector2f(0, velocity.y + GRAVITY * dt);
-    /* velocity = Vector2f(0, 0); */
+    velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
+
 
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {

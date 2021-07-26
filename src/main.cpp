@@ -1,10 +1,10 @@
+#include "CollisionManager.h"
 #include "Entity.h"
 #include "EntityList.h"
 #include "GraphicManager.h"
 #include "Platform.h"
 #include "Player.h"
 #include "stdafx.h"
-#include"CollisionManager.h"
 
 int main() {
     GraphicManager graphicM;
@@ -22,21 +22,21 @@ int main() {
 
     /*-------------------------------------------------*/
     /*Testando Collision manager*/
-    CollisionManager colis;
+    CollisionManager colis(&_list);
 
-
-
-
-    Platform plat1(sf::Vector2f(00,200), &graphicM);
-    Platform plat2(sf::Vector2f(200,400), &graphicM);
+    Platform plat1(sf::Vector2f(00, 300), &graphicM);
+    Platform plat2(sf::Vector2f(200, 400), &graphicM);
     Platform plat3(sf::Vector2f(300, 400), &graphicM);
+    Platform plat4(sf::Vector2f(400, 400), &graphicM);
+
     Player Burda(&graphicM);
 
     sf::Clock time;
     float dt;
 
     _list.addEntity(&Burda);
-
+    _list.addEntity(&plat1);
+    _list.addEntity(&plat4);
     _list.addEntity(&plat2);
     _list.addEntity(&plat3);
     time.restart();
@@ -44,20 +44,17 @@ int main() {
         dt = time.getElapsedTime().asSeconds();
         time.restart();
 
-        
         graphicM.clear();
 
         graphicM.checkWindowEvents();
-   
- 
 
         //DESENHANDO BACKGROUND
         graphicM.getWindow()->draw(background);
 
         _list.updateAll(dt);
-    
-        colis.toCollide(&Burda, &plat2);
-        colis.toCollide(&Burda, &plat3);
+
+        colis.toCollide();
+
         _list.renderAll();
 
         graphicM.display();

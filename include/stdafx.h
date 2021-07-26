@@ -23,7 +23,7 @@ using std::endl;
 /*                      PLAYER                         */
 /* =================================================== */
 
-#define PLAYER_VELOCITY 1000.f
+#define PLAYER_VELOCITY 150.f
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
