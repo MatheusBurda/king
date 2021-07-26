@@ -16,8 +16,8 @@ using std::endl;
 /* =================================================== */
 
 #define FRAME_RATE 60
-#define HEIGHT 600
-#define WIDTH 800
+#define WIDTH 1280
+#define HEIGHT 720
 
 /* =================================================== */
 /*                      PLAYER                         */
@@ -27,8 +27,8 @@ using std::endl;
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 50
-#define PLAYER_HEIGHT 50
+#define PLAYER_WIDTH 80
+#define PLAYER_HEIGHT 80
 
 /* =================================================== */
 /*                        MAP                          */

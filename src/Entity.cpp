@@ -1,62 +1,49 @@
-
 #include "Entity.h"
 
 #include "GraphicManager.h"
 
-Entity::Entity(ID::ids id) {
+Entity::Entity(ID::ids id, GraphicManager* GM) {
     stopx = false;
     stopy = false;
     this->id = id;
-    setHitbox(Vector2f(50, 50));
-    body.setSize(hitbox);
-    body.setFillColor(Color::Blue);
-    body.setPosition(Vector2f(200, 500));
+    pGraphicManager = GM;
 }
 
 Entity::Entity() {
-       stopx = false;
+    stopx = false;
     stopy = false;
     this->id = ID::empty;
-    setHitbox(Vector2f(50, 50));
-    body.setSize(hitbox);
-    body.setFillColor(Color::Red);
-    body.setPosition(Vector2f(200, 500));
+    pGraphicManager = NULL;
 }
 
 Entity::~Entity() {
 }
 
-void Entity::changePosition(Vector2f pos) {
+void Entity::changePosition(const Vector2f pos) {
     position = pos;
+    body.setPosition(position);
 }
 
-Vector2f Entity::getPosition() {
+Vector2f Entity::getPosition() const {
     return position;
 }
 
-void Entity::setVelocity(Vector2f vel) {
+void Entity::setVelocity(const Vector2f vel) {
     velocity = vel;
 }
 
-Vector2f Entity::getVelocity() {
+Vector2f Entity::getVelocity() const {
     return velocity;
 }
 
-void Entity::setHitbox(Vector2f hit) {
+void Entity::setHitbox(const Vector2f hit) {
     hitbox = hit;
 }
 
-Vector2f Entity::getHitbox() {
+Vector2f Entity::getHitbox() const {
     return hitbox;
 }
 
-ID::ids Entity::getId() {
+ID::ids Entity::getId() const {
     return id;
-}
-
-void Entity::update(float dt) {
-}
-
-void Entity::render() {
-    window->draw(body);
 }

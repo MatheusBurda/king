@@ -4,6 +4,7 @@ namespace ID {
     enum ids {
         empty = -1,
         player = 0,
-        plataform = 1
+        player2 = 1,
+        plataform = 2
     };
 }

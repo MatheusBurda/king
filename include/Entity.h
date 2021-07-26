@@ -12,27 +12,29 @@ protected:
     sf::Vector2f position;
     sf::Vector2f velocity;
     sf::Vector2f hitbox;
-    RectangleShape body;
-    RenderWindow* window;
+    sf::RectangleShape body;
+    GraphicManager* pGraphicManager;
     ID::ids id;
     bool stopx;
     bool stopy;
 
 public:
-    Entity(ID::ids id);
+    Entity(ID::ids id, GraphicManager* GM);
     Entity();
-    ~Entity();
-    void changePosition(sf::Vector2f pos);
-    Vector2f getPosition();
-    void setVelocity(Vector2f vel);
-    Vector2f getVelocity();
-    void setHitbox(Vector2f vel);
-    Vector2f getHitbox();
-    virtual void update(float dt);
-    virtual void render();
-    void setWindow(RenderWindow* wind) {
-        window = wind;
-    }
-    ID::ids getId();
-    virtual void colliding(Entity *ent){}
+    virtual ~Entity();
+
+    void changePosition(const sf::Vector2f pos);
+    Vector2f getPosition() const;
+
+    void setVelocity(const Vector2f vel);
+    Vector2f getVelocity() const;
+
+    void setHitbox(const Vector2f vel);
+    Vector2f getHitbox() const;
+
+    virtual void update(float dt) = 0;
+    virtual void render() = 0;
+
+    ID::ids getId() const;
+    virtual void colliding(Entity* ent) = 0;
 };
