@@ -1,23 +1,26 @@
 #include "Platform.h"
+#include "GraphicManager.h"
 
-Platform::Platform(sf::Vector2f pos) :
-Entity(ID::plataform){
-    position = pos;
-    sprite.setSize(Vector2f(PLATFORM_WIDTH, PLAYER_HEIGHT));
-    if (!texture.loadFromFile("./assets/Platforms/DirtPlatform.png")) {
-        exit(9);
-    }
-    sprite.setTexture(&texture);
-    sprite.setPosition(position);
+Platform::Platform(sf::Vector2f pos, GraphicManager* GM) :
+Entity(ID::plataform, GM) {
+    changePosition(pos);
+
+    sf::Texture* tex;
+    tex = pGraphicManager->loadTexture(ID::plataform, PLATFORM_PATH);
+
+    setHitbox(sf::Vector2f(200.0f, 50.0f));
+    body.setOrigin(hitbox / 2.0f);
+    body.setSize(hitbox);
+    body.setTexture(tex);
 }
 
 Platform::~Platform() {
 }
 
-void Platform::update() {
-    sprite.setPosition(position);
+void Platform::update(float dt) {
+    body.setPosition(position);
 }
 
 void Platform::render() {
-    window->draw(sprite);
+    pGraphicManager->getWindow()->draw(body);
 }

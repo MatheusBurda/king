@@ -763,7 +763,7 @@
 											"top": 1406,
 											"width": 743,
 											"height": 13,
-											"text": "Beings"
+											"text": "Characters"
 										},
 										{
 											"_type": "LabelView",
@@ -1185,7 +1185,7 @@
 											"top": -3449,
 											"width": 114.8798828125,
 											"height": 13,
-											"text": "(from Beings)"
+											"text": "(from Characters)"
 										},
 										{
 											"_type": "LabelView",
@@ -1374,7 +1374,7 @@
 											"top": -2729,
 											"width": 114.8798828125,
 											"height": 13,
-											"text": "(from Beings)"
+											"text": "(from Characters)"
 										},
 										{
 											"_type": "LabelView",
@@ -1563,7 +1563,7 @@
 											"top": -2777,
 											"width": 114.8798828125,
 											"height": 13,
-											"text": "(from Beings)"
+											"text": "(from Characters)"
 										},
 										{
 											"_type": "LabelView",
@@ -1752,7 +1752,7 @@
 											"top": -3345,
 											"width": 114.8798828125,
 											"height": 13,
-											"text": "(from Beings)"
+											"text": "(from Characters)"
 										},
 										{
 											"_type": "LabelView",
@@ -1926,7 +1926,7 @@
 											"top": 1439,
 											"width": 271,
 											"height": 13,
-											"text": "Being"
+											"text": "Character"
 										},
 										{
 											"_type": "LabelView",
@@ -1941,7 +1941,7 @@
 											"top": -3761,
 											"width": 114.8798828125,
 											"height": 13,
-											"text": "(from Beings)"
+											"text": "(from Characters)"
 										},
 										{
 											"_type": "LabelView",
@@ -15341,7 +15341,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF6VIxPEoafP+0="
 							},
-							"name": "Beings",
+							"name": "Characters",
 							"ownedElements": [
 								{
 									"_type": "UMLClass",
@@ -15469,7 +15469,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF6VHiF33vSxyI="
 									},
-									"name": "Being",
+									"name": "Character",
 									"ownedElements": [
 										{
 											"_type": "UMLGeneralization",

@@ -7,7 +7,7 @@ class Background : public Entity
 	sf::RenderWindow* window;
 public:
 	Background(sf::RenderWindow* wind=NULL) : Entity(), background(sf::Vector2f(WIDTH, HEIGHT)) {
-		if (!texture.loadFromFile("./assets/Backgrounds/background1.jpg")) {
+		if (!texture.loadFromFile("./assets/Backgrounds/montanha.png")) {
 			exit(9);
 		}
 		window = wind;
