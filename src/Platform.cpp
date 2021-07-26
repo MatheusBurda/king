@@ -8,7 +8,7 @@ Entity(ID::plataform, GM) {
     sf::Texture* tex;
     tex = pGraphicManager->loadTexture(ID::plataform, PLATFORM_PATH);
 
-    setHitbox(sf::Vector2f(200.0f, 50.0f));
+    setHitbox(sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
     body.setOrigin(hitbox / 2.0f);
     body.setSize(hitbox);
     body.setTexture(tex);

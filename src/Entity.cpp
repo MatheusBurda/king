@@ -3,8 +3,7 @@
 #include "GraphicManager.h"
 
 Entity::Entity(ID::ids id, GraphicManager* GM) {
-    stopx = false;
-    stopy = false;
+    showing = true;
     this->id = id;
     pGraphicManager = GM;
 }

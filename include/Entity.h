@@ -15,7 +15,8 @@ protected:
     sf::RectangleShape body;
     GraphicManager* pGraphicManager;
     ID::ids id;
-    bool stopx, stopy;
+    bool showing;
+
 
 public:
     Entity(ID::ids id, GraphicManager* GM);
@@ -36,11 +37,6 @@ public:
 
     ID::ids getId() const;
     void Move(sf::Vector2f vec);
-
-    void setStopX(bool val) {
-        stopx = val;
-    }
-    void setStopY(bool val) {
-        stopy = val;
-    }
+    void setShowing(const bool val = true) { showing = val; }
+    bool getShowing() { return showing; }
 };

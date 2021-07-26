@@ -3,13 +3,14 @@
 Character::Character(ID::ids id, GraphicManager* GM) :
 Entity(id, GM),
 life(-1), damage(-1) {
+    isAttacking = false;
 }
 
 Character::~Character() {
 }
 
-int Character::attack() {
-    return damage;
+void Character::attack(Character *ct) {
+    ct->life -= damage;
 }
 
 void Character::getHurt(int enemydmg) {

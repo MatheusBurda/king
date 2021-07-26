@@ -22,8 +22,10 @@ void EntityList::renderAll() {
     int size = list.length();
     Entity* pAux;
     for (int i = 0; i < size; i++) {
-        pAux = list[i];
-        pAux->render();
+        if (list[i]->getShowing()) {
+            pAux = list[i];
+            pAux->render();
+        }
     }
 }
 

@@ -9,13 +9,13 @@ class GraphicManager;
 class Player : public Character {
 private:
     bool Canjump;
+
 public:
     Player(GraphicManager* GM);
     ~Player();
     void update(float dt);
     void render();
-    void setJump(const bool val = true) {
-        Canjump = val;
-    }
- 
+    void setJump(const bool val = true) {Canjump = val;}
+
+
 };

@@ -5,6 +5,7 @@
 #include "Platform.h"
 #include "Player.h"
 #include "stdafx.h"
+#include "Enemy.h"
 
 int main() {
     GraphicManager graphicM;
@@ -28,18 +29,21 @@ int main() {
     Platform plat2(sf::Vector2f(200, 400), &graphicM);
     Platform plat3(sf::Vector2f(300, 400), &graphicM);
     Platform plat4(sf::Vector2f(400, 400), &graphicM);
-
+    Enemy etore(&graphicM);
     Player Burda(&graphicM);
 
     sf::Clock time;
     float dt;
 
     _list.addEntity(&Burda);
+    _list.addEntity(&etore);
     _list.addEntity(&plat1);
     _list.addEntity(&plat4);
     _list.addEntity(&plat2);
     _list.addEntity(&plat3);
+
     time.restart();
+
     while (graphicM.isWindowOpen()) {
         dt = time.getElapsedTime().asSeconds();
         time.restart();

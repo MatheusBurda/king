@@ -6,6 +6,8 @@ class Character : public Entity {
 protected:
     int life;
     int damage;
+    bool isAttacking;
+
     virtual void update(float dt) {
     }
     virtual void render() {
@@ -15,8 +17,10 @@ protected:
 public:
     Character(ID::ids id, GraphicManager* GM);
     ~Character();
-    int attack();
+    void attack(Character*ct);
     void getHurt(int enemydmg);
     bool amAlive();
-
+    void setIsAttacking(const bool val = false) { isAttacking = val; }
+    bool getIsAttacking() { return isAttacking; }
+    bool facingLeft() { return (velocity.x < 0); }
 };

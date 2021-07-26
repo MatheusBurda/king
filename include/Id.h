@@ -6,6 +6,7 @@ namespace ID {
         player = 0,
         player2 = 1,
         plataform = 2,
-        enemy = 3
+        enemy = 3,
+
     };
 }

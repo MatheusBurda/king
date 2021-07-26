@@ -7,5 +7,7 @@ class Enemy :   public Character
 public:
     Enemy(GraphicManager* GM);
     ~Enemy();
+    void update(float dt);
+    void render();
 };
 

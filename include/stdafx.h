@@ -30,14 +30,23 @@ using std::endl;
 #define PLAYER_WIDTH 80
 #define PLAYER_HEIGHT 80
 #define PLAYER_JUMP 100
+/* =================================================== */
+/*                     ENEMY                           */
+/* =================================================== */
+
+
+#define ENEMY_LIFE 100
+#define ENEMY_DAMAGE 25
+#define ENEMY_WIDTH 40
+#define ENEMY_HEIGHT 40
 
 /* =================================================== */
 /*                        MAP                          */
 /* =================================================== */
 
-#define GRAVITY 980.f
+#define GRAVITY 3000.f
 /* =================================================== */
 /*                      PLATFORM                       */
 /* =================================================== */
-#define PLATFORM_WIDTH 300
-#define PLATFORM_HEIGHT 150
+#define PLATFORM_WIDTH 200
+#define PLATFORM_HEIGHT 50
