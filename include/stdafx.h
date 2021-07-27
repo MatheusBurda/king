@@ -23,17 +23,17 @@ using std::endl;
 /*                      PLAYER                         */
 /* =================================================== */
 
-#define PLAYER_VELOCITY 150.f
+#define PLAYER_VELOCITY 200.f
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 80
-#define PLAYER_HEIGHT 80
+#define PLAYER_WIDTH 44
+#define PLAYER_HEIGHT 110
 #define PLAYER_JUMP 100
+
 /* =================================================== */
 /*                     ENEMY                           */
 /* =================================================== */
-
 
 #define ENEMY_LIFE 100
 #define ENEMY_DAMAGE 25

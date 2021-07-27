@@ -31,7 +31,7 @@
 *.out
 *.app
 obj
-game
+king
 
 # VS stuff
 .vscode

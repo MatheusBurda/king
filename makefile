@@ -1,5 +1,5 @@
 # Project Name
-PROJECT := game
+PROJECT := king
 
 # Source, Objects and Binaries folder
 SRC_DIR := src
@@ -20,7 +20,7 @@ LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system
 
 .PHONY: all clean build
 
-all: build $(PROJECT)
+all: build $(PROJECT) run
 
 $(PROJECT): $(OBJ)
 	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
@@ -38,5 +38,10 @@ build:
 
 clean:
 	@ $(RM) -r $(OBJ_DIR) $(PROJECT) $(BIN_DIR)
+
+rebuild: clean all
+
+run:
+	./$(PROJECT)
 
 -include $(OBJ:.o=.d)

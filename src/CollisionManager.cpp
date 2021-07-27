@@ -31,18 +31,16 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                             }
                             ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
 
-                        }else {
+                        } else {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
                                 (static_cast<Player*>(ent1))->setJump(true);
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -51,19 +49,16 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                             }
                             ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
 
-                        }
-                        else {
+                        } else {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
                                 (static_cast<Player*>(ent1))->setJump(true);
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -76,8 +71,7 @@ void CollisionManager::toCollide() {
                                     (static_cast<Player*>(ent1))->attack((static_cast<Character*>(ent2)));
                                     (static_cast<Player*>(ent1))->setIsAttacking(false);
                                 }
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                                 if ((static_cast<Player*>(ent1))->getIsAttacking() && (static_cast<Player*>(ent1))->facingLeft()) {
                                     (static_cast<Player*>(ent1))->attack((static_cast<Character*>(ent2)));
@@ -85,13 +79,11 @@ void CollisionManager::toCollide() {
                                 }
                             }
 
-                        }
-                        else {
+                        } else {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
                                 (static_cast<Player*>(ent1))->setJump(true);
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -101,9 +93,8 @@ void CollisionManager::toCollide() {
 
                     default:
                         break;
-
                     }
-                }else if (ent1->getId() == ID::enemy) {
+                } else if (ent1->getId() == ID::enemy) {
                     switch (ent2->getId()) {
 
                     case ID::empty:
@@ -112,8 +103,7 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                                 ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
                             }
@@ -122,8 +112,7 @@ void CollisionManager::toCollide() {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
 
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -137,18 +126,15 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                             }
                             ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
 
-                        }
-                        else {
+                        } else {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -157,18 +143,15 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
                             }
                             ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
 
-                        }
-                        else {
+                        } else {
                             if (dy > 0) {
                                 ent1->Move(sf::Vector2f(0.0f, intersectY));
-                            }
-                            else {
+                            } else {
                                 ent1->Move(sf::Vector2f(0.0f, -intersectY));
                             }
                             ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
@@ -178,11 +161,10 @@ void CollisionManager::toCollide() {
 
                     default:
                         break;
-
                     }
                 }
             } else {
             }
         }
-	}
+    }
 }

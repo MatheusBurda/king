@@ -15,7 +15,5 @@ public:
     ~Player();
     void update(float dt);
     void render();
-    void setJump(const bool val = true) {Canjump = val;}
-
-
+    void setJump(const bool val = true) { Canjump = val; }
 };

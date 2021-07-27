@@ -25,8 +25,6 @@ void Player::update(float dt) {
 
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
 
-
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         velocity = Vector2f(PLAYER_VELOCITY, velocity.y);
     }
@@ -37,10 +35,9 @@ void Player::update(float dt) {
         velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
         Canjump = false;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         setIsAttacking(true);
     }
-    
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     body.setPosition(position);
@@ -50,4 +47,3 @@ void Player::render() {
     pGraphicManager->centerView(position);
     pGraphicManager->getWindow()->draw(body);
 }
-

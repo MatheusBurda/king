@@ -1,11 +1,11 @@
 #include "CollisionManager.h"
+#include "Enemy.h"
 #include "Entity.h"
 #include "EntityList.h"
 #include "GraphicManager.h"
 #include "Platform.h"
 #include "Player.h"
 #include "stdafx.h"
-#include "Enemy.h"
 
 int main() {
     GraphicManager graphicM;
@@ -29,14 +29,14 @@ int main() {
     Platform plat2(sf::Vector2f(200, 400), &graphicM);
     Platform plat3(sf::Vector2f(300, 400), &graphicM);
     Platform plat4(sf::Vector2f(400, 400), &graphicM);
-    Enemy etore(&graphicM);
+    Enemy* etore = new Enemy(&graphicM);
     Player Burda(&graphicM);
 
     sf::Clock time;
     float dt;
 
     _list.addEntity(&Burda);
-    _list.addEntity(&etore);
+    _list.addEntity(etore);
     _list.addEntity(&plat1);
     _list.addEntity(&plat4);
     _list.addEntity(&plat2);
@@ -51,7 +51,6 @@ int main() {
         graphicM.clear();
 
         graphicM.checkWindowEvents();
-
         //DESENHANDO BACKGROUND
         graphicM.getWindow()->draw(background);
 

@@ -17,7 +17,6 @@ protected:
     ID::ids id;
     bool showing;
 
-
 public:
     Entity(ID::ids id, GraphicManager* GM);
     Entity();

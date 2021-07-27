@@ -17,7 +17,7 @@ protected:
 public:
     Character(ID::ids id, GraphicManager* GM);
     ~Character();
-    void attack(Character*ct);
+    void attack(Character* ct);
     void getHurt(int enemydmg);
     bool amAlive();
     void setIsAttacking(const bool val = false) { isAttacking = val; }

@@ -50,6 +50,7 @@ public:
     void append(TL* pInfo);
     int length() { return size; }
     TL* operator[](int x);
+    bool remove(TL* pTL);
 
 private:
     void setNode(Node<TL>* pNode);
@@ -58,7 +59,8 @@ private:
 };
 
 template <class TL>
-List<TL>::List():pFirst(), pLast(), size(0) {
+List<TL>::List() :
+pFirst(), pLast(), size(0) {
     clear();
 }
 
@@ -123,7 +125,7 @@ void List<TL>::append(TL* pInfo) {
 /* Iterate through the list, similar to a static vector. Returns the pointer the template list points to.  */
 template <class TL>
 TL* List<TL>::operator[](int x) {
-    if (x >= size || x<0) {
+    if (x >= size || x < 0) {
         std::cout << "ERROR: Segmentation fault on template list. Exceeded boundaries." << std::endl;
         exit(1);
     }
@@ -132,5 +134,33 @@ TL* List<TL>::operator[](int x) {
     for (int i = 0; i < x; i++) {
         pAux = pAux->getNext();
     }
+
+    if (pAux == NULL) {
+        cout << "ERROR: on template operator[] pAux == NULL." << endl;
+        exit(1);
+    }
     return pAux->getInfo();
+}
+
+/* Removes a specific element fom list. Return true if was completed*/
+template <class TL>
+bool List<TL>::remove(TL* pTL) {
+    Node<TL>* pAux = pFirst;
+    Node<TL>* pPrev = NULL;
+    while (pAux != NULL) {
+        if (pAux->getInfo() == pTL) {
+            if (pAux == pFirst)
+                pFirst = pAux->getNext();
+            else
+                pPrev->setNext(pAux->getNext());
+
+            delete (pTL);
+            delete (pAux);
+            size--;
+            return true;
+        }
+        pPrev = pAux;
+        pAux = pAux->getNext();
+    }
+    return false;
 }

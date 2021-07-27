@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Character.h"
 #include "List.h"
 #include "stdafx.h"
 
