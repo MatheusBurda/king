@@ -1,5 +1,8 @@
 #include "Character.h"
 
+#include "Animation.h"
+#include "GraphicManager.h"
+
 Character::Character(ID::ids id, GraphicManager* GM) :
 Entity(id, GM),
 life(-1), damage(-1) {

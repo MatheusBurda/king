@@ -2,9 +2,10 @@
 
 #include "Character.h"
 
+class Animation;
 class GraphicManager;
 
-#define PLAYER_PATH "./assets/King/king.png"
+#define PLAYER_PATH "./assets/King/KingSpritesheet.png"
 
 class Player : public Character {
 private:
@@ -16,4 +17,5 @@ public:
     void update(float dt);
     void render();
     void setJump(const bool val = true) { Canjump = val; }
+    void initializeSprite();
 };

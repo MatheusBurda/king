@@ -4,16 +4,16 @@
 #include "stdafx.h"
 
 class GraphicManager;
+class Animation;
 
 using namespace sf;
 
 class Entity {
 protected:
+    Animation* sprite;
     sf::Vector2f position;
     sf::Vector2f velocity;
     sf::Vector2f hitbox;
-    sf::RectangleShape body;
-    GraphicManager* pGraphicManager;
     ID::ids id;
     bool showing;
 
@@ -36,6 +36,9 @@ public:
 
     ID::ids getId() const;
     void Move(sf::Vector2f vec);
+
     void setShowing(const bool val = true) { showing = val; }
     bool getShowing() { return showing; }
+
+    virtual void initializeSprite() = 0;
 };

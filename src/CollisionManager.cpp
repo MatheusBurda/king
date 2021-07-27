@@ -1,10 +1,13 @@
 #include "CollisionManager.h"
 #include "Player.h"
+
 CollisionManager::CollisionManager(EntityList* pList) {
     list = pList;
 }
+
 CollisionManager::~CollisionManager() {
 }
+
 void CollisionManager::toCollide() {
     Entity *ent1, *ent2;
 

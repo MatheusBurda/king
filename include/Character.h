@@ -2,6 +2,9 @@
 
 #include "Entity.h"
 
+class Animation;
+class GraphicManager;
+
 class Character : public Entity {
 protected:
     int life;
@@ -23,4 +26,5 @@ public:
     void setIsAttacking(const bool val = false) { isAttacking = val; }
     bool getIsAttacking() { return isAttacking; }
     bool facingLeft() { return (velocity.x < 0); }
+    virtual void initializeSprite() = 0;
 };

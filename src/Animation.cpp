@@ -2,24 +2,27 @@
 
 #include <math.h>
 
-Animation::Animation(GraphicManager* pGraphicM, sf::Vector2u imageCount) :
+const float Animation::switchTime = 0.2;
+
+Animation::Animation(GraphicManager* pGraphicM) :
 pGraphicM(pGraphicM),
-imageCount(imageCount),
+imageCount(sf::Vector2u(0, 0)),
 texture(NULL),
 currentImage(sf::Vector2u(0, 0)) {
     totalTime = 0.0f;
 }
 
 Animation::~Animation() {
-
 }
 
-void Animation::initializeTexture(const char* path, ID::ids id) {
+/* Initialize the texture for a Animation. Needs a path to the file, the id of the entity and a imageCount(x,y) of the spritesheet. */
+void Animation::initializeTexture(const char* path, ID::ids id, sf::Vector2u imageCount) {
 
+    this->imageCount = imageCount;
     texture = pGraphicM->loadTexture(id, path);
 
     if (texture == NULL) {
-        cout << "ERROR loading texture failed on Animation::initializeTexture." << endl;
+        cout << "ERROR: loading texture failed on Animation::initializeTexture." << endl;
         exit(1);
     }
 
@@ -31,7 +34,9 @@ void Animation::initializeTexture(const char* path, ID::ids id) {
     body.setTexture(texture);
 }
 
+/* Update the Animation position and the displayed  */
 void Animation::Update(int row, float dt, bool facingLeft, sf::Vector2f position) {
+    /* Based on this tutorial --> https://www.youtube.com/watch?v=Aa8bXSq5LDE&t=196s*/
     currentImage.y = row;
     totalTime += dt;
 
@@ -58,6 +63,12 @@ void Animation::Update(int row, float dt, bool facingLeft, sf::Vector2f position
     body.setTextureRect(uvRect);
 }
 
+/* Sets the imageCount on the spriteSheet */
 void Animation::setimageCount(const sf::Vector2u imageCount) {
     this->imageCount = imageCount;
+}
+
+
+void Animation::render() {
+    pGraphicM->render(&body);
 }

@@ -15,13 +15,11 @@ private:
     static const float switchTime;
 
 public:
-    Animation(GraphicManager* pGraphicM = NULL, sf::Vector2u imageCount = sf::Vector2u(1, 1));
+    Animation(GraphicManager* pGraphicM = NULL);
     ~Animation();
 
-    void initializeTexture(const char* path = "", ID::ids id = ID::empty);
+    void initializeTexture(const char* path, ID::ids id, sf::Vector2u imageCount);
     void setimageCount(const sf::Vector2u imageCount);
     void render();
     void Update(int row, float dt, bool facingLeft, sf::Vector2f position);
 };
-
-const float Animation::switchTime = 0.067;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include "stdafx.h"
 
 template <class TL>
 class List {
@@ -142,7 +142,7 @@ TL* List<TL>::operator[](int x) {
     return pAux->getInfo();
 }
 
-/* Removes a specific element fom list. Return true if was completed*/
+/* Removes a specific element fom list. Return true if was completed. */
 template <class TL>
 bool List<TL>::remove(TL* pTL) {
     Node<TL>* pAux = pFirst;

@@ -15,18 +15,15 @@ void EntityList::updateAll(float dt) {
         pAux = list[i];
         pAux->update(dt);
 
-        if (pAux->getId() == ID::enemy) {
-            if (!(static_cast<Character*>(pAux))->amAlive())
-                removeEntity(pAux);
-        }
+        if (!pAux->getShowing())
+            removeEntity(pAux);
     }
 }
 
 /* Cicles through the list calling render method for each Entity. */
 void EntityList::renderAll() {
-    int size = list.length();
     Entity* pAux;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < list.length(); i++) {
         if (list[i]->getShowing()) {
             pAux = list[i];
             pAux->render();

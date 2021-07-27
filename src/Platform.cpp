@@ -1,26 +1,27 @@
 #include "Platform.h"
+#include "Animation.h"
 #include "GraphicManager.h"
 
 Platform::Platform(sf::Vector2f pos, GraphicManager* GM) :
 Entity(ID::plataform, GM) {
     changePosition(pos);
 
-    sf::Texture* tex;
-    tex = pGraphicManager->loadTexture(ID::plataform, PLATFORM_PATH);
-
     setHitbox(sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
-    body.setOrigin(hitbox / 2.0f);
-    body.setSize(hitbox);
-    body.setTexture(tex);
+
+    initializeSprite();
 }
 
 Platform::~Platform() {
 }
 
 void Platform::update(float dt) {
-    body.setPosition(position);
+    sprite->Update(0, dt, false, position);
 }
 
 void Platform::render() {
-    pGraphicManager->getWindow()->draw(body);
+    sprite->render();
+}
+
+void Platform::initializeSprite() {
+    sprite->initializeTexture(PLATFORM_PATH, id, sf::Vector2u(1, 1));
 }

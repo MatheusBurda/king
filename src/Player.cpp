@@ -1,5 +1,6 @@
 #include "Player.h"
 
+#include "Animation.h"
 #include "GraphicManager.h"
 #include <math.h>
 
@@ -8,14 +9,12 @@ Character(ID::player, GM) {
     Canjump = true;
     life = PLAYER_LIFE;
     damage = PLAYER_DAMAGE;
-    setHitbox(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));
-    body.setOrigin(hitbox / 2.0f);
-    body.setSize(hitbox);
+
     changePosition(sf::Vector2f(150, 20));
 
-    sf::Texture* tex;
-    tex = pGraphicManager->loadTexture(ID::player, PLAYER_PATH);
-    body.setTexture(tex);
+    setHitbox(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));
+
+    initializeSprite();
 }
 
 Player::~Player() {
@@ -23,7 +22,7 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
-    velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
+    velocity = Vector2f(velocity.x * 0.05f, velocity.y + GRAVITY * dt);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         velocity = Vector2f(PLAYER_VELOCITY, velocity.y);
@@ -40,10 +39,21 @@ void Player::update(float dt) {
     }
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    body.setPosition(position);
+    
+    if(isAttacking)
+        sprite->Update(5, dt, facingLeft(), position);
+    /* Walking */
+    else if (abs(velocity.x) < 0.001)
+        sprite->Update(0, dt, facingLeft(), position);
+    /* Idle */
+    else
+        sprite->Update(1, dt, facingLeft(), position);
 }
 
 void Player::render() {
-    pGraphicManager->centerView(position);
-    pGraphicManager->getWindow()->draw(body);
+    sprite->render();
+}
+
+void Player::initializeSprite() {
+    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 6));
 }
