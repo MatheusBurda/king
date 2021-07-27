@@ -35,7 +35,7 @@ using std::endl;
 /*                     ENEMY                           */
 /* =================================================== */
 
-#define ENEMY_LIFE 100
+#define ENEMY_LIFE 1000
 #define ENEMY_DAMAGE 25
 #define ENEMY_WIDTH 40
 #define ENEMY_HEIGHT 40

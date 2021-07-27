@@ -9,12 +9,12 @@ life(-1), damage(-1) {
 Character::~Character() {
 }
 
-void Character::attack(Character *ct) {
-    ct->life -= damage;
+int Character::attack() {
+    return damage;
 }
 
-void Character::getHurt(int enemydmg) {
-    life -= enemydmg;
+void Character::getHurt(int dmg) {
+    life -= dmg;
 }
 
 bool Character::amAlive() {

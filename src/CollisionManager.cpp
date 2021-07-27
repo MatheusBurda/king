@@ -67,15 +67,15 @@ void CollisionManager::toCollide() {
                         if (intersectX > intersectY) {
                             if (dx > 0) {
                                 ent1->Move(sf::Vector2f(intersectX, 0.0f));
-                                if ((static_cast<Player*>(ent1))->getIsAttacking() && !(static_cast<Player*>(ent1))->facingLeft()) {
-                                    (static_cast<Player*>(ent1))->attack((static_cast<Character*>(ent2)));
-                                    (static_cast<Player*>(ent1))->setIsAttacking(false);
+                                if ((static_cast<Character*>(ent1))->getIsAttacking() && !(static_cast<Character*>(ent1))->facingLeft()) {
+                                    (static_cast<Character*>(ent2))->getHurt((static_cast<Character*>(ent1))->attack());
+                                    (static_cast<Character*>(ent1))->setIsAttacking(false);
                                 }
                             } else {
                                 ent1->Move(sf::Vector2f(-intersectX, 0.0f));
-                                if ((static_cast<Player*>(ent1))->getIsAttacking() && (static_cast<Player*>(ent1))->facingLeft()) {
-                                    (static_cast<Player*>(ent1))->attack((static_cast<Character*>(ent2)));
-                                    (static_cast<Player*>(ent1))->setIsAttacking(false);
+                                if ((static_cast<Character*>(ent1))->getIsAttacking() && (static_cast<Character*>(ent1))->facingLeft()) {
+                                    (static_cast<Character*>(ent2))->getHurt((static_cast<Character*>(ent1))->attack());
+                                    (static_cast<Character*>(ent1))->setIsAttacking(false);
                                 }
                             }
 
