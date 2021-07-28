@@ -15,7 +15,7 @@ private:
     static const float attackTime;
 
 public:
-    Player(GraphicManager* GM);
+    Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
     ~Player();
     void update(float dt);
     void render();

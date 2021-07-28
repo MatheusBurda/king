@@ -80,7 +80,7 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
     case ID::player2:
         break;
 
-    case ID::plataform:
+    case ID::platform:
         if (intersectX > intersectY) {
                 moveX(ent1, ent2, intersectX);
         }else {
@@ -101,7 +101,9 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
                 notAbove(ent1, ent2, intersectX, dx);
         }
         break;
-
+    case ID::fireball:
+        if(ent2->getShowing())
+        attackEnemy(ent1, ent2);
     default:
         break;
     }
@@ -130,7 +132,7 @@ void CollisionManager:: collideEnemy(Entity* ent1, Entity* ent2, float dx, float
         }
         break;
 
-    case ID::plataform:
+    case ID::platform:
         if (intersectX > intersectY) {
              moveX(ent1, ent2, intersectX);
         }else {
@@ -139,6 +141,8 @@ void CollisionManager:: collideEnemy(Entity* ent1, Entity* ent2, float dx, float
         break;
 
     case ID::enemy:
+        break;
+    case ID::fireball:
         break;
 
     default:
@@ -154,24 +158,14 @@ void CollisionManager::collideFireball(Entity* ent1, Entity* ent2, float dx, flo
         break;
 
     case ID::player:
-        if (intersectX > intersectY) {
-            moveX(ent1, ent2, intersectX);
-        }
-        else {
-            notAbove(ent1, ent2, intersectX, dx);
-        }
+        attackEnemy(ent1, ent2);
         break;
 
     case ID::player2:
-        if (intersectX > intersectY) {
-            moveX(ent1, ent2, intersectX);
-        }
-        else {
-            notAbove(ent1, ent2, intersectX, dx);
-        }
+        attackEnemy(ent1, ent2);
         break;
 
-    case ID::plataform:
+    case ID::platform:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
         }
@@ -189,4 +183,16 @@ void CollisionManager::collideFireball(Entity* ent1, Entity* ent2, float dx, flo
         break;
     }
 }
-
+//function to collide a projectile with a player
+void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
+    if (ent1->getId() == ID::fireball) {
+        ent1->setShowing(false);
+        ent1->setVelocity(sf::Vector2f(0.0f, 0.0f));
+        (static_cast<Player*>(ent2))->getHurt(FIREBALL_DAMAGE);
+    }
+    else {
+        ent2->setShowing(false);
+        ent2->setVelocity(sf::Vector2f(0.0f, 0.0f));
+        (static_cast<Player*>(ent1))->getHurt(FIREBALL_DAMAGE);
+    }
+}

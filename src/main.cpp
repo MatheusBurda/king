@@ -15,30 +15,29 @@ int main() {
     /*Testando Collision manager*/
     CollisionManager colis(&_list);
 
-    Enemy* etore = new Enemy(&graphicM);
-    Fireball* fb = new Fireball(&graphicM);
-    etore->setFireball(fb);
-    
-    Player Burda(&graphicM);
+    Fireball* fb = new Fireball(ID::fireball, &graphicM, sf::Vector2f(300.0f, 300.0f), sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
+    Enemy* etore = new Enemy(ID::enemy,&graphicM, sf::Vector2f(300.0f, 300.0f), sf::Vector2f(ENEMY_WIDTH,ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
+    Player Burda(ID::player, &graphicM, sf::Vector2f(500.0f, 300.0f), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE);
 
     sf::Clock time;
     float dt;
-    _list.addEntity(fb);
+
     _list.addEntity(&Burda);
+    _list.addEntity(fb);
     _list.addEntity(etore);
 
 
-    Platform plat1(sf::Vector2f(000, 300), &graphicM);
-    Platform plat2(sf::Vector2f(200, 400), &graphicM);
-    Platform plat3(sf::Vector2f(300, 400), &graphicM);
-    Platform plat4(sf::Vector2f(400, 400), &graphicM);
-    Platform plat5(sf::Vector2f(500, 400), &graphicM);
-    Platform plat8(sf::Vector2f(600, 400), &graphicM);
-    Platform plat9(sf::Vector2f(700, 400), &graphicM);
-    Platform plat10(sf::Vector2f(800, 400), &graphicM);
-    Platform plat11(sf::Vector2f(900, 400), &graphicM);
-    Platform plat6(sf::Vector2f(300, 200), &graphicM);
-    Platform plat7(sf::Vector2f(600, 600), &graphicM);
+    Platform plat1(ID::platform, &graphicM, sf::Vector2f(100.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat2(ID::platform, &graphicM, sf::Vector2f(200.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat3(ID::platform, &graphicM, sf::Vector2f(300.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat4(ID::platform, &graphicM, sf::Vector2f(400.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat5(ID::platform, &graphicM, sf::Vector2f(500.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat6(ID::platform, &graphicM, sf::Vector2f(600.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat7(ID::platform, &graphicM, sf::Vector2f(700.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat8(ID::platform, &graphicM, sf::Vector2f(800.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat9(ID::platform, &graphicM, sf::Vector2f(900.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat10(ID::platform, &graphicM, sf::Vector2f(1000.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+    Platform plat11(ID::platform, &graphicM, sf::Vector2f(1100.0f, 400.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
     
     _list.addEntity(&plat1);
     _list.addEntity(&plat2);

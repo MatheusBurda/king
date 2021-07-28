@@ -19,5 +19,6 @@ public:
 	void collidePlayer(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
 	void collideEnemy(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
 	void collideFireball(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
+	void attackEnemy(Entity* ent1, Entity* ent2);
 };
 

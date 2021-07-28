@@ -2,12 +2,9 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Platform::Platform(sf::Vector2f pos, GraphicManager* GM) :
-Entity(ID::plataform, GM) {
+Platform::Platform(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
+Entity(ID::platform, GM, pos, hit) {
     changePosition(pos);
-
-    setHitbox(sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
-
     initializeSprite();
 }
 

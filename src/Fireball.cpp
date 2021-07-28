@@ -3,11 +3,9 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Fireball::Fireball(GraphicManager* GM) : Entity(ID::fireball, GM){
-	setHitbox(sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-	initializeSprite();
+Fireball::Fireball(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) : Entity(ID::fireball, GM, pos, hit){
 	setShowing(false);
-	changePosition(sf::Vector2f(0.0f, 0.0f));
+	initializeSprite();
 }
 
 Fireball::~Fireball()

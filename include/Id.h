@@ -5,7 +5,7 @@ namespace ID {
         empty = -1,
         player = 0,
         player2 = 1,
-        plataform = 2,
+        platform = 2,
         enemy = 3,
         fireball = 4
 

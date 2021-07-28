@@ -19,7 +19,7 @@ protected:
     bool faceLeft;
 
 public:
-    Entity(ID::ids id, GraphicManager* GM);
+    Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
     Entity();
     virtual ~Entity();
 

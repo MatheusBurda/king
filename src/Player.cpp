@@ -6,19 +6,12 @@
 
 const float Player::attackTime = 0.8;
 
-Player::Player(GraphicManager* GM) :
-Character(ID::player, GM) {
-    /* Outras classes construtora */
-    life = PLAYER_LIFE;
-    damage = PLAYER_DAMAGE;
-    changePosition(sf::Vector2f(150, 20));
-    setHitbox(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));
-    /* ========================== */
+Player::Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
+Character(ID::player, GM, pos, hit, lf, dmg) {
 
     totalTime = 0.0f;
     firstAttack = true;
     Canjump = true;
-
     initializeSprite();
 }
 
@@ -46,6 +39,9 @@ void Player::update(float dt) {
         setIsAttacking(true);
     else
         setIsAttacking(false);
+    if (life <= 0) {
+        setShowing(false);
+    }
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     /* Attacking */

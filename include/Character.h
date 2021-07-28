@@ -18,7 +18,7 @@ protected:
     virtual void colliding(Entity* ent) { }
 
 public:
-    Character(ID::ids id, GraphicManager* GM);
+    Character(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
     ~Character();
     int attack();
     void getHurt(int dmg);

@@ -8,9 +8,8 @@ class GraphicManager;
 class Platform : public Entity {
 
 public:
-    Platform(sf::Vector2f pos = sf::Vector2f(0.0f, 0.0f), GraphicManager* GM = NULL);
+    Platform(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
     ~Platform();
-
     void update(float dt);
     void render();
     void initializeSprite();

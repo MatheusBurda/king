@@ -3,9 +3,9 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Character::Character(ID::ids id, GraphicManager* GM) :
-Entity(id, GM),
-life(-1), damage(-1) {
+Character::Character(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
+Entity(id, GM, pos, hit),
+life(lf), damage(dmg) {
     isAttacking = false;
 }
 

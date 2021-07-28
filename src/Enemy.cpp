@@ -4,15 +4,9 @@
 #include "Animation.h"
 #include "math.h"
 
-Enemy::Enemy(GraphicManager* GM) :
-Character(ID::enemy, GM){
-    life = ENEMY_LIFE;
-    damage = ENEMY_DAMAGE;
-    fireball = NULL;
-    setHitbox(sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT));
-
-    changePosition(sf::Vector2f(400, 20));
-
+Enemy::Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fb) :
+Character(ID::enemy, GM, pos, hit, lf, dmg){
+    fireball = fb;
     initializeSprite();
 }
 
