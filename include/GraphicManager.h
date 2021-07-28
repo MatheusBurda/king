@@ -35,6 +35,6 @@ public:
     sf::Texture* loadTexture(ID::ids id, const char* path);
 
     void setPlayers(Player* player1, Player* player2 = NULL);
-    void setBackgroung(const char* path);
+    void setBackground(const char* path);
     void updateBackground();
 };

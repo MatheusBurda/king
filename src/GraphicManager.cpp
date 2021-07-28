@@ -134,7 +134,7 @@ void GraphicManager::setPlayers(Player* player1, Player* player2) {
 }
 
 /* Set the background from path. */
-void GraphicManager::setBackgroung(const char* path) {
+void GraphicManager::setBackground(const char* path) {
     if (backgroundTexture != NULL)
         delete (backgroundTexture);
 

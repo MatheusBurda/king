@@ -9,14 +9,17 @@ class Animation;
 using namespace sf;
 
 class Entity {
+private:
+    bool showing;
+    bool faceLeft;
+
 protected:
     Animation* sprite;
     sf::Vector2f position;
     sf::Vector2f velocity;
     sf::Vector2f hitbox;
     ID::ids id;
-    bool showing;
-    bool faceLeft;
+
 
 public:
     Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
@@ -29,7 +32,7 @@ public:
     void setVelocity(const Vector2f vel);
     Vector2f getVelocity() const;
 
-    void setHitbox(const Vector2f vel);
+    void setHitbox(const Vector2f hit);
     Vector2f getHitbox() const;
 
     virtual void update(float dt) = 0;

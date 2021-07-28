@@ -23,9 +23,9 @@ using std::endl;
 /*                      PLAYER                         */
 /* =================================================== */
 
-#define PLAYER_VELOCITY 250.f
+#define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 100
+#define PLAYER_LIFE 50
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
@@ -53,6 +53,7 @@ using std::endl;
 
 #define PLATFORM_WIDTH 120
 #define PLATFORM_HEIGHT 28
+
 
 /* =================================================== */
 /*                      FIREBALL                       */
