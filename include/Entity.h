@@ -16,7 +16,7 @@ protected:
     sf::Vector2f hitbox;
     ID::ids id;
     bool showing;
-
+    bool faceLeft;
 
 public:
     Entity(ID::ids id, GraphicManager* GM);
@@ -42,5 +42,7 @@ public:
     bool getShowing() { return showing; }
 
     virtual void initializeSprite() = 0;
-    bool facingLeft() { return (velocity.x < 0); }
+
+    void setFacingLeft(bool facingLeft) { faceLeft = facingLeft; }
+    bool facingLeft() const { return faceLeft; }
 };

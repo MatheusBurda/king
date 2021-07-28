@@ -1,6 +1,8 @@
 #include "Fireball.h"
-#include "Animation.h";
+
+#include "Animation.h"
 #include "GraphicManager.h"
+
 Fireball::Fireball(GraphicManager* GM) : Entity(ID::fireball, GM){
 	setHitbox(sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
 	initializeSprite();
@@ -12,16 +14,21 @@ Fireball::~Fireball()
 {
 
 }
+
 void Fireball::update(float dt) {
+	if(velocity.x < 0)
+		setFacingLeft(true);
 	if (getShowing()) {
 		velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
 		changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
 		sprite->Update(0, dt, facingLeft(), position);
 	}
 }
+
 void Fireball::render() {
 	sprite->render();
 }
+
 void Fireball::initializeSprite() {
 	sprite->initializeTexture(PATH_FIREBALL_TEXTURE, id, sf::Vector2u(3, 1));
 }

@@ -2,6 +2,7 @@
 
 #include "GraphicManager.h"
 #include "Animation.h"
+#include "math.h"
 
 Enemy::Enemy(GraphicManager* GM) :
 Character(ID::enemy, GM){

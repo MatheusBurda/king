@@ -4,9 +4,10 @@
 #include "GraphicManager.h"
 
 Entity::Entity(ID::ids id, GraphicManager* GM) :
-sprite(new Animation(GM)) {
+sprite(new Animation(GM)),
+id(id) {
     showing = true;
-    this->id = id;
+    faceLeft = false;
 }
 
 Entity::Entity() {

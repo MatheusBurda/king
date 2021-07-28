@@ -4,15 +4,20 @@
 #include "GraphicManager.h"
 #include <math.h>
 
+const float Player::attackTime = 0.8;
+
 Player::Player(GraphicManager* GM) :
 Character(ID::player, GM) {
-    Canjump = true;
+    /* Outras classes construtora */
     life = PLAYER_LIFE;
     damage = PLAYER_DAMAGE;
-
     changePosition(sf::Vector2f(150, 20));
-
     setHitbox(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));
+    /* ========================== */
+
+    totalTime = 0.0f;
+    firstAttack = true;
+    Canjump = true;
 
     initializeSprite();
 }
@@ -22,28 +27,31 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
+    totalTime += dt;
     velocity = Vector2f(velocity.x * 0.05f, velocity.y + GRAVITY * dt);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         velocity = Vector2f(PLAYER_VELOCITY, velocity.y);
+        setFacingLeft(false);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         velocity = Vector2f(-PLAYER_VELOCITY, velocity.y);
+        setFacingLeft(true);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && Canjump) {
         velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
         Canjump = false;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            setIsAttacking(true);
-    }else {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        setIsAttacking(true);
+    else
         setIsAttacking(false);
-    }
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     /* Attacking */
-    if(isAttacking)
-        sprite->Update(2, dt, facingLeft(), position);
+    if (canAttack() != 0) {
+        sprite->Update(canAttack(), dt, facingLeft(), position);
+    }
     /* Idle */
     else if (abs(velocity.x) < 0.001)
         sprite->Update(0, dt, facingLeft(), position);
@@ -57,5 +65,17 @@ void Player::render() {
 }
 
 void Player::initializeSprite() {
-    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 5));
+    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 6));
+}
+
+int Player::canAttack() {
+    if (totalTime > attackTime && isAttacking) {
+        totalTime = 0;
+        firstAttack = !firstAttack;
+        if (firstAttack)
+            return 4;
+        else
+            return 5;
+    }
+    return 0;
 }
