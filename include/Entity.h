@@ -17,6 +17,7 @@ protected:
     ID::ids id;
     bool showing;
 
+
 public:
     Entity(ID::ids id, GraphicManager* GM);
     Entity();
@@ -41,4 +42,5 @@ public:
     bool getShowing() { return showing; }
 
     virtual void initializeSprite() = 0;
+    bool facingLeft() { return (velocity.x < 0); }
 };

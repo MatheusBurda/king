@@ -7,6 +7,7 @@ namespace ID {
         player2 = 1,
         plataform = 2,
         enemy = 3,
+        fireball = 4
 
     };
 }

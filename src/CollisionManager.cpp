@@ -31,6 +31,9 @@ void CollisionManager::toCollide() {
                 else if (ent1->getId() == ID::enemy) {
                     collideEnemy(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
+                else if (ent1->getId() == ID::fireball && ent1->getShowing()) {
+                    collideFireball(ent1, ent2, dx, dy, intersectX, intersectY);
+                }
             }
         }
     }
@@ -142,3 +145,48 @@ void CollisionManager:: collideEnemy(Entity* ent1, Entity* ent2, float dx, float
         break;
     }
 }
+
+//function to collide fireball with any other entity
+void CollisionManager::collideFireball(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
+    switch (ent2->getId()) {
+
+    case ID::empty:
+        break;
+
+    case ID::player:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            notAbove(ent1, ent2, intersectX, dx);
+        }
+        break;
+
+    case ID::player2:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            notAbove(ent1, ent2, intersectX, dx);
+        }
+        break;
+
+    case ID::plataform:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            moveY(ent1, ent2, intersectY);
+            if (dy > 0)
+                ent1->setShowing(false);
+        }
+        break;
+
+    case ID::enemy:
+        break;
+
+    default:
+        break;
+    }
+}
+

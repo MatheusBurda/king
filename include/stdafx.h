@@ -29,7 +29,7 @@ using std::endl;
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
-#define PLAYER_JUMP 150
+#define PLAYER_JUMP 200
 
 /* =================================================== */
 /*                     ENEMY                           */
@@ -53,3 +53,12 @@ using std::endl;
 
 #define PLATFORM_WIDTH 120
 #define PLATFORM_HEIGHT 28
+
+/* =================================================== */
+/*                      FIREBALL                       */
+/* =================================================== */
+
+#define FIREBALL_WIDTH 40
+#define FIREBALL_HEIGHT 24
+#define FIREBALL_VELOCITYX 400
+#define FIREBALL_HMAX 200

@@ -4,10 +4,10 @@
 #include "Animation.h"
 
 Enemy::Enemy(GraphicManager* GM) :
-Character(ID::enemy, GM) {
+Character(ID::enemy, GM){
     life = ENEMY_LIFE;
     damage = ENEMY_DAMAGE;
-
+    fireball = NULL;
     setHitbox(sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT));
 
     changePosition(sf::Vector2f(400, 20));
@@ -20,7 +20,7 @@ Enemy::~Enemy() {
 
 void Enemy::update(float dt) {
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !fireball->getShowing() && getShowing()) {
         setIsAttacking(true);
     }
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
@@ -28,6 +28,7 @@ void Enemy::update(float dt) {
         setShowing(false);
 
     sprite->Update(0, dt, facingLeft(), position);
+    attack();
 }
 
 void Enemy::render() {
@@ -36,4 +37,16 @@ void Enemy::render() {
 
 void Enemy::initializeSprite() {
     sprite->initializeTexture(PATH_ENEMY_TEXTURE, id, sf::Vector2u(8, 1));
+}
+void Enemy::attack() {
+    if (getIsAttacking()) {
+        fireball->changePosition(getPosition());
+        if (facingLeft()) {
+            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, -sqrt(FIREBALL_HMAX*GRAVITY*2)));
+        }else{
+            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+        }
+        fireball->setShowing(true);
+        setIsAttacking(false);
+    }
 }

@@ -25,6 +25,5 @@ public:
     bool amAlive();
     void setIsAttacking(const bool val = false) { isAttacking = val; }
     bool getIsAttacking() { return isAttacking; }
-    bool facingLeft() { return (velocity.x < 0); }
     virtual void initializeSprite() = 0;
 };
