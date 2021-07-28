@@ -14,15 +14,15 @@ void CollisionManager::toCollide() {
     for (int i = 0; i < list->getSize(); i++) {
         for (int j = i + 1; j < list->getSize(); j++) {
 
-
             ent1 = (*list)[i];
             ent2 = (*list)[j];
+
             float dy, dx, intersectX, intersectY;
             dx = ent2->getPosition().x - ent1->getPosition().x;
             dy = ent2->getPosition().y - ent1->getPosition().y;
+
             intersectX = abs(dx) - (ent1->getHitbox().x / 2 + ent2->getHitbox().x / 2);
             intersectY = abs(dy) - (ent1->getHitbox().y / 2 + ent2->getHitbox().y / 2);
-
 
             if (intersectX < 0.0f && intersectY < 0.0f) { //Condition to collide...
                 if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
@@ -31,19 +31,17 @@ void CollisionManager::toCollide() {
                 else if (ent1->getId() == ID::enemy) {
                     collideEnemy(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
-
-            }
-            else {
-                //there is no collision between ent1 && ent2
             }
         }
     }
 }
+
 //function to move the entities using their velocity as reference (X axis)
 void CollisionManager::moveX(Entity * ent1, Entity * ent2, float intersectX) {
         ent1->Move(sf::Vector2f(intersectX * ent1->getVelocity().x / ((abs(ent1->getVelocity().x) + abs(ent2->getVelocity().x) + DIV0)), 0.0f));
         ent2->Move(sf::Vector2f(intersectX * ent2->getVelocity().x / ((abs(ent1->getVelocity().x) + abs(ent2->getVelocity().x) + DIV0)), 0.0f));
 }
+
 //function to move the entities using their velocity as reference (Y axis)
 void CollisionManager::moveY(Entity* ent1, Entity* ent2, float intersectY) {
 
@@ -53,6 +51,7 @@ void CollisionManager::moveY(Entity* ent1, Entity* ent2, float intersectY) {
         ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x, 0.0f));
         ent2->setVelocity(sf::Vector2f(ent2->getVelocity().x, 0.0f));
 }
+
 //player isnt allouwed to stop above enemy and vice versa
 void CollisionManager::notAbove(Entity* ent1, Entity* ent2, float intersectX, float dx) {
     if(ent1->getPosition().y>ent2->getPosition().y)
@@ -67,6 +66,7 @@ void CollisionManager::notAbove(Entity* ent1, Entity* ent2, float intersectX, fl
             ent1->Move(sf::Vector2f(intersectX, 0.0f));
 
 }
+
 //function to collide player with any other entity
 void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
     switch (ent2->getId()) {
@@ -103,6 +103,7 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
         break;
     }
 }
+
 //function to collide enemy with any other entity
 void CollisionManager:: collideEnemy(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
     switch (ent2->getId()) {

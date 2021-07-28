@@ -10,7 +10,7 @@ Character(ID::enemy, GM) {
 
     setHitbox(sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT));
 
-    changePosition(sf::Vector2f(200, 20));
+    changePosition(sf::Vector2f(400, 20));
 
     initializeSprite();
 }

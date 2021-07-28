@@ -41,13 +41,13 @@ void Player::update(float dt) {
     }
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    
+    /* Attacking */
     if(isAttacking)
-        sprite->Update(5, dt, facingLeft(), position);
-    /* Walking */
+        sprite->Update(2, dt, facingLeft(), position);
+    /* Idle */
     else if (abs(velocity.x) < 0.001)
         sprite->Update(0, dt, facingLeft(), position);
-    /* Idle */
+    /* Walking */
     else
         sprite->Update(1, dt, facingLeft(), position);
 }
@@ -57,5 +57,5 @@ void Player::render() {
 }
 
 void Player::initializeSprite() {
-    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 6));
+    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 5));
 }

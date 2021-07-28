@@ -23,13 +23,13 @@ using std::endl;
 /*                      PLAYER                         */
 /* =================================================== */
 
-#define PLAYER_VELOCITY 200.f
+#define PLAYER_VELOCITY 250.f
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 22
-#define PLAYER_HEIGHT 55
-#define PLAYER_JUMP 100
+#define PLAYER_WIDTH 44
+#define PLAYER_HEIGHT 105
+#define PLAYER_JUMP 150
 
 /* =================================================== */
 /*                     ENEMY                           */
@@ -37,8 +37,8 @@ using std::endl;
 
 #define ENEMY_LIFE 1000
 #define ENEMY_DAMAGE 25
-#define ENEMY_WIDTH 22
-#define ENEMY_HEIGHT 55
+#define ENEMY_WIDTH 44
+#define ENEMY_HEIGHT 105
 
 /* =================================================== */
 /*                        MAP                          */
@@ -51,5 +51,5 @@ using std::endl;
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 250
-#define PLATFORM_HEIGHT 76
+#define PLATFORM_WIDTH 120
+#define PLATFORM_HEIGHT 28

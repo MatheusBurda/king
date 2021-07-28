@@ -5,7 +5,7 @@
 class Animation;
 class GraphicManager;
 
-#define PLAYER_PATH "./assets/King/KingSpritesheet.png"
+#define PLAYER_PATH "./assets/EvilWizard/EvilWizard.png"
 
 class Player : public Character {
 private:

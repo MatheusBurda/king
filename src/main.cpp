@@ -15,11 +15,7 @@ int main() {
     /*Testando Collision manager*/
     CollisionManager colis(&_list);
 
-    Platform plat1(sf::Vector2f(00, 300), &graphicM);
-    Platform plat3(sf::Vector2f(300, 400), &graphicM);
-    Platform plat4(sf::Vector2f(400, 400), &graphicM);
     Enemy* etore = new Enemy(&graphicM);
-    Platform plat2(sf::Vector2f(200, 400), &graphicM);
     Player Burda(&graphicM);
 
     sf::Clock time;
@@ -28,10 +24,22 @@ int main() {
     _list.addEntity(&Burda);
     _list.addEntity(etore);
 
-    _list.addEntity(&plat2);
+    Platform plat1(sf::Vector2f(000, 300), &graphicM);
+    Platform plat2(sf::Vector2f(200, 400), &graphicM);
+    Platform plat3(sf::Vector2f(300, 400), &graphicM);
+    Platform plat4(sf::Vector2f(400, 400), &graphicM);
+    Platform plat5(sf::Vector2f(500, 400), &graphicM);
+    Platform plat6(sf::Vector2f(300, 200), &graphicM);
+    Platform plat7(sf::Vector2f(600, 600), &graphicM);
+    
     _list.addEntity(&plat1);
-    _list.addEntity(&plat4);
+    _list.addEntity(&plat2);
     _list.addEntity(&plat3);
+    _list.addEntity(&plat4);
+    _list.addEntity(&plat5);
+    _list.addEntity(&plat6);
+    _list.addEntity(&plat7);
+
 
     /*-------------BACKGROUND TEMPOR�RIO-------------*/
     graphicM.setBackgroung("./assets/Backgrounds/montanha.png");

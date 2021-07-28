@@ -5,7 +5,7 @@
 class Animation;
 class GraphicManager;
 
-#define PATH_ENEMY_TEXTURE "./assets/EvilWizard/Idle.png"
+#define PATH_ENEMY_TEXTURE "./assets/EvilWizard/IdleBig.png"
 
 class Enemy : public Character {
 
