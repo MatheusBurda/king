@@ -26,8 +26,9 @@ int main() {
     float dt;
 
     _list.addEntity(&Burda);
-    _list.addEntity(&plat2);
     _list.addEntity(etore);
+
+    _list.addEntity(&plat2);
     _list.addEntity(&plat1);
     _list.addEntity(&plat4);
     _list.addEntity(&plat3);

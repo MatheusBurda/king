@@ -35,7 +35,9 @@ void Player::update(float dt) {
         Canjump = false;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        setIsAttacking(true);
+        if (!getIsAttacking())
+            setIsAttacking(true);
+
     }
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));

@@ -27,8 +27,8 @@ using std::endl;
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 100
 #define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 44
-#define PLAYER_HEIGHT 110
+#define PLAYER_WIDTH 22
+#define PLAYER_HEIGHT 55
 #define PLAYER_JUMP 100
 
 /* =================================================== */
@@ -37,18 +37,19 @@ using std::endl;
 
 #define ENEMY_LIFE 1000
 #define ENEMY_DAMAGE 25
-#define ENEMY_WIDTH 40
-#define ENEMY_HEIGHT 40
+#define ENEMY_WIDTH 22
+#define ENEMY_HEIGHT 55
 
 /* =================================================== */
 /*                        MAP                          */
 /* =================================================== */
 
 #define GRAVITY 3000.f
+#define DIV0 0.0000001f //used to guarantee that the division isnt by 0
 
 /* =================================================== */
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 200
-#define PLATFORM_HEIGHT 50
+#define PLATFORM_WIDTH 250
+#define PLATFORM_HEIGHT 76
