@@ -1,11 +1,11 @@
 #include "Enemy.h"
 
-#include "GraphicManager.h"
 #include "Animation.h"
+#include "GraphicManager.h"
 #include "math.h"
 
 Enemy::Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fb) :
-Character(ID::enemy, GM, pos, hit, lf, dmg){
+Character(ID::enemy, GM, pos, hit, lf, dmg) {
     fireball = fb;
     initializeSprite();
 }
@@ -37,8 +37,8 @@ void Enemy::attack() {
     if (getIsAttacking()) {
         fireball->changePosition(getPosition());
         if (facingLeft()) {
-            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, -sqrt(FIREBALL_HMAX*GRAVITY*2)));
-        }else{
+            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+        } else {
             fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
         }
         fireball->setShowing(true);
