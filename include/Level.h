@@ -1,20 +1,20 @@
 #pragma once
-#include "stdafx.h"
+
 #include "CollisionManager.h"
 #include "Enemy.h"
 #include "Entity.h"
 #include "EntityList.h"
+#include "Fireball.h"
 #include "GraphicManager.h"
 #include "Platform.h"
 #include "Player.h"
-#include "Fireball.h"
+#include "stdafx.h"
 
-class Level
-{
+class Level {
 protected:
     GraphicManager graphicM;
     EntityList _list;
-    Player* player1, *player2;
+    Player *player1, *player2;
     CollisionManager colis;
 
 public:
@@ -24,6 +24,4 @@ public:
     virtual void createPlatform() = 0;
     virtual void createPlayer() = 0;
     virtual void createEnemy() = 0;
-
 };
-

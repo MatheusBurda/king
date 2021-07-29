@@ -34,7 +34,7 @@ void Field::createEnemy() {
 void Field::createPlatform() {
     int i;
     for (i = 0; i < 10; i++) {
-        Platform* plat = new Platform(ID::platform, &graphicM, sf::Vector2f(300.0f * i, 300.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
+        Platform* plat = new Platform(ID::platform, &graphicM, sf::Vector2f(120 * i, 300.0f), sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
         _list.addEntity(plat);
     }
 }

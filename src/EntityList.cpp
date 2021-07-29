@@ -16,7 +16,7 @@ void EntityList::updateAll(float dt) {
         pAux->update(dt);
 
         //if (!pAux->getShowing())
-            //removeEntity(pAux);
+        //removeEntity(pAux);
     }
 }
 

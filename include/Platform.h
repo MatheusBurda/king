@@ -3,6 +3,7 @@
 #include "Entity.h"
 
 #define PLATFORM_PATH "./assets/Platforms/BrickPlatformSmall.png"
+
 class GraphicManager;
 
 class Platform : public Entity {

@@ -21,6 +21,6 @@ public:
     void render();
     void setJump(const bool val = true) { Canjump = val; }
     void initializeSprite();
-    int canAttack();
+    int canAttack(float dt = 0.0f);
 };
 

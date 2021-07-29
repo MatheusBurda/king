@@ -20,7 +20,6 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
-    totalTime += dt;
     velocity = Vector2f(velocity.x * 0.05f, velocity.y + GRAVITY * dt);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
@@ -35,10 +34,9 @@ void Player::update(float dt) {
         velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
         Canjump = false;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         setIsAttacking(true);
-    else
-        setIsAttacking(false);
+    }
     if (life <= 0) {
         setShowing(false);
     }
@@ -46,7 +44,7 @@ void Player::update(float dt) {
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     /* Attacking */
     if (canAttack() != 0) {
-        sprite->Update(canAttack(), dt, facingLeft(), position);
+        sprite->Update(canAttack(dt), dt, facingLeft(), position);
     }
     /* Idle */
     else if (abs(velocity.x) < 0.001)
@@ -64,14 +62,19 @@ void Player::initializeSprite() {
     sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 6));
 }
 
-int Player::canAttack() {
-    if (totalTime > attackTime && isAttacking) {
-        totalTime = 0;
-        firstAttack = !firstAttack;
-        if (firstAttack)
-            return 4;
-        else
-            return 5;
+int Player::canAttack(float dt) {
+    if (isAttacking) {
+        totalTime += dt;
+        if (totalTime < attackTime) {
+            if (firstAttack)
+                return 4;
+            else
+                return 5;
+        } else {
+            firstAttack = !firstAttack;
+            totalTime = 0;
+            isAttacking = false;
+        }
     }
     return 0;
 }

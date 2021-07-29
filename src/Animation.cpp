@@ -68,7 +68,6 @@ void Animation::setimageCount(const sf::Vector2u imageCount) {
     this->imageCount = imageCount;
 }
 
-
 void Animation::render() {
     pGraphicM->render(&body);
 }

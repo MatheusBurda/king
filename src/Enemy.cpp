@@ -15,7 +15,7 @@ Enemy::~Enemy() {
 
 void Enemy::update(float dt) {
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
-    if (!fireball->getShowing() && getShowing()){//&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+    if (!fireball->getShowing() && getShowing()) { //&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
         setIsAttacking(true);
     }
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
@@ -37,9 +37,9 @@ void Enemy::attack() {
     if (getIsAttacking()) {
         fireball->changePosition(getPosition());
         if (facingLeft()) {
-            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0));//, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); //, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
         } else {
-            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0));// -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0)); // -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
         }
         fireball->setShowing(true);
         setIsAttacking(false);
