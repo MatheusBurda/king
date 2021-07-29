@@ -33,6 +33,9 @@ void CollisionManager::toCollide() {
                 } else if (ent1->getId() == ID::fireball && ent1->getShowing()) {
                     collideFireball(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
+                else if (ent1->getId() == ID::platform) {
+                    collidePlatform(ent1, ent2, dx, dy, intersectX, intersectY);
+                }
             }
         }
     }
@@ -93,6 +96,7 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
     case ID::enemy:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
+
         } else {
             notAbove(ent1, ent2, intersectX, dx);
         }
@@ -188,5 +192,67 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
         ent2->setShowing(false);
         ent2->setVelocity(sf::Vector2f(0.0f, 0.0f));
         (static_cast<Player*>(ent1))->getHurt(FIREBALL_DAMAGE);
+    }
+}
+void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2) {
+    if (ent1->getId() == ID::player && (static_cast<Character*>(ent1))->getIsAttacking()) {
+        (static_cast <Character*>(ent2))->getHurt(PLAYER_DAMAGE);
+    }
+    else if((static_cast<Character*>(ent2))->getIsAttacking()) {
+        (static_cast <Character*>(ent1))->getHurt(PLAYER_DAMAGE);    
+    }
+}
+void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
+    switch (ent2->getId()) {
+
+    case ID::empty:
+        break;
+    case ID::player:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            if (dy < 0.0f) {
+                moveY(ent1, ent2, intersectY);
+                (static_cast<Player*>(ent2))->setJump(true);
+            }
+            else {
+                moveY(ent1, ent2, intersectY);
+            }
+        }
+    case ID::player2:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            if (dy < 0.0f) {
+                moveY(ent1, ent2, intersectY);
+                (static_cast<Player*>(ent2))->setJump(true);
+            }
+            else {
+                moveY(ent1, ent2, intersectY);
+            }
+        }
+
+    case ID::platform:
+        break;
+
+    case ID::enemy:
+        if (intersectX > intersectY) {
+            moveX(ent1, ent2, intersectX);
+        }
+        else {
+            if (dy > 0.0f) {
+                moveY(ent1, ent2, intersectY);
+            }
+            else {
+                moveY(ent1, ent2, intersectY);
+            }
+        }
+        break;
+    case ID::fireball:
+        ent2->setShowing(false);
+    default:
+        break;
     }
 }

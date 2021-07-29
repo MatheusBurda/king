@@ -23,3 +23,4 @@ colis(&_list) {
 Level::~Level() {
     _list.deleteAll();
 }
+

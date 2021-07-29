@@ -9,6 +9,10 @@
 using std::cout;
 using std::endl;
 
+#include <fstream>
+
+
+
 /* =================================================== */
 /*                      DEFINES                        */
 /* =================================================== */
@@ -25,7 +29,7 @@ using std::endl;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 200
+#define PLAYER_LIFE 2000000000
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
