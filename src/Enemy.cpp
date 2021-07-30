@@ -14,16 +14,18 @@ Enemy::~Enemy() {
 }
 
 void Enemy::update(float dt) {
-    velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
-    if (!fireball->getShowing() && getShowing()) { //&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-        setIsAttacking(true);
-    }
-    changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    if (life <= 0)
-        setShowing(false);
 
-    sprite->Update(0, dt, facingLeft(), position);
-    attack();
+        velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
+        if (!fireball->getShowing() && getShowing()) { //&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+            setIsAttacking(true);
+        }
+        changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
+        if (life <= 0)
+            setShowing(false);
+
+        sprite->Update(0, dt, facingLeft(), position);
+        attack();
+    
 }
 
 void Enemy::render() {
