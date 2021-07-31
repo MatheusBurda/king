@@ -24,5 +24,4 @@ public:
     virtual void createPlatform(sf::Vector2f pos) = 0;
     virtual void createPlayer(sf::Vector2f pos) = 0;
     virtual void createEnemy(sf::Vector2f pos) = 0;
-
 };
