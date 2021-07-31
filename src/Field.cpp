@@ -33,8 +33,8 @@ void Field::createPlatform(sf::Vector2f pos) {
 
 }
 void Field::createLevel() {
-    int y = 8, x = 50;
-    char level[8][50];
+    int y = 14, x = 60;
+    char level[14][60];
     std::ifstream file("./assets/Levels/Field.txt");
     if (!file) {
         cout << "Cant Open" << endl;

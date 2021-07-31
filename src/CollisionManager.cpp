@@ -166,13 +166,7 @@ void CollisionManager::collideFireball(Entity* ent1, Entity* ent2, float dx, flo
         break;
 
     case ID::platform:
-        if (intersectX > intersectY) {
-            moveX(ent1, ent2, intersectX);
-        } else {
-            moveY(ent1, ent2, intersectY);
-            if (dy > 0)
-                ent1->setShowing(false);
-        }
+        ent1->setShowing(false);
         break;
 
     case ID::enemy:
