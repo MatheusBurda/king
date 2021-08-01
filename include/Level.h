@@ -6,8 +6,10 @@
 #include "EntityList.h"
 #include "Fireball.h"
 #include "GraphicManager.h"
+#include "InputManager.h"
 #include "Platform.h"
 #include "Player.h"
+#include "PlayerControl.h"
 #include "stdafx.h"
 
 class Level {
@@ -16,6 +18,8 @@ protected:
     EntityList _list;
     Player *player1, *player2;
     CollisionManager colis;
+    InputManager im;
+    PlayerControl pc;
 
 public:
     Level();
