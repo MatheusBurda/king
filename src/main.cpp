@@ -2,5 +2,6 @@
 
 int main() {
     Field field;
+
     return 0;
 }
