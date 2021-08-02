@@ -29,17 +29,18 @@ using std::endl;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 2000000000
+#define PLAYER_LIFE 20000000
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
 #define PLAYER_JUMP 200
+#define PLAYER_ATTACK 100 //Pixels that the sword hit the enemy
 
 /* =================================================== */
 /*                     ENEMY                           */
 /* =================================================== */
 
-#define ENEMY_LIFE 1000
+#define ENEMY_LIFE 2000
 #define ENEMY_DAMAGE 25
 #define ENEMY_WIDTH 44
 #define ENEMY_HEIGHT 105
@@ -75,4 +76,17 @@ using std::endl;
 #define FIREBALL_HEIGHT 24
 #define FIREBALL_VELOCITYX 400
 #define FIREBALL_HMAX 200
-#define FIREBALL_DAMAGE 50
+
+/* =================================================== */
+/*                      PROJECTILE                     */
+/* =================================================== */
+#define PROJECTILE_DAMAGE 50
+/* =================================================== */
+/*                     LAVA                            */
+/* =================================================== */
+#define LAVA_DAMAGE 500
+/* =================================================== */
+/*                     ARROW                           */
+/* =================================================== */
+#define ARROW_VELOCITYX 300
+#define ARROW_HMAX 100

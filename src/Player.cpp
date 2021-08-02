@@ -4,7 +4,7 @@
 #include "GraphicManager.h"
 #include <math.h>
 
-const float Player::attackTime = 0.8;
+const float Player::attackTime = 0.4;
 
 Player::Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
 Character(ID::player, GM, pos, hit, lf, dmg) {
@@ -60,8 +60,8 @@ int Player::canAttack(float dt) {
         } else {
             firstAttack = !firstAttack;
             totalTime = 0;
-            isAttacking = false;
         }
+        isAttacking = false;
     }
     return 0;
 }

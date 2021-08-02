@@ -1,6 +1,6 @@
 #pragma once
 #include "CollisionManager.h"
-#include "Enemy.h"
+#include "Wizard.h"
 #include "Entity.h"
 #include "EntityList.h"
 #include "Fireball.h"
@@ -12,6 +12,8 @@
 #include "EventManager.h"
 #include "stdafx.h"
 #include "Wall.h"
+#include "Archer.h"
+#include "Arrow.h"
 
 class Level {
 protected:

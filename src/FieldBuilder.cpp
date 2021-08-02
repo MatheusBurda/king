@@ -15,11 +15,11 @@ void FieldBuilder::buildPlayer1(sf::Vector2f pos) {
     field->getGM()->setPlayers(pl);
 }
 
-void FieldBuilder::buildEnemy(sf::Vector2f pos) {
+void FieldBuilder::buildWizard(sf::Vector2f pos) {
     Fireball* fb = new Fireball(ID::fireball, (field->getGM()), pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Enemy* en = new Enemy(ID::enemy, (field->getGM()), pos, sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
+    Wizard* wi = new Wizard(ID::wizard, (field->getGM()), pos, sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
     field->getList()->addEntity(fb);
-    field->getList()->addEntity(en);
+    field->getList()->addEntity(wi);
 }
 
 void FieldBuilder::buildPlatform(sf::Vector2f pos) {
@@ -29,6 +29,12 @@ void FieldBuilder::buildPlatform(sf::Vector2f pos) {
 void FieldBuilder::buildWall(sf::Vector2f pos) {
     Wall* wall = new Wall(ID::wall, (field->getGM()), pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT));
     field->getList()->addEntity(wall);
+}
+void FieldBuilder:: buildArcher(sf::Vector2f pos) {
+    Arrow* ar = new Arrow(ID::arrow, (field->getGM()), pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
+    Archer* arc = new Archer(ID::archer, (field->getGM()), pos, sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, ar);
+    field->getList()->addEntity(ar);
+    field->getList()->addEntity(arc);
 }
 void FieldBuilder:: buildMap() {
     int y = 15, x = 60;
@@ -51,11 +57,14 @@ void FieldBuilder:: buildMap() {
                 if (level[i][j] == 'k' && !field->getP1()) {
                     buildPlayer1(sf::Vector2f(j * 30, i * 30));
                 }
-                if (level[i][j] == 'e') {
-                    buildEnemy(sf::Vector2f(j * 30, i * 30));
+                if (level[i][j] == 'z') {
+                    buildWizard(sf::Vector2f(j * 30, i * 30));
                 }
                 if (level[i][j] == 'w') {
                     buildWall(sf::Vector2f(j * 30, i * 30));
+                }
+                if (level[i][j] == 'a') {
+                    buildArcher(sf::Vector2f(j * 30, i * 30));
                 }
             }
         }

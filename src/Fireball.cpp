@@ -4,7 +4,7 @@
 #include "GraphicManager.h"
 
 Fireball::Fireball(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
-Entity(ID::fireball, GM, pos, hit) {
+Entity(id, GM, pos, hit) {
     setShowing(false);
     initializeSprite();
 }

@@ -6,18 +6,14 @@
 class Animation;
 class GraphicManager;
 
-#define PATH_ENEMY_TEXTURE "./assets/EvilWizard/EvilWizard.png"
 
 class Enemy : public Character {
-private:
-    Fireball* fireball;
 
 public:
-    Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fb);
+    Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
     ~Enemy();
-    void update(float dt);
+    virtual void update(float dt)=0;
     void render();
-    void initializeSprite();
-    void attack();
-    void setFireball(Fireball* fb) { fireball = fb; }
+    virtual void attack()=0;
+    virtual void initializeSprite()=0;
 };

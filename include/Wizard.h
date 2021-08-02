@@ -1,0 +1,18 @@
+#pragma once
+#include "Enemy.h"
+#define WIZARD_PATH "./assets/EvilWizard/EvilWizard.png"
+class Animation;
+class GraphicManager;
+class Wizard :
+    public Enemy
+{
+private:
+    Fireball* fireball;
+public:
+    Wizard(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fireb);
+    ~Wizard();
+    void initializeSprite();
+    void update(float dt);
+    void attack();
+};
+
