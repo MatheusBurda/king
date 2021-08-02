@@ -16,6 +16,7 @@ public:
     InputManager();
     ~InputManager();
 
-    void subscribe(Observer* pObserver);
-    void exec();
+    void registerObserver(Observer* pObserver);
+    void removeObserver(Observer* pObserver);
+    void handleKeyPressed();
 };

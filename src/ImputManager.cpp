@@ -8,14 +8,17 @@ InputManager::InputManager() {
 InputManager::~InputManager() {
 }
 
+/* Check for keys pressed and notify every Observer. */
+void InputManager::handleKeyPressed() {
+    for (it = objObserving.begin(); it != objObserving.end(); ++it)
+        (*it)->notify();
+}
+
 /* Subscribe a Observer to recieve a notification when something happens. */
-void InputManager::subscribe(Observer* pObserver) {
+void InputManager::registerObserver(Observer* pObserver) {
     objObserving.push_back(pObserver);
 }
 
-/* Check for keys pressed and notify every Observer. */
-void InputManager::exec() {
-    if (sf::Event::KeyPressed) {
-        cout << "tecla pressionada!!!!" << endl;
-    }
+void InputManager::removeObserver(Observer* pObserver) {
+    objObserving.remove(pObserver);
 }

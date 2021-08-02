@@ -9,7 +9,7 @@ void Level::exec() {
     time.restart();
     while (graphicM.isWindowOpen() && player1->getShowing()) { //&& player2->getShowing()) {
 
-        im.exec();
+        evntM.pollEvents();
 
         dt = time.getElapsedTime().asSeconds();
         time.restart();
@@ -21,9 +21,14 @@ void Level::exec() {
 }
 
 Level::Level() :
+graphicM(),
+_list(),
+player1(NULL),
+player2(NULL),
 colis(&_list),
 im(),
-pc(&im) {
+pc(&im),
+evntM(&graphicM, &im) {
     player1 = NULL;
     player2 = NULL;
 }

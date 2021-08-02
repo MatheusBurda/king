@@ -2,5 +2,10 @@
 
 Observer::Observer(InputManager* pIM) {
     this->pIM = pIM;
-    pIM->subscribe(this);
+    pIM->registerObserver(this);
+}
+
+Observer::~Observer(){
+    pIM->removeObserver(this);
+    pIM = NULL;
 }

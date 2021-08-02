@@ -10,6 +10,7 @@
 #include "Platform.h"
 #include "Player.h"
 #include "PlayerControl.h"
+#include "EventManager.h"
 #include "stdafx.h"
 
 class Level {
@@ -20,6 +21,7 @@ protected:
     CollisionManager colis;
     InputManager im;
     PlayerControl pc;
+    EventManager evntM;
 
 public:
     Level();
