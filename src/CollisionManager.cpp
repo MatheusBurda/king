@@ -33,7 +33,7 @@ void CollisionManager::toCollide() {
                 } else if (ent1->getId() == ID::fireball && ent1->getShowing()) {
                     collideFireball(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
-                else if (ent1->getId() == ID::platform) {
+                else if (ent1->getId() == ID::platform || ent1->getId() == ID::wall) {
                     collidePlatform(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
             }

@@ -13,6 +13,7 @@ player2(NULL) {
 }
 
 GraphicManager::~GraphicManager() {
+
     delete (backgroundTexture);
 
     std::map<ID::ids, sf::Texture*>::iterator it;

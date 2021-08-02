@@ -13,6 +13,7 @@ private:
     bool firstAttack;
     float totalTime;
     static const float attackTime;
+    bool isWalking;
 
 public:
     Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
@@ -24,5 +25,6 @@ public:
     int canAttack(float dt = 0.0f);
     void walk(bool left);
     void jump();
+    void setIsWalking(const bool val) { isWalking = val; }
 };
 

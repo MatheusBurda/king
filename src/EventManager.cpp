@@ -6,6 +6,7 @@ pInputM(pIM),
 pWindow(NULL) {
     if (pGraphicM != NULL)
         pWindow = pGraphicM->getWindow();
+
 }
 
 EventManager::~EventManager() {
@@ -22,14 +23,15 @@ void EventManager::setInputManager(InputManager* pIM) {
 }
 
 void EventManager::pollEvents() {
-    sf::Event event;
+   sf::Event event;
 
     while (pWindow->pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             pGraphicM->closeWindow();
         if (event.type == sf::Event::Resized)
             pGraphicM->handleWindowResize();
-        if (event.type == sf::Event::KeyPressed) 
+        if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
             pInputM->handleKeyPressed();
+
     }
 }

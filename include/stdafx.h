@@ -19,7 +19,7 @@ using std::endl;
 /*              WINDOW AND GRAPHIC STUFF               */
 /* =================================================== */
 
-#define FRAME_RATE 60
+#define FRAME_RATE 100
 #define WIDTH 1280
 #define HEIGHT 720
 
@@ -55,8 +55,16 @@ using std::endl;
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 120
-#define PLATFORM_HEIGHT 28
+#define PLATFORM_WIDTH 30
+#define PLATFORM_HEIGHT 30
+
+
+/* =================================================== */
+/*                      WALL                           */
+/* =================================================== */
+
+#define PLATFORM_WIDTH 30
+#define PLATFORM_HEIGHT 30
 
 
 /* =================================================== */

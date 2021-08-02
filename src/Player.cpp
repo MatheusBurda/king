@@ -8,7 +8,7 @@ const float Player::attackTime = 0.8;
 
 Player::Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
 Character(ID::player, GM, pos, hit, lf, dmg) {
-
+    isWalking = false;
     totalTime = 0.0f;
     firstAttack = true;
     Canjump = true;
@@ -20,18 +20,13 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        walk(false);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        walk(true);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && Canjump) {
-        jump();
-    }
     if (life <= 0) {
         setShowing(false);
     }
+    if (isWalking)
+        velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
+    else
+        velocity = Vector2f(velocity.x * 0.01f, velocity.y + GRAVITY * dt);
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     /* Attacking */
@@ -44,7 +39,6 @@ void Player::update(float dt) {
     /* Walking */
     else
         sprite->Update(1, dt, facingLeft(), position);
-    velocity = Vector2f(velocity.x * 0.8f, velocity.y + GRAVITY * dt);
 }
 
 void Player::render() {
@@ -75,6 +69,7 @@ int Player::canAttack(float dt) {
 /* Walk left direction < TRUE
   Walk right direction = FALSE */
 void Player::walk(bool left) {
+    isWalking = true;
     if (left)
         velocity = Vector2f(-PLAYER_VELOCITY, velocity.y);
     else

@@ -7,7 +7,8 @@ enum ids {
     player2 = 1,
     platform = 2,
     enemy = 3,
-    fireball = 4
+    fireball = 4,
+    wall =5
 
 };
 }

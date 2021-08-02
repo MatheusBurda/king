@@ -10,6 +10,7 @@ private:
     InputManager* pInputM;
     sf::RenderWindow* pWindow;
 
+
 public:
     EventManager(GraphicManager* pGM = NULL, InputManager *pIM = NULL);
     ~EventManager();

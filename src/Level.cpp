@@ -1,18 +1,14 @@
 #include "Level.h"
 
 void Level::exec() {
-
     pc.addPlayer(player1);
-
     sf::Clock time;
     float dt;
     time.restart();
     while (graphicM.isWindowOpen() && player1->getShowing()) { //&& player2->getShowing()) {
-
-        evntM.pollEvents();
-
         dt = time.getElapsedTime().asSeconds();
         time.restart();
+        evntM.pollEvents();
         _list.updateAll(dt);
         colis.toCollide();
         graphicM.exec();

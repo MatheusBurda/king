@@ -1,5 +1,4 @@
 #pragma once
-
 #include "CollisionManager.h"
 #include "Enemy.h"
 #include "Entity.h"
@@ -12,6 +11,7 @@
 #include "PlayerControl.h"
 #include "EventManager.h"
 #include "stdafx.h"
+#include "Wall.h"
 
 class Level {
 protected:
@@ -27,7 +27,13 @@ public:
     Level();
     ~Level();
     void exec();
-    virtual void createPlatform(sf::Vector2f pos) = 0;
-    virtual void createPlayer(sf::Vector2f pos) = 0;
-    virtual void createEnemy(sf::Vector2f pos) = 0;
+
+    GraphicManager* getGM() { return &graphicM; }
+    EntityList* getList() { return &_list; }
+    Player* getP1() { return player1; }
+    Player* getP2() { return player2; }
+    void setP1(Player* p1) { player1 = p1; }
+    void setP2(Player* p2) { player2 = p2; }
+    CollisionManager getCols() { return colis; }
+   
 };

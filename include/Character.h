@@ -15,7 +15,7 @@ protected:
     }
     virtual void render() {
     }
-    virtual void colliding(Entity* ent) { }
+
 
 public:
     Character(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);

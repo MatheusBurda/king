@@ -30,6 +30,9 @@ void PlayerControl::notify() {
 
     if (sf::Keyboard::isKeyPressed(right))
         pPlayer->walk(false);
+
+    if (!sf::Keyboard::isKeyPressed(left) && !sf::Keyboard::isKeyPressed(right))
+        pPlayer->setIsWalking(false);
 }
 
 void PlayerControl::addPlayer(Player* p) {
