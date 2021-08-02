@@ -24,7 +24,8 @@ public:
     void display();
     void clear();
     void centerView();
-    void checkWindowEvents();
+    void closeWindow();
+    void handleWindowResize();
     void renderAll();
     void render(sf::RectangleShape* body);
 

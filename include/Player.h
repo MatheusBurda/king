@@ -22,5 +22,7 @@ public:
     void setJump(const bool val = true) { Canjump = val; }
     void initializeSprite();
     int canAttack(float dt = 0.0f);
+    void walk(bool left);
+    void jump();
 };
 

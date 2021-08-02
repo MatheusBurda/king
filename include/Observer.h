@@ -9,6 +9,6 @@ private:
 
 public:
     Observer(InputManager* pIM);
-    virtual ~Observer() { }
+    virtual ~Observer();
     virtual void notify() = 0;
 };

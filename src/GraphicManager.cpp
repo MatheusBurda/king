@@ -24,8 +24,6 @@ GraphicManager::~GraphicManager() {
 
 /* Does everything to clear and draw everything to screen */
 void GraphicManager::exec() {
-    checkWindowEvents();
-
     clear();
 
     renderAll();
@@ -77,17 +75,14 @@ bool GraphicManager::isWindowOpen() const {
     return window->isOpen();
 }
 
-/* Checks Events from the window, such as resize. */
-void GraphicManager::checkWindowEvents() {
-    sf::Event event;
-    while (window->pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            window->close();
-        if (event.type == sf::Event::Resized) {
-            float aspectRatio = float(window->getSize().x / float(window->getSize().y));
-            view.setSize(sf::Vector2f(HEIGHT * aspectRatio, HEIGHT));
-        }
-    }
+void GraphicManager::closeWindow() {
+    window->close();
+}
+
+/* Handles  resize. */
+void GraphicManager::handleWindowResize() {
+    float aspectRatio = float(window->getSize().x / float(window->getSize().y));
+    view.setSize(sf::Vector2f(HEIGHT * aspectRatio, HEIGHT));
 }
 
 /* Changes the view position. */

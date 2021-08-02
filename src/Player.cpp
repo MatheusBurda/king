@@ -20,22 +20,14 @@ Player::~Player() {
 
 void Player::update(float dt) {
 
-    velocity = Vector2f(velocity.x * 0.05f, velocity.y + GRAVITY * dt);
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        velocity = Vector2f(PLAYER_VELOCITY, velocity.y);
-        setFacingLeft(false);
+        walk(false);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        velocity = Vector2f(-PLAYER_VELOCITY, velocity.y);
-        setFacingLeft(true);
+        walk(true);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && Canjump) {
-        velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
-        Canjump = false;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        setIsAttacking(true);
+        jump();
     }
     if (life <= 0) {
         setShowing(false);
@@ -52,6 +44,7 @@ void Player::update(float dt) {
     /* Walking */
     else
         sprite->Update(1, dt, facingLeft(), position);
+    velocity = Vector2f(velocity.x * 0.8f, velocity.y + GRAVITY * dt);
 }
 
 void Player::render() {
@@ -77,4 +70,22 @@ int Player::canAttack(float dt) {
         }
     }
     return 0;
+}
+
+/* Walk left direction < TRUE
+  Walk right direction = FALSE */
+void Player::walk(bool left) {
+    if (left)
+        velocity = Vector2f(-PLAYER_VELOCITY, velocity.y);
+    else
+        velocity = Vector2f(PLAYER_VELOCITY, velocity.y);
+
+    setFacingLeft(left);
+}
+
+void Player::jump() {
+    if (Canjump) {
+        velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
+        Canjump = false;
+    }
 }
