@@ -46,7 +46,7 @@ void Player::render() {
 }
 
 void Player::initializeSprite() {
-    sprite->initializeTexture(PLAYER_PATH, id, sf::Vector2u(4, 6));
+    sprite->initializeTexture(PLAYER_PATH, sf::Vector2u(4, 6));
 }
 
 int Player::canAttack(float dt) {

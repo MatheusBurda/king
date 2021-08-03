@@ -28,5 +28,5 @@ void Arrow::render() {
 }
 
 void Arrow::initializeSprite() {
-    sprite->initializeTexture(PATH_ARROW_TEXTURE, id, sf::Vector2u(2, 1));
+    sprite->initializeTexture(PATH_ARROW_TEXTURE,sf::Vector2u(2, 1));
 }

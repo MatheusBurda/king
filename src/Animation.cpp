@@ -16,10 +16,10 @@ Animation::~Animation() {
 }
 
 /* Initialize the texture for a Animation. Needs a path to the file, the id of the entity and a imageCount(x,y) of the spritesheet. */
-void Animation::initializeTexture(const char* path, ID::ids id, sf::Vector2u imageCount) {
+void Animation::initializeTexture(const char* path,sf::Vector2u imageCount) {
 
     this->imageCount = imageCount;
-    texture = pGraphicM->loadTexture(id, path);
+    texture = pGraphicM->loadTexture(path);
 
     if (texture == NULL) {
         cout << "ERROR: loading texture failed on Animation::initializeTexture." << endl;

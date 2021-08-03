@@ -1,15 +1,16 @@
 #pragma once
 
-#include "Builder.h"
-#include "Field.h"
+#include "LevelBuilder.h"
+#include "Level.h"
 
-class FieldBuilder : public Builder {
+class FieldBuilder : public LevelBuilder {
 private:
-    Field* field;
+    Level* field;
 
 public:
     FieldBuilder();
     ~FieldBuilder();
     void buildMap();
-    Field* getField() { return field; }
+    Level* getField() { return field; }
+
 };

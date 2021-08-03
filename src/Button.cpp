@@ -33,7 +33,7 @@ void Button::setMessage(const char* m) {
 }
 
 void Button::initializeSprite() {
-    sprite->initializeTexture(BUTTON_PATH, id, sf::Vector2u(1, 2));
+    sprite->initializeTexture(BUTTON_PATH,sf::Vector2u(1, 2));
 }
 
 void Button::render() {

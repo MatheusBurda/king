@@ -9,7 +9,7 @@ Wizard::~Wizard() {
 
 }
 void Wizard::initializeSprite() {
-    sprite->initializeTexture(WIZARD_PATH, id, sf::Vector2u(4, 5));
+    sprite->initializeTexture(WIZARD_PATH, sf::Vector2u(4, 5));
 }
 void Wizard::update(float dt) {
 

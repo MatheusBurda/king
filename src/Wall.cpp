@@ -14,5 +14,5 @@ void Wall:: render() {
 	sprite->render();
 }
 void Wall:: initializeSprite() {
-	sprite->initializeTexture(WALL_PATH, id, sf::Vector2u(1, 1));
+	sprite->initializeTexture(WALL_PATH,sf::Vector2u(1, 1));
 }

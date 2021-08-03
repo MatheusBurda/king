@@ -1,10 +1,12 @@
 #pragma once
 #include "Level.h"
 
-class Builder{
+class LevelBuilder{
+
+
 public:
-    Builder(){ }
-    virtual ~Builder(){ }
+    LevelBuilder(){ }
+    virtual ~LevelBuilder(){ }
     void buildPlatform(sf::Vector2f pos, Level *lvl, char path[100]);
     void buildPlayer1(sf::Vector2f pos, Level* lvl);
     void buildWizard(sf::Vector2f pos, Level* lvl);

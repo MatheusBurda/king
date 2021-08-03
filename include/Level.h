@@ -26,7 +26,7 @@ protected:
     EventManager* pEventManager;
 
 public:
-    Level();
+    Level(char path[100]);
     ~Level();
     void exec();
 

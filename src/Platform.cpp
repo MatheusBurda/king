@@ -21,5 +21,5 @@ void Platform::render() {
 }
 
 void Platform::initializeSprite() {
-    sprite->initializeTexture(path, id, sf::Vector2u(1, 1));
+    sprite->initializeTexture(path,sf::Vector2u(1, 1));
 }

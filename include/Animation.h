@@ -18,7 +18,7 @@ public:
     Animation(GraphicManager* pGraphicM = NULL);
     ~Animation();
 
-    void initializeTexture(const char* path, ID::ids id, sf::Vector2u imageCount);
+    void initializeTexture(const char* path,sf::Vector2u imageCount);
     void setimageCount(const sf::Vector2u imageCount);
     void render();
     void Update(int row, float dt, bool facingLeft, sf::Vector2f position);

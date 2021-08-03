@@ -17,7 +17,7 @@ void Level::exec() {
     cout << "Morri" << endl;
 }
 
-Level::Level() :
+Level::Level(char path[100]) :
 graphicM(),
 _list(),
 player1(NULL),
@@ -27,10 +27,12 @@ im(),
 pc(&im) {
     player1 = NULL;
     player2 = NULL;
-
+    graphicM.setEntityList(&_list);
+    graphicM.setBackground(path);
     pEventManager = EventManager::getInstance();
     pEventManager->setGraphicManager(&graphicM);
     pEventManager->setInputManager(&im);
+
 }
 
 Level::~Level() {

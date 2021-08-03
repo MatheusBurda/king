@@ -14,7 +14,7 @@ Archer::~Archer() {
 }
 
 void Archer::initializeSprite() {
-    sprite->initializeTexture(ARCHER_PATH, id, sf::Vector2u(6, 5));
+    sprite->initializeTexture(ARCHER_PATH, sf::Vector2u(6, 5));
 }
 
 void Archer::update(float dt) {

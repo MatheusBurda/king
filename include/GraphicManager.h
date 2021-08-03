@@ -9,7 +9,7 @@ class GraphicManager {
 private:
     sf::RenderWindow* window;
     sf::View view;
-    std::map<ID::ids, sf::Texture*> texturesMap;
+    std::map<const char*, sf::Texture*> texturesMap;
     sf::Texture* backgroundTexture;
     sf::RectangleShape backgroundBody;
     EntityList* pEntityList;
@@ -33,7 +33,7 @@ public:
     sf::RenderWindow* getWindow() const;
 
     bool isWindowOpen() const;
-    sf::Texture* loadTexture(ID::ids id, const char* path);
+    sf::Texture* loadTexture(const char* path);
 
     void setPlayers(Player* player1, Player* player2 = NULL);
     void setBackground(const char* path);

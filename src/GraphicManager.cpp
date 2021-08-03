@@ -16,7 +16,7 @@ GraphicManager::~GraphicManager() {
 
     delete (backgroundTexture);
 
-    std::map<ID::ids, sf::Texture*>::iterator it;
+    std::map<const char*, sf::Texture*>::iterator it;
     for (it = texturesMap.begin(); it != texturesMap.end(); ++it)
         delete (it->second);
 
@@ -102,10 +102,10 @@ void GraphicManager::centerView() {
 }
 
 /* Returns a texture to be used by an entity. */
-sf::Texture* GraphicManager::loadTexture(ID::ids id, const char* path) {
+sf::Texture* GraphicManager::loadTexture(const char* path) {
     /* Tries to find an existing texture linked by the id. */
-    std::map<ID::ids, sf::Texture*>::iterator it;
-    it = texturesMap.find(id);
+    std::map<const char*, sf::Texture*>::iterator it;
+    it = texturesMap.find(path);
     if (it != texturesMap.end()) {
         return it->second;
     }
@@ -117,7 +117,7 @@ sf::Texture* GraphicManager::loadTexture(ID::ids id, const char* path) {
         cout << "ERROR loading file " << path << endl;
         exit(1);
     }
-    texturesMap.insert(std::pair<ID::ids, sf::Texture*>(id, tex));
+    texturesMap.insert(std::pair<const char*, sf::Texture*>(path, tex));
 
     return tex;
 }

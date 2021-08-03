@@ -16,7 +16,7 @@ int main() {
     if (state == 0) {
         cout << "RODANDO JOGO" << endl;
         FieldBuilder fb;
-        Field* field = fb.getField();
+        Level* field = fb.getField();
         field->exec();
         delete (field);
         state = 9;

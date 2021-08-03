@@ -1,6 +1,6 @@
 #pragma once
 #include "Obstacle.h"
-#define WALL_PATH "./assets/Platforms/BrickWall.png"
+#define WALL_PATH "./assets/Platforms/CobbleWall.png"
 class Animation;
 class GraphicManager;
 class Wall :

@@ -29,5 +29,5 @@ void Fireball::render() {
 }
 
 void Fireball::initializeSprite() {
-    sprite->initializeTexture(PATH_FIREBALL_TEXTURE, id, sf::Vector2u(3, 1));
+    sprite->initializeTexture(PATH_FIREBALL_TEXTURE,sf::Vector2u(3, 1));
 }

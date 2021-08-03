@@ -1,6 +1,6 @@
 #include "FieldBuilder.h"
-FieldBuilder::FieldBuilder():Builder(){
-    field = new Field();
+FieldBuilder::FieldBuilder():LevelBuilder(){
+    field = new Level("./assets/Backgrounds/montanha.png");
     buildMap();
 }
 
@@ -39,7 +39,7 @@ void FieldBuilder:: buildMap() {
                     buildWall(sf::Vector2f(j * 30, i * 30), field);
                 }
                 if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * 30, i * 30),field);
+                    buildArcher(sf::Vector2f(j * 30, i * 30), field);
                 }
             }
         }
