@@ -78,6 +78,7 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
     case ID::platform:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
+            ent1->setVelocity(sf::Vector2f(0,ent1->getVelocity().y));
         } else {
             if (dy > 0.0f) {
                 moveY(ent1, ent2, intersectY);
@@ -90,7 +91,9 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
     case ID::wall:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
+            ent1->setVelocity(sf::Vector2f(0, ent1->getVelocity().y));
         }
+
         break;
 
     case ID::wizard:
@@ -237,6 +240,7 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
     case ID::player:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
+            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
         }
         else {
             if (ent1->getId() == ID::platform) {
@@ -252,6 +256,7 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
     case ID::player2:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
+            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
         }
         else {
             if (ent1->getId() == ID::platform) {
