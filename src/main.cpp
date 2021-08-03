@@ -7,7 +7,22 @@
 
 int main() {
 
-    EventManager* EM = EventManager::getInstance();
+    int state = 0;
+    /*    0-> jogando
+      outro> executar menu
+        2-> sair 
+    */
+
+    if (state == 0) {
+        cout << "RODANDO JOGO" << endl;
+        FieldBuilder fb;
+        Field* field = fb.getField();
+        field->exec();
+        delete (field);
+        state = 9;
+    }
+
+    /*  EventManager* EM = EventManager::getInstance();
     GraphicManager GM;
     InputManager IM;
     Menu main(&GM);
@@ -15,21 +30,6 @@ int main() {
 
     EM->setGraphicManager(&GM);
     EM->setInputManager(&IM);
-
-    int state = 0;
-    /*    0-> jogando
-      outro> executar menu
-        2-> sair 
-    */
-
-    /*  if (state == 0) {
-            cout << "RODANDO JOGO" << endl;
-            FieldBuilder fb;
-            Field* field = fb.getField();
-            field->exec();
-            delete (field);
-            state = 9;
-        } */
 
     while (GM.isWindowOpen()) {
         if (state == 2)
@@ -40,8 +40,6 @@ int main() {
             main.render();
             GM.display();
         }
-
-    }
-        return 0;
-
+    } */
+    return 0;
 }
