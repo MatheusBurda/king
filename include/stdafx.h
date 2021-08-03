@@ -8,6 +8,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::string;
 
 #include <fstream>
 
@@ -29,7 +30,7 @@ using std::endl;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 20000000
+#define PLAYER_LIFE 2000
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
