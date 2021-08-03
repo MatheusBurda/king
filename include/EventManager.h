@@ -10,13 +10,18 @@ private:
     InputManager* pInputM;
     sf::RenderWindow* pWindow;
 
+    /* Singleton design pattern */
+    static EventManager* instance;
+    EventManager();
 
 public:
-    EventManager(GraphicManager* pGM = NULL, InputManager *pIM = NULL);
     ~EventManager();
+
+    static EventManager* getInstance();
 
     void setGraphicManager(GraphicManager* pGM);
     void setInputManager(InputManager* pIM);
 
     void pollEvents();
 };
+

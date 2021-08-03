@@ -5,7 +5,7 @@
 class GraphicManager;
 
 class Menu {
-private:
+protected:
     Button bt1;
     Button bt2;
     Button bt3;

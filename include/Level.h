@@ -23,7 +23,7 @@ protected:
     CollisionManager colis;
     InputManager im;
     PlayerControl pc;
-    EventManager evntM;
+    EventManager* pEventManager;
 
 public:
     Level();

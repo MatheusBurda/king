@@ -1,10 +1,12 @@
 #pragma once
+
 #include "Builder.h"
-#include"Field.h"
-class FieldBuilder :public Builder
-{
+#include "Field.h"
+
+class FieldBuilder : public Builder {
 private:
-    Field *field;
+    Field* field;
+
 public:
     FieldBuilder();
     ~FieldBuilder();
@@ -16,4 +18,3 @@ public:
     void buildMap();
     Field* getField() { return field; }
 };
-

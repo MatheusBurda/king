@@ -6,9 +6,10 @@ void Level::exec() {
     float dt;
     time.restart();
     while (graphicM.isWindowOpen() && player1->getShowing()) { //&& player2->getShowing()) {
+        pEventManager->pollEvents();
+
         dt = time.getElapsedTime().asSeconds();
         time.restart();
-        evntM.pollEvents();
         _list.updateAll(dt);
         colis.toCollide();
         graphicM.exec();
@@ -23,10 +24,13 @@ player1(NULL),
 player2(NULL),
 colis(&_list),
 im(),
-pc(&im),
-evntM(&graphicM, &im) {
+pc(&im) {
     player1 = NULL;
     player2 = NULL;
+
+    pEventManager = EventManager::getInstance();
+    pEventManager->setGraphicManager(&graphicM);
+    pEventManager->setInputManager(&im);
 }
 
 Level::~Level() {

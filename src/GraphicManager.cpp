@@ -86,6 +86,7 @@ void GraphicManager::closeWindow() {
 void GraphicManager::handleWindowResize() {
     float aspectRatio = float(window->getSize().x / float(window->getSize().y));
     view.setSize(sf::Vector2f(HEIGHT * aspectRatio, HEIGHT));
+    window->setView(view);
 }
 
 /* Changes the view position. */

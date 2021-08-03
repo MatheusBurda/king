@@ -1,15 +1,26 @@
 #include "EventManager.h"
 
-EventManager::EventManager(GraphicManager* pGM, InputManager* pIM) :
-pGraphicM(pGM),
-pInputM(pIM),
-pWindow(NULL) {
-    if (pGraphicM != NULL)
-        pWindow = pGraphicM->getWindow();
+/* Singleton design pattern - Only one instance will be created */
+EventManager* EventManager::instance = NULL;
 
+EventManager* EventManager::getInstance(){
+    if(instance == NULL){
+        instance = new EventManager();
+    }
+    return instance;
 }
 
+EventManager::EventManager():
+pGraphicM(NULL),
+pInputM(NULL),
+pWindow(NULL) { }
+
+/* ========================================= */
+
 EventManager::~EventManager() {
+    pGraphicM = NULL;
+    pInputM = NULL;
+    pWindow = NULL;
 }
 
 void EventManager::setGraphicManager(GraphicManager* pGM) {
@@ -23,7 +34,7 @@ void EventManager::setInputManager(InputManager* pIM) {
 }
 
 void EventManager::pollEvents() {
-   sf::Event event;
+    sf::Event event;
 
     while (pWindow->pollEvent(event)) {
         if (event.type == sf::Event::Closed)
@@ -32,6 +43,5 @@ void EventManager::pollEvents() {
             pGraphicM->handleWindowResize();
         if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
             pInputM->handleKeyPressed();
-
     }
 }
