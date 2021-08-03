@@ -10,7 +10,6 @@ InputManager::~InputManager() {
 
 /* Check for keys pressed and notify every Observer. */
 void InputManager::handleKeyPressed() {
-    cout << "tecla pressionada! " << endl;
     for (it = objObserving.begin(); it != objObserving.end(); ++it)
         (*it)->notify();
 }

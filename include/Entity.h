@@ -33,7 +33,6 @@ public:
     Vector2f getHitbox() const;
 
     virtual void update(float dt) = 0;
-    virtual void render() = 0;
     virtual void initializeSprite() = 0;
 
     ID::ids getId() const;

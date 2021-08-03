@@ -31,3 +31,8 @@ ID::ids Ente::getID() const {
 void Ente::MoveBody(const sf::Vector2f vec) {
     position = sf::Vector2f(position.x + vec.x, position.y + vec.y);
 }
+
+void Ente::render() {
+    sprite->render();
+}
+

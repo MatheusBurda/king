@@ -1,22 +1,24 @@
 #pragma once
 
 #include "Button.h"
+#include <vector>
 
 class GraphicManager;
 
 class Menu {
 protected:
-    Button bt1;
-    Button bt2;
-    Button bt3;
+    std::vector<Button*> vectorOfButtons;
+    std::vector<Button*>::iterator it;
     int selected;
     int min;
     int max;
 
 public:
     Menu(GraphicManager* GM);
-    ~Menu();
+    virtual ~Menu();
 
-    void render();
-    void exec();
+    virtual void render();
+    int exec();
+    void selectDown();
+    void selectUp();
 };

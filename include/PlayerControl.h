@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 #include "Observer.h"   
-using namespace std;
 
 class Player;
 class InputManager;
