@@ -22,4 +22,5 @@ public:
     void setimageCount(const sf::Vector2u imageCount);
     void render();
     void Update(int row, float dt, bool facingLeft, sf::Vector2f position);
+    void setGraphicManager(GraphicManager* pGraM) { pGraphicM = pGraM; }
 };

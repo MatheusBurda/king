@@ -2,24 +2,21 @@
 
 #include "Id.h"
 #include "stdafx.h"
+#include "Ente.h"
 
-class GraphicManager;
 class Animation;
+class GraphicManager;
 
 using namespace sf;
 
-class Entity {
+class Entity : public Ente{
 private:
     bool showing;
     bool faceLeft;
 
 protected:
-    Animation* sprite;
-    sf::Vector2f position;
     sf::Vector2f velocity;
     sf::Vector2f hitbox;
-    ID::ids id;
-
 
 public:
     Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
@@ -37,14 +34,13 @@ public:
 
     virtual void update(float dt) = 0;
     virtual void render() = 0;
+    virtual void initializeSprite() = 0;
 
     ID::ids getId() const;
     void Move(sf::Vector2f vec);
 
     void setShowing(const bool val = true) { showing = val; }
     bool getShowing() { return showing; }
-
-    virtual void initializeSprite() = 0;
 
     void setFacingLeft(bool facingLeft) { faceLeft = facingLeft; }
     bool facingLeft() const { return faceLeft; }

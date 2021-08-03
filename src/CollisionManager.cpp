@@ -16,8 +16,8 @@ void CollisionManager::toCollide() {
         for (int j = i + 1; j < list->getSize(); j++) {
             ent1 = (*list)[i];
             ent2 = (*list)[j];
-            bool attack = (ent1->getId() == ID::player && ent2->getId() == ID::wizard || ent1->getId() == ID::player && ent2->getId() == ID::archer|| ent1->getId() == ID::player && ent2->getId() == ID::boss||ent2->getId() == ID::player && ent1->getId() == ID::wizard || ent2->getId() == ID::player && ent1->getId() == ID::archer || ent2->getId() == ID::player && ent1->getId() == ID::boss);
-
+            bool attack = ((ent1->getId() == ID::player && (ent2->getId() == ID::wizard || ent2->getId() == ID::archer || ent2->getId() == ID::boss)) || 
+                           (ent2->getId() == ID::player && (ent1->getId() == ID::wizard || ent1->getId() == ID::archer || ent1->getId() == ID::boss)));
             float dy, dx, intersectX, intersectY;
             dx = ent2->getPosition().x - ent1->getPosition().x;
             dy = ent2->getPosition().y - ent1->getPosition().y;
@@ -210,6 +210,7 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
         (static_cast<Player*>(ent2))->getHurt(PROJECTILE_DAMAGE);
     }
 }
+
 void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float dy) {
     if (abs(dy)<50 && abs(dx) < PLAYER_ATTACK) {
         if (dx > 0) {

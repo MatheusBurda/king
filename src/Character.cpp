@@ -20,8 +20,3 @@ void Character::getHurt(int dmg) {
     life -= dmg;
 }
 
-bool Character::amAlive() {
-    if (life > 0)
-        return true;
-    return false;
-}

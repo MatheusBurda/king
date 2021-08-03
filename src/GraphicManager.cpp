@@ -27,6 +27,11 @@ GraphicManager::~GraphicManager() {
 void GraphicManager::exec() {
     clear();
 
+    centerView();
+    
+    updateBackground();
+    window->draw(backgroundBody);
+
     renderAll();
 
     display();
@@ -66,9 +71,6 @@ void GraphicManager::display() {
 /* Clear the window to re-display stuff. */
 void GraphicManager::clear() {
     window->clear();
-    centerView();
-    updateBackground();
-    window->draw(backgroundBody);
 }
 
 /* Returns if the window is open. */

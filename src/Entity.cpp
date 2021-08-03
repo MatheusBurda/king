@@ -4,9 +4,7 @@
 #include "GraphicManager.h"
 
 Entity::Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
-sprite(new Animation(GM)),
-id(id) {
-    position = pos;
+Ente(id, GM, pos) {
     hitbox = hit;
     velocity = sf::Vector2f(0.0f, 0.0f);
     showing = true;
@@ -14,19 +12,21 @@ id(id) {
 }
 
 Entity::Entity() {
-    this->id = ID::empty;
+    hitbox = sf::Vector2f(0.0f, 0.0f);
+    velocity = sf::Vector2f(0.0f, 0.0f);
+    showing = false;
+    faceLeft = false;
 }
 
 Entity::~Entity() {
-    delete (sprite);
 }
 
 void Entity::changePosition(const Vector2f pos) {
-    position = pos;
+    changePos(pos);
 }
 
 Vector2f Entity::getPosition() const {
-    return position;
+    return getPos();
 }
 
 void Entity::setVelocity(const Vector2f vel) {
@@ -46,8 +46,9 @@ Vector2f Entity::getHitbox() const {
 }
 
 ID::ids Entity::getId() const {
-    return id;
+    return getID();
 }
+
 void Entity::Move(sf::Vector2f vec) {
-    position = sf::Vector2f(position.x + vec.x, position.y + vec.y);
+    MoveBody(vec);
 }

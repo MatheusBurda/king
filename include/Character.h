@@ -11,19 +11,17 @@ protected:
     int damage;
     bool isAttacking;
 
-    virtual void update(float dt) {
-    }
-    virtual void render() {
-    }
-
+    virtual void update(float dt) = 0;
+    virtual void render() = 0;
+    virtual void initializeSprite() = 0;
 
 public:
     Character(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
     ~Character();
+
     int attack();
     void getHurt(int dmg);
-    bool amAlive();
+
     void setIsAttacking(const bool val = false) { isAttacking = val; }
-    bool getIsAttacking() { return isAttacking; }
-    virtual void initializeSprite() = 0;
+    bool getIsAttacking() const  { return isAttacking; }
 };

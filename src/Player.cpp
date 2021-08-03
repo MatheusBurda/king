@@ -4,14 +4,14 @@
 #include "GraphicManager.h"
 #include <math.h>
 
-const float Player::attackTime = 0.4;
+const float Player::attackTime = 0.8;
 
 Player::Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
 Character(ID::player, GM, pos, hit, lf, dmg) {
     isWalking = false;
-    totalTime = 0.0f;
+    totalTimeFromAttack = 0.0f;
     firstAttack = true;
-    Canjump = true;
+    canJump = true;
     initializeSprite();
 }
 
@@ -51,15 +51,15 @@ void Player::initializeSprite() {
 
 int Player::canAttack(float dt) {
     if (isAttacking) {
-        totalTime += dt;
-        if (totalTime < attackTime) {
+        totalTimeFromAttack += dt;
+        if (totalTimeFromAttack < attackTime) {
             if (firstAttack)
                 return 4;
             else
                 return 5;
         } else {
             firstAttack = !firstAttack;
-            totalTime = 0;
+            totalTimeFromAttack = 0;
         }
         isAttacking = false;
     }
@@ -79,8 +79,8 @@ void Player::walk(bool left) {
 }
 
 void Player::jump() {
-    if (Canjump) {
+    if (canJump) {
         velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
-        Canjump = false;
+        canJump = false;
     }
 }

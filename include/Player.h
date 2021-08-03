@@ -9,9 +9,9 @@ class GraphicManager;
 
 class Player : public Character {
 private:
-    bool Canjump;
+    bool canJump;
     bool firstAttack;
-    float totalTime;
+    float totalTimeFromAttack;
     static const float attackTime;
     bool isWalking;
 
@@ -20,11 +20,10 @@ public:
     ~Player();
     void update(float dt);
     void render();
-    void setJump(const bool val = true) { Canjump = val; }
+    void setJump(const bool val = true) { canJump = val; }
     void initializeSprite();
     int canAttack(float dt = 0.0f);
     void walk(bool left);
     void jump();
     void setIsWalking(const bool val) { isWalking = val; }
 };
-
