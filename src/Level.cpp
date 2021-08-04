@@ -17,7 +17,7 @@ void Level::exec() {
     cout << "Morri" << endl;
 }
 
-Level::Level(char path[100]) :
+Level::Level(const char path[100]) :
 graphicM(),
 _list(),
 player1(NULL),

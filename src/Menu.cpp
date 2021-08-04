@@ -1,27 +1,15 @@
 #include "Menu.h"
 
 #include "GraphicManager.h"
-#define BACKGROUND_PATH "./assets/Backgrounds/MenuBackground.png"
 
-Menu::Menu(GraphicManager* GM) :
+Menu::Menu(GraphicManager* GM, InputManager* IM, const char* backPath) :
 selected(0),
 min(0),
-max(2) {
-    Button* bt = NULL;
+max(2),
+control(IM, this),
+back(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2), backPath) {
 
-    bt = new Button(GM, sf::Vector2f(600, 300));
-    bt->setMessage("NEW GAME");
-    bt->select(true);
-    vectorOfButtons.push_back(bt);
-
-    bt = new Button(GM, sf::Vector2f(600, 450));
-    bt->setMessage("LOAD GAME");
-    vectorOfButtons.push_back(bt);
-
-    bt = new Button(GM, sf::Vector2f(600, 600));
-    bt->setMessage("EXIT");
-    vectorOfButtons.push_back(bt);
-
+    
 }
 
 Menu::~Menu() {
@@ -36,6 +24,7 @@ Menu::~Menu() {
 
 /* Menu operation to render all it's objects. */
 void Menu::render() {
+    back.render();
     for (it = vectorOfButtons.begin(); it != vectorOfButtons.end(); ++it)
         (*it)->render();
 }

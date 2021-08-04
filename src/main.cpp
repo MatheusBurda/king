@@ -2,8 +2,9 @@
 #include "FieldBuilder.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
-#include "Menu.h"
+#include "MainMenu.h"
 #include "MenuControl.h"
+#include "PauseMenu.h"
 
 int main() {
 
@@ -22,11 +23,10 @@ int main() {
         state = 9;
     }
 
-    /*  EventManager* EM = EventManager::getInstance();
+    EventManager* EM = EventManager::getInstance();
     GraphicManager GM;
     InputManager IM;
-    Menu main(&GM);
-    MenuControl MM(&IM, &main);
+    PauseMenu main(&GM, &IM);
 
     EM->setGraphicManager(&GM);
     EM->setInputManager(&IM);
@@ -40,6 +40,6 @@ int main() {
             main.render();
             GM.display();
         }
-    } */
+    }
     return 0;
 }

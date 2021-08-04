@@ -1,5 +1,5 @@
 #include "LevelBuilder.h"
-void LevelBuilder::buildPlatform(sf::Vector2f pos, Level* lvl, char path[100]) {
+void LevelBuilder::buildPlatform(sf::Vector2f pos, Level* lvl, const char path[100]) {
     Platform* plat = new Platform(ID::platform, (lvl->getGM()), pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT), path);
     lvl->getList()->addEntity(plat);
 }

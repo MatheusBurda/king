@@ -1,10 +1,11 @@
 #include "Platform.h"
 #include "Animation.h"
 #include "GraphicManager.h"
+#include <string.h>
 
-Platform::Platform(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, char pt[100]) :
+Platform::Platform(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]) :
 Entity(ID::platform, GM, pos, hit){
-    strcpy_s(path, pt);
+    strcpy(path, pt);
     changePosition(pos);
     initializeSprite();
 }
