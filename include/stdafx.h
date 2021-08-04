@@ -35,7 +35,7 @@ using std::string;
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
 #define PLAYER_JUMP 200
-#define PLAYER_ATTACK 100 //Pixels that the sword hit the enemy
+#define PLAYER_ATTACK 150 //Pixels that the sword hit the enemy
 
 /* =================================================== */
 /*                     ENEMY                           */

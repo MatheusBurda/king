@@ -22,14 +22,14 @@ int main() {
         Level* field = fb.getField();
         field->exec();
         delete (field);
-        /*CastleBuilder cb;
+        CastleBuilder cb;
         Level* castle = cb.getCastle();
         castle->exec();
         delete(castle);
         BossBuilder bb;
         Level* boss = bb.getBoss();
         boss->exec();
-        delete(boss);*/
+        delete(boss);
         state = 9;
     }
 

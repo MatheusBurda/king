@@ -215,7 +215,7 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
 }
 
 void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float dy) {
-    if (abs(dy)<50 && abs(dx) < PLAYER_ATTACK) {
+    if (abs(dy)<100 && abs(dx) < PLAYER_ATTACK) {
         if (dx > 0) {
             if (ent1->getId() == ID::player && (static_cast<Character*>(ent1))->getIsAttacking() && !ent1->facingLeft()) {
                 (static_cast <Character*>(ent2))->getHurt(PLAYER_DAMAGE);
