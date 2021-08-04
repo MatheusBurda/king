@@ -1,7 +1,7 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 #include "Wall.h"
-Wall::Wall(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) : Obstacle(id, GM, pos, hit){
+Wall::Wall(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) : Entity(id, GM, pos, hit){
 	initializeSprite();
 }
 Wall::~Wall() {
