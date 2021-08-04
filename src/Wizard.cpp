@@ -27,7 +27,7 @@ void Wizard::update(float dt) {
 
 void Wizard::attack() {
     if (getIsAttacking()) {
-        fireball->changePosition(getPosition() + sf::Vector2f(ENEMY_WIDTH, 0));
+        fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
         if (facingLeft()) {
             fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); //, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
         }

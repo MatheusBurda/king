@@ -11,13 +11,13 @@ void LevelBuilder::buildPlayer1(sf::Vector2f pos, Level* lvl) {
 }
 void LevelBuilder::buildWizard(sf::Vector2f pos, Level* lvl) {
     Fireball* fb = new Fireball(ID::fireball, (lvl->getGM()), pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Wizard* wi = new Wizard(ID::wizard, (lvl->getGM()), pos, sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
+    Wizard* wi = new Wizard(ID::wizard, (lvl->getGM()), pos, sf::Vector2f(WIZARD_WIDTH, WIZARD_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
     lvl->getList()->addEntity(fb);
     lvl->getList()->addEntity(wi);
 }
 void LevelBuilder::buildArcher(sf::Vector2f pos, Level* lvl) {
     Arrow* ar = new Arrow(ID::arrow, (lvl->getGM()), pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Archer* arc = new Archer(ID::archer, (lvl->getGM()), pos, sf::Vector2f(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, ar);
+    Archer* arc = new Archer(ID::archer, (lvl->getGM()), pos, sf::Vector2f(ARCHER_WIDTH, ARCHER_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, ar);
     lvl->getList()->addEntity(ar);
     lvl->getList()->addEntity(arc);
 }

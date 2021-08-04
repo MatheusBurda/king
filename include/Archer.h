@@ -8,6 +8,7 @@ class Archer :public Enemy
 {
 private:
     Arrow* arrow;
+    static const float attackTime;
 public:
     Archer(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Arrow* arr);
     ~Archer();

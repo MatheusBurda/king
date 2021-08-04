@@ -30,7 +30,7 @@ using std::string;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 2000
+#define PLAYER_LIFE 2000000000
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
@@ -43,11 +43,19 @@ using std::string;
 
 #define ENEMY_LIFE 2000
 #define ENEMY_DAMAGE 25
-#define ENEMY_WIDTH 44
-#define ENEMY_HEIGHT 105
 #define ENEMY_VELOCITYX 100 
 #define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
 #define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
+/* =================================================== */
+/*                     WIZARD                          */
+/* =================================================== */
+#define WIZARD_WIDTH 44
+#define WIZARD_HEIGHT 105
+/* =================================================== */
+/*                     ARCHER                          */
+/* =================================================== */
+#define ARCHER_WIDTH 40
+#define ARCHER_HEIGHT 65
 
 /* =================================================== */
 /*                        MAP                          */
