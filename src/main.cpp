@@ -4,8 +4,9 @@
 #include "BossBuilder.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
-#include "Menu.h"
+#include "MainMenu.h"
 #include "MenuControl.h"
+#include "PauseMenu.h"
 
 int main() {
 
@@ -16,27 +17,25 @@ int main() {
     */
 
     if (state == 0) {
-        cout << "RODANDO JOGO" << endl;
         FieldBuilder fb;
         Level* field = fb.getField();
         field->exec();
         delete (field);
-        /*CastleBuilder cb;
+        /* CastleBuilder cb;
         Level* castle = cb.getCastle();
         castle->exec();
-        delete(castle);
-        BossBuilder bb;
+        delete(castle); */ 
+        /* BossBuilder bb;
         Level* boss = bb.getBoss();
         boss->exec();
-        delete(boss);*/
-        state = 9;
+        delete(boss);
+        state = 9; */
     }
 
-    /*  EventManager* EM = EventManager::getInstance();
+    /* EventManager* EM = EventManager::getInstance();
     GraphicManager GM;
     InputManager IM;
-    Menu main(&GM);
-    MenuControl MM(&IM, &main);
+    MainMenu main(&GM, &IM);
 
     EM->setGraphicManager(&GM);
     EM->setInputManager(&IM);

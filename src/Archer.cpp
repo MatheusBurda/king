@@ -3,7 +3,7 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 #include <math.h>
-
+const float Archer::attackTime = 1.2;
 Archer::Archer(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Arrow* arr) :
 Enemy(id, GM, pos, hit, lf, dmg) {
     arrow = arr;
@@ -28,17 +28,20 @@ void Archer::update(float dt) {
         setShowing(false);
 
     sprite->Update(2, dt, facingLeft(), position);
+    totalTimeFromAttack += dt;
     attack();
 }
 
 void Archer::attack() {
-    if (getIsAttacking()) {
-        arrow->changePosition(getPosition() + sf::Vector2f(ENEMY_WIDTH, 0));
+
+    if (getIsAttacking() && totalTimeFromAttack>=attackTime) {
+        arrow->changePosition(getPosition() + sf::Vector2f(ARCHER_WIDTH, 0));
         if (facingLeft()) {
             arrow->setVelocity(sf::Vector2f(-ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
         } else {
             arrow->setVelocity(sf::Vector2f(ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
         }
+        totalTimeFromAttack =0;
         arrow->setShowing(true);
         setIsAttacking(false);
     }

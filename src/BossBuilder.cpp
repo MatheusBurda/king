@@ -22,22 +22,22 @@ void BossBuilder::buildMap() {
                 if (i || j)
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * 30, i * 30), boss, PLATFORM_PATH1);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss, PLATFORM_PATH_COBBLE);
                 }
                 if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * 30, i * 30), boss, PLATFORM_PATH2);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss, PLATFORM_PATH_BRICK);
                 }
                 if (level[i][j] == 'k' && !boss->getP1()) {
-                    buildPlayer1(sf::Vector2f(j * 30, i * 30), boss);
+                    buildPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss);
                 }
                 if (level[i][j] == 'z') {
-                    buildWizard(sf::Vector2f(j * 30, i * 30), boss);
+                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss);
                 }
                 if (level[i][j] == 'w') {
-                    buildWall(sf::Vector2f(j * 30, i * 30), boss);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss, WALL_PATH_COBBLE, true);
                 }
                 if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * 30, i * 30), boss);
+                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), boss);
                 }
             }
         }

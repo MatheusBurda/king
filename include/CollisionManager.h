@@ -20,7 +20,7 @@ public:
     void collideEnemy(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
     void collideProjectile(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
     void collidePlatform(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY);
-
+    void enemyMotion(Entity* ent1, Entity* ent2, float dx, float dy);
     void attackEnemy(Entity* ent1, Entity* ent2);
     void attackPlayer(Entity* ent1, Entity* ent2, float dx, float dy);
 };

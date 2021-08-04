@@ -12,6 +12,7 @@ MenuControl::~MenuControl() {
 }
 
 void MenuControl::notify() {
+
     if (pMenu == NULL) {
         cout << "ERROR pointer to Menu NULL on MenuControl::notify()." << endl;
         exit(7);

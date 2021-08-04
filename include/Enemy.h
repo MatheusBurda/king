@@ -7,6 +7,8 @@ class Animation;
 class GraphicManager;
 
 class Enemy : public Character {
+protected:
+    float totalTimeFromAttack;
 
 public:
     Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
@@ -15,4 +17,5 @@ public:
     void render();
     virtual void attack() = 0;
     virtual void initializeSprite() = 0;
+
 };

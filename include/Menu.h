@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Button.h"
+#include "MenuControl.h"
+#include "Background.h"
 #include <vector>
 
 class GraphicManager;
@@ -12,13 +14,15 @@ protected:
     int selected;
     int min;
     int max;
+    MenuControl control;
+    Background back;
 
 public:
-    Menu(GraphicManager* GM);
+    Menu(GraphicManager* GM, InputManager* IM, const char* backPath);
     virtual ~Menu();
 
     virtual void render();
-    int exec();
-    void selectDown();
-    void selectUp();
+    virtual int exec();
+    virtual void selectDown();
+    virtual void selectUp();
 };

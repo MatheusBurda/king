@@ -30,12 +30,12 @@ using std::string;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 2000
+#define PLAYER_LIFE 2000000000
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 44
 #define PLAYER_HEIGHT 105
 #define PLAYER_JUMP 200
-#define PLAYER_ATTACK 100 //Pixels that the sword hit the enemy
+#define PLAYER_ATTACK 150 //Pixels that the sword hit the enemy
 
 /* =================================================== */
 /*                     ENEMY                           */
@@ -43,8 +43,19 @@ using std::string;
 
 #define ENEMY_LIFE 2000
 #define ENEMY_DAMAGE 25
-#define ENEMY_WIDTH 44
-#define ENEMY_HEIGHT 105
+#define ENEMY_VELOCITYX 100 
+#define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
+#define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
+/* =================================================== */
+/*                     WIZARD                          */
+/* =================================================== */
+#define WIZARD_WIDTH 44
+#define WIZARD_HEIGHT 105
+/* =================================================== */
+/*                     ARCHER                          */
+/* =================================================== */
+#define ARCHER_WIDTH 40
+#define ARCHER_HEIGHT 65
 
 /* =================================================== */
 /*                        MAP                          */
@@ -57,17 +68,15 @@ using std::string;
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 30
-#define PLATFORM_HEIGHT 30
-
+#define PLATFORM_WIDTH 45
+#define PLATFORM_HEIGHT 45
 
 /* =================================================== */
 /*                      WALL                           */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 30
-#define PLATFORM_HEIGHT 30
-
+#define PLATFORM_WIDTH 45
+#define PLATFORM_HEIGHT 45
 
 /* =================================================== */
 /*                      FIREBALL                       */
@@ -89,5 +98,5 @@ using std::string;
 /* =================================================== */
 /*                     ARROW                           */
 /* =================================================== */
-#define ARROW_VELOCITYX 300
+#define ARROW_VELOCITYX 500
 #define ARROW_HMAX 100
