@@ -24,22 +24,22 @@ void CastleBuilder::buildMap() {
                 if (i || j)
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * 30, i * 30), castle, PLATFORM_PATH1);
+                    buildPlatform(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, PLATFORM_PATH_BRICK);
                 }
                 if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * 30, i * 30), castle, PLATFORM_PATH2);
+                    buildPlatform(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, PLATFORM_PATH_COBBLE);
                 }
                 if (level[i][j] == 'k' && !castle->getP1()) {
-                    buildPlayer1(sf::Vector2f(j * 30, i * 30), castle);
+                    buildPlayer1(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
                 }
                 if (level[i][j] == 'z') {
-                    buildWizard(sf::Vector2f(j * 30, i * 30), castle);
+                    buildWizard(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
                 }
                 if (level[i][j] == 'w') {
-                    buildWall(sf::Vector2f(j * 30, i * 30), castle);
+                    buildWall(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, WALL_PATH_BRICK, true);
                 }
                 if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * 30, i * 30), castle);
+                    buildArcher(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
                 }
             }
         }

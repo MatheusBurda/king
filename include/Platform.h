@@ -2,9 +2,9 @@
 
 #include "Entity.h"
 
-
-#define PLATFORM_PATH1 "./assets/Platforms/BrickBlock.png"
-#define PLATFORM_PATH2 "./assets/Platforms/CobbleBlock.png"
+#define PLATFORM_PATH_DIRT "./assets/Platforms/DirtBlock.png"
+#define PLATFORM_PATH_BRICK "./assets/Platforms/BrickBlock.png"
+#define PLATFORM_PATH_COBBLE "./assets/Platforms/CobbleBlock.png"
 
 class GraphicManager;
 

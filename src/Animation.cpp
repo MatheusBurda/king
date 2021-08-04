@@ -36,10 +36,11 @@ void Animation::initializeTexture(const char* path,sf::Vector2u imageCount) {
 
 /* Update the Animation position and the displayed  */
 void Animation::Update(int row, float dt, bool facingLeft, sf::Vector2f position) {
-    /* Based on this tutorial --> https://www.youtube.com/watch?v=Aa8bXSq5LDE&t=196s*/
+    /* Based on this tutorial --> https://www.youtube.com/watch?v=Aa8bXSq5LDE&t=196s */
     if (currentImage.y != abs(row))
         currentImage.x = 0;
     currentImage.y = row;
+    
     totalTime += dt;
 
     if (totalTime >= switchTime) {

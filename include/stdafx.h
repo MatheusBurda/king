@@ -68,17 +68,15 @@ using std::string;
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 30
-#define PLATFORM_HEIGHT 30
-
+#define PLATFORM_WIDTH 45
+#define PLATFORM_HEIGHT 45
 
 /* =================================================== */
 /*                      WALL                           */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 30
-#define PLATFORM_HEIGHT 30
-
+#define PLATFORM_WIDTH 45
+#define PLATFORM_HEIGHT 45
 
 /* =================================================== */
 /*                      FIREBALL                       */
