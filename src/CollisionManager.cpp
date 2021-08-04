@@ -24,8 +24,10 @@ void CollisionManager::toCollide() {
 
             intersectX = abs(dx) - (ent1->getHitbox().x / 2 + ent2->getHitbox().x / 2);
             intersectY = abs(dy) - (ent1->getHitbox().y / 2 + ent2->getHitbox().y / 2);
-            if (attack)
+            if (attack) {
                 attackPlayer(ent1, ent2, dx, dy);
+                enemyMotion(ent1, ent2, dx, dy);
+            }
             if (intersectX < 0.0f && intersectY < 0.0f && ent1->getShowing() && ent2->getShowing()) { //Condition to collide...
                 if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
                     collidePlayer(ent1, ent2, dx, dy, intersectX, intersectY);
@@ -213,7 +215,36 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
         (static_cast<Player*>(ent2))->getHurt(PROJECTILE_DAMAGE);
     }
 }
-
+void CollisionManager::enemyMotion(Entity* ent1, Entity* ent2, float dx, float dy) {
+    if (abs(dx) < ENEMY_MOTIONX_MAX && abs(dx)>ENEMY_MOTIONX_MIN) {
+        if (dx > 0) {
+            if (ent1->getId() == ID::player) {
+                (static_cast <Character*>(ent2))->setVelocity(sf::Vector2f(-ENEMY_VELOCITYX, ent2->getVelocity().y));
+                ent2->setFacingLeft(true);
+            }
+            else if (ent2->getId() == ID::player) {
+                (static_cast <Character*>(ent1))->setVelocity(sf::Vector2f(-ENEMY_VELOCITYX, ent1->getVelocity().y));
+                ent1->setFacingLeft(true);
+            }
+        }
+        else {
+            if (ent1->getId() == ID::player) {
+                (static_cast <Character*>(ent2))->setVelocity(sf::Vector2f(ENEMY_VELOCITYX, ent2->getVelocity().y));
+                ent2->setFacingLeft(false);
+            }
+            else if (ent2->getId() == ID::player) {
+                (static_cast <Character*>(ent1))->setVelocity(sf::Vector2f(ENEMY_VELOCITYX, ent1->getVelocity().y));
+                ent1->setFacingLeft(true);
+            }
+        }
+    }
+    else {
+        if (ent1->getId() == ID::player)
+            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
+        else
+            ent1->setVelocity(sf::Vector2f(0, ent1->getVelocity().y));
+    }
+}
 void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float dy) {
     if (abs(dy)<100 && abs(dx) < PLAYER_ATTACK) {
         if (dx > 0) {

@@ -33,7 +33,7 @@ int main() {
         state = 9;
     }
 
-    EventManager* EM = EventManager::getInstance();
+    /*EventManager* EM = EventManager::getInstance();
     GraphicManager GM;
     InputManager IM;
     PauseMenu main(&GM, &IM);
@@ -50,6 +50,6 @@ int main() {
             main.render();
             GM.display();
         }
-    }
+    }*/
     return 0;
 }

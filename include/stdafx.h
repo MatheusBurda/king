@@ -45,6 +45,9 @@ using std::string;
 #define ENEMY_DAMAGE 25
 #define ENEMY_WIDTH 44
 #define ENEMY_HEIGHT 105
+#define ENEMY_VELOCITYX 100 
+#define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
+#define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
 
 /* =================================================== */
 /*                        MAP                          */
@@ -89,5 +92,5 @@ using std::string;
 /* =================================================== */
 /*                     ARROW                           */
 /* =================================================== */
-#define ARROW_VELOCITYX 300
+#define ARROW_VELOCITYX 500
 #define ARROW_HMAX 100
