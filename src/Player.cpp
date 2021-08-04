@@ -40,7 +40,7 @@ void Player::update(float dt) {
     if (canAttack() != 0) 
         sprite->Update(canAttack(dt), dt, facingLeft(), position);
     /* Falling */
-    else if (velocity.y > 100)
+    else if (velocity.y > 150)
         sprite->Update(3, dt, facingLeft(), position);
     /* Jumping */
     else if (velocity.y < -100 && !canJump)

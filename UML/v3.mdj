@@ -23108,8 +23108,7 @@
 													"_parent": {
 														"$ref": "AAAAAAF67805S98yiPo="
 													},
-													"name": "hit",
-													"type": ""
+													"name": "hit"
 												},
 												{
 													"_type": "UMLParameter",
