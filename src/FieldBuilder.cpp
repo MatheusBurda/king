@@ -9,8 +9,8 @@ FieldBuilder::~FieldBuilder() {
 }
 
 void FieldBuilder:: buildMap() {
-    int y = 15, x = 60;
-    char level[15][60];
+    int y = 40, x = 120;
+    char level[40][120];
     std::ifstream file("./assets/Levels/Field.txt");
     if (!file) {
         cout << "Cant Open" << endl;

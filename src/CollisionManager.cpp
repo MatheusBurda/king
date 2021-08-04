@@ -48,6 +48,8 @@ void CollisionManager::toCollide() {
 void CollisionManager::moveX(Entity* ent1, Entity* ent2, float intersectX) {
     ent1->Move(sf::Vector2f(intersectX * ent1->getVelocity().x / ((abs(ent1->getVelocity().x) + abs(ent2->getVelocity().x) + DIV0)), 0.0f));
     ent2->Move(sf::Vector2f(intersectX * ent2->getVelocity().x / ((abs(ent1->getVelocity().x) + abs(ent2->getVelocity().x) + DIV0)), 0.0f));
+    ent1->setVelocity(sf::Vector2f(0.0f, ent1->getVelocity().y));
+    ent2->setVelocity(sf::Vector2f(0.0f, ent2->getVelocity().y));
 }
 
 //function to move the entities using their velocity as reference (Y axis)
@@ -271,7 +273,7 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
     case ID::player:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
-            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
+            
         }
         else {
             if (ent1->getId() == ID::platform) {
@@ -287,7 +289,6 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
     case ID::player2:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
-            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
         }
         else {
             if (ent1->getId() == ID::platform) {

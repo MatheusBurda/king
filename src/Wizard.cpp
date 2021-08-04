@@ -1,7 +1,9 @@
 #include "Wizard.h"
 #include "Animation.h"
 #include "GraphicManager.h"
+const float Wizard::attackTime = 1.2;
 Wizard::Wizard(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fireb): Enemy(id, GM, pos, hit, lf, dmg) {
+    totalTimeFromAttack =0;
     fireball = fireb;
     initializeSprite();
 }
@@ -22,11 +24,12 @@ void Wizard::update(float dt) {
         setShowing(false);
 
     sprite->Update(2, dt, facingLeft(), position);
+    totalTimeFromAttack += dt;
     attack();
 }
 
 void Wizard::attack() {
-    if (getIsAttacking()) {
+    if (getIsAttacking() && totalTimeFromAttack >= attackTime) {
         fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
         if (facingLeft()) {
             fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); //, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
@@ -36,5 +39,6 @@ void Wizard::attack() {
         }
         fireball->setShowing(true);
         setIsAttacking(false);
+        totalTimeFromAttack =0;
     }
 }

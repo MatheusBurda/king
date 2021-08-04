@@ -8,6 +8,7 @@ class Wizard :
 {
 private:
     Fireball* fireball;
+    static const float attackTime;
 public:
     Wizard(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fireb);
     ~Wizard();
