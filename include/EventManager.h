@@ -19,7 +19,7 @@ public:
 
     static EventManager* getInstance();
 
-    void setGraphicManager(GraphicManager* pGM);
+    void setGraphicManager();
     void setInputManager(InputManager* pIM);
 
     void pollEvents();

@@ -1,9 +1,9 @@
 #include "Arrow.h"
-#include "Animation.h"
-#include "GraphicManager.h"
 
-Arrow::Arrow(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
-    Entity(id, GM, pos, hit) {
+#include "Animation.h"
+
+Arrow::Arrow(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
+Entity(id, pos, hit) {
     setShowing(false);
     initializeSprite();
 }
@@ -28,5 +28,5 @@ void Arrow::render() {
 }
 
 void Arrow::initializeSprite() {
-    sprite->initializeTexture(PATH_ARROW_TEXTURE,sf::Vector2u(2, 1));
+    sprite->initializeTexture(PATH_ARROW_TEXTURE, sf::Vector2u(2, 1));
 }

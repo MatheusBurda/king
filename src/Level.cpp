@@ -18,7 +18,6 @@ void Level::exec() {
         /* Run all graphic events */
         renderAll();
     }
-    cout << "Morri" << endl;
 }
 
 Level::Level(const char* path, sf::Vector2u levelSize) :
@@ -30,9 +29,8 @@ colis(&_list),
 im(),
 pc(&im),
 levelMapSize(levelSize),
-back(graphicM, sf::Vector2f(float(graphicM->getWindowSize().x/2), float(graphicM->getWindowSize().y/2)), path) {
+back(sf::Vector2f(float(graphicM->getWindowSize().x/2), float(graphicM->getWindowSize().y/2)), path) {
     pEventManager = EventManager::getInstance();
-    pEventManager->setGraphicManager(graphicM);
     pEventManager->setInputManager(&im);
 }
 
@@ -53,7 +51,7 @@ void Level::renderAll() {
 
     //back.render();
     /* Alterar */
-    //back.changePos(player1->getPosition());
+    back.changePos(player1->getPosition());
 
     for (int i = 0; i < _list.getSize(); i++) {
         _list[i]->render();
@@ -61,16 +59,3 @@ void Level::renderAll() {
 
     graphicM->display();
 }
-
-/* if (backgroundTexture != NULL)
-    delete (backgroundTexture);
-
-backgroundTexture = new Texture();
-
-if (!backgroundTexture->loadFromFile(path)) {
-    exit(9);
-}
-backgroundBody.setSize(sf::Vector2f(backgroundTexture->getSize()));
-backgroundBody.scale(sf::Vector2f(5, 5));
-backgroundBody.setTexture(backgroundTexture);
-backgroundBody.setOrigin(backgroundBody.getSize() / 2.0f); */

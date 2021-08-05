@@ -1,11 +1,12 @@
 #include "Archer.h"
 
 #include "Animation.h"
-#include "GraphicManager.h"
 #include <math.h>
+
 const float Archer::attackTime = 1.2;
-Archer::Archer(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Arrow* arr) :
-Enemy(id, GM, pos, hit, lf, dmg) {
+
+Archer::Archer(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Arrow* arr) :
+Enemy(id, pos, hit, lf, dmg) {
     arrow = arr;
     initializeSprite();
 }
@@ -18,30 +19,34 @@ void Archer::initializeSprite() {
 }
 
 void Archer::update(float dt) {
+    if (life <= 0)
+        setShowing(false);
 
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
     if (!arrow->getShowing() && getShowing()) {
         setIsAttacking(true);
     }
+
+    if (velocity.y > 700)
+        velocity = Vector2f(velocity.x, 700);
+
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    if (life <= 0)
-        setShowing(false);
 
     sprite->Update(2, dt, facingLeft(), position);
     totalTimeFromAttack += dt;
+
     attack();
 }
 
 void Archer::attack() {
-
-    if (getIsAttacking() && totalTimeFromAttack>=attackTime) {
+    if (getIsAttacking() && totalTimeFromAttack >= attackTime) {
         arrow->changePosition(getPosition() + sf::Vector2f(ARCHER_WIDTH, 0));
         if (facingLeft()) {
             arrow->setVelocity(sf::Vector2f(-ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
         } else {
             arrow->setVelocity(sf::Vector2f(ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
         }
-        totalTimeFromAttack =0;
+        totalTimeFromAttack = 0;
         arrow->setShowing(true);
         setIsAttacking(false);
     }

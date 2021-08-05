@@ -35,9 +35,8 @@ int main() {
     /* EventManager* EM = EventManager::getInstance();
     GraphicManager* GM = GraphicManager::getInstance();
     InputManager IM;
-    MainMenu main(GM, &IM);
+    MainMenu main(&IM);
 
-    EM->setGraphicManager(GM);
     EM->setInputManager(&IM);
 
     cout << "Menu rodando" << endl;
@@ -48,6 +47,7 @@ int main() {
         else {
             EM->pollEvents();
             GM->clear();
+            GM->centerView(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
             main.render();
             GM->display();
         }

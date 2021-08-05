@@ -18,7 +18,7 @@ protected:
     Background back;
 
 public:
-    Menu(GraphicManager* GM, InputManager* IM, const char* backPath);
+    Menu(InputManager* IM, const char* backPath);
     virtual ~Menu();
 
     virtual void render();

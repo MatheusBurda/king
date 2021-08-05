@@ -2,8 +2,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Wall::Wall(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, const char* path) :
-Entity(id, GM, pos, hit) {
+Wall::Wall(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char* path) :
+Entity(id, pos, hit) {
     sprite->initializeTexture(path, sf::Vector2u(1, 1));
 }
 

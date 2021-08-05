@@ -8,6 +8,6 @@
 class MainMenu : public Menu {
 private:
 public:
-    MainMenu(GraphicManager* GM, InputManager* IM);
+    MainMenu(InputManager* IM);
     ~MainMenu();
 };

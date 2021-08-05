@@ -2,14 +2,14 @@
 
 #include "Id.h"
 #include "stdafx.h"
-#include "Ente.h"
+#include "Ent.h"
 
 class Animation;
 class GraphicManager;
 
 using namespace sf;
 
-class Entity : public Ente{
+class Entity : public Ent{
 private:
     bool showing;
     bool faceLeft;
@@ -19,7 +19,7 @@ protected:
     sf::Vector2f hitbox;
 
 public:
-    Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
+    Entity(ID::ids id, sf::Vector2f pos, sf::Vector2f hit);
     Entity();
     virtual ~Entity();
 

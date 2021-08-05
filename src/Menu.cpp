@@ -2,14 +2,14 @@
 
 #include "GraphicManager.h"
 
-Menu::Menu(GraphicManager* GM, InputManager* IM, const char* backPath) :
+Menu::Menu(InputManager* IM, const char* backPath) :
 selected(0),
 min(0),
 max(2),
 control(IM, this),
-back(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2), backPath) {
-
-    
+back(sf::Vector2f(0, 0), backPath) {
+    GraphicManager* GM = GraphicManager::getInstance();
+    back.changePos(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
 }
 
 Menu::~Menu() {

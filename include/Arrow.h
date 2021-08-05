@@ -7,7 +7,7 @@ class Arrow :
     public Entity
 {
 public:
-    Arrow(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit);
+    Arrow(ID::ids id, sf::Vector2f pos, sf::Vector2f hit);
     ~Arrow();
     void update(float dt);
     void render();

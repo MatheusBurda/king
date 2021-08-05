@@ -14,9 +14,6 @@ void EntityList::updateAll(float dt) {
     for (int i = 0; i < list.length(); i++) {
         pAux = list[i];
         pAux->update(dt);
-
-        //if (!pAux->getShowing())
-        //removeEntity(pAux);
     }
 }
 
@@ -46,13 +43,19 @@ void EntityList::removeEntity(Entity* pDel) {
         cout << "Pointer to Entity is NULL on removeEntity." << endl;
         exit(7);
     }
-
     list.remove(pDel);
 }
 
 /* Delete the whole list and desalocate the Entities. */
 void EntityList::deleteAll() {
     list.clear();
+}
+
+void EntityList::deleteAllButPLayers() {
+    for (int i = 0; i < list.length(); i++) {
+        if (list[i]->getId() != ID::player) {
+        }
+    }
 }
 
 /* Returns a pointer of Entity from the list. */

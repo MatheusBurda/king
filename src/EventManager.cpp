@@ -13,7 +13,9 @@ EventManager* EventManager::getInstance(){
 EventManager::EventManager():
 pGraphicM(NULL),
 pInputM(NULL),
-pWindow(NULL) { }
+pWindow(NULL) {
+    setGraphicManager();
+ }
 
 /* ========================================= */
 
@@ -23,8 +25,8 @@ EventManager::~EventManager() {
     pWindow = NULL;
 }
 
-void EventManager::setGraphicManager(GraphicManager* pGM) {
-    pGraphicM = pGM;
+void EventManager::setGraphicManager() {
+    pGraphicM = GraphicManager::getInstance();
     if (pGraphicM != NULL)
         pWindow = pGraphicM->getWindow();
 }

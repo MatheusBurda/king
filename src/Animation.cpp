@@ -4,8 +4,8 @@
 
 const float Animation::switchTime = 0.2;
 
-Animation::Animation(GraphicManager* pGraphicM) :
-pGraphicM(pGraphicM),
+Animation::Animation() :
+pGraphicM(GraphicManager::getInstance()),
 imageCount(sf::Vector2u(0, 0)),
 texture(NULL),
 currentImage(sf::Vector2u(0, 0)) {

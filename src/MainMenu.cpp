@@ -1,23 +1,24 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(GraphicManager* GM, InputManager* IM) :
-Menu(GM, IM, BACKGROUND_MAIN_MENU) {
+MainMenu::MainMenu(InputManager* IM) :
+Menu(IM, BACKGROUND_MAIN_MENU) {
+    GraphicManager* GM = GraphicManager::getInstance();
     Button* bt = NULL;
 
-    bt = new Button(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2));
+    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
     bt->setMessage("NEW GAME");
     bt->select(true);
     vectorOfButtons.push_back(bt);
 
-    bt = new Button(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2 + 80));
+    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
     bt->setMessage("LOAD GAME");
     vectorOfButtons.push_back(bt);
 
-    bt = new Button(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2 + 160));
+    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 160));
     bt->setMessage("LEADERBOARD");
     vectorOfButtons.push_back(bt);
 
-    bt = new Button(GM, sf::Vector2f(GM->getWindow()->getSize().x / 2.0f, GM->getWindow()->getSize().y / 2 + 240));
+    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 240));
     bt->setMessage("QUIT GAME");
     vectorOfButtons.push_back(bt);
 

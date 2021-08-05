@@ -1,10 +1,9 @@
 #include "Character.h"
 
 #include "Animation.h"
-#include "GraphicManager.h"
 
-Character::Character(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
-Entity(id, GM, pos, hit),
+Character::Character(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
+Entity(id, pos, hit),
 life(lf), damage(dmg) {
     isAttacking = false;
 }
@@ -19,4 +18,3 @@ int Character::attack() {
 void Character::getHurt(int dmg) {
     life -= dmg;
 }
-

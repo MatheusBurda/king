@@ -6,8 +6,8 @@
 
 const float Player::attackTime = 0.8;
 
-Player::Player(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
-Character(ID::player, GM, pos, hit, lf, dmg) {
+Player::Player(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
+Character(ID::player, pos, hit, lf, dmg) {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
     firstAttack = true;
@@ -21,9 +21,9 @@ Player::~Player() {
 /* Updates the position and velocity of player */
 void Player::update(float dt) {
 
-    if (life <= 0) 
+    if (life <= 0)
         setShowing(false);
-    
+
     if (isWalking)
         velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
     else
@@ -86,7 +86,7 @@ void Player::jump() {
 }
 
 /* Update the Animation */
-void Player::updateSprite(float dt) { 
+void Player::updateSprite(float dt) {
     /* Attacking */
     if (canAttack() != 0)
         sprite->Update(canAttack(dt), dt, facingLeft(), position);

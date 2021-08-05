@@ -15,10 +15,10 @@ void InputManager::handleKeyPressed() {
 }
 
 /* Subscribe a Observer to recieve a notification when something happens. */
-void InputManager::registerObserver(Observer* pObserver) {
+void InputManager::Attach(Observer* pObserver) {
     objObserving.push_back(pObserver);
 }
 
-void InputManager::removeObserver(Observer* pObserver) {
+void InputManager::Detach(Observer* pObserver) {
     objObserving.remove(pObserver);
 }

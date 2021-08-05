@@ -10,7 +10,7 @@ class Animation;
 class GraphicManager;
 class Wall : public Entity {
 public:
-    Wall(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, const char* path);
+    Wall(ID::ids id,sf::Vector2f pos, sf::Vector2f hit, const char* path);
     ~Wall();
     void update(float dt);
     void render();

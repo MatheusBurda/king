@@ -15,7 +15,7 @@ private:
     static const float switchTime;
 
 public:
-    Animation(GraphicManager* pGraphicM = NULL);
+    Animation();
     ~Animation();
 
     void initializeTexture(const char* path,sf::Vector2u imageCount);

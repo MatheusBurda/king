@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Ente.h"
+#include "Ent.h"
 #include "GraphicManager.h"
 #include "stdafx.h"
 
-class Background : public Ente {
+class Background : public Ent {
 public:
-    Background(GraphicManager* GM, sf::Vector2f pos, const char* path);
+    Background(sf::Vector2f pos, const char* path);
     Background();
     virtual ~Background();
 

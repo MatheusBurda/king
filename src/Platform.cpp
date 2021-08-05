@@ -3,8 +3,8 @@
 #include "GraphicManager.h"
 #include <string.h>
 
-Platform::Platform(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]) :
-Entity(ID::platform, GM, pos, hit){
+Platform::Platform(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]) :
+Entity(ID::platform, pos, hit) {
     strcpy(path, pt);
     changePosition(pos);
     initializeSprite();
@@ -22,5 +22,5 @@ void Platform::render() {
 }
 
 void Platform::initializeSprite() {
-    sprite->initializeTexture(path,sf::Vector2u(1, 1));
+    sprite->initializeTexture(path, sf::Vector2u(1, 1));
 }

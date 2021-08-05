@@ -11,7 +11,7 @@ protected:
     float totalTimeFromAttack;
 
 public:
-    Enemy(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
+    Enemy(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
     ~Enemy();
     virtual void update(float dt) = 0;
     void render();

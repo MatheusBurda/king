@@ -7,6 +7,6 @@
 
 class PauseMenu : public Menu {
 public:
-    PauseMenu(GraphicManager* GM, InputManager* IM);
+    PauseMenu(InputManager* IM);
     ~PauseMenu();
 };

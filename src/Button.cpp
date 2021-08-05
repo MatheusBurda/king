@@ -4,12 +4,11 @@
 #include <math.h>
 #include <string.h>
 
-Button::Button(GraphicManager* GM, sf::Vector2f pos) :
-Ente(ID::button, GM, pos),
-hover(false),
-pGraphicManager(GM) {
-
+Button::Button(sf::Vector2f pos) :
+Ent(ID::button, pos),
+hover(false) {
     initializeSprite();
+    pGraphicManager = GraphicManager::getInstance();
 }
 
 Button::~Button() {
@@ -33,7 +32,7 @@ void Button::setMessage(const char* m) {
 }
 
 void Button::initializeSprite() {
-    sprite->initializeTexture(BUTTON_PATH,sf::Vector2u(1, 2));
+    sprite->initializeTexture(BUTTON_PATH, sf::Vector2u(1, 2));
 }
 
 void Button::render() {
@@ -44,5 +43,5 @@ void Button::render() {
 
     sprite->render();
 
-    pGraphicManager->getWindow()->draw(text);
+    pGraphicManager->render(&text);
 }

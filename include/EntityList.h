@@ -18,6 +18,7 @@ public:
     void addEntity(Entity* pNew);
     void removeEntity(Entity* pDel);
     void deleteAll();
+    void deleteAllButPLayers();
     const List<Entity>* getList() { return &list; }
     int getSize() { return list.length(); }
     Entity* operator[](int x);

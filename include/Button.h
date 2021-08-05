@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Ente.h"
+#include "Ent.h"
 #include "GraphicManager.h"
 #include "stdafx.h"
 
@@ -8,7 +8,7 @@
 #define FONT_PATH "./assets/Fonts/minecraft-ten.ttf"
 #define TEXT_SIZE 24
 
-class Button : public Ente {
+class Button : public Ent {
 private:
     bool hover;
     GraphicManager* pGraphicManager;
@@ -16,7 +16,7 @@ private:
     sf::Font font;
 
 public:
-    Button(GraphicManager* GM, sf::Vector2f pos);
+    Button(sf::Vector2f pos);
     Button();
     virtual ~Button();
 

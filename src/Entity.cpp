@@ -1,10 +1,9 @@
 #include "Entity.h"
 
 #include "Animation.h"
-#include "GraphicManager.h"
 
-Entity::Entity(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
-Ente(id, GM, pos) {
+Entity::Entity(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
+Ent(id, pos) {
     hitbox = hit;
     velocity = sf::Vector2f(0.0f, 0.0f);
     showing = true;

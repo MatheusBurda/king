@@ -1,13 +1,12 @@
 #include "GraphicManager.h"
 
-
 /* Singleton design pattern - Only one instance will be created */
 
 GraphicManager* GraphicManager::instance = NULL;
 
 /* Returns a pointer to the GraphicManager. */
-GraphicManager* GraphicManager::getInstance(){
-    if(instance == NULL){
+GraphicManager* GraphicManager::getInstance() {
+    if (instance == NULL) {
         instance = new GraphicManager();
     }
     return instance;
@@ -33,6 +32,11 @@ GraphicManager::~GraphicManager() {
 /* Give a pointer to a body and it will be drawn to the screen. */
 void GraphicManager::render(sf::RectangleShape* body) {
     window->draw(*body);
+}
+
+/* Give a pointer to a Text and it will be drawn to the screen */
+void GraphicManager::render(sf::Text* text) {
+    window->draw(*text);
 }
 
 /* Display everything that was drawn. */
@@ -68,7 +72,7 @@ void GraphicManager::handleWindowResize() {
 }
 
 /* Returns the window size. */
-sf::Vector2u GraphicManager::getWindowSize() const{
+sf::Vector2u GraphicManager::getWindowSize() const {
     return window->getSize();
 }
 

@@ -20,6 +20,6 @@ public:
 
     void notify();
     void addPlayer(Player* p);
-    /* Colocar no UML somente setKeys(jump: Key, left: Key...) */
+    /* Colocar no UML somEnt setKeys(jump: Key, left: Key...) */
     void setKeys(sf::Keyboard::Key jump, sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key attack);
 };

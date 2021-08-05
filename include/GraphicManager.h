@@ -21,6 +21,7 @@ public:
     static GraphicManager* getInstance();
 
     void render(sf::RectangleShape* body);
+    void render(sf::Text *text);
     void display();
     void clear();
     sf::RenderWindow* getWindow() const;

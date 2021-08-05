@@ -3,8 +3,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Fireball::Fireball(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
-Entity(id, GM, pos, hit) {
+Fireball::Fireball(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
+Entity(id, pos, hit) {
     setShowing(false);
     initializeSprite();
 }

@@ -4,18 +4,17 @@
 #include "stdafx.h"
 
 class Animation;
-class GraphicManager;
 
-class Ente {
+class Ent {
 protected:
     Animation* sprite;
     ID::ids id;
     sf::Vector2f position;
 
 public:
-    Ente(ID::ids id, GraphicManager* GM, sf::Vector2f pos);
-    Ente();
-    virtual ~Ente();
+    Ent(ID::ids id,sf::Vector2f pos);
+    Ent();
+    virtual ~Ent();
 
     void changePos(const sf::Vector2f pos);
     sf::Vector2f getPos() const;

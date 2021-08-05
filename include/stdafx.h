@@ -32,7 +32,7 @@ using std::string;
 #define JUMP_VELOCITY 3000.f
 #define PLAYER_LIFE 200
 #define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 44
+#define PLAYER_WIDTH 46
 #define PLAYER_HEIGHT 105
 #define PLAYER_JUMP 200
 #define PLAYER_ATTACK 150 //Pixels that the sword hit the enemy
@@ -46,6 +46,7 @@ using std::string;
 #define ENEMY_VELOCITYX 100 
 #define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
 #define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
+
 /* =================================================== */
 /*                     WIZARD                          */
 /* =================================================== */
@@ -54,8 +55,8 @@ using std::string;
 /* =================================================== */
 /*                     ARCHER                          */
 /* =================================================== */
-#define ARCHER_WIDTH 40
-#define ARCHER_HEIGHT 65
+#define ARCHER_WIDTH 50
+#define ARCHER_HEIGHT 105
 
 /* =================================================== */
 /*                        MAP                          */

@@ -5103,7 +5103,7 @@
 											"top": 1089,
 											"width": 298.771484375,
 											"height": 13,
-											"text": "+centerView(): void",
+											"text": "+cEntrView(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -21020,7 +21020,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF6VJH0kYdYX2I="
 									},
-									"name": "centerView",
+									"name": "cEntrView",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
