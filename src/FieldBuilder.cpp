@@ -1,8 +1,8 @@
 #include "FieldBuilder.h"
 
 
-FieldBuilder::FieldBuilder():LevelBuilder(){
-    field = new Level("./assets/Backgrounds/montanha.png");
+FieldBuilder::FieldBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
+    Level(path, EL, p1, p2, CM, levelSize){
     buildMap();
 }
 
@@ -26,25 +26,21 @@ void FieldBuilder:: buildMap() {
                 if (i || j)
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field, PLATFORM_PATH_DIRT);
-                }
-                if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field, PLATFORM_PATH_COBBLE);
-                }
-                if (level[i][j] == 'k' && !field->getP1()) {
-                    buildPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field);
-                }
-                if (level[i][j] == 'z') {
-                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field);
-                }
-                if (level[i][j] == 'L') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field, WALL_PATH_DIRT, false);
-                }
-                if (level[i][j] == 'R') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field, WALL_PATH_DIRT, true);
-                }
-                if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), field);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), PLATFORM_PATH_DIRT);
+                }else if (level[i][j] == 'c') {
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT),PLATFORM_PATH_COBBLE);
+                }else if (level[i][j] == 'k' && !existsP1) {
+                    setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                }else if (level[i][j] == 'z') {
+                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                }else if (level[i][j] == 'L') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), WALL_PATH_DIRT, false);
+                }else if (level[i][j] == 'R') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT),  WALL_PATH_DIRT, true);
+                }else if (level[i][j] == 'a') {
+                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                }else if (level[i][j] == 'q' && !existsP2) {
+                    setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
                 }
             }
         }

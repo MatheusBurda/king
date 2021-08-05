@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BossBuilder.h"
+
 #include "CastleBuilder.h"
 #include "EventManager.h"
 #include "FieldBuilder.h"
@@ -9,6 +9,7 @@
 #include "MainMenu.h"
 #include "MenuControl.h"
 #include "PauseMenu.h"
+#include "EntityList.h"
 
 class Game {
 private:
@@ -19,6 +20,8 @@ private:
     Level* pLevel;
     Player* player1;
     Player* player2;
+    EntityList* pEntityL;
+    CollisionManager* pColisM;
     int state;
     int currentLevel;
 

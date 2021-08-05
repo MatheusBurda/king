@@ -19,28 +19,35 @@
 class Level {
 protected:
     GraphicManager* graphicM;
-    EntityList _list;
+    EntityList *_list;
     Player *player1, *player2;
-    CollisionManager colis;
+    CollisionManager *colis;
     sf::Vector2u levelMapSize;
     Background back;
-    EventManager* pEventManager;
+    EventManager *pEventManager;
     sf::Clock time;
     float dt;
     bool levelRunning;
-
+    bool existsP1, existsP2;
 public:
-    Level(const char* path, sf::Vector2u levelSize = sf::Vector2u(0, 0));
+    Level(const char* path, EntityList* EL, Player* p1, Player*p2,CollisionManager* CM, sf::Vector2u levelSize);
     ~Level();
     void exec();
 
     GraphicManager* getGM() { return graphicM; }
-    EntityList* getList() { return &_list; }
+    EntityList* getList() { return _list; }
     Player* getP1() { return player1; }
     Player* getP2() { return player2; }
     void setP1(Player* p1) { player1 = p1; }
     void setP2(Player* p2) { player2 = p2; }
-    CollisionManager getCols() { return colis; }
+    CollisionManager* getCols() { return colis; }
     void renderAll();
     bool isLevelRunning() const { return levelRunning; }
+    void buildPlatform(sf::Vector2f pos, const char path[100]);
+    void setPlayer1(sf::Vector2f pos);
+    void buildWizard(sf::Vector2f pos);
+    void buildArcher(sf::Vector2f pos);
+    void buildWall(sf::Vector2f pos, const char* path, bool faceLeft);
+    void setPlayer2(sf::Vector2f pos);
+    virtual void buildMap() = 0;
 };

@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "LevelBuilder.h"
 class CastleBuilder :public LevelBuilder
 {
@@ -9,4 +9,4 @@ public:
 	void buildMap();
 	Level* getCastle() { return castle; }
 };
-
+*/

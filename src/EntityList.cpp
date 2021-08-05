@@ -53,7 +53,8 @@ void EntityList::deleteAll() {
 
 void EntityList::deleteAllButPLayers() {
     for (int i = 0; i < list.length(); i++) {
-        if (list[i]->getId() != ID::player) {
+        if ((list[i]!= NULL) && (list[i]->getId() != ID::player)) {
+            list.remove(list[i]);
         }
     }
 }

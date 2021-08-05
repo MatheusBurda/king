@@ -25,9 +25,10 @@ void Wizard::update(float dt) {
         setIsAttacking(true);
     }
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    if (life <= 0)
+    if (life <= 0) {
         setShowing(false);
-
+        fireball->setShowing(false);
+    }
     sprite->Update(2, dt, facingLeft(), position);
     totalTimeFromAttack += dt;
     attack();

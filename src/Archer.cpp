@@ -19,9 +19,10 @@ void Archer::initializeSprite() {
 }
 
 void Archer::update(float dt) {
-    if (life <= 0)
+    if (life <= 0) {
         setShowing(false);
-
+        arrow->setShowing(false);
+    }
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
     if (!arrow->getShowing() && getShowing()) {
         setIsAttacking(true);

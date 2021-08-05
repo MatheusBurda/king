@@ -1,4 +1,4 @@
-#include "CastleBuilder.h"
+/*#include "CastleBuilder.h"
 CastleBuilder::CastleBuilder() :LevelBuilder() {
     castle = new Level("./assets/Backgrounds/bck1.png");
     buildMap();
@@ -45,4 +45,4 @@ void CastleBuilder::buildMap() {
         }
     }
     file.close();
-}
+}*/

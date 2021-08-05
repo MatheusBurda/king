@@ -1,15 +1,12 @@
 #pragma once
 
 #include "Level.h"
-#include "LevelBuilder.h"
 
-class FieldBuilder : public LevelBuilder {
-private:
-    Level* field;
 
+class FieldBuilder : public Level {
 public:
-    FieldBuilder();
+    FieldBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize);
     ~FieldBuilder();
     void buildMap();
-    Level* getField() { return field; }
+    Level* getField() { return this; }
 };

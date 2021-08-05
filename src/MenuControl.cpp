@@ -24,7 +24,7 @@ void MenuControl::notify() {
         pMenu->selectUp();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         pMenu->exec();
-    /* if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         pMenu->selectDown(); */
 }
 

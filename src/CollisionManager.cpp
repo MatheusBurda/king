@@ -1,8 +1,8 @@
 #include "CollisionManager.h"
 #include "Player.h"
 
-CollisionManager::CollisionManager(EntityList* pList) {
-    list = pList;
+CollisionManager::CollisionManager(EntityList* pList) : list(pList){
+
 }
 
 CollisionManager::~CollisionManager() {
