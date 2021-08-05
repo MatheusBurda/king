@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Character.h"
+#include "PlayerControl.h"
 
 class Animation;
-class GraphicManager;
 
 #define PLAYER_PATH "./assets/King/KingSpritesheet2.png"
 
@@ -14,10 +14,14 @@ private:
     float totalTimeFromAttack;
     static const float attackTime;
     bool isWalking;
+    const bool player1;
+    const sf::String nickname;
+    PlayerControl pc;
 
 public:
-    Player(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg);
+    Player(const bool isPlayer1 = true, const sf::String nickname = "");
     ~Player();
+
     void update(float dt);
     void render();
     void setJump(const bool val = true) { canJump = val; }
@@ -27,4 +31,5 @@ public:
     void jump();
     void setIsWalking(const bool val) { isWalking = val; }
     void updateSprite(float dt);
+    const bool isPlayer1() const { return player1; }
 };

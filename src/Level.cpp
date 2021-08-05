@@ -1,13 +1,24 @@
 #include "Level.h"
 
-void Level::exec() {
-    pc.addPlayer(player1);
-    sf::Clock time;
-    float dt;
+Level::Level(const char* path, sf::Vector2u levelSize) :
+graphicM(GraphicManager::getInstance()),
+_list(),
+player1(NULL),
+player2(NULL),
+colis(&_list),
+levelMapSize(levelSize),
+back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
+    pEventManager = EventManager::getInstance();
     time.restart();
-    while (graphicM->isWindowOpen() && player1->getShowing()) { //&& player2->getShowing()) {
-        /* Poll all events */
-        pEventManager->pollEvents();
+    levelRunning = true;
+}
+
+Level::~Level() {
+    _list.deleteAll();
+}
+
+void Level::exec() {
+    if (player1->getShowing()) {
         /* Get the elapsed time from last loop */
         dt = time.getElapsedTime().asSeconds();
         time.restart();
@@ -15,32 +26,13 @@ void Level::exec() {
         _list.updateAll(dt);
         /* Collide all entities */
         colis.toCollide();
-        /* Run all graphic events */
-        renderAll();
     }
+    else
+        levelRunning = false;
 }
 
-Level::Level(const char* path, sf::Vector2u levelSize) :
-graphicM(GraphicManager::getInstance()),
-_list(),
-player1(NULL),
-player2(NULL),
-colis(&_list),
-im(),
-pc(&im),
-levelMapSize(levelSize),
-back(sf::Vector2f(float(graphicM->getWindowSize().x/2), float(graphicM->getWindowSize().y/2)), path) {
-    pEventManager = EventManager::getInstance();
-    pEventManager->setInputManager(&im);
-}
-
-Level::~Level() {
-    _list.deleteAll();
-}
-
+/* Run all graphic events */
 void Level::renderAll() {
-    graphicM->clear();
-
     sf::Vector2f viewPosition;
     if (player2 == NULL) {
         viewPosition = player1->getPosition();
@@ -56,6 +48,4 @@ void Level::renderAll() {
     for (int i = 0; i < _list.getSize(); i++) {
         _list[i]->render();
     }
-
-    graphicM->display();
 }

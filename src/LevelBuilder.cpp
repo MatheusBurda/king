@@ -6,7 +6,8 @@ void LevelBuilder::buildPlatform(sf::Vector2f pos, Level* lvl, const char path[1
 }
 
 void LevelBuilder::buildPlayer1(sf::Vector2f pos, Level* lvl) {
-    Player* pl = new Player(ID::player, pos, sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE);
+    Player* pl = new Player(true,"Burjhonson");
+    pl->changePosition(pos);
     lvl->getList()->addEntity(pl);
     lvl->setP1(pl);
 }

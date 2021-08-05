@@ -17,12 +17,15 @@ protected:
     MenuControl control;
     Background back;
 
+    int* pState;
+
 public:
     Menu(InputManager* IM, const char* backPath);
     virtual ~Menu();
 
     virtual void render();
-    virtual int exec();
-    virtual void selectDown();
-    virtual void selectUp();
+    void exec();
+    void selectDown();
+    void selectUp();
+    void setPState(int* p);float dt;
 };

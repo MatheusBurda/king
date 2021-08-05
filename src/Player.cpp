@@ -1,13 +1,16 @@
 #include "Player.h"
 
 #include "Animation.h"
-#include "GraphicManager.h"
+#include "EventManager.h"
 #include <math.h>
 
 const float Player::attackTime = 0.8;
 
-Player::Player(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
-Character(ID::player, pos, hit, lf, dmg) {
+Player::Player(const bool isPlayer1, const sf::String nickname) :
+Character(ID::player, sf::Vector2f(0,0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
+player1(isPlayer1),
+nickname(nickname),
+pc(EventManager::getInstance()->getInputManager(), this) {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
     firstAttack = true;
