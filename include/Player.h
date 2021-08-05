@@ -26,4 +26,5 @@ public:
     void walk(bool left);
     void jump();
     void setIsWalking(const bool val) { isWalking = val; }
+    void updateSprite(float dt);
 };

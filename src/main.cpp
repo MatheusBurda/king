@@ -1,7 +1,7 @@
+#include "BossBuilder.h"
+#include "CastleBuilder.h"
 #include "EventManager.h"
 #include "FieldBuilder.h"
-#include "CastleBuilder.h"
-#include "BossBuilder.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
 #include "MainMenu.h"
@@ -24,7 +24,7 @@ int main() {
         /* CastleBuilder cb;
         Level* castle = cb.getCastle();
         castle->exec();
-        delete(castle); */ 
+        delete(castle); */
         /* BossBuilder bb;
         Level* boss = bb.getBoss();
         boss->exec();
@@ -33,21 +33,23 @@ int main() {
     }
 
     /* EventManager* EM = EventManager::getInstance();
-    GraphicManager GM;
+    GraphicManager* GM = GraphicManager::getInstance();
     InputManager IM;
-    MainMenu main(&GM, &IM);
+    MainMenu main(GM, &IM);
 
-    EM->setGraphicManager(&GM);
+    EM->setGraphicManager(GM);
     EM->setInputManager(&IM);
 
-    while (GM.isWindowOpen()) {
+    cout << "Menu rodando" << endl;
+
+    while (GM->isWindowOpen()) {
         if (state == 2)
-            GM.closeWindow();
+            GM->closeWindow();
         else {
             EM->pollEvents();
-            GM.clear();
+            GM->clear();
             main.render();
-            GM.display();
+            GM->display();
         }
     } */
     return 0;

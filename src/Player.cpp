@@ -18,15 +18,14 @@ Character(ID::player, GM, pos, hit, lf, dmg) {
 Player::~Player() {
 }
 
+/* Updates the position and velocity of player */
 void Player::update(float dt) {
 
-    if (life <= 0) {
+    if (life <= 0) 
         setShowing(false);
-    }
+    
     if (isWalking)
-
         velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
-
     else
         velocity = Vector2f(velocity.x * 0.01f, velocity.y + GRAVITY * dt);
 
@@ -34,33 +33,21 @@ void Player::update(float dt) {
         velocity = Vector2f(velocity.x, 700);
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-    
-    
-    /* Attacking */
-    if (canAttack() != 0) 
-        sprite->Update(canAttack(dt), dt, facingLeft(), position);
-    /* Falling */
-    else if (velocity.y > 150)
-        sprite->Update(3, dt, facingLeft(), position);
-    /* Jumping */
-    else if (velocity.y < -100 && !canJump)
-        sprite->Update(2, dt, facingLeft(), position);
-    /* Walking */
-    else if (abs(velocity.x) > 0.001)
-        sprite->Update(1, dt, facingLeft(), position);
-    /* Idle */
-    else
-        sprite->Update(0, dt, facingLeft(), position);
+
+    updateSprite(dt);
 }
 
+/* Render body to the screen */
 void Player::render() {
     sprite->render();
 }
 
+/* Initialize the texture on the Animation */
 void Player::initializeSprite() {
     sprite->initializeTexture(PLAYER_PATH, sf::Vector2u(4, 6));
 }
 
+/* Returns a row of the spritesheet of the character if can attack. */
 int Player::canAttack(float dt) {
     if (isAttacking) {
         totalTimeFromAttack += dt;
@@ -90,9 +77,29 @@ void Player::walk(bool left) {
     setFacingLeft(left);
 }
 
+/* Makes player jump */
 void Player::jump() {
     if (canJump) {
         velocity = Vector2f(velocity.x, -sqrtf(2.0f * GRAVITY * PLAYER_JUMP));
         canJump = false;
     }
+}
+
+/* Update the Animation */
+void Player::updateSprite(float dt) { 
+    /* Attacking */
+    if (canAttack() != 0)
+        sprite->Update(canAttack(dt), dt, facingLeft(), position);
+    /* Falling */
+    else if (velocity.y > 150)
+        sprite->Update(3, dt, facingLeft(), position);
+    /* Jumping */
+    else if (velocity.y < -100 && !canJump)
+        sprite->Update(2, dt, facingLeft(), position);
+    /* Walking */
+    else if (abs(velocity.x) > 0.001)
+        sprite->Update(1, dt, facingLeft(), position);
+    /* Idle */
+    else
+        sprite->Update(0, dt, facingLeft(), position);
 }

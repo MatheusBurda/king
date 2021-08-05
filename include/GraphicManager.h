@@ -10,32 +10,24 @@ private:
     sf::RenderWindow* window;
     sf::View view;
     std::map<const char*, sf::Texture*> texturesMap;
-    sf::Texture* backgroundTexture;
-    sf::RectangleShape backgroundBody;
-    EntityList* pEntityList;
-    Player* player1;
-    Player* player2;
+
+    /* Singleton class */
+    static GraphicManager* instance;
+    GraphicManager();
 
 public:
-    GraphicManager();
     ~GraphicManager();
 
-    void exec();
+    static GraphicManager* getInstance();
+
+    void render(sf::RectangleShape* body);
     void display();
     void clear();
-    void centerView();
+    sf::RenderWindow* getWindow() const;
+    bool isWindowOpen() const;
     void closeWindow();
     void handleWindowResize();
-    void renderAll();
-    void render(sf::RectangleShape* body);
-
-    void setEntityList(EntityList* pList);
-    sf::RenderWindow* getWindow() const;
-
-    bool isWindowOpen() const;
+    sf::Vector2u getWindowSize() const;
+    void centerView(sf::Vector2f pos);
     sf::Texture* loadTexture(const char* path);
-
-    void setPlayers(Player* player1, Player* player2 = NULL);
-    void setBackground(const char* path);
-    void updateBackground();
 };

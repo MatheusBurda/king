@@ -9,7 +9,6 @@ void LevelBuilder::buildPlayer1(sf::Vector2f pos, Level* lvl) {
     Player* pl = new Player(ID::player, (lvl->getGM()), pos, sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE);
     lvl->getList()->addEntity(pl);
     lvl->setP1(pl);
-    lvl->getGM()->setPlayers(pl);
 }
 
 void LevelBuilder::buildWizard(sf::Vector2f pos, Level* lvl) {
