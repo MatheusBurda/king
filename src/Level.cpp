@@ -86,3 +86,11 @@ void Level::buildWall(sf::Vector2f pos, const char* path, bool faceLeft) {
     wall->setFacingLeft(faceLeft);
     this->getList()->addEntity(wall);
 }
+void Level::buildLava(sf::Vector2f pos) {
+    Lava* lava = new Lava(ID::lava, pos, sf::Vector2f(LAVA_WIDTH, LAVA_HEIGHT));
+    this->getList()->addEntity(lava);
+}
+void Level::buildWeb(sf::Vector2f pos) {
+    SpiderWeb* web = new SpiderWeb(ID::spiderweb, pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT));
+    this->getList()->addEntity(web);
+}

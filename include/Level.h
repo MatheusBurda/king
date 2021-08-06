@@ -15,6 +15,8 @@
 #include "Wall.h"
 #include "Wizard.h"
 #include "stdafx.h"
+#include"Lava.h"
+#include "SpiderWeb.h"
 
 class Level {
 protected:
@@ -48,6 +50,8 @@ public:
     void buildWizard(sf::Vector2f pos);
     void buildArcher(sf::Vector2f pos);
     void buildWall(sf::Vector2f pos, const char* path, bool faceLeft);
+    void buildLava(sf::Vector2f pos);
+    void buildWeb(sf::Vector2f pos);
     void setPlayer2(sf::Vector2f pos);
     virtual void buildMap() = 0;
 };

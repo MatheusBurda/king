@@ -128,13 +128,16 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
         break;
     case ID::fireball:
             attackEnemy(ent2, ent1);
+            break;
     case ID::arrow:
             attackEnemy(ent2, ent1);
+            break;
     case ID::spiderweb:
-        ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x / 2, ent1->getVelocity().y / 2));
+       ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x / 2, ent1->getVelocity().y / 2));
+       break;
     case ID::lava:
         (static_cast<Character*>(ent1))->getHurt(LAVA_DAMAGE);
-
+        break;
     default:
         break;
     }
@@ -286,6 +289,7 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
                 }
             }
         }
+        break;
     case ID::player2:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
@@ -301,7 +305,7 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
                 }
             }
         }
-
+        break;
     case ID::wizard:
         if (intersectX > intersectY) {
             moveX(ent1, ent2, intersectX);
@@ -343,8 +347,10 @@ void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, flo
         break;
     case ID::fireball:
         ent2->setShowing(false);
+        break;
     case ID::arrow:
         ent2->setShowing(false);
+        break;
     default:
         break;
     }
