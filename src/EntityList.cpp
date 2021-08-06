@@ -37,7 +37,7 @@ void EntityList::addEntity(Entity* pNew) {
     list.append(pNew);
 }
 
-/* Remove a specific Entity given by a pointer to Entity. */
+/* Remove a specific Entity given by a pointer to Entity. Doesnt delete.*/
 void EntityList::removeEntity(Entity* pDel) {
     if (pDel == NULL) {
         cout << "Pointer to Entity is NULL on removeEntity." << endl;
@@ -53,7 +53,7 @@ void EntityList::deleteAll() {
 
 void EntityList::deleteAllButPLayers() {
     for (int i = 0; i < list.length(); i++) {
-        if ((list[i]!= NULL) && (list[i]->getId() != ID::player)) {
+        if ((list[i]->getId() != ID::player)) {
             list.remove(list[i]);
         }
     }

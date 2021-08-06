@@ -7,7 +7,10 @@ FieldBuilder::FieldBuilder(const char* path, EntityList* EL, Player* p1, Player*
 }
 
 FieldBuilder::~FieldBuilder() {
-    _list->deleteAllButPLayers();
+    for (int i = 0; i < _list->getSize(); i++)
+        (*_list)[i]->save();
+    _list->removeEntity(player1);
+    _list->deleteAll();
 }
 
 void FieldBuilder:: buildMap() {

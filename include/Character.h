@@ -24,4 +24,5 @@ public:
 
     void setIsAttacking(const bool val = false) { isAttacking = val; }
     bool getIsAttacking() const  { return isAttacking; }
+    virtual void save() = 0;
 };

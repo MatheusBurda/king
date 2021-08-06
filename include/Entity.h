@@ -19,6 +19,7 @@ protected:
     sf::Vector2f hitbox;
 
 public:
+
     Entity(ID::ids id, sf::Vector2f pos, sf::Vector2f hit);
     Entity();
     virtual ~Entity();
@@ -43,4 +44,5 @@ public:
 
     void setFacingLeft(bool facingLeft) { faceLeft = facingLeft; }
     bool facingLeft() const { return faceLeft; }
+    virtual void save()=0;
 };

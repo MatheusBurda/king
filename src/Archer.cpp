@@ -52,3 +52,13 @@ void Archer::attack() {
         setIsAttacking(false);
     }
 }
+void Archer::save() {
+    ofstream file;
+    file.open("./assets/Saves/Archer.txt", ios::app);
+    if (!file) {
+        cout << "ERROR TO OPEN FILE" << endl;
+        abort();
+    }
+    file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << endl;
+    file.close();
+}

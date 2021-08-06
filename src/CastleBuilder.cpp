@@ -38,7 +38,7 @@ void CastleBuilder::buildMap() {
                     buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
                 else if (level[i][j] == 'L') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
                 }
                 else if (level[i][j] == 'R') {
                     buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
@@ -48,6 +48,12 @@ void CastleBuilder::buildMap() {
                 }
                 else if (level[i][j] == 'q' && !existsP2) {
                     setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
+                }
+                else if (level[i][j] == 'v') {
+                    buildLava(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
+                }
+                else if (level[i][j] == 'w') {
+                    buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
             }
         }

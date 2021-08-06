@@ -13,7 +13,7 @@ Game::Game() {
     player1 = new Player(true, "Kiwi");
     player2 = NULL;
     pEntityL = new EntityList();
-    pEntityL->addEntity(player1);
+   // pEntityL->addEntity(player1);
     pColisM = new CollisionManager(pEntityL);
 
 
@@ -29,6 +29,8 @@ Game::~Game() {
     if (pLevel != NULL) {
         delete (pLevel);
     }
+    if (player1)
+        delete(player1);
     delete (objMainMenu);
     delete (pInputM);
     delete(pColisM);
@@ -72,19 +74,19 @@ void Game::exec() {
 
 void Game::startNewLevel() {
     player1->reset();
+    pEntityL->addEntity(player1);
     if (pLevel != NULL) {
         delete (pLevel);
-        //currentLevel++;
+        currentLevel++;
     }
     if (currentLevel == 1) {
-        pEntityL->addEntity(player1);
         FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0,0));
         pLevel = static_cast<Level*>(fb);
-   }/* else if (currentLevel == 2) {
+   }else if (currentLevel == 2) {
         pEntityL->addEntity(player1);
         CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(cb);
-    }*/
+    }
     else {
         cerr << "GAME - Couldnt create a new LEVEL" << endl;
         exit(35);

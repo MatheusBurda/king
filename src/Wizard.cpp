@@ -47,3 +47,13 @@ void Wizard::attack() {
         totalTimeFromAttack = 0;
     }
 }
+void Wizard::save() {
+    ofstream file;
+    file.open("./assets/Saves/Wizard.txt", ios::app);
+    if (!file) {
+        cout << "ERROR TO OPEN FILE" << endl;
+        abort();
+    }
+    file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << endl;
+    file.close();
+}

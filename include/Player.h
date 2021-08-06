@@ -33,4 +33,5 @@ public:
     void updateSprite(float dt);
     const bool isPlayer1() const { return player1; }
     void reset();
+    void save();
 };

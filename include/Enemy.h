@@ -17,5 +17,5 @@ public:
     void render();
     virtual void attack() = 0;
     virtual void initializeSprite() = 0;
-
+    virtual void save() = 0;
 };

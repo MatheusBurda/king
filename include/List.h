@@ -79,6 +79,7 @@ void List<TL>::clear() {
     paux2 = paux1;
 
     while (paux1 != NULL) {
+        delete (paux1->getInfo());
         paux2 = paux1->getNext();
         delete (paux1);
         paux1 = paux2;
@@ -154,7 +155,7 @@ bool List<TL>::remove(TL* pTL) {
             else
                 pPrev->setNext(pAux->getNext());
 
-            delete (pTL);
+            //delete (pTL);
             delete (pAux);
             size--;
             return true;

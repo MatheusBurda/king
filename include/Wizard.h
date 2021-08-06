@@ -15,5 +15,6 @@ public:
     void initializeSprite();
     void update(float dt);
     void attack();
+    void save();
 };
 

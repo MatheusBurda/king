@@ -115,3 +115,14 @@ void Player:: reset() {
     setShowing(true);
     setVelocity(sf::Vector2f(0.0f, 0.0f));
 }
+//function to save the player in a txt
+void Player::save() {
+    ofstream file;
+    file.open("./assets/Saves/Player1.txt");
+    if (!file) {
+        cout << "ERROR TO OPEN FILE" << endl;
+        abort();
+    }
+    file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << ' '<< nickname.getData()<<' ';
+    file.close();
+}

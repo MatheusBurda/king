@@ -17,7 +17,8 @@ back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWin
 }
 
 Level::~Level() {
-    _list->deleteAllButPLayers();
+    _list->removeEntity(player1);
+    _list->deleteAll();
 }
 
 void Level::exec() {
