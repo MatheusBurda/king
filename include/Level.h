@@ -33,7 +33,7 @@ protected:
     bool existsP1, existsP2;
 public:
     Level(const char* path, EntityList* EL, Player* p1, Player*p2,CollisionManager* CM, sf::Vector2u levelSize);
-    ~Level();
+    virtual ~Level();
     void exec();
 
     GraphicManager* getGM() { return graphicM; }

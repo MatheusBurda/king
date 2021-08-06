@@ -7,7 +7,7 @@ FieldBuilder::FieldBuilder(const char* path, EntityList* EL, Player* p1, Player*
 }
 
 FieldBuilder::~FieldBuilder() {
-
+    _list->deleteAllButPLayers();
 }
 
 void FieldBuilder:: buildMap() {

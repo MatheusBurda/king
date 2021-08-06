@@ -30,7 +30,7 @@ using std::string;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 500
+#define PLAYER_LIFE 200
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 46
 #define PLAYER_HEIGHT 105

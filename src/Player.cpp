@@ -113,4 +113,5 @@ void Player:: reset() {
     canJump = true;
     life = PLAYER_LIFE;
     setShowing(true);
+    setVelocity(sf::Vector2f(0.0f, 0.0f));
 }
