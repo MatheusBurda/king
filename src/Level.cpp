@@ -17,8 +17,7 @@ back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWin
 }
 
 Level::~Level() {
-    _list->deleteAllButPLayers();
-
+    _list->deleteAll();
 }
 
 void Level::exec() {
@@ -61,12 +60,10 @@ void Level::buildPlatform(sf::Vector2f pos, const char path[100]) {
 
 void Level::setPlayer1(sf::Vector2f pos) {
     player1->changePosition(pos);
-    this->getList()->addEntity(player1);
     existsP1 = true;
 }
 void Level::setPlayer2(sf::Vector2f pos) {
     player2->changePosition(pos);
-    this->getList()->addEntity(player2);
     existsP2 = true;
 }
 
@@ -85,7 +82,7 @@ void Level::buildArcher(sf::Vector2f pos) {
 }
 
 void Level::buildWall(sf::Vector2f pos, const char* path, bool faceLeft) {
-    Wall* wall = new Wall(ID::wall, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT), path);
+    Wall* wall = new Wall(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT), path);
     wall->setFacingLeft(faceLeft);
     this->getList()->addEntity(wall);
 }

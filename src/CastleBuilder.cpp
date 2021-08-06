@@ -1,6 +1,8 @@
-/*#include "CastleBuilder.h"
-CastleBuilder::CastleBuilder() :LevelBuilder() {
-    castle = new Level("./assets/Backgrounds/bck1.png");
+#include "CastleBuilder.h"
+
+
+CastleBuilder::CastleBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
+    Level(path, EL, p1, p2, CM, levelSize) {
     buildMap();
 }
 
@@ -9,10 +11,10 @@ CastleBuilder::~CastleBuilder() {
 }
 
 void CastleBuilder::buildMap() {
-    int y = 15, x = 60;
-    char level[15][60];
+    int y = 40, x = 120;
+    char level[40][120];
     std::ifstream file("./assets/Levels/Castle.txt");
-    if (!file) {
+    if (!file) {   
         cout << "Cant Open" << endl;
         return;
     }
@@ -24,25 +26,31 @@ void CastleBuilder::buildMap() {
                 if (i || j)
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, PLATFORM_PATH_BRICK);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_DIRT);
                 }
-                if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, PLATFORM_PATH_COBBLE);
+                else if (level[i][j] == 'c') {
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_COBBLE);
                 }
-                if (level[i][j] == 'k' && !castle->getP1()) {
-                    buildPlayer1(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
+                else if (level[i][j] == 'k' && !existsP1) {
+                    setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
-                if (level[i][j] == 'z') {
-                    buildWizard(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
+                else if (level[i][j] == 'z') {
+                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
-                if (level[i][j] == 'w') {
-                    buildWall(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle, WALL_PATH_BRICK, true);
+                else if (level[i][j] == 'L') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
                 }
-                if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * PLAYER_WIDTH, i * PLATFORM_HEIGHT), castle);
+                else if (level[i][j] == 'R') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
+                }
+                else if (level[i][j] == 'a') {
+                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
+                }
+                else if (level[i][j] == 'q' && !existsP2) {
+                    setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
             }
         }
     }
     file.close();
-}*/
+}

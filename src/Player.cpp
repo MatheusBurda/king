@@ -106,3 +106,11 @@ void Player::updateSprite(float dt) {
     else
         sprite->Update(0, dt, facingLeft(), position);
 }
+void Player:: reset() {
+    isWalking = false;
+    totalTimeFromAttack = 0.0f;
+    firstAttack = true;
+    canJump = true;
+    life = PLAYER_LIFE;
+    setShowing(true);
+}

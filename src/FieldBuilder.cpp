@@ -26,21 +26,21 @@ void FieldBuilder:: buildMap() {
                 if (i || j)
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), PLATFORM_PATH_DIRT);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_DIRT);
                 }else if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT),PLATFORM_PATH_COBBLE);
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT),PLATFORM_PATH_COBBLE);
                 }else if (level[i][j] == 'k' && !existsP1) {
-                    setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                    setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }else if (level[i][j] == 'z') {
-                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                    buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }else if (level[i][j] == 'L') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT), WALL_PATH_DIRT, false);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
                 }else if (level[i][j] == 'R') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT),  WALL_PATH_DIRT, true);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT),  WALL_PATH_DIRT, true);
                 }else if (level[i][j] == 'a') {
-                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                    buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }else if (level[i][j] == 'q' && !existsP2) {
-                    setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * PLATFORM_HEIGHT));
+                    setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 }
             }
         }

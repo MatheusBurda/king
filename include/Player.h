@@ -32,4 +32,5 @@ public:
     void setIsWalking(const bool val) { isWalking = val; }
     void updateSprite(float dt);
     const bool isPlayer1() const { return player1; }
+    void reset();
 };

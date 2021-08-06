@@ -2,6 +2,6 @@
 
 int main() {
     Game king;
-    getchar();
+
     return 0;
 }

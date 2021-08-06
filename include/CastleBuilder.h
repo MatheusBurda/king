@@ -1,12 +1,11 @@
-/*#pragma once
-#include "LevelBuilder.h"
-class CastleBuilder :public LevelBuilder
-{
-	Level* castle;
+#pragma once
+#include "Level.h"
+
+
+class CastleBuilder : public Level {
 public:
-	CastleBuilder();
-	~CastleBuilder();
-	void buildMap();
-	Level* getCastle() { return castle; }
+    CastleBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize);
+    ~CastleBuilder();
+    void buildMap();
+
 };
-*/
