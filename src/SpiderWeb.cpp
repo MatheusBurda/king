@@ -17,13 +17,3 @@ void SpiderWeb::update(float dt) {
 void SpiderWeb::render() {
     sprite->render();
 }
-void SpiderWeb::save() {
-    ofstream file;
-    file.open("./assets/Saves/SpiderWeb.txt", ios::app);
-    if (!file) {
-        cout << "ERROR TO OPEN FILE" << endl;
-        abort();
-    }
-    file << getPosition().x << ' ' << getPosition().y << endl;
-    file.close();
-}

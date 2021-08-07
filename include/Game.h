@@ -10,6 +10,7 @@
 #include "MenuControl.h"
 #include "PauseMenu.h"
 #include "EntityList.h"
+#include "LoadBuilder.h"
 
 class Game {
 private:
@@ -30,4 +31,5 @@ public:
     ~Game();
     void exec();
     void startNewLevel();
+    void save();
 };

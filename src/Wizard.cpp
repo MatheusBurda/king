@@ -24,6 +24,8 @@ void Wizard::update(float dt) {
     if (!fireball->getShowing() && getShowing()) { //&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
         setIsAttacking(true);
     }
+    if (velocity.y > 700)
+        velocity = Vector2f(velocity.x, 700);
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     if (life <= 0) {
         setShowing(false);
@@ -48,12 +50,14 @@ void Wizard::attack() {
     }
 }
 void Wizard::save() {
-    ofstream file;
-    file.open("./assets/Saves/Wizard.txt", ios::app);
-    if (!file) {
-        cout << "ERROR TO OPEN FILE" << endl;
-        abort();
+    if (getShowing()) {
+        ofstream file;
+        file.open("./assets/Saves/Wizard.txt", ios::app);
+        if (!file) {
+            cout << "ERROR TO OPEN FILE" << endl;
+            abort();
+        }
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << facingLeft() << endl;
+        file.close();
     }
-    file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << endl;
-    file.close();
 }

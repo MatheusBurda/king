@@ -2,8 +2,10 @@
 #include "Enemy.h"
 #include "Arrow.h"
 #define ARCHER_PATH "./assets/Archer/ArcherSpritesheet.png"
+
 class Animation;
 class GraphicManager;
+
 class Archer :public Enemy
 {
 private:

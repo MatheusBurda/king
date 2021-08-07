@@ -24,5 +24,7 @@ public:
 
     void setIsAttacking(const bool val = false) { isAttacking = val; }
     bool getIsAttacking() const  { return isAttacking; }
+
+    //function used to save the Character attributes in a txt
     virtual void save() = 0;
 };

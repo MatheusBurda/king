@@ -3,8 +3,7 @@
 #define WIZARD_PATH "./assets/EvilWizard/EvilWizard.png"
 class Animation;
 class GraphicManager;
-class Wizard :
-    public Enemy
+class Wizard :public Enemy
 {
 private:
     Fireball* fireball;

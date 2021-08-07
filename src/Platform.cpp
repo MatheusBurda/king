@@ -24,13 +24,3 @@ void Platform::render() {
 void Platform::initializeSprite() {
     sprite->initializeTexture(path, sf::Vector2u(1, 1));
 }
-void Platform::save() {
-    ofstream file;
-    file.open("./assets/Saves/Platform.txt", ios::app);
-    if (!file) {
-        cout << "ERROR TO OPEN FILE" << endl;
-        abort();
-    }
-    file << getPosition().x << ' ' << getPosition().y << endl;
-    file.close();
-}

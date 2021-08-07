@@ -4,6 +4,7 @@
 #include "stdafx.h"
 
 class CollisionManager {
+
 private:
     EntityList* list;
 

@@ -1,12 +1,13 @@
 #include "Level.h"
 
-Level::Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize):
-graphicM(GraphicManager::getInstance()),
-_list(EL),
-player1(p1),
-player2(p2),
-levelMapSize(levelSize),
-back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
+Level::Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
+    graphicM(GraphicManager::getInstance()),
+    _list(EL),
+    player1(p1),
+    player2(p2),
+    levelMapSize(levelSize),
+    numlvl(-1),
+    back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
     colis = CM;
     colis->setList(_list);
     pEventManager = EventManager::getInstance();
@@ -94,4 +95,25 @@ void Level::buildLava(sf::Vector2f pos) {
 void Level::buildWeb(sf::Vector2f pos) {
     SpiderWeb* web = new SpiderWeb(ID::spiderweb, pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT));
     this->getList()->addEntity(web);
+}
+void Level:: saveLvl() {
+    ofstream level;
+    level.open("./assets/Saves/Level.txt",ios::trunc);
+    if (!level) {
+        cout << "ERROR TO OPEN FILE" << endl;
+        abort();
+    }
+    level << numlvl;
+    level.close();
+    ofstream clean;
+    clean.open("./assets/Saves/Player1.txt", ios::trunc);
+    clean.close();
+    clean.open("./assets/Saves/Wizard.txt", ios::trunc);
+    clean.close();
+    clean.open("./assets/Saves/Archer.txt", ios::trunc);
+    clean.close();
+    for (int i = 0; i < _list->getSize(); i++) {
+        if ((*_list)[i]->getID() == ID::player || (*_list)[i]->getID() == ID::player2 || (*_list)[i]->getID() == ID::archer || (*_list)[i]->getID() == ID::wizard || (*_list)[i]->getID() == ID::boss)
+            (static_cast<Character*>((*_list)[i]))->save();
+    }
 }

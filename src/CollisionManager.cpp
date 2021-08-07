@@ -9,6 +9,7 @@ CollisionManager::~CollisionManager() {
     list = NULL;
 }
 
+//Function that iterates the entity list ans collide each entity
 void CollisionManager::toCollide() {
     Entity *ent1, *ent2;
 
@@ -35,8 +36,7 @@ void CollisionManager::toCollide() {
                     collideEnemy(ent1, ent2, dx, dy, intersectX, intersectY);
                 } else if (ent1->getId() == ID::fireball || ent1->getId()==ID::arrow) {
                     collideProjectile(ent1, ent2, dx, dy, intersectX, intersectY);
-                }
-                else if (ent1->getId() == ID::platform || ent1->getId() == ID::wall) {
+                }else if (ent1->getId() == ID::platform || ent1->getId() == ID::wall) {
                     collidePlatform(ent1, ent2, dx, dy, intersectX, intersectY);
                 }
             }
@@ -220,6 +220,7 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
         (static_cast<Player*>(ent2))->getHurt(PROJECTILE_DAMAGE);
     }
 }
+//function to movement enemy
 void CollisionManager::enemyMotion(Entity* ent1, Entity* ent2, float dx, float dy) {
     if (abs(dx) < ENEMY_MOTIONX_MAX && abs(dx)>ENEMY_MOTIONX_MIN) {
         if (dx > 0) {
@@ -250,6 +251,8 @@ void CollisionManager::enemyMotion(Entity* ent1, Entity* ent2, float dx, float d
             ent1->setVelocity(sf::Vector2f(0, ent1->getVelocity().y));
     }
 }
+
+//player melee attack function
 void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float dy) {
     if (abs(dy)<100 && abs(dx) < PLAYER_ATTACK) {
         if (dx > 0) {
@@ -270,6 +273,7 @@ void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float d
         }
     }
 }
+//function to collide a platform with another entity
 void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
     switch (ent2->getId()) {
 

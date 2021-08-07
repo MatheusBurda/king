@@ -17,13 +17,3 @@ void Wall::update(float dt) {
 void Wall::render() {
     sprite->render();
 }
-void Wall::save() {
-    ofstream file;
-    file.open("./assets/Saves/Wall.txt", ios::app);
-    if (!file) {
-        cout << "ERROR TO OPEN FILE" << endl;
-        abort();
-    }
-    file <<getPosition().x << ' ' << getPosition().y << endl;
-    file.close();
-}

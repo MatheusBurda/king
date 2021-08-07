@@ -31,6 +31,7 @@ protected:
     float dt;
     bool levelRunning;
     bool existsP1, existsP2;
+    int numlvl;
 public:
     Level(const char* path, EntityList* EL, Player* p1, Player*p2,CollisionManager* CM, sf::Vector2u levelSize);
     virtual ~Level();
@@ -54,4 +55,7 @@ public:
     void buildWeb(sf::Vector2f pos);
     void setPlayer2(sf::Vector2f pos);
     virtual void buildMap() = 0;
+
+    //function used to save the Level in a txt
+    virtual void saveLvl();
 };

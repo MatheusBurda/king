@@ -44,5 +44,5 @@ public:
 
     void setFacingLeft(bool facingLeft) { faceLeft = facingLeft; }
     bool facingLeft() const { return faceLeft; }
-    virtual void save()=0;
+
 };

@@ -3,13 +3,18 @@
 
 CastleBuilder::CastleBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
     Level(path, EL, p1, p2, CM, levelSize) {
+    numlvl = 2;
     buildMap();
 }
 
 CastleBuilder::~CastleBuilder() {
-
+    saveLvl();
+    _list->removeEntity(player1);
+    _list->deleteAll();
 }
 
+
+//Function that allocates all the level entities... 
 void CastleBuilder::buildMap() {
     int y = 40, x = 120;
     char level[40][120];
@@ -41,7 +46,7 @@ void CastleBuilder::buildMap() {
                     buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
                 }
                 else if (level[i][j] == 'R') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i*WALL_HEIGHT),WALL_PATH_DIRT, true);
                 }
                 else if (level[i][j] == 'a') {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));

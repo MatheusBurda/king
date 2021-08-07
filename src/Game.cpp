@@ -77,19 +77,31 @@ void Game::startNewLevel() {
     pEntityL->addEntity(player1);
     if (pLevel != NULL) {
         delete (pLevel);
-        currentLevel++;
+        //currentLevel++;
     }
-    if (currentLevel == 1) {
+
+   if (currentLevel == 1) {
+        LoadBuilder* lb = new LoadBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
+        pLevel = static_cast<Level*>(lb);
+    }
+
+    /*if (currentLevel == 1) {
         FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0,0));
         pLevel = static_cast<Level*>(fb);
-   }else if (currentLevel == 2) {
-        pEntityL->addEntity(player1);
+    }*/
+
+    /*else if (currentLevel == 1) {
         CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(cb);
-    }
+    }*/
+
     else {
         cerr << "GAME - Couldnt create a new LEVEL" << endl;
         exit(35);
     }
     state = 1;
+}
+void Game::save() {
+    ifstream Platform;
+
 }

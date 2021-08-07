@@ -123,6 +123,6 @@ void Player::save() {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
     }
-    file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << ' '<< nickname.getData()<<' ';
+    file <<(int) getPosition().x << ' ' << (int) getPosition().y-30 << ' ' << facingLeft() << ' '<< nickname.getData()<<' ';
     file.close();
 }
