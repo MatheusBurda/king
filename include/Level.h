@@ -17,7 +17,7 @@
 #include "Wall.h"
 #include "Wizard.h"
 #include "stdafx.h"
-
+#include "Boss.h"
 class Level {
 protected:
     GraphicManager* graphicM;
@@ -49,12 +49,15 @@ public:
     void buildPlatform(sf::Vector2f pos, const char path[100]);
     void setPlayer1(sf::Vector2f pos);
     void buildWizard(sf::Vector2f pos);
+    void buildWizard(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing);
     void buildArcher(sf::Vector2f pos);
+    void buildArcher(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing);
     void buildWall(sf::Vector2f pos, const char* path, bool faceLeft);
     void buildLava(sf::Vector2f pos);
     void buildWeb(sf::Vector2f pos);
     void setPlayer2(sf::Vector2f pos);
-    virtual void buildMap() = 0;
+    void buildBoss(sf::Vector2f pos);
+    void buildMap();
     int getLvlNumber() const { return numlvl; }
 
     //function used to save the Level in a txt

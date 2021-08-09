@@ -19,3 +19,15 @@ void Lava::render() {
     sprite->render();
 }
 
+void Lava::save() {
+    if (getShowing()) {
+        ofstream file;
+        file.open("./assets/Saves/Lava.txt", ios::app);
+        if (!file) {
+            cout << "ERROR TO OPEN FILE" << endl;
+            abort();
+        }
+        file << getPosition().x << ' ' << getPosition().y<<endl;
+        file.close();
+    }
+}

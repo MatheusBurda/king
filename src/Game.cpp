@@ -27,7 +27,6 @@ Game::~Game() {
         delete (player1);
     if (player2)
         delete (player2);
-
 }
 
 void Game::startStates() {
@@ -71,13 +70,13 @@ void Game::setLevel(Level* pLevel) {
 
 Player* Game::getPLayer1() {
     if (player1 == NULL)
-        player1 = new Player(true, "Kiwi");
+        player1 = new Player(true);
     return player1;
 }
 
 Player* Game::getPLayer2() {
     if (player2 == NULL)
-        player2 = new Player(false, "Kiwi 2");
+        player2 = new Player(false);
     return player2;
 }
 

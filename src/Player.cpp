@@ -6,10 +6,9 @@
 
 const float Player::attackTime = 0.8;
 
-Player::Player(const bool isPlayer1, const sf::String nickname) :
-Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
-player1(isPlayer1),
-nickname(nickname),
+Player::Player(const bool isPlayer1) :
+    Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
+    player1(isPlayer1), points(0),
 pc(EventManager::getInstance()->getInputManager(), this) {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
@@ -119,11 +118,25 @@ void Player::reset() {
 //function to save the player in a txt
 void Player::save() {
     ofstream file;
-    file.open("./assets/Saves/Player1.txt");
-    if (!file) {
-        cout << "ERROR TO OPEN FILE" << endl;
-        abort();
+    if (isPlayer1()) {
+        file.open("./assets/Saves/Player1.txt");
+        if (!file) {
+            cout << "ERROR TO OPEN FILE" << endl;
+            abort();
+        }
+        file << (int)getPosition().x << ' ' << (int)getPosition().y - 30 << ' ' << points;
+        file.close();
+    }else {
+        file.open("./assets/Saves/Player2.txt");
+        if (!file) {
+            cout << "ERROR TO OPEN FILE" << endl;
+            abort();
+        }
+        file << (int)getPosition().x << ' ' << (int)getPosition().y - 30 << ' ' << points;
+        file.close();
     }
-    file << (int)getPosition().x << ' ' << (int)getPosition().y - 30 << ' ' << facingLeft() << ' ' << nickname.getData() << ' ';
-    file.close();
+}
+
+void Player::updatePoints(int pt) {
+    points += pt;
 }

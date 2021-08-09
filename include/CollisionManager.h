@@ -24,4 +24,5 @@ public:
     void enemyMotion(Entity* ent1, Entity* ent2, float dx, float dy);
     void attackEnemy(Entity* ent1, Entity* ent2);
     void attackPlayer(Entity* ent1, Entity* ent2, float dx, float dy);
+    void attackBoss(Entity* ent1, Entity* ent2, float dx, float dy);
 };

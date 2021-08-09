@@ -17,27 +17,36 @@ void CollisionManager::toCollide() {
         for (int j = i + 1; j < list->getSize(); j++) {
             ent1 = (*list)[i];
             ent2 = (*list)[j];
-            bool attack = ((ent1->getId() == ID::player && (ent2->getId() == ID::wizard || ent2->getId() == ID::archer || ent2->getId() == ID::boss)) || 
-                           (ent2->getId() == ID::player && (ent1->getId() == ID::wizard || ent1->getId() == ID::archer || ent1->getId() == ID::boss)));
-            float dy, dx, intersectX, intersectY;
-            dx = ent2->getPosition().x - ent1->getPosition().x;
-            dy = ent2->getPosition().y - ent1->getPosition().y;
+            if (ent1->getShowing() && ent2->getShowing()) {
+                bool attackP = ((ent1->getId() == ID::player && (ent2->getId() == ID::wizard || ent2->getId() == ID::archer || ent2->getId() == ID::boss)) ||
+                    (ent2->getId() == ID::player && (ent1->getId() == ID::wizard || ent1->getId() == ID::archer || ent1->getId() == ID::boss)));
+                
+                float dy, dx, intersectX, intersectY;
+                dx = ent2->getPosition().x - ent1->getPosition().x;
+                dy = ent2->getPosition().y - ent1->getPosition().y;
 
-            intersectX = abs(dx) - (ent1->getHitbox().x / 2 + ent2->getHitbox().x / 2);
-            intersectY = abs(dy) - (ent1->getHitbox().y / 2 + ent2->getHitbox().y / 2);
-            if (attack) {
-                attackPlayer(ent1, ent2, dx, dy);
-                enemyMotion(ent1, ent2, dx, dy);
-            }
-            if (intersectX < 0.0f && intersectY < 0.0f && ent1->getShowing() && ent2->getShowing()) { //Condition to collide...
-                if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
-                    collidePlayer(ent1, ent2, dx, dy, intersectX, intersectY);
-                } else if (ent1->getId() == ID::wizard || ent1->getId()== ID::archer || ent1->getId()==ID::boss) {
-                    collideEnemy(ent1, ent2, dx, dy, intersectX, intersectY);
-                } else if (ent1->getId() == ID::fireball || ent1->getId()==ID::arrow) {
-                    collideProjectile(ent1, ent2, dx, dy, intersectX, intersectY);
-                }else if (ent1->getId() == ID::platform || ent1->getId() == ID::wall) {
-                    collidePlatform(ent1, ent2, dx, dy, intersectX, intersectY);
+                intersectX = abs(dx) - (ent1->getHitbox().x / 2 + ent2->getHitbox().x / 2);
+                intersectY = abs(dy) - (ent1->getHitbox().y / 2 + ent2->getHitbox().y / 2);
+                if (attackP) {
+                    attackPlayer(ent1, ent2, dx, dy);
+                    enemyMotion(ent1, ent2, dx, dy);
+                }
+                attackP = (ent1->getId() == ID::player && ent2->getId() == ID::boss) || (ent2->getId() == ID::player && ent1->getId() == ID::boss);
+                if (attackP)
+                    attackBoss(ent1, ent2, dx, dy);
+                if (intersectX < 0.0f && intersectY < 0.0f) { //Condition to collide...
+                    if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
+                        collidePlayer(ent1, ent2, dx, dy, intersectX, intersectY);
+                    }
+                    else if (ent1->getId() == ID::wizard || ent1->getId() == ID::archer || ent1->getId() == ID::boss) {
+                        collideEnemy(ent1, ent2, dx, dy, intersectX, intersectY);
+                    }
+                    else if (ent1->getId() == ID::fireball || ent1->getId() == ID::arrow) {
+                        collideProjectile(ent1, ent2, dx, dy, intersectX, intersectY);
+                    }
+                    else if (ent1->getId() == ID::platform || ent1->getId() == ID::wall) {
+                        collidePlatform(ent1, ent2, dx, dy, intersectX, intersectY);
+                    }
                 }
             }
         }
@@ -258,17 +267,50 @@ void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2,float dx, float d
         if (dx > 0) {
             if (ent1->getId() == ID::player && (static_cast<Character*>(ent1))->getIsAttacking() && !ent1->facingLeft()) {
                 (static_cast <Character*>(ent2))->getHurt(PLAYER_DAMAGE);
+                if ((static_cast <Character*>(ent2))->getLife() <= 0)
+                    (static_cast<Player*>(ent1))->updatePoints(100);
             }
             else if (ent2->getId() == ID::player && (static_cast<Character*>(ent2))->getIsAttacking()&& ent2->facingLeft()) {
                 (static_cast <Character*>(ent1))->getHurt(PLAYER_DAMAGE);
+                if ((static_cast <Character*>(ent1))->getLife() <= 0)
+                    (static_cast<Player*>(ent2))->updatePoints(100);
             }
         }
         else {
             if (ent1->getId() == ID::player && (static_cast<Character*>(ent1))->getIsAttacking() && ent1->facingLeft()) {
                 (static_cast <Character*>(ent2))->getHurt(PLAYER_DAMAGE);
+                if ((static_cast <Character*>(ent2))->getLife() <= 0)
+                    (static_cast<Player*>(ent1))->updatePoints(100);
             }
             else if (ent2->getId() == ID::player && (static_cast<Character*>(ent2))->getIsAttacking() && !ent2->facingLeft()) {
                 (static_cast <Character*>(ent1))->getHurt(PLAYER_DAMAGE);
+                if ((static_cast <Character*>(ent1))->getLife() <= 0)
+                    (static_cast<Player*>(ent2))->updatePoints(100);
+            }
+        }
+    }
+}
+void CollisionManager::attackBoss(Entity* ent1, Entity* ent2, float dx, float dy) {
+    if (abs(dy) < 100 && abs(dx) < BOSS_ATTACK) {
+        if (dx > 0) {
+            if (ent1->getId() == ID::boss && (static_cast<Character*>(ent1))->getIsAttacking() && !ent1->facingLeft()) {
+                (static_cast <Character*>(ent2))->getHurt(BOSS_DMG);
+                (static_cast <Character*>(ent1))->setIsAttacking(false);
+            }
+            else if (ent2->getId() == ID::boss && (static_cast<Character*>(ent2))->getIsAttacking() && ent2->facingLeft()) {
+                (static_cast <Character*>(ent1))->getHurt(BOSS_DMG);
+                (static_cast <Character*>(ent2))->setIsAttacking(false);
+            }
+        }
+        else {
+            if (ent1->getId() == ID::boss && (static_cast<Character*>(ent1))->getIsAttacking() && ent1->facingLeft()) {
+                (static_cast <Character*>(ent2))->getHurt(BOSS_DMG);
+                (static_cast <Character*>(ent1))->setIsAttacking(false);
+            }
+            else if (ent2->getId() == ID::boss && (static_cast<Character*>(ent2))->getIsAttacking() && !ent2->facingLeft()) {
+                (static_cast <Character*>(ent1))->getHurt(BOSS_DMG);
+                (static_cast <Character*>(ent2))->setIsAttacking(false);
+
             }
         }
     }

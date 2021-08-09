@@ -13,5 +13,5 @@ public:
     void update(float dt);
     void render();
     void initializeSprite();
-
+    void save(){ }
 };

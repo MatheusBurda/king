@@ -18,3 +18,6 @@ int Character::attack() {
 void Character::getHurt(int dmg) {
     life -= dmg;
 }
+int Character::getLife() {
+    return life;
+}

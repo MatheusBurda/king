@@ -57,7 +57,7 @@ void Wizard::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << fireball->getPosition().x << ' ' << fireball->getPosition().y << ' ' << fireball->getVelocity().x << ' ' << fireball->getVelocity().y << ' ' << fireball->getShowing() << endl;
         file.close();
     }
 }

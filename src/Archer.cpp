@@ -31,8 +31,6 @@ void Archer::update(float dt) {
         velocity = Vector2f(velocity.x, 700);
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-
-    sprite->Update(2, dt, facingLeft(), position);
     totalTimeFromAttack += dt;
 
     attack();
@@ -61,7 +59,7 @@ void Archer::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y-30 << ' ' << facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y-30 << ' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x<<' ' << arrow->getVelocity().y <<' ' << arrow->getShowing() << endl;
         file.close();
     }
 }

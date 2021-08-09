@@ -110,3 +110,12 @@ using std::string;
 
 #define SPIDER_WIDTH 220
 #define SPIDER_HEIGHT 45
+
+/* =================================================== */
+/*                     BOSS                            */
+/* =================================================== */
+#define BOSS_HEIGHT 150
+#define BOSS_WIDTH 50
+#define BOSS_LIFE 400
+#define BOSS_DMG 30
+#define BOSS_ATTACK 200

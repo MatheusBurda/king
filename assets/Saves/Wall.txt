@@ -1,0 +1,4 @@
+747 270 ./assets/Platforms/DirtWall.png 0
+747 315 ./assets/Platforms/DirtWall.png 0
+747 360 ./assets/Platforms/DirtWall.png 0
+747 405 ./assets/Platforms/DirtWall.png 0

@@ -15,11 +15,11 @@ private:
     static const float attackTime;
     bool isWalking;
     const bool player1;
-    const sf::String nickname;
     PlayerControl pc;
+    int points;
 
 public:
-    Player(const bool isPlayer1 = true, const sf::String nickname = "");
+    Player(const bool isPlayer1 = true);
     ~Player();
 
     void update(float dt);
@@ -34,4 +34,5 @@ public:
     const bool isPlayer1() const { return player1; }
     void reset();
     void save();
+    void updatePoints(int pt);
 };

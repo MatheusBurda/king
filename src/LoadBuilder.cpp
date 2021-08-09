@@ -1,14 +1,14 @@
 #include "LoadBuilder.h"
 LoadBuilder::LoadBuilder(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize) :
 	Level(path,p1, p2, levelSize){
-    buildMap();
+    loadMap();
 }
 LoadBuilder::~LoadBuilder() {
     saveLvl();
     _list->removeEntity(player1);
     _list->deleteAll();
 }
-void LoadBuilder::buildMap() {
+void LoadBuilder::loadMap() {
     ifstream Level("./assets/Saves/Level.txt", ios::in);
     if (!Level) {
         cout << "Cant Open" << endl;
@@ -16,56 +16,17 @@ void LoadBuilder::buildMap() {
     }
     Level >> numlvl;
 
-    ifstream file;
     if (numlvl == -1) {
         cout << "No level saved" << endl;
         exit(99);
     }
-    else if(numlvl ==1 )
-    file.open("./assets/Levels/Field.txt");
-    else
-    file.open("./assets/Levels/Castle.txt");
-
-    int y = 40, x = 120;
-    char level[40][120];
-
-    if (!file) {
-        cout << "Cant Open" << endl;
-        return;
-    }
-    file >> level[0][0];
-    while (!file.eof()) {
-        file.ignore();
-        for (int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                if (i || j)
-                    file >> level[i][j];
-                if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_DIRT);
-                }
-                else if (level[i][j] == 'c') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_COBBLE);
-                }
-                else if (level[i][j] == 'L') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
-                }
-                else if (level[i][j] == 'R') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
-                }
-                else if (level[i][j] == 'v') {
-                    buildLava(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                }
-                else if (level[i][j] == 'w') {
-                    buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                }
-            }
-        }
-    }
-
-    file.close();
-
+    
     sf::Vector2f pos;
     bool facingLeft;
+    bool showing;
+    sf::Vector2f posProj;
+    sf::Vector2f velProj;
+    char path[100];
     ifstream Player1(("./assets/Saves/Player1.txt"), ios::in);
     if (!Player1) {
         cout << "Cant Open" << endl;
@@ -75,13 +36,48 @@ void LoadBuilder::buildMap() {
     setPlayer1(sf::Vector2f(pos.x, pos.y));
     Player1.close();
 
+    ifstream Platform(("./assets/Saves/Platform.txt"), ios::in);
+    if (!Platform) {
+        cout << "Cant Open" << endl;
+        exit(100);
+    }
+    while (Platform >> pos.x >> pos.y >> path)
+        buildPlatform(sf::Vector2f(pos.x, pos.y), path);
+    Platform.close();
+
+    ifstream Wall(("./assets/Saves/Wall.txt"), ios::in);
+    if (!Wall) {
+        cout << "Cant Open" << endl;
+        exit(100);
+    }
+    while (Wall >> pos.x >> pos.y >> path>>facingLeft)
+        buildWall(sf::Vector2f(pos.x, pos.y), path, facingLeft);
+    Wall.close();
+
+    ifstream Lava(("./assets/Saves/Lava.txt"), ios::in);
+    if (!Lava) {
+        cout << "Cant Open" << endl;
+        exit(100);
+    }
+    while (Lava >> pos.x >> pos.y)
+        buildLava(sf::Vector2f(pos.x, pos.y));
+    Lava.close();
+    ifstream SpiderWeb(("./assets/Saves/SpiderWeb.txt"), ios::in);
+    if (!SpiderWeb) {
+        cout << "Cant Open" << endl;
+        exit(100);
+    }
+    while (SpiderWeb >> pos.x >> pos.y)
+        buildWeb(sf::Vector2f(pos.x, pos.y));
+    SpiderWeb.close();
+
     ifstream Archer("./assets/Saves/Archer.txt");
     if (!Archer) {
         cout << "Cant Open" << endl;
         return;
     }
-    while (Archer >> pos.x >> pos.y >> facingLeft)
-        buildArcher(sf::Vector2f(pos.x, pos.y));
+    while (Archer >> pos.x >> pos.y >> posProj.x>>posProj.y>>velProj.x>>velProj.y>>showing)
+        buildArcher(sf::Vector2f(pos.x, pos.y), sf::Vector2f(posProj.x, posProj.y), sf::Vector2f(velProj.x, velProj.y), showing);
     Archer.close();
 
     ifstream Wizard("./assets/Saves/Wizard.txt");
@@ -89,7 +85,8 @@ void LoadBuilder::buildMap() {
         cout << "Cant Open" << endl;
         return;
     }
-    while (Wizard >> pos.x >> pos.y >> facingLeft)
-        buildWizard(sf::Vector2f(pos.x, pos.y));
+    while (Wizard >> pos.x >> pos.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing)
+        buildWizard(sf::Vector2f(pos.x, pos.y), sf::Vector2f(posProj.x, posProj.y), sf::Vector2f(velProj.x, velProj.y), showing);
     Wizard.close();
+
 }

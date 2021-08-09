@@ -27,4 +27,5 @@ public:
 
     //function used to save the Character attributes in a txt
     virtual void save() = 0;
+    int getLife();
 };

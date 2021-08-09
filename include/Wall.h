@@ -9,10 +9,13 @@
 class Animation;
 class GraphicManager;
 class Wall : public Entity {
+private:
+    char path[100];
 public:
     Wall(ID::ids id,sf::Vector2f pos, sf::Vector2f hit, const char* path);
     ~Wall();
     void update(float dt);
     void render();
     void initializeSprite(){}
+    void save();
 };
