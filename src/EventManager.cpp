@@ -20,6 +20,8 @@ pWindow(NULL) {
 /* ========================================= */
 
 EventManager::~EventManager() {
+    if (pInputM)
+        delete(pInputM);
     pGraphicM = NULL;
     pInputM = NULL;
     pWindow = NULL;
@@ -43,7 +45,7 @@ void EventManager::pollEvents() {
             pGraphicM->closeWindow();
         if (event.type == sf::Event::Resized)
             pGraphicM->handleWindowResize();
-        if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
+        if ((event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) && pInputM)
             pInputM->handleKeyPressed();
     }
 }

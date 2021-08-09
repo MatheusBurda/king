@@ -27,7 +27,7 @@ Game::~Game() {
         delete (player1);
     if (player2)
         delete (player2);
-    delete (pInputM);
+
 }
 
 void Game::startStates() {

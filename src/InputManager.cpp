@@ -6,6 +6,7 @@ InputManager::InputManager() {
 }
 
 InputManager::~InputManager() {
+    objObserving.clear();
 }
 
 /* Check for keys pressed and notify every Observer. */
