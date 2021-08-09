@@ -1,63 +1,73 @@
 #include "Game.h"
 
+using namespace SM;
+
 Game::Game() {
     pEventM = EventManager::getInstance();
     pGraphicM = GraphicManager::getInstance();
 
     pInputM = new InputManager;
     pEventM->setInputManager(pInputM);
-    objMainMenu = new MainMenu(pInputM);
-    
+
+    objMainMenuState = new MainMenuState(pInputM, this);
+    vectorOfStates.push_back(objMainMenuState);
+    currentStateID = stateID::mainMenu;
+
+    objNewGameState = new NewGameState(pInputM, this);
+    vectorOfStates.push_back(objNewGameState);
+
     pLevel = NULL;
 
     player1 = new Player(true, "Kiwi");
     player2 = NULL;
     pEntityL = new EntityList();
-   // pEntityL->addEntity(player1);
+
     pColisM = new CollisionManager(pEntityL);
 
-
-    state = 9;
     currentLevel = 1;
-
-    objMainMenu->setPState(&state);
 
     exec();
 }
 
 Game::~Game() {
-    if (pLevel != NULL) {
+    if (pLevel != NULL)
         delete (pLevel);
-    }
     if (player1)
-        delete(player1);
-    delete (objMainMenu);
+        delete (player1);
+    if (player2)
+        delete (player2);
+    delete (objMainMenuState);
     delete (pInputM);
-    delete(pColisM);
-    delete(pEntityL);
-
+    delete (pColisM);
+    delete (pEntityL);
 }
 
 void Game::exec() {
-    /*  0-> Criar nova fase
-        1-> Jogando
-        3-> Sair 
-    outro-> Executar menu*/
-
     while (pGraphicM->isWindowOpen()) {
+        if (currentStateID == stateID::exit)
+            pGraphicM->closeWindow();
+            
         pEventM->pollEvents();
+
         pGraphicM->clear();
-        if (state == 0) {
+
+        execCurrentState();
+
+        pGraphicM->display();
+    }
+}
+/* if (state == 0) {
             startNewLevel();
-        } else if (state == 1 && pLevel != NULL) {
+        } 
+        else if (state == 1 && pLevel != NULL) {
             pLevel->exec();
             pLevel->renderAll();
             if (!pLevel->isLevelRunning()) {
                 state = 9;
-                delete(pLevel);
+                delete (pLevel);
                 pLevel = NULL;
             }
-        }
+        } 
         else if (state == 3) {
             pGraphicM->closeWindow();
             return;
@@ -65,12 +75,8 @@ void Game::exec() {
 
         else {
             pGraphicM->centerView(sf::Vector2f(pGraphicM->getWindowSize().x / 2.0f, pGraphicM->getWindowSize().y / 2));
-            objMainMenu->render();
-        }
-        pGraphicM->display();
-    }
-
-}
+            objMainMenuState->render();
+        } */
 
 void Game::startNewLevel() {
     player1->reset();
@@ -80,15 +86,15 @@ void Game::startNewLevel() {
         //currentLevel++;
     }
 
-   if (currentLevel == 1) {
+    /* if (currentLevel == 1) {
         LoadBuilder* lb = new LoadBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(lb);
-    }
+    } */
 
-    /*if (currentLevel == 1) {
-        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0,0));
+    if (currentLevel == 1) {
+        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(fb);
-    }*/
+    }
 
     /*else if (currentLevel == 1) {
         CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
@@ -97,11 +103,10 @@ void Game::startNewLevel() {
 
     else {
         cerr << "GAME - Couldnt create a new LEVEL" << endl;
-        exit(35);
+        std::exit(35);
     }
-    state = 1;
 }
+
 void Game::save() {
     ifstream Platform;
-
 }

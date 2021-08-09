@@ -5,7 +5,7 @@
 
 Lava::Lava(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
     Entity(id, pos, hit) {
-    sprite->initializeTexture(LAVA_PATH, sf::Vector2u(1, 1));
+    sprite->initializeTexture(LAVA_PATH, sf::Vector2u(3, 1));
 }
 
 Lava::~Lava() {

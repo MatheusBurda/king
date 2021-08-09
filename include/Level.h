@@ -9,31 +9,32 @@
 #include "Fireball.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
+#include "Lava.h"
 #include "Platform.h"
 #include "Player.h"
 #include "PlayerControl.h"
+#include "SpiderWeb.h"
 #include "Wall.h"
 #include "Wizard.h"
 #include "stdafx.h"
-#include"Lava.h"
-#include "SpiderWeb.h"
 
 class Level {
 protected:
     GraphicManager* graphicM;
-    EntityList *_list;
+    EntityList* _list;
     Player *player1, *player2;
-    CollisionManager *colis;
+    CollisionManager* colis;
     sf::Vector2u levelMapSize;
     Background back;
-    EventManager *pEventManager;
+    EventManager* pEventManager;
     sf::Clock time;
     float dt;
     bool levelRunning;
     bool existsP1, existsP2;
     int numlvl;
+
 public:
-    Level(const char* path, EntityList* EL, Player* p1, Player*p2,CollisionManager* CM, sf::Vector2u levelSize);
+    Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize);
     virtual ~Level();
     void exec();
 

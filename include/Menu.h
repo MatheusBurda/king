@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Background.h"
 #include "Button.h"
 #include "MenuControl.h"
-#include "Background.h"
 #include <vector>
 
 class GraphicManager;
@@ -16,16 +16,13 @@ protected:
     int max;
     MenuControl control;
     Background back;
-
-    int* pState;
+    bool active;
 
 public:
     Menu(InputManager* IM, const char* backPath);
     virtual ~Menu();
 
-    virtual void render();
-    void exec();
+    virtual void exec() = 0;
     void selectDown();
     void selectUp();
-    void setPState(int* p);float dt;
 };

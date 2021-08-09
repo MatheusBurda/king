@@ -7,7 +7,7 @@
 const float Player::attackTime = 0.8;
 
 Player::Player(const bool isPlayer1, const sf::String nickname) :
-Character(ID::player, sf::Vector2f(0,0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
+Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
 player1(isPlayer1),
 nickname(nickname),
 pc(EventManager::getInstance()->getInputManager(), this) {
@@ -106,7 +106,8 @@ void Player::updateSprite(float dt) {
     else
         sprite->Update(0, dt, facingLeft(), position);
 }
-void Player:: reset() {
+
+void Player::reset() {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
     firstAttack = true;
@@ -123,6 +124,6 @@ void Player::save() {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
     }
-    file <<(int) getPosition().x << ' ' << (int) getPosition().y-30 << ' ' << facingLeft() << ' '<< nickname.getData()<<' ';
+    file << (int)getPosition().x << ' ' << (int)getPosition().y - 30 << ' ' << facingLeft() << ' ' << nickname.getData() << ' ';
     file.close();
 }

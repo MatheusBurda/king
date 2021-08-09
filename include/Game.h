@@ -1,29 +1,32 @@
 #pragma once
 
-
 #include "CastleBuilder.h"
+#include "EntityList.h"
 #include "EventManager.h"
 #include "FieldBuilder.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
-#include "MainMenu.h"
+#include "LoadBuilder.h"
+#include "MainMenuState.h"
 #include "MenuControl.h"
 #include "PauseMenu.h"
-#include "EntityList.h"
-#include "LoadBuilder.h"
+#include "StateMachine.h"
+#include "NewGameState.h"
 
-class Game {
+namespace SM {
+
+class Game : public StateMachine {
 private:
     GraphicManager* pGraphicM;
     EventManager* pEventM;
     InputManager* pInputM;
-    MainMenu* objMainMenu;
+    MainMenuState* objMainMenuState;
+    NewGameState* objNewGameState;
     Level* pLevel;
     Player* player1;
     Player* player2;
     EntityList* pEntityL;
     CollisionManager* pColisM;
-    int state;
     int currentLevel;
 
 public:
@@ -33,3 +36,5 @@ public:
     void startNewLevel();
     void save();
 };
+
+}

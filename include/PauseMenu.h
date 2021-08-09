@@ -9,4 +9,6 @@ class PauseMenu : public Menu {
 public:
     PauseMenu(InputManager* IM);
     ~PauseMenu();
+
+    void exec() { }
 };

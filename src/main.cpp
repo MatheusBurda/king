@@ -1,7 +1,7 @@
 #include "Game.h"
 
 int main() {
-    Game king;
+    SM::Game king;
 
     return 0;
 }

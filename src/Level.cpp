@@ -1,13 +1,13 @@
 #include "Level.h"
 
 Level::Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
-    graphicM(GraphicManager::getInstance()),
-    _list(EL),
-    player1(p1),
-    player2(p2),
-    levelMapSize(levelSize),
-    numlvl(-1),
-    back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
+graphicM(GraphicManager::getInstance()),
+_list(EL),
+player1(p1),
+player2(p2),
+levelMapSize(levelSize),
+back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path),
+numlvl(-1) {
     colis = CM;
     colis->setList(_list);
     pEventManager = EventManager::getInstance();
@@ -31,8 +31,7 @@ void Level::exec() {
         _list->updateAll(dt);
         /* Collide all entities */
         colis->toCollide();
-    }
-    else
+    } else
         levelRunning = false;
 }
 
@@ -51,8 +50,8 @@ void Level::renderAll() {
     back.changePos(player1->getPosition());
 
     for (int i = 0; i < _list->getSize(); i++) {
-        if((*_list)[i]->getShowing())
-        (*_list)[i]->render();
+        if ((*_list)[i]->getShowing())
+            (*_list)[i]->render();
     }
 }
 void Level::buildPlatform(sf::Vector2f pos, const char path[100]) {
@@ -96,9 +95,9 @@ void Level::buildWeb(sf::Vector2f pos) {
     SpiderWeb* web = new SpiderWeb(ID::spiderweb, pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT));
     this->getList()->addEntity(web);
 }
-void Level:: saveLvl() {
+void Level::saveLvl() {
     ofstream level;
-    level.open("./assets/Saves/Level.txt",ios::trunc);
+    level.open("./assets/Saves/Level.txt", ios::trunc);
     if (!level) {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
