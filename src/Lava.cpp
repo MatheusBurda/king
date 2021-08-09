@@ -12,6 +12,7 @@ Lava::~Lava() {
 }
 
 void Lava::update(float dt) {
+    dt /= 4;
     sprite->Update(0, dt, facingLeft(), position);
 }
 
