@@ -9,7 +9,7 @@ private:
     EntityList* list;
 
 public:
-    CollisionManager(EntityList* pList);
+    CollisionManager(EntityList* pList = NULL);
     ~CollisionManager();
     void toCollide();
     void setList(EntityList* pList) { list = pList; }

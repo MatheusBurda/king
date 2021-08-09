@@ -1,25 +1,37 @@
 #include "Level.h"
 
-Level::Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
+Level::Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize) :
 graphicM(GraphicManager::getInstance()),
-_list(EL),
+_list(new EntityList()),
 player1(p1),
 player2(p2),
+colis(_list),
 levelMapSize(levelSize),
 back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path),
 numlvl(-1) {
-    colis = CM;
-    colis->setList(_list);
     pEventManager = EventManager::getInstance();
     time.restart();
     levelRunning = true;
-    existsP1 = false;
-    existsP2 = false;
+
+    if (player1) {
+        existsP1 = true;
+        _list->addEntity(player1);
+    }
+    if (player2) {
+        existsP2 = true;
+        _list->addEntity(player2);
+    }
 }
 
 Level::~Level() {
-    _list->removeEntity(player1);
+    if (player1) {
+        _list->removeEntity(player1);
+    }
+    if (player2) {
+        _list->removeEntity(player2);
+    }
     _list->deleteAll();
+    delete (_list);
 }
 
 void Level::exec() {
@@ -30,7 +42,7 @@ void Level::exec() {
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
-        colis->toCollide();
+        colis.toCollide();
     } else
         levelRunning = false;
 }

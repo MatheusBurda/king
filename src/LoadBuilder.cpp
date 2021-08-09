@@ -1,6 +1,6 @@
 #include "LoadBuilder.h"
-LoadBuilder::LoadBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize) :
-	Level(path, EL, p1, p2, CM, levelSize){
+LoadBuilder::LoadBuilder(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize) :
+	Level(path,p1, p2, levelSize){
     buildMap();
 }
 LoadBuilder::~LoadBuilder() {

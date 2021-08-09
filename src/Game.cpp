@@ -15,10 +15,6 @@ Game::Game() {
 
     player1 = NULL;
     player2 = NULL;
-
-    pEntityL = new EntityList();
-    pColisM = new CollisionManager(pEntityL);
-
     currentLevel = 1;
 
     exec();
@@ -32,8 +28,6 @@ Game::~Game() {
     if (player2)
         delete (player2);
     delete (pInputM);
-    delete (pColisM);
-    delete (pEntityL);
 }
 
 void Game::startStates() {
@@ -43,6 +37,9 @@ void Game::startStates() {
     vectorOfStates.push_back(pNewState);
 
     pNewState = new NewGameState(pInputM, this);
+    vectorOfStates.push_back(pNewState);
+
+    pNewState = new PlayingGameState(pInputM, this);
     vectorOfStates.push_back(pNewState);
 
     currentStateID = stateID::mainMenu;
@@ -57,10 +54,8 @@ void Game::exec() {
         execCurrentState();
 
         pGraphicM->display();
-
+        
         if (currentStateID == stateID::exit) {
-            cout << "saida" << endl;
-
             pGraphicM->closeWindow();
         }
     }

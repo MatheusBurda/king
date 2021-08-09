@@ -8,13 +8,13 @@ class StateMachine;
 
 enum stateID {
     mainMenu = 0,
-    newGame = 1,
-    loadGame = 2,
-    playing = 3,
-    pauseMenu = 4,
-    saveGame = 5,
-    leaderboard = 6,
-    exit = 7
+    newGame,
+    playing,
+    exit,
+    loadGame,
+    pauseMenu,
+    saveGame,
+    leaderboard
 };
 
 class State {

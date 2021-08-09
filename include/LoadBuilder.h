@@ -3,7 +3,7 @@
 class LoadBuilder :public Level
 {
 public:
-    LoadBuilder(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize);
+    LoadBuilder(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize);
     ~LoadBuilder();
     void buildMap();
 };

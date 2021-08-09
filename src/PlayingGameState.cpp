@@ -1,5 +1,6 @@
 #include "PlayingGameState.h"
 #include "Game.h"
+#include "Level.h"
 
 using namespace SM;
 
@@ -14,7 +15,7 @@ PlayingGameState::~PlayingGameState() {
 
 void PlayingGameState::update() {
     if (!pLevel)
-        pLevel = pGame->getCurrentLevel();
+        pLevel = pGame->getpLevel();
     pLevel->exec();
 
     if (!pLevel->isLevelRunning()) {
@@ -24,7 +25,7 @@ void PlayingGameState::update() {
 
 void PlayingGameState::render() {
     if (!pLevel)
-        pLevel = pGame->getCurrentLevel();
+        pLevel = pGame->getpLevel();
     pLevel->renderAll();
 }
 

@@ -7,6 +7,8 @@ class InputManager;
 
 #define BACKGROUND_MAIN_MENU "./assets/Backgrounds/MainMenuBackground.png"
 
+class Level;
+
 namespace SM {
 
 class Game;

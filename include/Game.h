@@ -9,9 +9,10 @@
 #include "LoadBuilder.h"
 #include "MainMenuState.h"
 #include "MenuControl.h"
-#include "PauseMenu.h"
-#include "StateMachine.h"
 #include "NewGameState.h"
+#include "PauseMenu.h"
+#include "PlayingGameState.h"
+#include "StateMachine.h"
 
 namespace SM {
 
@@ -23,8 +24,6 @@ private:
     Level* pLevel;
     Player* player1;
     Player* player2;
-    EntityList* pEntityL;
-    CollisionManager* pColisM;
     int currentLevel;
 
 public:
@@ -44,7 +43,6 @@ public:
 
     int getCurrentLevel() const;
     void setCurrentLevel(int num);
-    
 };
 
 }

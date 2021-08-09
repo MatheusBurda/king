@@ -23,7 +23,7 @@ protected:
     GraphicManager* graphicM;
     EntityList* _list;
     Player *player1, *player2;
-    CollisionManager* colis;
+    CollisionManager colis;
     sf::Vector2u levelMapSize;
     Background back;
     EventManager* pEventManager;
@@ -34,7 +34,7 @@ protected:
     int numlvl;
 
 public:
-    Level(const char* path, EntityList* EL, Player* p1, Player* p2, CollisionManager* CM, sf::Vector2u levelSize);
+    Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize);
     virtual ~Level();
     void exec();
 
@@ -44,7 +44,7 @@ public:
     Player* getP2() { return player2; }
     void setP1(Player* p1) { player1 = p1; }
     void setP2(Player* p2) { player2 = p2; }
-    CollisionManager* getCols() { return colis; }
+    CollisionManager* getCols() { return &colis; }
     void renderAll();
     bool isLevelRunning() const { return levelRunning; }
     void buildPlatform(sf::Vector2f pos, const char path[100]);

@@ -84,30 +84,25 @@ void NewGameState::exec() {
 void NewGameState::startNewLevel(bool isOnePLayer) {
     onePlayer = isOnePLayer;
 
-    cout << "Starting new level" << endl;
-    return;
-
     Level* pLevel = pGame->getpLevel();
     if (pLevel != NULL) {
         delete (pLevel);
     }
 
-    int currentLVL = pGame->getCurrentLevel();
+    int currentLevel = pGame->getCurrentLevel();
 
     Player* player1 = pGame->getPLayer1();
     player1->reset();
 
     Player* player2 = NULL;
-    
+
     if (!onePlayer) {
         player2 = pGame->getPLayer2();
         player2->reset();
     }
 
-    pEntityL->addEntity(player1);
-
     if (currentLevel == 1) {
-        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
+        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", player1, player2, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(fb);
     }
 
