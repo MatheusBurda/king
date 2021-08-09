@@ -81,7 +81,7 @@ Player* Game::getPLayer1() {
 
 Player* Game::getPLayer2() {
     if (player2 == NULL)
-        player2 = new Player(true, "Kiwi 2");
+        player2 = new Player(false, "Kiwi 2");
     return player2;
 }
 

@@ -33,7 +33,7 @@ void FieldBuilder::buildMap() {
                 else if (level[i][j] == 'c') {
                     buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_COBBLE);
                 } 
-                else if (level[i][j] == 'k' && !existsP1) {
+                else if (level[i][j] == 'k') {
                     setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } 
                 else if (level[i][j] == 'z') {
@@ -48,7 +48,7 @@ void FieldBuilder::buildMap() {
                 else if (level[i][j] == 'a') {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } 
-                else if (level[i][j] == 'q' && !existsP2) {
+                else if (level[i][j] == 'q') {
                     setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } 
                 else if (level[i][j] == 'v') {

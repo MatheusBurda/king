@@ -30,7 +30,6 @@ protected:
     sf::Clock time;
     float dt;
     bool levelRunning;
-    bool existsP1, existsP2;
     int numlvl;
 
 public:
