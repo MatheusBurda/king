@@ -54,6 +54,7 @@ void Level::renderAll() {
             (*_list)[i]->render();
     }
 }
+
 void Level::buildPlatform(sf::Vector2f pos, const char path[100]) {
     Platform* plat = new Platform(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT), path);
     this->getList()->addEntity(plat);

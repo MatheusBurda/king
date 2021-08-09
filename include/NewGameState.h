@@ -9,19 +9,24 @@ class InputManager;
 
 namespace SM {
 
+class Game;
+
 class NewGameState : public Menu, public State {
 private:
     sf::String playerInput;
     sf::Text playerText;
     sf::Font font;
+    Game* pGame;
+    bool onePlayer;
 
 public:
-    NewGameState(InputManager* IM = NULL, StateMachine* pSM = NULL);
+    NewGameState(InputManager* IM = NULL, Game* pG = NULL);
     ~NewGameState();
 
     void update();
     void render();
     void exec();
+    void startNewLevel(bool isOnePLayer);
 };
 
 }

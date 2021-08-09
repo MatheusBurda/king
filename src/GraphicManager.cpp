@@ -41,12 +41,14 @@ void GraphicManager::render(sf::Text* text) {
 
 /* Display everything that was drawn. */
 void GraphicManager::display() {
-    window->display();
+    if (isWindowOpen())
+        window->display();
 }
 
 /* Clear the window to re-display stuff. */
 void GraphicManager::clear() {
-    window->clear();
+    if (isWindowOpen())
+        window->clear();
 }
 
 /* Returns pointer to the window. */

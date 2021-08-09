@@ -1,15 +1,18 @@
 #include "NewGameState.h"
+#include "Game.h"
 
 using namespace SM;
 
-NewGameState::NewGameState(InputManager* IM, StateMachine* pSM) :
+NewGameState::NewGameState(InputManager* IM, Game* pG) :
 Menu(IM, BACKGROUND_MAIN_MENU),
-State(pSM) {
+State(static_cast<StateMachine*>(pG)),
+pGame(pG) {
     GraphicManager* GM = GraphicManager::getInstance();
     Button* bt = NULL;
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
     bt->setMessage("NOME PLAYER 1");
+    bt->select(true);
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
@@ -17,17 +20,12 @@ State(pSM) {
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 160));
-    bt->setMessage("PLAY");
-    bt->select(true);
-    vectorOfButtons.push_back(bt);
-
-    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 240));
     bt->setMessage("RETURN");
     vectorOfButtons.push_back(bt);
 
-    selected = 2;
+    selected = 0;
 
-    max = 3;
+    max = 2;
 
     if (!font.loadFromFile(FONT_PATH)) {
         cout << "Error loading Font!" << endl;
@@ -40,6 +38,8 @@ State(pSM) {
     playerText.setOrigin(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
     playerText.setPosition(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
     playerText.setFillColor(sf::Color::White);
+
+    onePlayer = true;
 }
 
 NewGameState::~NewGameState() {
@@ -47,6 +47,7 @@ NewGameState::~NewGameState() {
 
 void NewGameState::update() {
     active = true;
+
     /*     sf::Event event;
     if (event.type == sf::Event::TextEntered) {
         playerInput += event.text.unicode;
@@ -65,15 +66,12 @@ void NewGameState::exec() {
     if (active) {
         switch (selected) {
         case 0:
-            cout << "new PLAYER 1" << endl;
+            startNewLevel(true);
             break;
         case 1:
-            cout << "new PLAYER 2" << endl;
+            startNewLevel(false);
             break;
         case 2:
-            cout << "new JOGAR" << endl;
-            break;
-        case 3:
             changeState(stateID::mainMenu);
             break;
         default:
@@ -81,4 +79,47 @@ void NewGameState::exec() {
         }
     }
     active = false;
+}
+
+void NewGameState::startNewLevel(bool isOnePLayer) {
+    onePlayer = isOnePLayer;
+
+    cout << "Starting new level" << endl;
+    return;
+
+    Level* pLevel = pGame->getpLevel();
+    if (pLevel != NULL) {
+        delete (pLevel);
+    }
+
+    int currentLVL = pGame->getCurrentLevel();
+
+    Player* player1 = pGame->getPLayer1();
+    player1->reset();
+
+    Player* player2 = NULL;
+    
+    if (!onePlayer) {
+        player2 = pGame->getPLayer2();
+        player2->reset();
+    }
+
+    pEntityL->addEntity(player1);
+
+    if (currentLevel == 1) {
+        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
+        pLevel = static_cast<Level*>(fb);
+    }
+
+    /*else if (currentLevel == 1) {
+        CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
+        pLevel = static_cast<Level*>(cb);
+    }*/
+
+    else {
+        cerr << "GAME - Couldnt create a new LEVEL" << endl;
+        std::exit(35);
+    }
+    pGame->setLevel(pLevel);
+    pGame->changeCurrentState(stateID::playing);
 }

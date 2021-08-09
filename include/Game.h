@@ -20,8 +20,6 @@ private:
     GraphicManager* pGraphicM;
     EventManager* pEventM;
     InputManager* pInputM;
-    MainMenuState* objMainMenuState;
-    NewGameState* objNewGameState;
     Level* pLevel;
     Player* player1;
     Player* player2;
@@ -32,9 +30,21 @@ private:
 public:
     Game();
     ~Game();
+
+    void startStates();
+
     void exec();
-    void startNewLevel();
     void save();
+
+    Level* getpLevel() const;
+    void setLevel(Level* pLevel);
+
+    Player* getPLayer1();
+    Player* getPLayer2();
+
+    int getCurrentLevel() const;
+    void setCurrentLevel(int num);
+    
 };
 
 }

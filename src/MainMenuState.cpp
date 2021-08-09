@@ -43,19 +43,6 @@ void MainMenuState::render() {
 }
 
 void MainMenuState::exec() {
-    /* switch (selected) {
-    case 0:
-        changeState(stateID::newGame);
-        break;
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    default:
-        break;
-    } */
     if (active) {
         switch (selected) {
         case 0:
