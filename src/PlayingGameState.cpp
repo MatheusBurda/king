@@ -19,7 +19,7 @@ void PlayingGameState::update() {
     pLevel->exec();
 
     if (!pLevel->isLevelRunning()) {
-        endLevel(false);
+        endLevel(true);
     }
 }
 

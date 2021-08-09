@@ -1,10 +1,12 @@
 #include "MainMenuState.h"
+#include "Game.h"
 
 using namespace SM;
 
-MainMenuState::MainMenuState(InputManager* IM, StateMachine* pSM) :
+MainMenuState::MainMenuState(InputManager* IM, Game* pG) :
 Menu(IM, BACKGROUND_MAIN_MENU),
-State(pSM) {
+State(static_cast<StateMachine*>(pG)),
+pGame(pG) {
     GraphicManager* GM = GraphicManager::getInstance();
     Button* bt = NULL;
 
@@ -37,6 +39,7 @@ void MainMenuState::update() {
 
 /* Menu operation to render all it's objects. */
 void MainMenuState::render() {
+    updateView();
     back.render();
     for (it = vectorOfButtons.begin(); it != vectorOfButtons.end(); ++it)
         (*it)->render();
@@ -57,7 +60,7 @@ void MainMenuState::exec() {
             cout << "LEADERBOARD" << endl;
             break;
         case 3:
-            changeState(stateID::exit);
+            pGame->endGame();
             break;
         default:
             break;

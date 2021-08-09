@@ -9,10 +9,14 @@ class InputManager;
 
 namespace SM {
 
+class Game;
+
 class MainMenuState : public Menu, public State {
 private:
+    Game* pGame;
+
 public:
-    MainMenuState(InputManager* IM = NULL, StateMachine* pSM = NULL);
+    MainMenuState(InputManager* IM = NULL, Game* pG = NULL);
     ~MainMenuState();
 
     void update();

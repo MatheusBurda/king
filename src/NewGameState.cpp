@@ -11,12 +11,12 @@ pGame(pG) {
     Button* bt = NULL;
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
-    bt->setMessage("NOME PLAYER 1");
+    bt->setMessage("ONE PLAYER");
     bt->select(true);
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
-    bt->setMessage("NOME PLAYER 2");
+    bt->setMessage("TWO PLAYERS");
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 160));
@@ -27,18 +27,6 @@ pGame(pG) {
 
     max = 2;
 
-    if (!font.loadFromFile(FONT_PATH)) {
-        cout << "Error loading Font!" << endl;
-        std::exit(1);
-    }
-
-    playerText.setFont(font);
-    playerText.setCharacterSize(TEXT_SIZE);
-
-    playerText.setOrigin(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
-    playerText.setPosition(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
-    playerText.setFillColor(sf::Color::White);
-
     onePlayer = true;
 }
 
@@ -46,13 +34,10 @@ NewGameState::~NewGameState() {
 }
 
 void NewGameState::update() {
-    active = true;
-
-    /*     sf::Event event;
-    if (event.type == sf::Event::TextEntered) {
-        playerInput += event.text.unicode;
-        playerText.setString(playerInput);
-    } */
+    if (pGame->getCurrentLevel() == 1)
+        active = true;
+    else
+        startNewLevel(true);
 }
 
 /* Menu operation to render all it's objects. */
@@ -106,10 +91,15 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
         pLevel = static_cast<Level*>(fb);
     }
 
-    /*else if (currentLevel == 1) {
+    else if (currentLevel == 2) {
+        LoadBuilder* cb = new LoadBuilder("./assets/Backgrounds/bck1.png", player1, player2, sf::Vector2u(0, 0));
+        pLevel = static_cast<Level*>(cb);
+    }
+
+    /* else if (currentLevel == 2) {
         CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(cb);
-    }*/
+    } */
 
     else {
         cerr << "GAME - Couldnt create a new LEVEL" << endl;

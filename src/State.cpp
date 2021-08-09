@@ -9,6 +9,7 @@ pSM(pSM) { }
 
 State::~State() {
     pSM = NULL;
+
 }
 
 void State::setStateMachine(StateMachine* pSM) {

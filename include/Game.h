@@ -43,6 +43,8 @@ public:
 
     int getCurrentLevel() const;
     void setCurrentLevel(int num);
+
+    void endGame();
 };
 
 }

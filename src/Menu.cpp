@@ -40,3 +40,8 @@ void Menu::selectUp() {
         selected = min;
     vectorOfButtons[selected]->select(true);
 }
+
+void Menu::updateView() {
+    GraphicManager* GM = GraphicManager::getInstance();
+    GM->centerView(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
+}

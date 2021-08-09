@@ -54,10 +54,6 @@ void Game::exec() {
         execCurrentState();
 
         pGraphicM->display();
-        
-        if (currentStateID == stateID::exit) {
-            pGraphicM->closeWindow();
-        }
     }
 }
 
@@ -91,4 +87,8 @@ int Game::getCurrentLevel() const {
 
 void Game::setCurrentLevel(int num) {
     currentLevel = num;
+}
+
+void Game::endGame() {
+    pGraphicM->closeWindow();
 }

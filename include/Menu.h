@@ -23,6 +23,7 @@ public:
     virtual ~Menu();
 
     virtual void exec() = 0;
+    void updateView();
     void selectDown();
     void selectUp();
 };

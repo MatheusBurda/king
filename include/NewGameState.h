@@ -13,9 +13,6 @@ class Game;
 
 class NewGameState : public Menu, public State {
 private:
-    sf::String playerInput;
-    sf::Text playerText;
-    sf::Font font;
     Game* pGame;
     bool onePlayer;
 

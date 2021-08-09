@@ -10,7 +10,6 @@ enum stateID {
     mainMenu = 0,
     newGame,
     playing,
-    exit,
     loadGame,
     pauseMenu,
     saveGame,
