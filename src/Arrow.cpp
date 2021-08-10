@@ -23,10 +23,6 @@ void Arrow::update(float dt) {
     }
 }
 
-void Arrow::render() {
-    sprite->render();
-}
-
 void Arrow::initializeSprite() {
     sprite->initializeTexture(PATH_ARROW_TEXTURE, sf::Vector2u(2, 1));
 }

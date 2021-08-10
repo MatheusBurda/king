@@ -21,7 +21,11 @@ void StateMachine::changeCurrentState(SM::stateID id) {
     currentStateID = id;
 }
 
-void StateMachine::execCurrentState() {
-    vectorOfStates[currentStateID]->update();
+void StateMachine::execCurrentState(float dt) {
+    vectorOfStates[currentStateID]->update(dt);
     vectorOfStates[currentStateID]->render();
+}
+
+stateID StateMachine::getCurrentState() const {
+    return currentStateID;
 }

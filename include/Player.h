@@ -23,7 +23,6 @@ public:
     ~Player();
 
     void update(float dt);
-    void render();
     void setJump(const bool val = true) { canJump = val; }
     void initializeSprite();
     int canAttack(float dt = 0.0f);

@@ -63,6 +63,3 @@ void Archer::save() {
         file.close();
     }
 }
-void Archer::render() {
-    sprite->render();
-}

@@ -10,7 +10,3 @@ Character(id, pos, hit, lf, dmg) {
 
 Enemy::~Enemy() {
 }
-
-void Enemy::render() {
-    sprite->render();
-}

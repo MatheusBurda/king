@@ -13,10 +13,10 @@ pGame(pG) {
 PlayingGameState::~PlayingGameState() {
 }
 
-void PlayingGameState::update() {
+void PlayingGameState::update(float dt) {
     if (!pLevel)
         pLevel = pGame->getpLevel();
-    pLevel->exec();
+    pLevel->exec(dt);
 
     if (!pLevel->isLevelRunning()) {
         endLevel(true);
@@ -36,8 +36,8 @@ void PlayingGameState::endLevel(bool lvlEnded) {
 
     if (lvlEnded) {
         pGame->setCurrentLevel(2);
-        //changeState(stateID::newGame);
-        changeState(stateID::mainMenu);
+        changeState(stateID::newGame);
+        //changeState(stateID::mainMenu);
     } else {
         changeState(stateID::mainMenu);
     }

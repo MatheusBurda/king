@@ -5,19 +5,19 @@
 
 class InputManager;
 
-#define BACKGROUND_MAIN_MENU "./assets/Backgrounds/MainMenuBackground.png"
+#define BACKGROUND_PATH "./assets/Backgrounds/MenuBackground.png"
 
 namespace SM {
 
 class Game;
 
-class MainMenuState : public Menu, public State {
+class PauseMenuState : public Menu, public State {
 private:
     Game* pGame;
 
 public:
-    MainMenuState(InputManager* IM = NULL, Game* pG = NULL);
-    ~MainMenuState();
+    PauseMenuState(InputManager* IM = NULL, Game* pG = NULL);
+    ~PauseMenuState();
 
     void update(float dt);
     void render();

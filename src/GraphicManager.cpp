@@ -17,6 +17,7 @@ window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "king++")),
 view(sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),
 texturesMap() {
     window->setFramerateLimit(FRAME_RATE);
+    font = NULL;
 }
 
 /* ========================================= */
@@ -103,4 +104,16 @@ sf::Texture* GraphicManager::loadTexture(const char* path) {
     texturesMap.insert(std::pair<const char*, sf::Texture*>(path, tex));
 
     return tex;
+}
+
+/* Returns a font pointer to be used by texts. */
+sf::Font* GraphicManager::getFont() {
+    if (!font) {
+        font = new sf::Font();
+        if (!font->loadFromFile(FONT_PATH)) {
+            cout << "Error loading Font!" << endl;
+            exit(1);
+        }
+    }
+    return font;
 }

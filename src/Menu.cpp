@@ -25,23 +25,27 @@ Menu::~Menu() {
 
 /* Make the menu selection go Down */
 void Menu::selectDown() {
-    vectorOfButtons[selected]->select(false);
-    selected++;
-    if (selected > max)
-        selected = max;
-    vectorOfButtons[selected]->select(true);
+    if (active) {
+        vectorOfButtons[selected]->select(false);
+        selected++;
+        if (selected > max)
+            selected = max;
+        vectorOfButtons[selected]->select(true);
+    }
 }
 
 /* Make the menu selection go Up */
 void Menu::selectUp() {
-    vectorOfButtons[selected]->select(false);
-    selected--;
-    if (selected < min)
-        selected = min;
-    vectorOfButtons[selected]->select(true);
+    if (active) {
+        vectorOfButtons[selected]->select(false);
+        selected--;
+        if (selected < min)
+            selected = min;
+        vectorOfButtons[selected]->select(true);
+    }
 }
 
 void Menu::updateView() {
     GraphicManager* GM = GraphicManager::getInstance();
-    GM->centerView(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
+    GM->centerView(sf::Vector2f(640, 360));
 }

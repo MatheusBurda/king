@@ -20,7 +20,7 @@ public:
     NewGameState(InputManager* IM = NULL, Game* pG = NULL);
     ~NewGameState();
 
-    void update();
+    void update(float dt);
     void render();
     void exec();
     void startNewLevel(bool isOnePLayer);

@@ -14,9 +14,6 @@ void SpiderWeb::update(float dt) {
     sprite->Update(0, dt, facingLeft(), position);
 }
 
-void SpiderWeb::render() {
-    sprite->render();
-}
 void SpiderWeb::save() {
     if (getShowing()) {
         ofstream file;

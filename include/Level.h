@@ -27,15 +27,13 @@ protected:
     sf::Vector2u levelMapSize;
     Background back;
     EventManager* pEventManager;
-    sf::Clock time;
-    float dt;
     bool levelRunning;
     char path[100];
 
 public:
     Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize);
     virtual ~Level();
-    void exec();
+    void exec(float dt);
 
     GraphicManager* getGM() { return graphicM; }
     EntityList* getList() { return _list; }

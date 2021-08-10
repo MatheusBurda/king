@@ -7,19 +7,15 @@ player1(p1),
 player2(p2),
 colis(_list),
 levelMapSize(levelSize),
-back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path)
-{
+back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
     strcpy(this->path, path);
     pEventManager = EventManager::getInstance();
-    time.restart();
     levelRunning = true;
 
     if (player1) {
-
         _list->addEntity(player1);
     }
     if (player2) {
-
         _list->addEntity(player2);
     }
 }
@@ -36,11 +32,8 @@ Level::~Level() {
     delete (_list);
 }
 
-void Level::exec() {
+void Level::exec(float dt) {
     if (player1->getShowing()) {
-        /* Get the elapsed time from last loop */
-        dt = time.getElapsedTime().asSeconds();
-        time.restart();
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
@@ -68,7 +61,6 @@ void Level::renderAll() {
             (*_list)[i]->render();
     }
 }
-
 
 void Level::saveLvl() {
     ofstream level;
@@ -99,6 +91,6 @@ void Level::saveLvl() {
     clean.open("./assets/Saves/Boss.txt", ios::trunc);
     clean.close();
     for (int i = 0; i < _list->getSize(); i++) {
-            (*_list)[i]->save();
+        (*_list)[i]->save();
     }
 }

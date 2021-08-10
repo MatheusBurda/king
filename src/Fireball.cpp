@@ -24,10 +24,6 @@ void Fireball::update(float dt) {
     }
 }
 
-void Fireball::render() {
-    sprite->render();
-}
-
 void Fireball::initializeSprite() {
     sprite->initializeTexture(PATH_FIREBALL_TEXTURE,sf::Vector2u(3, 1));
 }

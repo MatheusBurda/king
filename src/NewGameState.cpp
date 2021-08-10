@@ -33,7 +33,7 @@ pGame(pG) {
 NewGameState::~NewGameState() {
 }
 
-void NewGameState::update() {
+void NewGameState::update(float dt) {
     if (pGame->getCurrentLevel() == 1)
         active = true;
     else
@@ -42,6 +42,7 @@ void NewGameState::update() {
 
 /* Menu operation to render all it's objects. */
 void NewGameState::render() {
+    updateView();
     back.render();
     for (it = vectorOfButtons.begin(); it != vectorOfButtons.end(); ++it)
         (*it)->render();
@@ -62,6 +63,9 @@ void NewGameState::exec() {
         default:
             break;
         }
+        vectorOfButtons[selected]->select(false);
+        selected = 0;
+        vectorOfButtons[selected]->select(true);
     }
     active = false;
 }
@@ -87,23 +91,19 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
     }
 
     if (currentLevel == 1) {
-        LevelMaker* field = new LevelMaker("./assets/Backgrounds/montanha.png", player1, player2, sf::Vector2u(0, 0), 1);
-        pLevel = field->getLevel();
-        delete(field);
+        LevelMaker* maker = new LevelMaker();
+        pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 1);
+        delete (maker);
     }
 
-    /*else if (currentLevel == 2) {
-        LoadBuilder* cb = new LoadBuilder("./assets/Backgrounds/bck1.png", player1, player2, sf::Vector2u(0, 0));
-        pLevel = static_cast<Level*>(cb);
-    }*/
-
-    /* else if (currentLevel == 2) {
-        CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));
-        pLevel = static_cast<Level*>(cb);
-    } */
+    else if (currentLevel == 2) {
+        LevelMaker* maker = new LevelMaker();
+        pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 2);
+        delete (maker);
+    }
 
     else {
-        cerr << "GAME - Couldnt create a new LEVEL" << endl;
+        cerr << "GAME - Couldnt create a new LEVEL - no existing level" << endl;
         std::exit(35);
     }
     pGame->setLevel(pLevel);

@@ -33,7 +33,7 @@ pGame(pG) {
 MainMenuState::~MainMenuState() {
 }
 
-void MainMenuState::update() {
+void MainMenuState::update(float dt) {
     active = true;
 }
 
@@ -65,6 +65,9 @@ void MainMenuState::exec() {
         default:
             break;
         }
+        vectorOfButtons[selected]->select(false);
+        selected = 0;
+        vectorOfButtons[selected]->select(true);
     }
     active = false;
 }

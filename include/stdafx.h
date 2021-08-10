@@ -4,7 +4,7 @@
 #include <SFML/Window.hpp>
 
 #include <stdlib.h>
-
+#include <string.h>
 #include <iostream>
 using std::cout;
 using std::endl;

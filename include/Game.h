@@ -1,16 +1,13 @@
 #pragma once
 
-
 #include "EntityList.h"
 #include "EventManager.h"
-
 #include "GraphicManager.h"
 #include "InputManager.h"
-
 #include "MainMenuState.h"
 #include "MenuControl.h"
 #include "NewGameState.h"
-#include "PauseMenu.h"
+#include "PauseMenuState.h"
 #include "PlayingGameState.h"
 #include "StateMachine.h"
 
@@ -25,6 +22,7 @@ private:
     Player* player1;
     Player* player2;
     int currentLevel;
+    sf::Clock time;
 
 public:
     Game();

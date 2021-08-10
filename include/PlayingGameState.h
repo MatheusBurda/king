@@ -22,7 +22,7 @@ public:
     PlayingGameState(InputManager* IM = NULL, Game* pG = NULL);
     ~PlayingGameState();
 
-    void update();
+    void update(float dt);
     void render();
     void endLevel(bool lvlEnded);
 };

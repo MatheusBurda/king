@@ -9,15 +9,13 @@
 class GraphicManager;
 
 class Platform : public Entity {
-
 private:
     char path[100];
+
 public:
-     Platform(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]);
+    Platform(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]);
     ~Platform();
     void update(float dt);
-    void render();
     void initializeSprite();
     void save();
-
 };

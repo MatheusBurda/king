@@ -12,7 +12,6 @@ protected:
     bool isAttacking;
 
     virtual void update(float dt) = 0;
-    virtual void render() = 0;
     virtual void initializeSprite() = 0;
 
 public:

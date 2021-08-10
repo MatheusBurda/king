@@ -17,12 +17,7 @@ Button::~Button() {
 void Button::setMessage(const char* m) {
     text.setString(m);
 
-    if (!font.loadFromFile(FONT_PATH)) {
-        cout << "Error loading Font!" << endl;
-        exit(1);
-    }
-
-    text.setFont(font);
+    text.setFont(*pGraphicManager->getFont());
     text.setCharacterSize(TEXT_SIZE);
 
     sf::FloatRect textRect = text.getLocalBounds();

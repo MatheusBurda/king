@@ -17,9 +17,6 @@ void Wall::update(float dt) {
     sprite->Update(0, dt, facingLeft(), position);
 }
 
-void Wall::render() {
-    sprite->render();
-}
 void Wall::save() {
     if (getShowing()) {
         ofstream file;

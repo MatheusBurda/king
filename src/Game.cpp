@@ -41,17 +41,27 @@ void Game::startStates() {
     pNewState = new PlayingGameState(pInputM, this);
     vectorOfStates.push_back(pNewState);
 
+    pNewState = new PauseMenuState(pInputM, this);
+    vectorOfStates.push_back(pNewState);
+
     currentStateID = stateID::mainMenu;
 }
 
 void Game::exec() {
+    float dt;
+    time.restart();
+
     while (pGraphicM->isWindowOpen()) {
+        /* Get the elapsed time from last loop */
+        dt = time.getElapsedTime().asSeconds();
+        time.restart();
+        /* Check if any event occurred */
         pEventM->pollEvents();
-
+        /* Clear the screen to draw new stuff */
         pGraphicM->clear();
-
-        execCurrentState();
-
+        /* Call update and render of current state */
+        execCurrentState(dt);
+        /* Display everything drawn */
         pGraphicM->display();
     }
 }

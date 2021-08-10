@@ -49,7 +49,3 @@ void Boss::save() {
         file.close();
     }
 }
-
-void Boss::render() {
-    sprite->render();
-}

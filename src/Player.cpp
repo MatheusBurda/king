@@ -40,11 +40,6 @@ void Player::update(float dt) {
     updateSprite(dt);
 }
 
-/* Render body to the screen */
-void Player::render() {
-    sprite->render();
-}
-
 /* Initialize the texture on the Animation */
 void Player::initializeSprite() {
     sprite->initializeTexture(PLAYER_PATH, sf::Vector2u(4, 6));

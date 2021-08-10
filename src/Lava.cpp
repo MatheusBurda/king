@@ -16,10 +16,6 @@ void Lava::update(float dt) {
     sprite->Update(0, dt, facingLeft(), position);
 }
 
-void Lava::render() {
-    sprite->render();
-}
-
 void Lava::save() {
     if (getShowing()) {
         ofstream file;

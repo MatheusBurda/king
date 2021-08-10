@@ -5,7 +5,6 @@
 #include "stdafx.h"
 
 #define BUTTON_PATH "./assets/Backgrounds/Button.png"
-#define FONT_PATH "./assets/Fonts/minecraft-ten.ttf"
 #define TEXT_SIZE 24
 
 class Button : public Ent {

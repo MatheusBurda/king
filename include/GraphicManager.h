@@ -5,11 +5,14 @@
 #include "stdafx.h"
 #include <map>
 
+#define FONT_PATH "./assets/Fonts/minecraft-ten.ttf"
+
 class GraphicManager {
 private:
     sf::RenderWindow* window;
     sf::View view;
     std::map<const char*, sf::Texture*> texturesMap;
+    sf::Font* font;
 
     /* Singleton class */
     static GraphicManager* instance;
@@ -31,4 +34,5 @@ public:
     sf::Vector2u getWindowSize() const;
     void centerView(sf::Vector2f pos);
     sf::Texture* loadTexture(const char* path);
+    sf::Font* getFont();
 };

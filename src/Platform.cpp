@@ -17,13 +17,10 @@ void Platform::update(float dt) {
     sprite->Update(0, dt, false, position);
 }
 
-void Platform::render() {
-    sprite->render();
-}
-
 void Platform::initializeSprite() {
     sprite->initializeTexture(path, sf::Vector2u(1, 1));
 }
+
 void Platform::save() {
     if (getShowing()) {
         ofstream file;

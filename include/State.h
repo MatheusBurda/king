@@ -10,8 +10,8 @@ enum stateID {
     mainMenu = 0,
     newGame,
     playing,
-    loadGame,
     pauseMenu,
+    loadGame,
     saveGame,
     leaderboard
 };
@@ -27,7 +27,7 @@ public:
 
     void setStateMachine(StateMachine* pSM);
     void changeState(SM::stateID id);
-    virtual void update() = 0;
+    virtual void update(float dt) = 0;
     virtual void render() = 0;
 };
 

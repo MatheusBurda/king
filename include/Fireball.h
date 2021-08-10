@@ -11,7 +11,6 @@ public:
     Fireball(ID::ids id, sf::Vector2f pos, sf::Vector2f hit);
     ~Fireball();
     void update(float dt);
-    void render();
     void initializeSprite();
     void save(){ }
 };

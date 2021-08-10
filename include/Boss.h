@@ -15,6 +15,5 @@ public:
     void update(float dt);
     void save();
     void attack(){ }
-    void render();
 };
 

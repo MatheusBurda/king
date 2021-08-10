@@ -16,7 +16,8 @@ public:
     virtual ~StateMachine();
 
     void changeCurrentState(SM::stateID id);
-    void execCurrentState();
+    void execCurrentState(float dt);
+    stateID getCurrentState() const;
 };
 
 }
