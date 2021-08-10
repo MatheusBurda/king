@@ -2,6 +2,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
+#include "string.h"
+
 Wall::Wall(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char* path) :
 Entity(id, pos, hit) {
     strcpy(this->path, path);
@@ -26,7 +28,7 @@ void Wall::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y << ' ' << path <<' ' <<facingLeft()<< endl;
+        file << getPosition().x << ' ' << getPosition().y << ' ' << path << ' ' << facingLeft() << endl;
         file.close();
     }
 }

@@ -4,7 +4,7 @@
 
 class Animation;
 class GraphicManager;
-#define BOSS_PATH "./assets/Archer/Attack1.png"
+#define BOSS_PATH "./assets/Boss/BossSpritesheet.png"
 class Boss :public Enemy{
 private:
 	static const float attackTime;

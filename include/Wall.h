@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "stdafx.h"
 
 #define WALL_PATH_DIRT "./assets/Platforms/DirtWall.png"
 #define WALL_PATH_BRICK "./assets/Platforms/BrickWall.png"

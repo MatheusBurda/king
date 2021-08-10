@@ -9,7 +9,6 @@ pSM(pSM) { }
 
 State::~State() {
     pSM = NULL;
-    cout << "Destrui"<<endl;
 }
 
 void State::setStateMachine(StateMachine* pSM) {

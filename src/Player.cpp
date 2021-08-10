@@ -7,9 +7,10 @@
 const float Player::attackTime = 0.8;
 
 Player::Player(const bool isPlayer1) :
-    Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
-    player1(isPlayer1), points(0),
-pc(EventManager::getInstance()->getInputManager(), this) {
+Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
+player1(isPlayer1),
+pc(EventManager::getInstance()->getInputManager(), this),
+points(0) {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
     firstAttack = true;
@@ -126,7 +127,7 @@ void Player::save() {
         }
         file << (int)getPosition().x << ' ' << (int)getPosition().y - 30 << ' ' << points;
         file.close();
-    }else {
+    } else {
         file.open("./assets/Saves/Player2.txt");
         if (!file) {
             cout << "ERROR TO OPEN FILE" << endl;

@@ -91,13 +91,17 @@ using std::string;
 /* =================================================== */
 /*                      PROJECTILE                     */
 /* =================================================== */
+
 #define PROJECTILE_DAMAGE 50
+
 /* =================================================== */
 /*                     LAVA                            */
 /* =================================================== */
+
 #define LAVA_DAMAGE 5
 #define LAVA_WIDTH 220
 #define LAVA_HEIGHT 45
+
 /* =================================================== */
 /*                     ARROW                           */
 /* =================================================== */
@@ -107,15 +111,15 @@ using std::string;
 /*                     SPIDER WEB                      */
 /* =================================================== */
 
-
 #define SPIDER_WIDTH 220
 #define SPIDER_HEIGHT 45
 
 /* =================================================== */
 /*                     BOSS                            */
 /* =================================================== */
-#define BOSS_HEIGHT 150
-#define BOSS_WIDTH 50
+
+#define BOSS_HEIGHT 110
+#define BOSS_WIDTH 40
 #define BOSS_LIFE 400
 #define BOSS_DMG 30
 #define BOSS_ATTACK 200
