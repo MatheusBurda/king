@@ -120,6 +120,6 @@ using std::string;
 
 #define BOSS_HEIGHT 110
 #define BOSS_WIDTH 40
-#define BOSS_LIFE 400
+#define BOSS_LIFE 4000
 #define BOSS_DMG 30
 #define BOSS_ATTACK 200

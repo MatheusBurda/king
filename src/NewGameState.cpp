@@ -87,14 +87,15 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
     }
 
     if (currentLevel == 1) {
-        FieldBuilder* fb = new FieldBuilder("./assets/Backgrounds/montanha.png", player1, player2, sf::Vector2u(0, 0));
-        pLevel = static_cast<Level*>(fb);
+        LevelMaker* field = new LevelMaker("./assets/Backgrounds/montanha.png", player1, player2, sf::Vector2u(0, 0), 1);
+        pLevel = field->getLevel();
+        delete(field);
     }
 
-    else if (currentLevel == 2) {
+    /*else if (currentLevel == 2) {
         LoadBuilder* cb = new LoadBuilder("./assets/Backgrounds/bck1.png", player1, player2, sf::Vector2u(0, 0));
         pLevel = static_cast<Level*>(cb);
-    }
+    }*/
 
     /* else if (currentLevel == 2) {
         CastleBuilder* cb = new CastleBuilder("./assets/Backgrounds/bck1.png", pEntityL, player1, player2, pColisM, sf::Vector2u(0, 0));

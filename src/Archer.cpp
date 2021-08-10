@@ -32,7 +32,7 @@ void Archer::update(float dt) {
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
     totalTimeFromAttack += dt;
-
+    sprite->Update(2, dt, facingLeft(), position);
     attack();
 }
 
@@ -62,4 +62,7 @@ void Archer::save() {
         file << getPosition().x << ' ' << getPosition().y-30 << ' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x<<' ' << arrow->getVelocity().y <<' ' << arrow->getShowing() << endl;
         file.close();
     }
+}
+void Archer::render() {
+    sprite->render();
 }

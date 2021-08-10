@@ -2,7 +2,7 @@
 
 #include "Menu.h"
 #include "State.h"
-
+#include "LevelMaker.h"
 class InputManager;
 
 #define BACKGROUND_MAIN_MENU "./assets/Backgrounds/MainMenuBackground.png"

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "CastleBuilder.h"
+
 #include "EntityList.h"
 #include "EventManager.h"
-#include "FieldBuilder.h"
+
 #include "GraphicManager.h"
 #include "InputManager.h"
-#include "LoadBuilder.h"
+
 #include "MainMenuState.h"
 #include "MenuControl.h"
 #include "NewGameState.h"
