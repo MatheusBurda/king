@@ -43,6 +43,7 @@ public:
     void setCurrentLevel(int num);
 
     void endGame();
+    void deleteLevel();
 };
 
 }

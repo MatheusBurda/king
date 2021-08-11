@@ -4,8 +4,10 @@
 #include "PlayerControl.h"
 
 class Animation;
+class InputManager;
 
-#define PLAYER_PATH "./assets/King/KingSpritesheet2.png"
+#define PLAYER_1_PATH "./assets/King/KingSpritesheet.png"
+#define PLAYER_2_PATH "./assets/King/KingSpritesheet2.png"
 
 class Player : public Character {
 private:
@@ -19,7 +21,7 @@ private:
     int points;
 
 public:
-    Player(const bool isPlayer1 = true);
+    Player(const bool isPlayer1 = true, InputManager* pIM = NULL);
     ~Player();
 
     void update(float dt);

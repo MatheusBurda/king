@@ -1,18 +1,18 @@
 #include "Level.h"
 
 Level::Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize) :
-    graphicM(GraphicManager::getInstance()),
-    _list(new EntityList()),
-    player1(p1),
-    player2(p2),
-    colis(_list),
-    levelMapSize(levelSize),
-    reachEnd(1000),
-back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
+graphicM(GraphicManager::getInstance()),
+_list(new EntityList()),
+player1(p1),
+player2(p2),
+colis(_list),
+levelMapSize(levelSize),
+back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path),
+reachEnd(1000) {
     strcpy(this->path, path);
     pEventManager = EventManager::getInstance();
     levelRunning = true;
-    
+
     if (player1) {
         _list->addEntity(player1);
     }
@@ -34,9 +34,9 @@ Level::~Level() {
 }
 
 void Level::exec(float dt) {
-    
-    if (player1->getShowing() || player2 && player2->getShowing()) {
-        
+
+    if (player1->getShowing() || (player2 && player2->getShowing())) {
+
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
@@ -44,7 +44,7 @@ void Level::exec(float dt) {
         //Condition to end level because reached the end
         if (player1->getPosition().x > reachEnd) {
             levelRunning = false;
-                return;
+            return;
         }
         if (player2 && player2->getPosition().x > reachEnd) {
             levelRunning = false;
@@ -81,7 +81,7 @@ void Level::saveLvl() {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
     }
-    level << path<<' '<<reachEnd<<endl;
+    level << path << ' ' << reachEnd << endl;
     level.close();
     ofstream clean;
     clean.open("./assets/Saves/Player1.txt", ios::trunc);
@@ -105,4 +105,12 @@ void Level::saveLvl() {
     for (int i = 0; i < _list->getSize(); i++) {
         (*_list)[i]->save();
     }
+}
+
+int Level::getNumLevel(){
+    if(!strcmp(path, PATH_BACKGROUND_FIELD))
+        return 1;
+    else if(!strcmp(path, PATH_BACKGROUND_FIELD))
+        return 2;
+    return 0;
 }

@@ -80,13 +80,13 @@ void Game::setLevel(Level* pLevel) {
 
 Player* Game::getPLayer1() {
     if (player1 == NULL)
-        player1 = new Player(true);
+        player1 = new Player(true, pInputM);
     return player1;
 }
 
 Player* Game::getPLayer2() {
     if (player2 == NULL)
-        player2 = new Player(false);
+        player2 = new Player(false, pInputM);
     return player2;
 }
 
@@ -100,4 +100,14 @@ void Game::setCurrentLevel(int num) {
 
 void Game::endGame() {
     pGraphicM->closeWindow();
+}
+
+void Game::deleteLevel() {
+    delete (pLevel);
+    if (player2)
+        delete (player2);
+    if (player1)
+        delete (player1);
+    player1 = NULL;
+    player2 = NULL;
 }

@@ -69,7 +69,7 @@ using std::string;
 /*                      PLATFORM                       */
 /* =================================================== */
 
-#define PLATFORM_WIDTH 220
+#define PLATFORM_WIDTH 225
 #define PLATFORM_HEIGHT 45
 
 /* =================================================== */

@@ -6,10 +6,10 @@
 
 const float Player::attackTime = 0.8;
 
-Player::Player(const bool isPlayer1) :
+Player::Player(const bool isPlayer1, InputManager* pIM) :
 Character(ID::player, sf::Vector2f(0, 0), sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT), PLAYER_LIFE, PLAYER_DAMAGE),
 player1(isPlayer1),
-pc(EventManager::getInstance()->getInputManager(), this),
+pc(pIM, this),
 points(0) {
     isWalking = false;
     totalTimeFromAttack = 0.0f;
@@ -42,7 +42,13 @@ void Player::update(float dt) {
 
 /* Initialize the texture on the Animation */
 void Player::initializeSprite() {
-    sprite->initializeTexture(PLAYER_PATH, sf::Vector2u(4, 6));
+    if(player1)
+        sprite->initializeTexture(PLAYER_1_PATH, sf::Vector2u(4, 6));
+    else{
+        sprite->initializeTexture(PLAYER_2_PATH, sf::Vector2u(4, 6));
+        pc.setKeys(sf::Keyboard::Up, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::RControl);
+    }
+
 }
 
 /* Returns a row of the spritesheet of the character if can attack. */
@@ -111,7 +117,8 @@ void Player::reset() {
     setShowing(true);
     setVelocity(sf::Vector2f(0.0f, 0.0f));
 }
-//function to save the player in a txt
+
+/* function to save the player in a txt */
 void Player::save() {
     ofstream file;
     if (isPlayer1()) {

@@ -37,7 +37,7 @@ void NewGameState::update(float dt) {
     if (pGame->getCurrentLevel() == 1)
         active = true;
     else
-        startNewLevel(true);
+        startNewLevel(onePlayer);
 }
 
 /* Menu operation to render all it's objects. */
@@ -90,7 +90,7 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
         player2->reset();
     }
 
-    if (currentLevel == 1) {
+    if (currentLevel <= 1) {
         LevelMaker* maker = new LevelMaker();
         pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 1);
         delete (maker);

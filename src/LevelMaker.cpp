@@ -74,13 +74,13 @@ void LevelMaker::buildWeb(sf::Vector2f pos) {
 }
 
 Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl) {
-    int y = 40, x = 120;
-    char level[40][120];
+    int y = 30, x = 120;
+    char level[30][120];
     srand(time(NULL));
     ifstream file;
     char platPath[100];
     char wallPath[100];
-    if (numlvl == 1) {
+    if (numlvl <= 1) {
         file.open("./assets/Levels/Field.txt");
         lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
         strcpy(platPath, PLATFORM_PATH_DIRT);
@@ -91,8 +91,6 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
         strcpy(platPath, PLATFORM_PATH_BRICK);
         strcpy(wallPath, WALL_PATH_BRICK);
     }
-    /* strcpy(platPath, PLATFORM_PATH_BRICK);
-    strcpy(wallPath, WALL_PATH_BRICK); */
     if (!file) {
         cout << "Cant Open txt on buildMap" << endl;
         std::exit(54);
@@ -107,10 +105,7 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
                     file >> level[i][j];
                 if (level[i][j] == 'p') {
                     buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), platPath);
-                } /* else if (level[i][j] == 'x') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_BRICK); 
-            }*/
-                else if (level[i][j] == '1') {
+                } else if (level[i][j] == '1') {
                     setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'z') {
                     buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
@@ -150,6 +145,8 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             }
         }
     }
+    strcpy(platPath, "");
+    strcpy(wallPath, "");
     file.close();
     return lvl;
 }

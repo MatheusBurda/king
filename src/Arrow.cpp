@@ -18,8 +18,6 @@ void Arrow::update(float dt) {
         velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
         changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
         sprite->Update(0, dt, facingLeft(), position);
-        if (position.x > 120 * 60 || position.y > 120 * 14)
-            setShowing(false);
     }
 }
 
