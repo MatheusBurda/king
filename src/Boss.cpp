@@ -39,6 +39,8 @@ void Boss::update(float dt) {
 
 void Boss::save() {
     if (getShowing()) {
+        cout << "TO SALVANDO UM BOSS" << endl;
+
         ofstream file;
         file.open("./assets/Saves/Boss.txt", ios::app);
         if (!file) {

@@ -83,13 +83,9 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
     if (numlvl <= 1) {
         file.open("./assets/Levels/Field.txt");
         lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
-        /* strcpy(platPath, "./assets/Platforms/DirtBlock.png");
-        strcpy(wallPath, "./assets/Platforms/DirtWall.png"); */
     } else if (numlvl == 2) {
         file.open("./assets/Levels/Castle.txt");
         lvl = new Level(PATH_BACKGROUND_CASTLE, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
-        /*         strcpy(platPath, "./assets/Platforms/BrickBlock.png");
-        strcpy(wallPath, "./assets/Platforms/BrickWall.png"); */
     }
     if (!file) {
         cout << "Cant Open txt on buildMap" << endl;
@@ -151,8 +147,6 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             }
         }
     }
-    /*  strcpy(platPath, "");
-    strcpy(wallPath, ""); */
     file.close();
     return lvl;
 }
@@ -182,6 +176,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     bool showing;
     sf::Vector2f posProj;
     sf::Vector2f velProj;
+
     ifstream Player1(("./assets/Saves/Player1.txt"), ios::in);
     if (!Player1) {
         cout << "Cant Open txt on Load Map" << endl;
@@ -190,6 +185,15 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     Player1 >> pos.x >> pos.y >> facingLeft;
     setPlayer1(sf::Vector2f(pos.x, pos.y));
     Player1.close();
+
+    ifstream Player2(("./assets/Saves/Player2.txt"), ios::in);
+    if (!Player2) {
+        cout << "Cant Open txt on Load Map" << endl;
+        exit(100);
+    }
+    Player2 >> pos.x >> pos.y >> facingLeft;
+    setPlayer2(sf::Vector2f(pos.x, pos.y));
+    Player2.close();
 
     ifstream Platform(("./assets/Saves/Platform.txt"), ios::in);
     if (!Platform) {
@@ -205,8 +209,10 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    while (Wall >> pos.x >> pos.y >> path >> facingLeft)
-        buildWall(sf::Vector2f(pos.x, pos.y), path, facingLeft);
+    char wallPath[100];
+    while (Wall >> pos.x >> pos.y >> facingLeft >> wallPath ) {
+        buildWall(sf::Vector2f(pos.x, pos.y), wallPath, facingLeft);
+    }
     Wall.close();
 
     ifstream Lava(("./assets/Saves/Lava.txt"), ios::in);
@@ -249,8 +255,9 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    Boss >> pos.x >> pos.y;
-    buildBoss(sf::Vector2f(pos.x, pos.y));
+
+    if (Boss >> pos.x >> pos.y)
+        buildBoss(sf::Vector2f(pos.x, pos.y));
     Boss.close();
 
     return lvl;

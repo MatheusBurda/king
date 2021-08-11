@@ -11,6 +11,7 @@ Entity(ID::platform, pos, hit) {
 }
 
 Platform::~Platform() {
+    cout << "MAtando plataforma" << endl;
 }
 
 void Platform::update(float dt) {

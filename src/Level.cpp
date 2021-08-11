@@ -31,9 +31,7 @@ Level::~Level() {
         _list->removeEntity(player2);
         player2 = NULL;
     }
-    _list->deleteAll();
     delete (_list);
-    cout << "Level deletado!" << endl;
 }
 
 void Level::exec(float dt) {

@@ -14,7 +14,6 @@ class Game;
 class NewGameState : public Menu, public State {
 private:
     Game* pGame;
-    bool onePlayer;
 
 public:
     NewGameState(InputManager* IM = NULL, Game* pG = NULL);
@@ -22,6 +21,7 @@ public:
 
     void update(float dt);
     void render();
+    void resetState();
     void exec();
     void startNewLevel(bool isOnePLayer);
 };

@@ -29,6 +29,7 @@ public:
     void changeState(SM::stateID id);
     virtual void update(float dt) = 0;
     virtual void render() = 0;
+    virtual void resetState() = 0;
 };
 
 }

@@ -13,14 +13,25 @@ LoadGameState::~LoadGameState() {
 }
 
 void LoadGameState::update(float dt) {
-    Level* lvl = pGame->getpLevel();
-    if (lvl != NULL) {
-        delete (lvl);
-    }
     LevelMaker* maker = new LevelMaker();
-    lvl = maker->loadMap(pGame->getPLayer1(), pGame->getPLayer2());
+    Level* lvl;
+
+    ifstream Player2(("./assets/Saves/Player2.txt"), ios::in);
+    if (!Player2) {
+        cout << "Cant Open txt on Load Map" << endl;
+        exit(100);
+    }
+    char info;
+    Player2 >> info;
+    Player2.close();
+
+    if (info != 0) {
+        lvl = maker->loadMap(pGame->getPLayer1(), pGame->getPLayer2());
+    } else
+        lvl = maker->loadMap(pGame->getPLayer1(), NULL);
+
     if (!lvl) {
-        cout << "FAZER AS COISAS DE LOAD SE DEU ERRADO" << endl;
+        cout << "FAZER AS COISAS DE LOAD DERAM ERRADO" << endl;
         changeState(stateID::mainMenu);
     } else {
         pGame->setLevel(lvl);
@@ -31,4 +42,7 @@ void LoadGameState::update(float dt) {
 }
 
 void LoadGameState::render() {
+}
+
+void LoadGameState::resetState() {
 }

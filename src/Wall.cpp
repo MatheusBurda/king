@@ -25,7 +25,7 @@ void Wall::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y << ' ' << path << ' ' << facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << ' ' << path << endl;
         file.close();
     }
 }

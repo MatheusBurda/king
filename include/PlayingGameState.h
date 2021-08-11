@@ -4,9 +4,6 @@
 #include "State.h"
 
 class InputManager;
-
-#define BACKGROUND_MAIN_MENU "./assets/Backgrounds/MainMenuBackground.png"
-
 class Level;
 
 namespace SM {
@@ -24,6 +21,7 @@ public:
 
     void update(float dt);
     void render();
+    void resetState();
     void endLevel(bool lvlEnded);
 };
 

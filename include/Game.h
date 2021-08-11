@@ -39,12 +39,14 @@ public:
 
     Player* getPLayer1();
     Player* getPLayer2();
+    bool isTwoPlayersActive() const;
 
     int getCurrentLevel() const;
     void setCurrentLevel(int num);
 
     void endGame();
     void deleteLevel();
+    void resetPlayers();
 };
 
 }

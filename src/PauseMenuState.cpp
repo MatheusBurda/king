@@ -27,12 +27,9 @@ pGame(pG) {
     selected = 0;
 }
 
-PauseMenuState::~PauseMenuState() {
-}
+PauseMenuState::~PauseMenuState() { }
 
-void PauseMenuState::update(float dt) {
-    active = true;
-}
+void PauseMenuState::update(float dt) { }
 
 /* Menu operation to render all it's objects. */
 void PauseMenuState::render() {
@@ -49,24 +46,26 @@ void PauseMenuState::exec() {
             changeState(stateID::playing);
             break;
         case 1:
-            //changeState(stateID::loadGame);
+            //changeState(stateID::saveGame);
             cout << "SALVAR" << endl;
             break;
         case 2:
-            pGame->deleteLevel();
-            pGame->setCurrentLevel(0);
             changeState(stateID::mainMenu);
             break;
         default:
             break;
         }
-        vectorOfButtons[selected]->select(false);
-        selected = 0;
-        vectorOfButtons[selected]->select(true);
+        active = false;
     }
     /* Trigger to open the pause menu */
     else if (pGame->getCurrentState() == stateID::playing) {
         changeState(stateID::pauseMenu);
     }
-    active = false;
+}
+
+void PauseMenuState::resetState() {
+    vectorOfButtons[selected]->select(false);
+    selected = 0;
+    vectorOfButtons[selected]->select(true);
+    active = true;
 }

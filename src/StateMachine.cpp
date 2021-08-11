@@ -19,6 +19,7 @@ StateMachine::~StateMachine() {
 
 void StateMachine::changeCurrentState(SM::stateID id) {
     currentStateID = id;
+    vectorOfStates[currentStateID]->resetState();
 }
 
 void StateMachine::execCurrentState(float dt) {

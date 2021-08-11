@@ -83,12 +83,11 @@ void List<TL>::clear() {
         paux2 = paux1->getNext();
         delete (paux1);
         paux1 = paux2;
+        size--;
     }
 
     pFirst = NULL;
     pLast = NULL;
-    size = 0;
-
 }
 
 /* Add new Node to List - internal use */

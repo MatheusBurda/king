@@ -9,14 +9,12 @@ Game::Game() {
     pInputM = new InputManager;
     pEventM->setInputManager(pInputM);
 
-    startStates();
-
-    pLevel = NULL;
 
     player1 = NULL;
     player2 = NULL;
-    currentLevel = 1;
+    pLevel = NULL;
 
+    startStates();
     exec();
 }
 
@@ -47,7 +45,7 @@ void Game::startStates() {
     pNewState = new LoadGameState(pInputM, this);
     vectorOfStates.push_back(pNewState);
 
-    currentStateID = stateID::mainMenu;
+    changeCurrentState(stateID::mainMenu);
 }
 
 void Game::exec() {
@@ -58,14 +56,14 @@ void Game::exec() {
         /* Get the elapsed time from last loop */
         dt = time.getElapsedTime().asSeconds();
         time.restart();
-        /* Check if any event occurred */
-        pEventM->pollEvents();
         /* Clear the screen to draw new stuff */
         pGraphicM->clear();
         /* Call update and render of current state */
         execCurrentState(dt);
         /* Display everything drawn */
         pGraphicM->display();
+        /* Check if any event occurred */
+        pEventM->pollEvents();
     }
 }
 
@@ -93,6 +91,10 @@ Player* Game::getPLayer2() {
     return player2;
 }
 
+bool Game::isTwoPlayersActive() const {
+    return ((player1 != NULL) && (player2 != NULL));
+}
+
 int Game::getCurrentLevel() const {
     return currentLevel;
 }
@@ -106,8 +108,16 @@ void Game::endGame() {
 }
 
 void Game::deleteLevel() {
-    if(pLevel)
+    if (pLevel != NULL)
         delete (pLevel);
     pLevel = NULL;
+}
 
+void Game::resetPlayers() {
+    if (player1 != NULL)
+        delete player1;
+    if (player2 != NULL)
+        delete player2;
+    player1 = NULL;
+    player2 = NULL;
 }

@@ -33,9 +33,7 @@ pGame(pG) {
 MainMenuState::~MainMenuState() {
 }
 
-void MainMenuState::update(float dt) {
-    active = true;
-}
+void MainMenuState::update(float dt) { }
 
 /* Menu operation to render all it's objects. */
 void MainMenuState::render() {
@@ -64,9 +62,18 @@ void MainMenuState::exec() {
         default:
             break;
         }
-        vectorOfButtons[selected]->select(false);
-        selected = 0;
-        vectorOfButtons[selected]->select(true);
+        active = false;
     }
-    active = false;
+}
+
+void MainMenuState::resetState() {
+    vectorOfButtons[selected]->select(false);
+    selected = 0;
+    vectorOfButtons[selected]->select(true);
+
+    pGame->deleteLevel();
+    pGame->resetPlayers();
+    pGame->setCurrentLevel(1);
+
+    active = true;
 }

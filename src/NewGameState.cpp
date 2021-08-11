@@ -26,18 +26,12 @@ pGame(pG) {
     selected = 0;
 
     max = 2;
-
-    onePlayer = true;
 }
 
-NewGameState::~NewGameState() {
-}
+NewGameState::~NewGameState() { }
 
 void NewGameState::update(float dt) {
-    if (pGame->getCurrentLevel() == 1)
-        active = true;
-    else
-        startNewLevel(onePlayer);
+    active = true;
 }
 
 /* Menu operation to render all it's objects. */
@@ -63,25 +57,20 @@ void NewGameState::exec() {
         default:
             break;
         }
-        vectorOfButtons[selected]->select(false);
-        selected = 0;
-        vectorOfButtons[selected]->select(true);
     }
     active = false;
 }
 
 void NewGameState::startNewLevel(bool isOnePLayer) {
-    onePlayer = isOnePLayer;
-
     Level* pLevel = NULL;
-   int currentLevel = pGame->getCurrentLevel();
+    int currentLevel = pGame->getCurrentLevel();
 
     Player* player1 = pGame->getPLayer1();
     player1->reset();
 
     Player* player2 = NULL;
 
-    if (!onePlayer) {
+    if (!isOnePLayer) {
         player2 = pGame->getPLayer2();
         player2->reset();
     }
@@ -90,8 +79,7 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
         LevelMaker* maker = new LevelMaker();
         pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 1);
         delete (maker);
-    }
-    else if (currentLevel == 2) {
+    } else if (currentLevel == 2) {
         LevelMaker* maker = new LevelMaker();
         pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 2);
         delete (maker);
@@ -101,6 +89,19 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
         cerr << "GAME - Couldnt create a new LEVEL - no existing level" << endl;
         std::exit(35);
     }
+
     pGame->setLevel(pLevel);
     pGame->changeCurrentState(stateID::playing);
+}
+
+void NewGameState::resetState() {
+    if (pGame->getCurrentLevel() == 1) {
+        pGame->deleteLevel();
+        vectorOfButtons[selected]->select(false);
+        selected = 0;
+        vectorOfButtons[selected]->select(true);
+    } else {
+        pGame->deleteLevel();
+        startNewLevel(!pGame->isTwoPlayersActive());
+    }
 }

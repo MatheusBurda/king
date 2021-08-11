@@ -22,7 +22,5 @@ public:
     void setGraphicManager();
     void setInputManager(InputManager* pIM);
 
-    InputManager* getInputManager() { return pInputM; }
-
     void pollEvents();
 };

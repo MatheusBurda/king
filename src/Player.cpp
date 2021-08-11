@@ -116,6 +116,7 @@ void Player::reset() {
     life = PLAYER_LIFE;
     setShowing(true);
     setVelocity(sf::Vector2f(0.0f, 0.0f));
+    initializeSprite();
 }
 
 /* function to save the player in a txt */

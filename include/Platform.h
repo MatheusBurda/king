@@ -2,7 +2,7 @@
 
 #include "Entity.h"
 
-#define PLATFORM_PATH_DIRT "./assets/Platforms/DirtBlock.png"
+#define PLATFORM_PATH_DIRT "./assets/Music/DirtBlock.png"
 #define PLATFORM_PATH_BRICK "./assets/Platforms/BrickBlock.png"
 #define PLATFORM_PATH_COBBLE "./assets/Platforms/CobbleBlock.png"
 

@@ -23,9 +23,7 @@ texturesMap() {
 /* ========================================= */
 
 GraphicManager::~GraphicManager() {
-    std::map<const char*, sf::Texture*>::iterator it;
-    for (it = texturesMap.begin(); it != texturesMap.end(); ++it)
-        delete (it->second);
+    deleteAllTextures();
 
     delete (window);
 }
@@ -88,10 +86,15 @@ void GraphicManager::centerView(sf::Vector2f pos) {
 /* Returns a texture to be used by an entity. */
 sf::Texture* GraphicManager::loadTexture(const char* path) {
     /* Tries to find an existing texture linked by the id. */
-    std::map<const char*, sf::Texture*>::iterator it;
-    it = texturesMap.find(path);
+    std::map<const char*, sf::Texture*>::iterator it = texturesMap.begin();
+    /* it = texturesMap.find(path);
     if (it != texturesMap.end()) {
         return it->second;
+    } */
+    while (it != texturesMap.end()) {
+        if (!strcmp(it->first, path))
+            return it->second;
+        it++;
     }
 
     /* If not found, have to load it. */
@@ -116,4 +119,11 @@ sf::Font* GraphicManager::getFont() {
         }
     }
     return font;
+}
+
+/* Delete all the textures. */
+void GraphicManager::deleteAllTextures() {
+    std::map<const char*, sf::Texture*>::iterator it;
+    for (it = texturesMap.begin(); it != texturesMap.end(); ++it)
+        delete (it->second);
 }
