@@ -66,7 +66,7 @@ void Level::renderAll() {
 
     back.render();
     /* Alterar */
-    back.changePos(player1->getPosition());
+    //back.changePos(player1->getPosition());
 
     for (int i = 0; i < _list->getSize(); i++) {
         if ((*_list)[i]->getShowing())
