@@ -53,8 +53,8 @@ void PauseMenuState::exec() {
             cout << "SALVAR" << endl;
             break;
         case 2:
-            pGame->setCurrentLevel(0);
             pGame->deleteLevel();
+            pGame->setCurrentLevel(0);
             changeState(stateID::mainMenu);
             break;
         default:

@@ -106,11 +106,8 @@ void Game::endGame() {
 }
 
 void Game::deleteLevel() {
-    delete (pLevel);
-    if (player2)
-        delete (player2);
-    if (player1)
-        delete (player1);
-    player1 = NULL;
-    player2 = NULL;
+    if(pLevel)
+        delete (pLevel);
+    pLevel = NULL;
+
 }

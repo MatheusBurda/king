@@ -25,9 +25,11 @@ Level::~Level() {
     saveLvl();
     if (player1) {
         _list->removeEntity(player1);
+        player1 = NULL;
     }
     if (player2) {
         _list->removeEntity(player2);
+        player2 = NULL;
     }
     _list->deleteAll();
     delete (_list);
@@ -60,7 +62,7 @@ void Level::renderAll() {
     sf::Vector2f viewPosition;
     if (player2 == NULL) {
         viewPosition = player1->getPosition();
-    } else {
+    } else{
         viewPosition = (player1->getPosition() + player2->getPosition()) / 2.0f;
     }
     graphicM->centerView(viewPosition);

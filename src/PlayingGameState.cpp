@@ -21,24 +21,25 @@ void PlayingGameState::update(float dt) {
     if (!pLevel->isLevelRunning()) {
         endLevel(true);
     }
+    pLevel = NULL;
 }
 
 void PlayingGameState::render() {
     if (!pLevel)
         pLevel = pGame->getpLevel();
     pLevel->renderAll();
+    pLevel = NULL;
 }
 
 void PlayingGameState::endLevel(bool lvlEnded) {
-    delete (pLevel);
+    pGame->deleteLevel();
     pLevel = NULL;
-    pGame->setLevel(NULL);
-
     if (lvlEnded) {
         pGame->setCurrentLevel(2);
         changeState(stateID::newGame);
         //changeState(stateID::mainMenu);
     } else {
         changeState(stateID::mainMenu);
+        pGame->setCurrentLevel(1);
     }
 }

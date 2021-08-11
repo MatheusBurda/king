@@ -73,12 +73,8 @@ void NewGameState::exec() {
 void NewGameState::startNewLevel(bool isOnePLayer) {
     onePlayer = isOnePLayer;
 
-    Level* pLevel = pGame->getpLevel();
-    if (pLevel != NULL) {
-        delete (pLevel);
-    }
-
-    int currentLevel = pGame->getCurrentLevel();
+    Level* pLevel = NULL;
+   int currentLevel = pGame->getCurrentLevel();
 
     Player* player1 = pGame->getPLayer1();
     player1->reset();
