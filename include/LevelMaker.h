@@ -23,7 +23,6 @@ private:
 public:
     LevelMaker();
     ~LevelMaker();
-
     Level* buildMap(const char* path, Player* p1, Player* p2, int numlvl);
-    Level* loadMap();
+    Level* loadMap(Player* p1, Player* p2);
 };

@@ -1,17 +1,18 @@
 #include "Level.h"
 
 Level::Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize) :
-graphicM(GraphicManager::getInstance()),
-_list(new EntityList()),
-player1(p1),
-player2(p2),
-colis(_list),
-levelMapSize(levelSize),
+    graphicM(GraphicManager::getInstance()),
+    _list(new EntityList()),
+    player1(p1),
+    player2(p2),
+    colis(_list),
+    levelMapSize(levelSize),
+    reachEnd(1000),
 back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWindowSize().y / 2)), path) {
     strcpy(this->path, path);
     pEventManager = EventManager::getInstance();
     levelRunning = true;
-
+    
     if (player1) {
         _list->addEntity(player1);
     }
@@ -33,11 +34,22 @@ Level::~Level() {
 }
 
 void Level::exec(float dt) {
-    if (player1->getShowing()) {
+    
+    if (player1->getShowing() || player2 && player2->getShowing()) {
+        
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
         colis.toCollide();
+        //Condition to end level because reached the end
+        if (player1->getPosition().x > reachEnd) {
+            levelRunning = false;
+                return;
+        }
+        if (player2 && player2->getPosition().x > reachEnd) {
+            levelRunning = false;
+            return;
+        }
     } else
         levelRunning = false;
 }
@@ -52,7 +64,7 @@ void Level::renderAll() {
     }
     graphicM->centerView(viewPosition);
 
-    //back.render();
+    back.render();
     /* Alterar */
     back.changePos(player1->getPosition());
 
@@ -69,7 +81,7 @@ void Level::saveLvl() {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
     }
-    level << path;
+    level << path<<' '<<reachEnd<<endl;
     level.close();
     ofstream clean;
     clean.open("./assets/Saves/Player1.txt", ios::trunc);

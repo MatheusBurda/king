@@ -15,6 +15,7 @@ namespace TEXT {
         platformDirt    = 'p',
         platformCobble  = 'x',
         wallDirtL       = 'L',
-        wallDirtR       = 'R'
+        wallDirtR       = 'R',
+        end             = 'e'
     };
 }

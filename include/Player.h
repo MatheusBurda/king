@@ -34,4 +34,5 @@ public:
     void reset();
     void save();
     void updatePoints(int pt);
+    int getPoints() { return points; }
 };

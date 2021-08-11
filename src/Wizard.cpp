@@ -21,7 +21,8 @@ void Wizard::initializeSprite() {
 void Wizard::update(float dt) {
 
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
-    if (!fireball->getShowing() && getShowing()) { //&& sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+    if (totalTimeFromAttack>=attackTime && getShowing()) {
+        fireball->setShowing(false);
         setIsAttacking(true);
     }
     if (velocity.y > 700)
@@ -40,9 +41,9 @@ void Wizard::attack() {
     if (getIsAttacking() && totalTimeFromAttack >= attackTime) {
         fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
         if (facingLeft()) {
-            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); //, -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); 
         } else {
-            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0)); // -sqrt(FIREBALL_HMAX * GRAVITY * 2)));
+            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0)); 
         }
         fireball->setShowing(true);
         setIsAttacking(false);

@@ -14,7 +14,7 @@ LoadGameState::~LoadGameState() {
 
 void LoadGameState::update(float dt) {
     LevelMaker* maker = new LevelMaker();
-    Level* lvl = maker->loadMap();
+    Level* lvl = maker->loadMap(pGame->getPLayer1(), pGame->getPLayer2());
     if (!lvl) {
         cout << "FAZER AS COISAS DE LOAD SE DEU ERRADO" << endl;
     }

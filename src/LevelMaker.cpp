@@ -76,6 +76,7 @@ void LevelMaker::buildWeb(sf::Vector2f pos) {
 Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl) {
     int y = 40, x = 120;
     char level[40][120];
+    srand(time(NULL));
     ifstream file;
     if (numlvl == 1) {
         file.open("./assets/Levels/Field.txt");
@@ -118,24 +119,27 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
                 } else if (level[i][j] == 'w') {
                     buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 's') {
-                    int i = rand() % 10;
-                    if (i >= 5)
+                    int random = rand() % 10;
+                    if (random >= 5)
                         buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'c') {
-                    int i = rand() % 10;
-                    if (i >= 5)
+                    int random = rand() % 10;
+                    if (random >= 5)
                         buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'q') {
-                    int i = rand() % 10;
-                    if (i >= 5)
+                    int random = rand() % 10;
+                    if (random >= 5)
                         buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'n') {
-                    int i = rand() % 10;
-                    if (i >= 5)
+                    int random = rand() % 10;
+                    if (random >= 5)
                         buildLava(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'b') {
                     buildBoss(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
+                }else if (level[i][j] == 'e') {
+                    lvl->setEnd(j*PLATFORM_WIDTH);
                 }
+              
             }
         }
     }
@@ -143,16 +147,22 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
     return lvl;
 }
 
-Level* LevelMaker::loadMap() {
-    int numlvl;
-
-    ifstream Level("./assets/Saves/Level.txt", ios::in);
-    if (!Level) {
+Level* LevelMaker::loadMap(Player* p1, Player* p2) {
+    char path[100];
+    int end;
+    ifstream Leveltxt("./assets/Saves/Level.txt", ios::in);
+    if (!Leveltxt) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    Level >> numlvl;
-    if (numlvl == -1) {
+    
+    Leveltxt >> path >> end;
+    Leveltxt.close();
+
+    lvl =new Level(path, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
+
+    lvl->setEnd(end);
+    if (!path) {
         cout << "No level saved" << endl;
         exit(99);
     }
@@ -162,7 +172,6 @@ Level* LevelMaker::loadMap() {
     bool showing;
     sf::Vector2f posProj;
     sf::Vector2f velProj;
-    char path[100];
     ifstream Player1(("./assets/Saves/Player1.txt"), ios::in);
     if (!Player1) {
         cout << "Cant Open txt on Load Map" << endl;
@@ -224,5 +233,15 @@ Level* LevelMaker::loadMap() {
     while (Wizard >> pos.x >> pos.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing)
         buildWizard(sf::Vector2f(pos.x, pos.y), sf::Vector2f(posProj.x, posProj.y), sf::Vector2f(velProj.x, velProj.y), showing);
     Wizard.close();
-    return NULL;
+
+    ifstream Boss("./assets/Saves/Boss.txt");
+    if (!Boss) {
+        cout << "Cant Open txt on Load Map" << endl;
+        exit(100);
+    }
+    Boss >> pos.x >> pos.y;
+        buildBoss(sf::Vector2f(pos.x, pos.y));
+        Boss.close();
+
+    return lvl;
 }

@@ -29,6 +29,7 @@ protected:
     EventManager* pEventManager;
     bool levelRunning;
     char path[100];
+    int reachEnd;
 
 public:
     Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize);
@@ -47,4 +48,5 @@ public:
     void addEntity(Entity* ent) { _list->addEntity(ent); }
     //function used to save the Level in a txt
     virtual void saveLvl();
+    void setEnd(int end) { reachEnd = end; }
 };
