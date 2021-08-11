@@ -44,6 +44,9 @@ void Game::startStates() {
     pNewState = new PauseMenuState(pInputM, this);
     vectorOfStates.push_back(pNewState);
 
+    pNewState = new LoadGameState(pInputM, this);
+    vectorOfStates.push_back(pNewState);
+
     currentStateID = stateID::mainMenu;
 }
 

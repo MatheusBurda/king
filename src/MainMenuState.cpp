@@ -53,7 +53,6 @@ void MainMenuState::exec() {
             break;
         case 1:
             changeState(stateID::loadGame);
-            cout << "CARREGAR" << endl;
             break;
         case 2:
             //changeState(stateID::leaderboard);

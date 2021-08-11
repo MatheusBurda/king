@@ -54,6 +54,7 @@ void PauseMenuState::exec() {
             break;
         case 2:
             pGame->setCurrentLevel(0);
+            pGame->deleteLevel();
             changeState(stateID::mainMenu);
             break;
         default:

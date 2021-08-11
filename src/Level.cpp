@@ -31,6 +31,7 @@ Level::~Level() {
     }
     _list->deleteAll();
     delete (_list);
+    cout << "Level deletado!" << endl;
 }
 
 void Level::exec(float dt) {
@@ -107,10 +108,10 @@ void Level::saveLvl() {
     }
 }
 
-int Level::getNumLevel(){
-    if(!strcmp(path, PATH_BACKGROUND_FIELD))
+int Level::getNumLevel() {
+    if (!strcmp(path, PATH_BACKGROUND_FIELD))
         return 1;
-    else if(!strcmp(path, PATH_BACKGROUND_FIELD))
+    else if (!strcmp(path, PATH_BACKGROUND_FIELD))
         return 2;
     return 0;
 }

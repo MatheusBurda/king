@@ -4,6 +4,7 @@
 #include "EventManager.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
+#include "LoadGameState.h"
 #include "MainMenuState.h"
 #include "MenuControl.h"
 #include "NewGameState.h"

@@ -78,18 +78,18 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
     char level[30][120];
     srand(time(NULL));
     ifstream file;
-    char platPath[100];
-    char wallPath[100];
+    /* char platPath[100];
+    char wallPath[100]; */
     if (numlvl <= 1) {
         file.open("./assets/Levels/Field.txt");
         lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
-        strcpy(platPath, PLATFORM_PATH_DIRT);
-        strcpy(wallPath, WALL_PATH_DIRT);
+        /* strcpy(platPath, "./assets/Platforms/DirtBlock.png");
+        strcpy(wallPath, "./assets/Platforms/DirtWall.png"); */
     } else if (numlvl == 2) {
         file.open("./assets/Levels/Castle.txt");
         lvl = new Level(PATH_BACKGROUND_CASTLE, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
-        strcpy(platPath, PLATFORM_PATH_BRICK);
-        strcpy(wallPath, WALL_PATH_BRICK);
+        /*         strcpy(platPath, "./assets/Platforms/BrickBlock.png");
+        strcpy(wallPath, "./assets/Platforms/BrickWall.png"); */
     }
     if (!file) {
         cout << "Cant Open txt on buildMap" << endl;
@@ -103,16 +103,22 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             for (int j = 0; j < x; j++) {
                 if (i || j)
                     file >> level[i][j];
-                if (level[i][j] == 'p') {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), platPath);
+                if (level[i][j] == 'p' && numlvl == 1) {
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_DIRT);
+                } else if (level[i][j] == 'p' && numlvl == 2) {
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_BRICK);
                 } else if (level[i][j] == '1') {
                     setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'z') {
                     buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'L') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), wallPath, true);
-                } else if (level[i][j] == 'R') {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), wallPath, false);
+                } else if (level[i][j] == 'L' && numlvl == 1) {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
+                } else if (level[i][j] == 'R' && numlvl == 1) {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
+                } else if (level[i][j] == 'L' && numlvl == 2) {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_BRICK, true);
+                } else if (level[i][j] == 'R' && numlvl == 2) {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_BRICK, false);
                 } else if (level[i][j] == 'a') {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == '2') {
@@ -145,8 +151,8 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             }
         }
     }
-    strcpy(platPath, "");
-    strcpy(wallPath, "");
+    /*  strcpy(platPath, "");
+    strcpy(wallPath, ""); */
     file.close();
     return lvl;
 }

@@ -88,6 +88,7 @@ void List<TL>::clear() {
     pFirst = NULL;
     pLast = NULL;
     size = 0;
+
 }
 
 /* Add new Node to List - internal use */
