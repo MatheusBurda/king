@@ -9,6 +9,15 @@ class InputManager;
 #define PLAYER_1_PATH "./assets/King/KingSpritesheet.png"
 #define PLAYER_2_PATH "./assets/King/KingSpritesheet2.png"
 
+#define PLAYER_VELOCITY 600.f
+#define JUMP_VELOCITY 3000.f
+#define PLAYER_LIFE 200
+#define PLAYER_DAMAGE 25
+#define PLAYER_WIDTH 46
+#define PLAYER_HEIGHT 105
+#define PLAYER_JUMP 200
+#define PLAYER_ATTACK 150
+
 class Player : public Character {
 private:
     bool canJump;

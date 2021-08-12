@@ -41,13 +41,14 @@ void PauseMenuState::render() {
 
 void PauseMenuState::exec() {
     if (active) {
+        active = false;
         switch (selected) {
         case 0:
             changeState(stateID::playing);
             break;
         case 1:
-            //changeState(stateID::saveGame);
-            cout << "SALVAR" << endl;
+            pGame->save();
+            active = true;
             break;
         case 2:
             changeState(stateID::mainMenu);
@@ -55,7 +56,6 @@ void PauseMenuState::exec() {
         default:
             break;
         }
-        active = false;
     }
     /* Trigger to open the pause menu */
     else if (pGame->getCurrentState() == stateID::playing) {

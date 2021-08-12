@@ -3,8 +3,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Lava::Lava(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
-    Entity(id, pos, hit) {
+Lava::Lava(sf::Vector2f pos) :
+Entity(ID::lava, pos, sf::Vector2f(LAVA_WIDTH, LAVA_HEIGHT)) {
     sprite->initializeTexture(LAVA_PATH, sf::Vector2u(3, 1));
 }
 
@@ -24,7 +24,7 @@ void Lava::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y<<endl;
+        file << getPosition().x << ' ' << getPosition().y << endl;
         file.close();
     }
 }

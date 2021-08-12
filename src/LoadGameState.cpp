@@ -22,13 +22,13 @@ void LoadGameState::update(float dt) {
         exit(100);
     }
     char info;
-    Player2 >> info;
-    Player2.close();
 
-    if (info != 0) {
+    if (Player2>>info) {
         lvl = maker->loadMap(pGame->getPLayer1(), pGame->getPLayer2());
     } else
         lvl = maker->loadMap(pGame->getPLayer1(), NULL);
+    Player2.close();
+
 
     if (!lvl) {
         cout << "FAZER AS COISAS DE LOAD DERAM ERRADO" << endl;

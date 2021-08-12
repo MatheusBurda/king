@@ -4,8 +4,8 @@
 
 const float Wizard::attackTime = 1.2;
 
-Wizard::Wizard(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Fireball* fireb) :
-Enemy(id, pos, hit, lf, dmg) {
+Wizard::Wizard(sf::Vector2f pos, Fireball* fireb, Player* pPlayer1, Player* pPlayer2) :
+Enemy(ID::wizard, pos, sf::Vector2f(WIZARD_WIDTH, WIZARD_HEIGHT), WIZARD_LIFE, WIZARD_DAMAGE, pPlayer1, pPlayer2) {
     totalTimeFromAttack = 0;
     fireball = fireb;
     initializeSprite();
@@ -19,9 +19,8 @@ void Wizard::initializeSprite() {
 }
 
 void Wizard::update(float dt) {
-
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
-    if (totalTimeFromAttack>=attackTime && getShowing()) {
+    if (totalTimeFromAttack >= attackTime && getShowing()) {
         fireball->setShowing(false);
         setIsAttacking(true);
     }
@@ -37,19 +36,22 @@ void Wizard::update(float dt) {
     attack();
 }
 
+/* Throws Fireball at players direction*/
 void Wizard::attack() {
     if (getIsAttacking() && totalTimeFromAttack >= attackTime) {
         fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
         if (facingLeft()) {
-            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0)); 
+            fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, 0));
         } else {
-            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0)); 
+            fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, 0));
         }
         fireball->setShowing(true);
         setIsAttacking(false);
         totalTimeFromAttack = 0;
     }
 }
+
+/* Save Wizard and its fireball. */
 void Wizard::save() {
     if (getShowing()) {
         ofstream file;

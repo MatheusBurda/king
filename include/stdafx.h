@@ -30,7 +30,7 @@ using std::string;
 
 #define PLAYER_VELOCITY 600.f
 #define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 20000
+#define PLAYER_LIFE 200
 #define PLAYER_DAMAGE 25
 #define PLAYER_WIDTH 46
 #define PLAYER_HEIGHT 105
@@ -43,7 +43,7 @@ using std::string;
 
 #define ENEMY_LIFE 2000
 #define ENEMY_DAMAGE 25
-#define ENEMY_VELOCITYX 100 
+#define ENEMY_VELOCITYX 300 
 #define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
 #define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
 
@@ -99,7 +99,7 @@ using std::string;
 /* =================================================== */
 
 #define LAVA_DAMAGE 5
-#define LAVA_WIDTH 220
+#define LAVA_WIDTH 225
 #define LAVA_HEIGHT 45
 
 /* =================================================== */

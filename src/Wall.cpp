@@ -4,8 +4,8 @@
 
 #include "string.h"
 
-Wall::Wall(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char* path) :
-Entity(id, pos, hit) {
+Wall::Wall(sf::Vector2f pos, const char* path) :
+Entity(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT)) {
     strcpy(this->path, path);
     sprite->initializeTexture(path, sf::Vector2u(1, 1));
 }

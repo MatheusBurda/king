@@ -22,7 +22,6 @@ reachEnd(1000) {
 }
 
 Level::~Level() {
-    saveLvl();
     if (player1) {
         _list->removeEntity(player1);
         player1 = NULL;

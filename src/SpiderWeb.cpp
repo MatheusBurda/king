@@ -2,8 +2,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-SpiderWeb::SpiderWeb(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
-    Entity(id, pos, hit) {
+SpiderWeb::SpiderWeb(sf::Vector2f pos) :
+Entity(ID::spiderweb, pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT)) {
     sprite->initializeTexture(SPIDER_PATH, sf::Vector2u(1, 1));
 }
 

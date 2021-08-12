@@ -3,16 +3,14 @@
 #include "GraphicManager.h"
 #include <string.h>
 
-Platform::Platform(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, const char pt[100]) :
-Entity(ID::platform, pos, hit) {
+Platform::Platform(sf::Vector2f pos, const char pt[100]) :
+Entity(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT)) {
     strcpy(path, pt);
     changePosition(pos);
     initializeSprite();
 }
 
-Platform::~Platform() {
-    cout << "MAtando plataforma" << endl;
-}
+Platform::~Platform() { }
 
 void Platform::update(float dt) {
     sprite->Update(0, dt, false, position);
@@ -30,7 +28,7 @@ void Platform::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y <<" "<< path << endl;
+        file << getPosition().x << ' ' << getPosition().y << " " << path << endl;
         file.close();
     }
 }

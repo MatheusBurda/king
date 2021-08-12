@@ -4,8 +4,9 @@
 #include <math.h>
 
 const float Archer::attackTime = 1.2;
-Archer::Archer(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg, Arrow* arr) :
-Enemy(id, pos, hit, lf, dmg) {
+
+Archer::Archer(sf::Vector2f pos, Arrow* arr, Player* pPlayer1, Player* pPlayer2) :
+Enemy(ID::archer, pos, sf::Vector2f(ARCHER_WIDTH, ARCHER_HEIGHT), ARCHER_LIFE, ARCHER_DAMAGE, pPlayer1, pPlayer2) {
     arrow = arr;
     initializeSprite();
 }
@@ -59,7 +60,7 @@ void Archer::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y-30 << ' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x<<' ' << arrow->getVelocity().y <<' ' << arrow->getShowing() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x << ' ' << arrow->getVelocity().y << ' ' << arrow->getShowing() << endl;
         file.close();
     }
 }

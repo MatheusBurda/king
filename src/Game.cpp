@@ -9,7 +9,6 @@ Game::Game() {
     pInputM = new InputManager;
     pEventM->setInputManager(pInputM);
 
-
     player1 = NULL;
     player2 = NULL;
     pLevel = NULL;
@@ -68,7 +67,8 @@ void Game::exec() {
 }
 
 void Game::save() {
-    ifstream Platform;
+    if (pLevel != NULL)
+        pLevel->saveLvl();
 }
 
 Level* Game::getpLevel() const {

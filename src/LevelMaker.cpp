@@ -5,7 +5,7 @@ LevelMaker::~LevelMaker() {
 }
 
 void LevelMaker::buildPlatform(sf::Vector2f pos, const char path[100]) {
-    Platform* plat = new Platform(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT), path);
+    Platform* plat = new Platform(pos, path);
     lvl->addEntity(plat);
 }
 
@@ -19,15 +19,15 @@ void LevelMaker::setPlayer2(sf::Vector2f pos) {
 }
 
 void LevelMaker::buildWizard(sf::Vector2f pos) {
-    Fireball* fb = new Fireball(ID::fireball, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Wizard* wi = new Wizard(ID::wizard, pos, sf::Vector2f(WIZARD_WIDTH, WIZARD_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
+    Fireball* fb = new Fireball(pos);
+    Wizard* wi = new Wizard(pos, fb);
     lvl->addEntity(fb);
     lvl->addEntity(wi);
 }
 
 void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing) {
-    Fireball* fb = new Fireball(ID::fireball, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Wizard* wi = new Wizard(ID::wizard, pos, sf::Vector2f(WIZARD_WIDTH, WIZARD_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, fb);
+    Fireball* fb = new Fireball(pos);
+    Wizard* wi = new Wizard(pos, fb);
     lvl->addEntity(fb);
     lvl->addEntity(wi);
     fb->setShowing(showing);
@@ -36,40 +36,40 @@ void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2
 }
 
 void LevelMaker::buildArcher(sf::Vector2f pos) {
-    Arrow* ar = new Arrow(ID::arrow, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Archer* arc = new Archer(ID::archer, pos, sf::Vector2f(ARCHER_WIDTH, ARCHER_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, ar);
+    Arrow* ar = new Arrow(pos);
+    Archer* arc = new Archer(pos, ar);
     lvl->addEntity(ar);
     lvl->addEntity(arc);
 }
 
 void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing) {
-    Arrow* ar = new Arrow(ID::arrow, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT));
-    Archer* arc = new Archer(ID::archer, pos, sf::Vector2f(ARCHER_WIDTH, ARCHER_HEIGHT), ENEMY_LIFE, ENEMY_DAMAGE, ar);
+    Arrow* ar = new Arrow(posProj);
+    Archer* arc = new Archer(pos, ar);
     lvl->addEntity(ar);
     lvl->addEntity(arc);
     ar->setShowing(showing);
     ar->setVelocity(velProj);
-    ar->changePosition(posProj);
+/*     ar->changePosition(posProj); */
 }
 
 void LevelMaker::buildBoss(sf::Vector2f pos) {
-    Boss* boss = new Boss(ID::boss, pos, sf::Vector2f(BOSS_WIDTH, BOSS_HEIGHT), BOSS_LIFE, BOSS_DMG);
+    Boss* boss = new Boss(pos);
     lvl->addEntity(boss);
 }
 
 void LevelMaker::buildWall(sf::Vector2f pos, const char* path, bool faceLeft) {
-    Wall* wall = new Wall(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT), path);
+    Wall* wall = new Wall(pos, path);
     wall->setFacingLeft(faceLeft);
     lvl->addEntity(wall);
 }
 
 void LevelMaker::buildLava(sf::Vector2f pos) {
-    Lava* lava = new Lava(ID::lava, pos, sf::Vector2f(LAVA_WIDTH, LAVA_HEIGHT));
+    Lava* lava = new Lava(pos);
     lvl->addEntity(lava);
 }
 
 void LevelMaker::buildWeb(sf::Vector2f pos) {
-    SpiderWeb* web = new SpiderWeb(ID::spiderweb, pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT));
+    SpiderWeb* web = new SpiderWeb(pos);
     lvl->addEntity(web);
 }
 
@@ -186,14 +186,17 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     setPlayer1(sf::Vector2f(pos.x, pos.y));
     Player1.close();
 
-    ifstream Player2(("./assets/Saves/Player2.txt"), ios::in);
-    if (!Player2) {
-        cout << "Cant Open txt on Load Map" << endl;
-        exit(100);
+    if (p2 != NULL) {
+        ifstream Player2(("./assets/Saves/Player2.txt"), ios::in);
+        if (!Player2) {
+            cout << "Cant Open txt on Load Map" << endl;
+            exit(100);
+        }
+
+        if (Player2 >> pos.x >> pos.y >> facingLeft)
+            setPlayer2(sf::Vector2f(pos.x, pos.y));
+        Player2.close();
     }
-    Player2 >> pos.x >> pos.y >> facingLeft;
-    setPlayer2(sf::Vector2f(pos.x, pos.y));
-    Player2.close();
 
     ifstream Platform(("./assets/Saves/Platform.txt"), ios::in);
     if (!Platform) {
@@ -210,7 +213,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         exit(100);
     }
     char wallPath[100];
-    while (Wall >> pos.x >> pos.y >> facingLeft >> wallPath ) {
+    while (Wall >> pos.x >> pos.y >> facingLeft >> wallPath) {
         buildWall(sf::Vector2f(pos.x, pos.y), wallPath, facingLeft);
     }
     Wall.close();

@@ -13,7 +13,7 @@
 #define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/montanha.png"
 
 class Level {
-protected:
+private:
     GraphicManager* graphicM;
     EntityList* _list;
     Player *player1, *player2;
@@ -26,14 +26,12 @@ protected:
     int reachEnd;
 
 public:
-    Level(const char* path, Player* p1, Player* p2, sf::Vector2u levelSize);
+    Level(const char* path = "", Player* p1 = NULL, Player* p2 = NULL, sf::Vector2u levelSize = sf::Vector2u(0, 0));
     virtual ~Level();
     void exec(float dt);
 
-    GraphicManager* getGM() { return graphicM; }
-    EntityList* getList() { return _list; }
-    Player* getP1() { return player1; }
-    Player* getP2() { return player2; }
+    Player* getP1() const { return player1; }
+    Player* getP2() const { return player1; }
     void setP1(Player* p1) { player1 = p1; }
     void setP2(Player* p2) { player2 = p2; }
     CollisionManager* getCols() { return &colis; }
@@ -41,7 +39,7 @@ public:
     bool isLevelRunning() const { return levelRunning; }
     void addEntity(Entity* ent) { _list->addEntity(ent); }
     //function used to save the Level in a txt
-    virtual void saveLvl();
+    void saveLvl();
     void setEnd(int end) { reachEnd = end; }
     int getNumLevel();
 };

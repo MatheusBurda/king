@@ -19,6 +19,6 @@ void Character::getHurt(int dmg) {
     life -= dmg;
 }
 
-int Character::getLife() {
+int Character::getLife() const {
     return life;
 }

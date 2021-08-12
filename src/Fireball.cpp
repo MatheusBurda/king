@@ -3,8 +3,8 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
-Fireball::Fireball(ID::ids id, sf::Vector2f pos, sf::Vector2f hit) :
-Entity(id, pos, hit) {
+Fireball::Fireball(sf::Vector2f pos) :
+Entity(ID::fireball, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT)) {
     setShowing(false);
     initializeSprite();
 }
@@ -22,5 +22,5 @@ void Fireball::update(float dt) {
 }
 
 void Fireball::initializeSprite() {
-    sprite->initializeTexture(PATH_FIREBALL_TEXTURE,sf::Vector2u(3, 1));
+    sprite->initializeTexture(PATH_FIREBALL_TEXTURE, sf::Vector2u(3, 1));
 }

@@ -3,8 +3,8 @@
 
 const float Boss::attackTime = 1.2;
 
-Boss ::Boss(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int lf, int dmg) :
-Enemy(id, pos, hit, lf, dmg) {
+Boss ::Boss(sf::Vector2f pos, Player* pPlayer1, Player* pPlayer2) :
+Enemy(ID::boss, pos, sf::Vector2f(BOSS_WIDTH, BOSS_HEIGHT), BOSS_LIFE, BOSS_DMG, pPlayer1, pPlayer2) {
     initializeSprite();
 }
 
@@ -19,7 +19,7 @@ void Boss::update(float dt) {
     if (life <= 0) {
         setShowing(false);
     }
-    
+
     velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
 
     if (totalTimeFromAttack >= attackTime) {
