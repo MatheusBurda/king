@@ -25,12 +25,16 @@ void InputManager::Detach(Observer* pObserver) {
 }
 
 void InputManager::handleTextEntered(sf::Event eventCopy) {
-    if (eventCopy.key.code == sf::Keyboard::BackSpace)
+    if (eventCopy.key.code == 8) {
         currentTextString = "";
-    else
+    } else
         currentTextString += eventCopy.text.unicode;
 }
 
 sf::String InputManager::getString() {
     return currentTextString;
+}
+
+void InputManager::deleteString() {
+    currentTextString.clear();
 }

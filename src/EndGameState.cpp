@@ -31,7 +31,6 @@ nameP("") {
     text.setFont(*(GM->getFont()));
     text.setCharacterSize(TEXT_SIZE);
     text.setFillColor(sf::Color::White);
-
 }
 
 EndGameState::~EndGameState() {
@@ -53,13 +52,13 @@ void EndGameState::render() {
 
 void EndGameState::resetState() {
     pIM->deleteString();
-
+    nickname.clear();
     strcpy(nameP, "");
 }
 
 void EndGameState::exec() {
     if (active) {
-        if (nickname.getSize()>0) {
+        if (nickname.getSize() > 0) {
             savePoints();
             changeState(stateID::mainMenu);
         }
@@ -70,7 +69,7 @@ void EndGameState::exec() {
 void EndGameState::updateName() {
     sf::String string;
     nickname = pIM->getString();
-    string = "Nickname: "+nickname;
+    string = "Nickname: " + nickname;
     text.setString(string);
     sf::FloatRect textRect = text.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
@@ -78,18 +77,22 @@ void EndGameState::updateName() {
 }
 
 void EndGameState::savePoints() {
+    int pointsP = getScore();
+    if (pointsP <= 0)
+        return;
+
     std::string s1 = nickname;
     strcpy(nameP, "");
-    for (int i = 0; s1[i]!=0; i++)
+    for (int i = 0; s1[i] != '\0'; i++)
         nameP[i] = s1[i];
-    cout << nameP << endl;
+
+        
     ifstream getFile(("./assets/Saves/Leaderboard.txt"), ios::in);
-    
+
     if (!getFile) {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
     }
-    int pointsP = getScore();
     char names[10][30];
     int points[10];
     int i;

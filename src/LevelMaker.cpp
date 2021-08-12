@@ -107,7 +107,7 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
                 } else if (level[i][j] == txt::wallDirtL) {
                     buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, true);
                 } else if (level[i][j] == txt::wallDirtR) {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, false);
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH - (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, false);
                 } else if (level[i][j] == txt::archer) {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == txt::player2) {

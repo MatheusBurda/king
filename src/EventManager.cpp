@@ -47,7 +47,7 @@ void EventManager::pollEvents() {
             pGraphicM->handleWindowResize();
         if ((event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) && pInputM)
             pInputM->handleKeyPressed();
-         if (event.type == sf::Event::TextEntered)
-            pInputM->handleTextEntered(event); 
+        if (event.type == sf::Event::TextEntered)
+            pInputM->handleTextEntered(event);
     }
 }

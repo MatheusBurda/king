@@ -73,7 +73,7 @@ void MainMenuState::resetState() {
 
     pGame->deleteLevel();
     pGame->resetPlayers();
-    pGame->setCurrentLevel(1);
+    pGame->setCurrentLevel(2);
 
     active = true;
 }
