@@ -31,6 +31,7 @@ nameP("") {
     text.setFont(*(GM->getFont()));
     text.setCharacterSize(TEXT_SIZE);
     text.setFillColor(sf::Color::White);
+
 }
 
 EndGameState::~EndGameState() {
@@ -39,8 +40,6 @@ EndGameState::~EndGameState() {
 void EndGameState::update(float dt) {
     active = true;
     updateName();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        cout << "A";
 }
 
 void EndGameState::render() {
@@ -53,13 +52,14 @@ void EndGameState::render() {
 }
 
 void EndGameState::resetState() {
-    string = "Nickname:";
+    pIM->deleteString();
+
     strcpy(nameP, "");
 }
 
 void EndGameState::exec() {
     if (active) {
-        if (string.getSize() >= 9) {
+        if (nickname.getSize()>0) {
             savePoints();
             changeState(stateID::mainMenu);
         }
@@ -68,8 +68,9 @@ void EndGameState::exec() {
 }
 
 void EndGameState::updateName() {
-    string = "Nickname:";
-    string += pIM->getString();
+    sf::String string;
+    nickname = pIM->getString();
+    string = "Nickname: "+nickname;
     text.setString(string);
     sf::FloatRect textRect = text.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
@@ -77,7 +78,13 @@ void EndGameState::updateName() {
 }
 
 void EndGameState::savePoints() {
+    std::string s1 = nickname;
+    strcpy(nameP, "");
+    for (int i = 0; s1[i]!=0; i++)
+        nameP[i] = s1[i];
+    cout << nameP << endl;
     ifstream getFile(("./assets/Saves/Leaderboard.txt"), ios::in);
+    
     if (!getFile) {
         cout << "ERROR TO OPEN FILE" << endl;
         abort();
@@ -86,14 +93,14 @@ void EndGameState::savePoints() {
     char names[10][30];
     int points[10];
     int i;
-    for (i = 0; i <= 10; i++) {
+    for (i = 0; i < 10; i++) {
         getFile >> names[i] >> points[i];
     }
     getFile.close();
 
     int min = 0, pos = 0;
 
-    for (i = 0; i <= 10; i++) {
+    for (i = 0; i < 10; i++) {
         if (min >= points[i]) {
             min = points[i];
             pos = i;

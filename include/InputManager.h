@@ -22,4 +22,5 @@ public:
     void handleKeyPressed();
     void handleTextEntered(sf::Event eventCopy);
     sf::String getString();
+    void deleteString() { currentTextString = " "; }
 };

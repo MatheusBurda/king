@@ -22,8 +22,9 @@ private:
     sf::Text gameOverText;
     GraphicManager* GM;
     InputManager* pIM;
-    sf::String string;
+
     char nameP[30];
+    sf::String nickname;
 
 public:
     EndGameState(InputManager* IM = NULL, Game* pG = NULL);
