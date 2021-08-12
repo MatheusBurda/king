@@ -22,6 +22,24 @@
 #include "stdafx.h"
 
 class LevelMaker {
+    enum txt {
+        player1 = '1',
+        player2 = '2',
+        archer = 'a',
+        archerRand = 's',
+        wizard = 'z',
+        wizardRand = 'c',
+        boss = 'b',
+        spiderweb = 'w',
+        spiderwebRand = 'q',
+        lava = 'v',
+        lavaRand = 'n',
+        platform = 'p',
+        wallDirtL = 'L',
+        wallDirtR = 'R',
+        end = 'e'
+    };
+
 private:
     Level* lvl;
 

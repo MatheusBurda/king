@@ -98,43 +98,43 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             for (int j = 0; j < x; j++) {
                 if (i || j)
                     file >> level[i][j];
-                if (level[i][j] == 'p') {
+                if (level[i][j] == txt::platform) {
                     buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), numlvl);
-                } else if (level[i][j] == '1') {
+                } else if (level[i][j] == txt::player1) {
                     setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'z') {
+                } else if (level[i][j] == txt::wizard) {
                     buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'L') {
+                } else if (level[i][j] == txt::wallDirtL) {
                     buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, true);
-                } else if (level[i][j] == 'R') {
+                } else if (level[i][j] == txt::wallDirtR) {
                     buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, false);
-                } else if (level[i][j] == 'a') {
+                } else if (level[i][j] == txt::archer) {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == '2') {
+                } else if (level[i][j] == txt::player2) {
                     setPlayer2(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'v') {
+                } else if (level[i][j] == txt::lava) {
                     buildLava(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'w') {
+                } else if (level[i][j] == txt::spiderweb) {
                     buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 's') {
+                } else if (level[i][j] == txt::archerRand) {
                     int random = rand() % 10;
                     if (random >= 5)
                         buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'c') {
+                } else if (level[i][j] == txt::wizardRand) {
                     int random = rand() % 10;
                     if (random >= 5)
                         buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'q') {
+                } else if (level[i][j] == txt::spiderwebRand) {
                     int random = rand() % 10;
                     if (random >= 5)
                         buildWeb(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'n') {
+                } else if (level[i][j] == txt::lavaRand) {
                     int random = rand() % 10;
                     if (random >= 5)
                         buildLava(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'b') {
+                } else if (level[i][j] == txt::boss) {
                     buildBoss(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'e') {
+                } else if (level[i][j] == txt::end) {
                     lvl->setEnd(j * PLATFORM_WIDTH);
                 }
             }
