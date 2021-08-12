@@ -4,10 +4,11 @@
 
 #include "string.h"
 
-Wall::Wall(sf::Vector2f pos, const char* path) :
-Entity(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT)) {
-    strcpy(this->path, path);
-    sprite->initializeTexture(path, sf::Vector2u(1, 1));
+Wall::Wall(sf::Vector2f pos, int wallType, bool facingLeft) :
+Entity(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT)),
+wallType(wallType) {
+    setFacingLeft(facingLeft);
+    initializeSprite();
 }
 
 Wall::~Wall() {
@@ -25,7 +26,16 @@ void Wall::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << ' ' << path << endl;
+        file << getPosition().x << ' ' << getPosition().y << ' ' << facingLeft() << ' ' << wallType << endl;
         file.close();
     }
+}
+
+void Wall::initializeSprite() {
+    if (wallType == 1)
+        sprite->initializeTexture(WALL_PATH_DIRT, sf::Vector2u(1, 1));
+    else if (wallType == 2)
+        sprite->initializeTexture(WALL_PATH_BRICK, sf::Vector2u(1, 1));
+    else
+        sprite->initializeTexture(WALL_PATH_COBBLE, sf::Vector2u(1, 1));
 }

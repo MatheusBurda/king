@@ -3,10 +3,9 @@
 #include "GraphicManager.h"
 #include <string.h>
 
-Platform::Platform(sf::Vector2f pos, const char pt[100]) :
-Entity(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT)) {
-    strcpy(path, pt);
-    changePosition(pos);
+Platform::Platform(sf::Vector2f pos, int platType) :
+Entity(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT)),
+platType(platType) {
     initializeSprite();
 }
 
@@ -17,7 +16,12 @@ void Platform::update(float dt) {
 }
 
 void Platform::initializeSprite() {
-    sprite->initializeTexture(path, sf::Vector2u(1, 1));
+    if (platType == 1)
+        sprite->initializeTexture(PLATFORM_PATH_DIRT, sf::Vector2u(1, 1));
+    else if (platType == 2)
+        sprite->initializeTexture(PLATFORM_PATH_BRICK, sf::Vector2u(1, 1));
+    else
+        sprite->initializeTexture(PLATFORM_PATH_COBBLE, sf::Vector2u(1, 1));
 }
 
 void Platform::save() {
@@ -28,7 +32,7 @@ void Platform::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y << " " << path << endl;
+        file << getPosition().x << ' ' << getPosition().y << " " << platType << endl;
         file.close();
     }
 }

@@ -13,10 +13,10 @@ class GraphicManager;
 
 class Platform : public Entity {
 private:
-    char path[100];
+    int platType;
 
 public:
-    Platform(sf::Vector2f pos, const char pt[100]);
+    Platform(sf::Vector2f pos, int platType = 1);
     ~Platform();
     void update(float dt);
     void initializeSprite();

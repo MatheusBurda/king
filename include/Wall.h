@@ -14,12 +14,12 @@ class Animation;
 class GraphicManager;
 class Wall : public Entity {
 private:
-    char path[100];
+    int wallType;
 
 public:
-    Wall(sf::Vector2f pos, const char* path);
+    Wall(sf::Vector2f pos, int wallType = 1, bool facingLeft = false);
     ~Wall();
     void update(float dt);
-    void initializeSprite() { }
+    void initializeSprite();
     void save();
 };

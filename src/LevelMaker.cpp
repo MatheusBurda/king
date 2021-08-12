@@ -4,8 +4,8 @@ LevelMaker::LevelMaker() { }
 LevelMaker::~LevelMaker() {
 }
 
-void LevelMaker::buildPlatform(sf::Vector2f pos, const char path[100]) {
-    Platform* plat = new Platform(pos, path);
+void LevelMaker::buildPlatform(sf::Vector2f pos, int type) {
+    Platform* plat = new Platform(pos, type);
     lvl->addEntity(plat);
 }
 
@@ -49,7 +49,7 @@ void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2
     lvl->addEntity(arc);
     ar->setShowing(showing);
     ar->setVelocity(velProj);
-/*     ar->changePosition(posProj); */
+    /*     ar->changePosition(posProj); */
 }
 
 void LevelMaker::buildBoss(sf::Vector2f pos) {
@@ -57,9 +57,8 @@ void LevelMaker::buildBoss(sf::Vector2f pos) {
     lvl->addEntity(boss);
 }
 
-void LevelMaker::buildWall(sf::Vector2f pos, const char* path, bool faceLeft) {
-    Wall* wall = new Wall(pos, path);
-    wall->setFacingLeft(faceLeft);
+void LevelMaker::buildWall(sf::Vector2f pos, int type, bool faceLeft) {
+    Wall* wall = new Wall(pos, type, faceLeft);
     lvl->addEntity(wall);
 }
 
@@ -99,22 +98,16 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
             for (int j = 0; j < x; j++) {
                 if (i || j)
                     file >> level[i][j];
-                if (level[i][j] == 'p' && numlvl == 1) {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_DIRT);
-                } else if (level[i][j] == 'p' && numlvl == 2) {
-                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), PLATFORM_PATH_BRICK);
+                if (level[i][j] == 'p') {
+                    buildPlatform(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT), numlvl);
                 } else if (level[i][j] == '1') {
                     setPlayer1(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == 'z') {
                     buildWizard(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
-                } else if (level[i][j] == 'L' && numlvl == 1) {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, true);
-                } else if (level[i][j] == 'R' && numlvl == 1) {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_DIRT, false);
-                } else if (level[i][j] == 'L' && numlvl == 2) {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_BRICK, true);
-                } else if (level[i][j] == 'R' && numlvl == 2) {
-                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), WALL_PATH_BRICK, false);
+                } else if (level[i][j] == 'L') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, true);
+                } else if (level[i][j] == 'R') {
+                    buildWall(sf::Vector2f(j * PLATFORM_WIDTH + (PLATFORM_WIDTH - WALL_WIDTH) / 2, i * WALL_HEIGHT), numlvl, false);
                 } else if (level[i][j] == 'a') {
                     buildArcher(sf::Vector2f(j * PLATFORM_WIDTH, i * WALL_HEIGHT));
                 } else if (level[i][j] == '2') {
@@ -198,13 +191,14 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         Player2.close();
     }
 
+    int type;
     ifstream Platform(("./assets/Saves/Platform.txt"), ios::in);
     if (!Platform) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    while (Platform >> pos.x >> pos.y >> path)
-        buildPlatform(sf::Vector2f(pos.x, pos.y), path);
+    while (Platform >> pos.x >> pos.y >> type)
+        buildPlatform(sf::Vector2f(pos.x, pos.y), type);
     Platform.close();
 
     ifstream Wall(("./assets/Saves/Wall.txt"), ios::in);
@@ -212,9 +206,9 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    char wallPath[100];
-    while (Wall >> pos.x >> pos.y >> facingLeft >> wallPath) {
-        buildWall(sf::Vector2f(pos.x, pos.y), wallPath, facingLeft);
+    /*  char wallPath[100]; */
+    while (Wall >> pos.x >> pos.y >> facingLeft >> type) {
+        buildWall(sf::Vector2f(pos.x, pos.y), type, facingLeft);
     }
     Wall.close();
 
