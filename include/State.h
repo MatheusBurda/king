@@ -12,8 +12,8 @@ enum stateID {
     playing,
     pauseMenu,
     loadGame,
-    saveGame,
-    leaderboard
+    leaderboard,
+    endGame
 };
 
 class State {

@@ -29,7 +29,7 @@ void PlayingGameState::endLevel(bool lvlEnded) {
     pLevel = NULL;
     if (lvlEnded) {
         pGame->setCurrentLevel(2);
-        changeState(stateID::newGame);
+        changeState(stateID::endGame);
     } else {
         changeState(stateID::mainMenu);
     }

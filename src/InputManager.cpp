@@ -23,3 +23,14 @@ void InputManager::Attach(Observer* pObserver) {
 void InputManager::Detach(Observer* pObserver) {
     objObserving.remove(pObserver);
 }
+
+void InputManager::handleTextEntered(sf::Event eventCopy) {
+    if (eventCopy.key.code == sf::Keyboard::BackSpace)
+        currentTextString = "";
+    else
+        currentTextString += eventCopy.text.unicode;
+}
+
+sf::String InputManager::getString() {
+    return currentTextString;
+}

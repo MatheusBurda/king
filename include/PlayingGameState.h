@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Menu.h"
 #include "State.h"
 
 class InputManager;

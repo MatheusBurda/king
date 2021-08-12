@@ -1,9 +1,11 @@
 #pragma once
 
+#include "EndGameState.h"
 #include "EntityList.h"
 #include "EventManager.h"
 #include "GraphicManager.h"
 #include "InputManager.h"
+#include "LeaderboardState.h"
 #include "LoadGameState.h"
 #include "MainMenuState.h"
 #include "MenuControl.h"

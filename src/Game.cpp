@@ -44,6 +44,12 @@ void Game::startStates() {
     pNewState = new LoadGameState(pInputM, this);
     vectorOfStates.push_back(pNewState);
 
+    pNewState = new LeaderboardState(pInputM, this);
+    vectorOfStates.push_back(pNewState);
+
+    pNewState = new EndGameState(pInputM, this);
+    vectorOfStates.push_back(pNewState);
+
     changeCurrentState(stateID::mainMenu);
 }
 
@@ -52,6 +58,8 @@ void Game::exec() {
     time.restart();
 
     while (pGraphicM->isWindowOpen()) {
+        /* Check if any event occurred */
+        pEventM->pollEvents();
         /* Get the elapsed time from last loop */
         dt = time.getElapsedTime().asSeconds();
         time.restart();
@@ -61,8 +69,6 @@ void Game::exec() {
         execCurrentState(dt);
         /* Display everything drawn */
         pGraphicM->display();
-        /* Check if any event occurred */
-        pEventM->pollEvents();
     }
 }
 

@@ -3,25 +3,25 @@
 /* Singleton design pattern - Only one instance will be created */
 EventManager* EventManager::instance = NULL;
 
-EventManager* EventManager::getInstance(){
-    if(instance == NULL){
+EventManager* EventManager::getInstance() {
+    if (instance == NULL) {
         instance = new EventManager();
     }
     return instance;
 }
 
-EventManager::EventManager():
+EventManager::EventManager() :
 pGraphicM(NULL),
 pInputM(NULL),
 pWindow(NULL) {
     setGraphicManager();
- }
+}
 
 /* ========================================= */
 
 EventManager::~EventManager() {
     if (pInputM)
-        delete(pInputM);
+        delete (pInputM);
     pGraphicM = NULL;
     pInputM = NULL;
     pWindow = NULL;
@@ -47,5 +47,7 @@ void EventManager::pollEvents() {
             pGraphicM->handleWindowResize();
         if ((event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) && pInputM)
             pInputM->handleKeyPressed();
+       /*  if (event.type == sf::Event::TextEntered)
+            pInputM->handleTextEntered(event); */
     }
 }

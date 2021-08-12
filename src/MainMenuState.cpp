@@ -53,8 +53,8 @@ void MainMenuState::exec() {
             changeState(stateID::loadGame);
             break;
         case 2:
-            //changeState(stateID::leaderboard);
-            cout << "LEADERBOARD" << endl;
+            changeState(stateID::leaderboard);
+            /* cout << "LEADERBOARD" << endl; */
             break;
         case 3:
             pGame->endGame();
