@@ -42,6 +42,8 @@ class LevelMaker {
 
 private:
     Level* lvl;
+    Player* pPlayer1;
+    Player* pPlayer2;
 
     void buildPlatform(sf::Vector2f pos, int type);
     void setPlayer1(sf::Vector2f pos, sf::Vector2f vel, int life, int points, int facingLeft);
