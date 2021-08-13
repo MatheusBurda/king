@@ -1,5 +1,8 @@
 #include "LevelMaker.h"
-LevelMaker::LevelMaker() { }
+LevelMaker::LevelMaker() {
+    pPlayer1 = NULL;
+    pPlayer2 = NULL;
+}
 
 LevelMaker::~LevelMaker() {
 }
@@ -20,14 +23,14 @@ void LevelMaker::setPlayer2(sf::Vector2f pos) {
 
 void LevelMaker::buildWizard(sf::Vector2f pos) {
     Fireball* fb = new Fireball(pos);
-    Wizard* wi = new Wizard(pos, fb);
+    Wizard* wi = new Wizard(pos, fb, pPlayer1, pPlayer2);
     lvl->addEntity(fb);
     lvl->addEntity(wi);
 }
 
 void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing) {
     Fireball* fb = new Fireball(pos);
-    Wizard* wi = new Wizard(pos, fb);
+    Wizard* wi = new Wizard(pos, fb, pPlayer1, pPlayer2);
     lvl->addEntity(fb);
     lvl->addEntity(wi);
     fb->setShowing(showing);
@@ -37,14 +40,14 @@ void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2
 
 void LevelMaker::buildArcher(sf::Vector2f pos) {
     Arrow* ar = new Arrow(pos);
-    Archer* arc = new Archer(pos, ar);
+    Archer* arc = new Archer(pos, ar, pPlayer1, pPlayer2);
     lvl->addEntity(ar);
     lvl->addEntity(arc);
 }
 
 void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2f velProj, bool showing) {
     Arrow* ar = new Arrow(posProj);
-    Archer* arc = new Archer(pos, ar);
+    Archer* arc = new Archer(pos, ar, pPlayer1, pPlayer2);
     lvl->addEntity(ar);
     lvl->addEntity(arc);
     ar->setShowing(showing);
@@ -53,7 +56,7 @@ void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f posProj, sf::Vector2
 }
 
 void LevelMaker::buildBoss(sf::Vector2f pos) {
-    Boss* boss = new Boss(pos);
+    Boss* boss = new Boss(pos, pPlayer1, pPlayer2);
     lvl->addEntity(boss);
 }
 
@@ -73,6 +76,9 @@ void LevelMaker::buildWeb(sf::Vector2f pos) {
 }
 
 Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl) {
+    pPlayer1 = p1;
+    pPlayer2 = p2;
+
     int y = 30, x = 120;
     char level[30][120];
     srand(time(NULL));
@@ -143,6 +149,9 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
 }
 
 Level* LevelMaker::loadMap(Player* p1, Player* p2) {
+    pPlayer1 = p1;
+    pPlayer2 = p2;
+
     char path[100];
     int end;
     ifstream Leveltxt("./assets/Saves/Level.txt", ios::in);
