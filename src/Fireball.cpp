@@ -3,8 +3,13 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
+<<<<<<< Updated upstream
 Fireball::Fireball(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
 Entity(id, GM, pos, hit) {
+=======
+Fireball::Fireball(sf::Vector2f pos) :
+Projectile(pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT),FIREBALL_DAMAGE, 1.2, ID::fireball) {
+>>>>>>> Stashed changes
     setShowing(false);
     initializeSprite();
 }

@@ -1,0 +1,374 @@
+﻿  Animation.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(5,40): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(29,41): warning C4244: '=': conversão de 'float' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(30,42): warning C4244: '=': conversão de 'float' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(32,51): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(32,37): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(33,53): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Animation.cpp(33,39): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  Archer.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Archer.cpp(6,37): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+  Arrow.cpp
+  Background.cpp
+  Boss.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Boss.cpp(4,35): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+  EndGameState.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(17,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(29,98): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(29,65): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(56,5): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(85,5): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(114,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(120,17): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(122,17): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\EndGameState.cpp(124,17): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Ent.cpp
+  Game.cpp
+  Button.cpp
+  Character.cpp
+  CollisionManager.cpp
+  Enemy.cpp
+  Entity.cpp
+  EntityList.cpp
+  EventManager.cpp
+  Fireball.cpp
+  GraphicManager.cpp
+  InputManager.cpp
+  Lava.cpp
+  LeaderboardState.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LeaderboardState.cpp(103,48): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+  Gerando Código...
+  Compilando...
+  Level.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Level.cpp(12,5): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  LevelMaker.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(78,15): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(100,70): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(100,50): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(102,67): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(102,47): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(104,68): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(104,48): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(106,102): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(106,63): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(108,102): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(108,63): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(110,68): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(110,48): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(112,67): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(112,47): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(114,66): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(114,46): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(116,65): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(116,45): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(120,72): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(120,52): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(124,72): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(124,52): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(128,69): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(128,49): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(132,70): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(132,50): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(134,66): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\LevelMaker.cpp(134,46): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+          with
+          [
+              T=float
+          ]
+  LoadGameState.cpp
+  main.cpp
+  MainMenuState.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\MainMenuState.cpp(13,86): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\MainMenuState.cpp(18,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\MainMenuState.cpp(22,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\MainMenuState.cpp(26,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  Menu.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Menu.cpp(13,85): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  MenuControl.cpp
+  NewGameState.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\NewGameState.cpp(13,86): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\NewGameState.cpp(18,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\NewGameState.cpp(22,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  Observer.cpp
+  PauseMenuState.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\PauseMenuState.cpp(14,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\PauseMenuState.cpp(19,86): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\PauseMenuState.cpp(23,90): warning C4244: 'argumento': conversão de 'T' para 'T', possível perda de dados
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  Platform.cpp
+  Player.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Player.cpp(7,37): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+  PlayerControl.cpp
+  PlayingGameState.cpp
+  SpiderWeb.cpp
+  State.cpp
+  StateMachine.cpp
+  Wall.cpp
+  Wizard.cpp
+C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\src\Wizard.cpp(5,37): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+  Gerando Código...
+LINK : warning LNK4075: ignorando '/INCREMENTAL' devido a especificação '/OPT:ICF'
+  king.vcxproj -> C:\Users\Gamer\Desktop\UTFPR\2° Período\Técnicas de Programação\king\Release\king.exe

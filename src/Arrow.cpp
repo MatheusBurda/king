@@ -2,8 +2,12 @@
 #include "Animation.h"
 #include "GraphicManager.h"
 
+<<<<<<< Updated upstream
 Arrow::Arrow(ID::ids id, GraphicManager* GM, sf::Vector2f pos, sf::Vector2f hit) :
     Entity(id, GM, pos, hit) {
+=======
+Arrow::Arrow(sf::Vector2f pos) :Projectile(pos, sf::Vector2f(ARROW_WIDTH, ARROW_HEIGHT), ARROW_DAMAGE,1.2, ID::arrow) {
+>>>>>>> Stashed changes
     setShowing(false);
     initializeSprite();
 }
