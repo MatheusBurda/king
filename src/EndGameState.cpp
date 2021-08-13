@@ -69,7 +69,7 @@ void EndGameState::exec() {
 void EndGameState::updateName() {
     sf::String string;
     nickname = pIM->getString();
-    string = "Nickname: " + nickname;
+    string = "First Name: " + nickname;
     text.setString(string);
     sf::FloatRect textRect = text.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
@@ -83,7 +83,7 @@ void EndGameState::savePoints() {
 
     std::string s1 = nickname;
     strcpy(nameP, "");
-    for (int i = 0; s1[i] != '\0'; i++)
+    for (int i = 0; s1[i] != ' ' && s1[i]!=0; i++)
         nameP[i] = s1[i];
 
         
