@@ -83,7 +83,7 @@ void LeaderboardState::resetState() {
         textFile >> name >> score;
 
         string = to_string(i);
-        string += "  -  ";
+        string += "  ";
         string += name;
 
         count = 0;

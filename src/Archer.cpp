@@ -60,7 +60,7 @@ void Archer::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x << ' ' << arrow->getVelocity().y << ' ' << arrow->getShowing() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' <<getVelocity().x<<' '<<getVelocity().y <<' ' << arrow->getPosition().x << ' ' << arrow->getPosition().y - 30 << ' ' << arrow->getVelocity().x << ' ' << arrow->getVelocity().y << ' ' << arrow->getShowing() <<' ' << getLife() <<' ' << facingLeft() << endl;
         file.close();
     }
 }

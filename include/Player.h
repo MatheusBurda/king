@@ -46,4 +46,5 @@ public:
     void save();
     void updatePoints(int pt);
     int getPoints() { return points; }
+    void setPoints(int pt) { points = pt; }
 };
