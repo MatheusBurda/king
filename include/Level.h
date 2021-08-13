@@ -31,7 +31,7 @@ public:
     void exec(float dt);
 
     Player* getP1() const { return player1; }
-    Player* getP2() const { return player1; }
+    Player* getP2() const { return player2; }
     void setP1(Player* p1) { player1 = p1; }
     void setP2(Player* p2) { player2 = p2; }
     CollisionManager* getCols() { return &colis; }

@@ -25,5 +25,7 @@ public:
     bool getIsAttacking() const { return isAttacking; }
 
     virtual void save() = 0;
+    void setLife(int lf) { life = lf; }
     int getLife() const;
+
 };

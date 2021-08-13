@@ -47,7 +47,7 @@ void Boss::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << endl;
+        file << getPosition().x << ' ' << getPosition().y - 50 << ' ' << getVelocity().x << ' ' << getVelocity().y << ' ' << getLife() << ' ' << facingLeft() << endl;
         file.close();
     }
 }
