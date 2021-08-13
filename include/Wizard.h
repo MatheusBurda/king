@@ -7,7 +7,7 @@
 #define WIZARD_LIFE 2000
 #define WIZARD_DAMAGE 25
 #define WIZARD_VELOCITY 300
-#define MAX_VAR_HEIGHT 100
+#define MAX_VAR_HEIGHT 500
 
 class Animation;
 class Player;

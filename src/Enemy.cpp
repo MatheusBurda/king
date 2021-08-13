@@ -18,8 +18,8 @@ Player* Enemy::getNearestPlayer() {
     if (pPlayer2 == NULL)
         return pPlayer1;
 
-    if ((position - pPlayer1->getPosition()) <= (position - pPlayer2->getPosition()))
-        return pPlayer1;
+    /* if ((position - pPlayer1->getPosition()) <= (position - pPlayer2->getPosition()))
+        return pPlayer1; */
     else
         return pPlayer2;
 }

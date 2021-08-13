@@ -6,11 +6,12 @@ const float Wizard::attackTime = 1.2;
 
 Wizard::Wizard(sf::Vector2f pos, Fireball* fireb, Player* pPlayer1, Player* pPlayer2) :
 Enemy(ID::wizard, pos, sf::Vector2f(WIZARD_WIDTH, WIZARD_HEIGHT), WIZARD_LIFE, WIZARD_DAMAGE, pPlayer1, pPlayer2),
-maxHeight(pos.y + MAX_VAR_HEIGHT),
+maxHeight(pos.y - MAX_VAR_HEIGHT),
 minHeight(pos.y) {
     totalTimeFromAttack = 0;
     fireball = fireb;
     initializeSprite();
+    setVelocity(sf::Vector2f(0, WIZARD_VELOCITY));
 }
 
 Wizard::~Wizard() {
@@ -21,7 +22,10 @@ void Wizard::initializeSprite() {
 }
 
 void Wizard::update(float dt) {
-    velocity = Vector2f(0, WIZARD_VELOCITY);
+    if ((position.y > minHeight) && velocity.y > 0)
+        velocity.y *= -1;
+    else if ((position.y < maxHeight) && velocity.y < 0)
+        velocity.y *= -1;
     if (totalTimeFromAttack >= attackTime && getShowing()) {
         fireball->setShowing(false);
         setIsAttacking(true);
