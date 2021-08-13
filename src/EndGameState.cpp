@@ -73,7 +73,7 @@ void EndGameState::updateName() {
     text.setString(string);
     sf::FloatRect textRect = text.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-    text.setPosition(sf::Vector2f(GM->getWindowSize().x / 2, (GM->getWindowSize().y / 2)));
+    text.setPosition(sf::Vector2f(640, 360));
 }
 
 void EndGameState::savePoints() {

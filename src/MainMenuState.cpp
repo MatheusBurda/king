@@ -45,6 +45,7 @@ void MainMenuState::render() {
 
 void MainMenuState::exec() {
     if (active) {
+        active = false;
         switch (selected) {
         case 0:
             changeState(stateID::newGame);
@@ -54,7 +55,6 @@ void MainMenuState::exec() {
             break;
         case 2:
             changeState(stateID::leaderboard);
-            /* cout << "LEADERBOARD" << endl; */
             break;
         case 3:
             pGame->endGame();
@@ -62,7 +62,6 @@ void MainMenuState::exec() {
         default:
             break;
         }
-        active = false;
     }
 }
 

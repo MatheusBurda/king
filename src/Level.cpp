@@ -64,7 +64,7 @@ void Level::renderAll() {
     }
     graphicM->centerView(viewPosition);
 
-    back.render();
+    //back.render();
     /* Alterar */
     //back.changePos(player1->getPosition());
 

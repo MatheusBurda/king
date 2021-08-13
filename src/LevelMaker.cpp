@@ -77,8 +77,6 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
     char level[30][120];
     srand(time(NULL));
     ifstream file;
-    /* char platPath[100];
-    char wallPath[100]; */
     if (numlvl <= 1) {
         file.open("./assets/Levels/Field.txt");
         lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));

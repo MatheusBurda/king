@@ -100,7 +100,7 @@ void LeaderboardState::resetState() {
         text->setString(string);
         sf::FloatRect textRect = text->getLocalBounds();
         text->setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-        text->setPosition(sf::Vector2f(GM->getWindowSize().x / 2, 48 + (i)*48));
+        text->setPosition(sf::Vector2f(640, 48 + (i)*48));
     }
 
     textFile.close();
