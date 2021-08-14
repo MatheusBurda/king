@@ -20,7 +20,7 @@ void Boss::update(float dt) {
         setShowing(false);
     }
 
-    velocity = Vector2f(velocity.x * 0.5f, velocity.y + GRAVITY * dt);
+    velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
 
     if (totalTimeFromAttack >= attackTime) {
         setIsAttacking(true);
@@ -32,9 +32,14 @@ void Boss::update(float dt) {
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
 
-    totalTimeFromAttack += dt;
+    updateSprite(dt);
 
-    sprite->Update(1, dt, facingLeft(), position);
+    /* It will attack if its possible */
+    attackCooldown += dt;
+    if (attackCooldown >= attackTime * 10) {
+        /* *************************************************** Adiciona aqui a condiçao do player estar perto ou nao dele para poder atacar */
+        isAttacking = true;
+    }
 }
 
 void Boss::save() {
@@ -50,4 +55,16 @@ void Boss::save() {
         file << getPosition().x << ' ' << getPosition().y - 50 << ' ' << getVelocity().x << ' ' << getVelocity().y << ' ' << getLife() << ' ' << facingLeft() << endl;
         file.close();
     }
+}
+
+void Boss::updateSprite(float dt) {
+    /* Attacking */
+/*     if (canAttack() != 0)
+        sprite->Update(canAttack(dt), dt, facingLeft(), position); */
+    /* Walking */
+    if (abs(velocity.x) > 0.001)
+        sprite->Update(1, dt, facingLeft(), position);
+    /* Idle */
+    else
+        sprite->Update(0, dt, facingLeft(), position);
 }

@@ -15,7 +15,7 @@ void LevelMaker::buildPlatform(sf::Vector2f pos, int type) {
 void LevelMaker::setPlayer1(sf::Vector2f pos) {
     lvl->getP1()->changePosition(pos);
 }
-void LevelMaker:: setPlayer1(sf::Vector2f pos, sf::Vector2f vel, int life, int points, int facingLeft) {
+void LevelMaker::setPlayer1(sf::Vector2f pos, sf::Vector2f vel, int life, int points, int facingLeft) {
     lvl->getP1()->changePosition(pos);
     lvl->getP1()->setVelocity(vel);
     lvl->getP1()->setLife(life);
@@ -44,10 +44,9 @@ void LevelMaker::buildWizard(sf::Vector2f pos) {
     lvl->addEntity(wi);
 }
 
-
-void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int  facingLeft) {
+void LevelMaker::buildWizard(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int facingLeft, int minH, int maxH) {
     Fireball* fb = new Fireball(posProj);
-    Wizard* wi = new Wizard(pos, fb, pPlayer1, pPlayer2);
+    Wizard* wi = new Wizard(pos, fb, pPlayer1, pPlayer2, minH, maxH);
     lvl->addEntity(fb);
     lvl->addEntity(wi);
     fb->setShowing(showing);
@@ -65,14 +64,14 @@ void LevelMaker::buildArcher(sf::Vector2f pos) {
     lvl->addEntity(arc);
 }
 
-void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int  facingLeft){
+void LevelMaker::buildArcher(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int facingLeft) {
     Arrow* ar = new Arrow(posProj);
     Archer* arc = new Archer(pos, ar, pPlayer1, pPlayer2);
     lvl->addEntity(ar);
     lvl->addEntity(arc);
     ar->setShowing(showing);
     ar->setVelocity(velProj);
-    ar->changePosition(posProj); 
+    ar->changePosition(posProj);
     arc->setVelocity(vel);
     arc->setLife(life);
     arc->setFacingLeft(facingLeft);
@@ -82,7 +81,7 @@ void LevelMaker::buildBoss(sf::Vector2f pos) {
     Boss* boss = new Boss(pos, pPlayer1, pPlayer2);
     lvl->addEntity(boss);
 }
-void LevelMaker:: buildBoss(sf::Vector2f pos, sf::Vector2f vel, int  life, int facingLeft) {
+void LevelMaker::buildBoss(sf::Vector2f pos, sf::Vector2f vel, int life, int facingLeft) {
     Boss* boss = new Boss(pos);
     lvl->addEntity(boss);
     boss->setVelocity(vel);
@@ -214,7 +213,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    Player1 >> pos.x >> pos.y >> vel.x>>vel.y>>life>>points>>facingLeft;
+    Player1 >> pos.x >> pos.y >> vel.x >> vel.y >> life >> points >> facingLeft;
     setPlayer1(sf::Vector2f(pos), sf::Vector2f(vel), life, points, facingLeft);
     Player1.close();
 
@@ -273,8 +272,8 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    while (Archer >> pos.x >> pos.y >> vel.x>>vel.y>>posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing>>life>>facingLeft)
-        buildArcher(pos, vel, posProj,velProj, showing, life, facingLeft );
+    while (Archer >> pos.x >> pos.y >> vel.x >> vel.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing >> life >> facingLeft)
+        buildArcher(pos, vel, posProj, velProj, showing, life, facingLeft);
     Archer.close();
 
     ifstream Wizard("./assets/Saves/Wizard.txt");
@@ -282,8 +281,9 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    while (Wizard >> pos.x >> pos.y >> vel.x >> vel.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing >> life >> facingLeft)
-        buildWizard(pos, vel, posProj, velProj, showing, life, facingLeft);
+    int minH, maxH;
+    while (Wizard >> pos.x >> pos.y >> vel.x >> vel.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing >> life >> facingLeft >> minH >> maxH)
+        buildWizard(pos, vel, posProj, velProj, showing, life, facingLeft, minH, maxH);
     Wizard.close();
 
     ifstream Boss("./assets/Saves/Boss.txt");
@@ -292,7 +292,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         exit(100);
     }
 
-    if (Boss >> pos.x >> pos.y>>vel.x>>vel.y>>life>>facingLeft)
+    if (Boss >> pos.x >> pos.y >> vel.x >> vel.y >> life >> facingLeft)
         buildBoss(pos, vel, life, facingLeft);
     Boss.close();
 

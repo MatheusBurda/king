@@ -6,7 +6,7 @@
 #define ARCHER_PATH "./assets/Archer/ArcherSpritesheet.png"
 
 #define ARCHER_WIDTH 50
-#define ARCHER_HEIGHT 105
+#define ARCHER_HEIGHT 90
 #define ARCHER_LIFE 2000
 #define ARCHER_DAMAGE 25
 #define ARCHER_VELOCITYX 300
@@ -29,4 +29,5 @@ public:
     void update(float dt);
     void attack();
     void save();
+    void updateSprite(float dt);
 };

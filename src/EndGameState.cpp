@@ -58,7 +58,7 @@ void EndGameState::resetState() {
 
 void EndGameState::exec() {
     if (active) {
-        if (nickname.getSize() > 1) {
+        if (nickname.getSize() > 0) {
             savePoints();
             changeState(stateID::mainMenu);
         }
@@ -83,10 +83,9 @@ void EndGameState::savePoints() {
 
     std::string s1 = nickname;
     strcpy(nameP, "-");
-    for (int i = 0; s1[i] != 32 && s1[i]!=0; i++)
-        nameP[i+1] = s1[i];
+    for (int i = 0; s1[i] != 32 && s1[i] != 0 && s1[i] != 13; i++)
+        nameP[i + 1] = s1[i];
 
-        
     ifstream getFile(("./assets/Saves/Leaderboard.txt"), ios::in);
 
     if (!getFile) {

@@ -15,6 +15,8 @@ Fireball::~Fireball() {
 void Fireball::update(float dt) {
     if (velocity.x < 0)
         setFacingLeft(true);
+    else
+        setFacingLeft(false);
     if (getShowing()) {
         changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
         sprite->Update(0, dt, facingLeft(), position);
