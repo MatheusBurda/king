@@ -82,7 +82,7 @@ void LevelMaker::buildBoss(sf::Vector2f pos) {
     lvl->addEntity(boss);
 }
 void LevelMaker::buildBoss(sf::Vector2f pos, sf::Vector2f vel, int life, int facingLeft) {
-    Boss* boss = new Boss(pos);
+    Boss* boss = new Boss(pos, pPlayer1, pPlayer2);
     lvl->addEntity(boss);
     boss->setVelocity(vel);
     boss->setLife(life);

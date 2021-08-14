@@ -126,7 +126,7 @@ void Player::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << getVelocity().y << ' ' << getLife() << ' ' << points << ' ' << facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << (int) getVelocity().y << ' ' << getLife() << ' ' << points << ' ' << facingLeft() << endl;
         file.close();
     } else {
         file.open("./assets/Saves/Player2.txt");
@@ -134,7 +134,7 @@ void Player::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << getVelocity().y << ' ' << getLife() << ' ' << points << ' ' << facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << (int) getVelocity().y << ' ' << getLife() << ' ' << points << ' ' << facingLeft() << endl;
         file.close();
     }
 }

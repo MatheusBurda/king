@@ -91,11 +91,11 @@ void Wizard::save() {
             abort();
         }
         file << getPosition().x << ' '
-             << getPosition().y - 30 << ' '
+             << getPosition().y<< ' '
              << getVelocity().x << ' '
              << getVelocity().y << ' '
              << fireball->getPosition().x << ' '
-             << fireball->getPosition().y - 30 << ' '
+             << fireball->getPosition().y << ' '
              << fireball->getVelocity().x << ' '
              << fireball->getVelocity().y << ' '
              << fireball->getShowing() << ' '
