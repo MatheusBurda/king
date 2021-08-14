@@ -12,6 +12,7 @@ Game::Game() {
     player1 = NULL;
     player2 = NULL;
     pLevel = NULL;
+    lvlEnded = false;
 
     startStates();
     exec();
@@ -126,4 +127,12 @@ void Game::resetPlayers() {
         delete player2;
     player1 = NULL;
     player2 = NULL;
+}
+
+bool Game::isPlaying() const {
+    return lvlEnded;
+}
+
+void Game::setLvlEnded(bool x){
+    lvlEnded = x;
 }

@@ -108,16 +108,16 @@ Level* LevelMaker::buildMap(const char* path, Player* p1, Player* p2, int numlvl
     pPlayer1 = p1;
     pPlayer2 = p2;
 
-    int y = 30, x = 120;
-    char level[30][120];
+    int y = 30, x = 80;
+    char level[30][80];
     srand(time(NULL));
     ifstream file;
     if (numlvl <= 1) {
         file.open("./assets/Levels/Field.txt");
-        lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
+        lvl = new Level(PATH_BACKGROUND_FIELD, p1, p2, sf::Vector2u(80 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
     } else if (numlvl == 2) {
         file.open("./assets/Levels/Castle.txt");
-        lvl = new Level(PATH_BACKGROUND_CASTLE, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
+        lvl = new Level(PATH_BACKGROUND_CASTLE, p1, p2, sf::Vector2u(80 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
     }
     if (!file) {
         cout << "Cant Open txt on buildMap" << endl;
@@ -192,7 +192,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     Leveltxt >> path >> end;
     Leveltxt.close();
 
-    lvl = new Level(path, p1, p2, sf::Vector2u(120 * PLATFORM_WIDTH, 40 * PLATFORM_HEIGHT));
+    lvl = new Level(path, p1, p2, sf::Vector2u(80 * PLATFORM_WIDTH, 26 * PLATFORM_HEIGHT));
 
     lvl->setEnd(end);
     if (!path) {

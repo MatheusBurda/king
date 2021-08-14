@@ -77,7 +77,7 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
 
     if (currentLevel <= 1) {
         LevelMaker* maker = new LevelMaker();
-        pLevel = maker->buildMap("./assets/Backgrounds/level1.png", player1, player2, 1);
+        pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 1);
         delete (maker);
     } else if (currentLevel == 2) {
         LevelMaker* maker = new LevelMaker();
@@ -95,7 +95,7 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
 }
 
 void NewGameState::resetState() {
-    if (pGame->getCurrentLevel() == 2) {
+    if (!pGame->isPlaying()) {
         pGame->deleteLevel();
         vectorOfButtons[selected]->select(false);
         selected = 0;

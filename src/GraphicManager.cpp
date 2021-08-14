@@ -87,10 +87,6 @@ void GraphicManager::centerView(sf::Vector2f pos) {
 sf::Texture* GraphicManager::loadTexture(const char* path) {
     /* Tries to find an existing texture linked by the id. */
     std::map<const char*, sf::Texture*>::iterator it = texturesMap.begin();
-    /* it = texturesMap.find(path);
-    if (it != texturesMap.end()) {
-        return it->second;
-    } */
     while (it != texturesMap.end()) {
         if (!strcmp(it->first, path))
             return it->second;
@@ -104,6 +100,7 @@ sf::Texture* GraphicManager::loadTexture(const char* path) {
         cout << "ERROR loading file " << path << endl;
         exit(1);
     }
+
     texturesMap.insert(std::pair<const char*, sf::Texture*>(path, tex));
 
     return tex;

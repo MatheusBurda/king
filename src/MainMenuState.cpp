@@ -11,29 +11,35 @@ pGame(pG) {
     Button* bt = NULL;
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2));
-    bt->setMessage("NEW GAME");
+    bt->setMessage("LEVEL 1");
     bt->select(true);
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 80));
-    bt->setMessage("LOAD GAME");
+    bt->setMessage("LEVEL 2");
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 160));
-    bt->setMessage("LEADERBOARD");
+    bt->setMessage("LOAD GAME");
     vectorOfButtons.push_back(bt);
 
     bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 240));
+    bt->setMessage("LEADERBOARD");
+    vectorOfButtons.push_back(bt);
+
+    bt = new Button(sf::Vector2f(GM->getWindowSize().x / 2.0f, GM->getWindowSize().y / 2 + 320));
     bt->setMessage("QUIT GAME");
     vectorOfButtons.push_back(bt);
 
-    max = 3;
+    max = 4;
 }
 
 MainMenuState::~MainMenuState() {
 }
 
-void MainMenuState::update(float dt) { }
+void MainMenuState::update(float dt) {
+    active = true;
+}
 
 /* Menu operation to render all it's objects. */
 void MainMenuState::render() {
@@ -48,15 +54,20 @@ void MainMenuState::exec() {
         active = false;
         switch (selected) {
         case 0:
+            pGame->setCurrentLevel(1);
             changeState(stateID::newGame);
             break;
         case 1:
-            changeState(stateID::loadGame);
+            pGame->setCurrentLevel(2);
+            changeState(stateID::newGame);
             break;
         case 2:
-            changeState(stateID::leaderboard);
+            changeState(stateID::loadGame);
             break;
         case 3:
+            changeState(stateID::leaderboard);
+            break;
+        case 4:
             pGame->endGame();
             break;
         default:
@@ -72,7 +83,5 @@ void MainMenuState::resetState() {
 
     pGame->deleteLevel();
     pGame->resetPlayers();
-    pGame->setCurrentLevel(2);
-
-    active = true;
+    pGame->setCurrentLevel(1);
 }

@@ -26,6 +26,7 @@ private:
     Player* player2;
     int currentLevel;
     sf::Clock time;
+    bool lvlEnded;
 
 public:
     Game();
@@ -49,6 +50,8 @@ public:
     void endGame();
     void deleteLevel();
     void resetPlayers();
+    bool isPlaying() const;
+    void setLvlEnded(bool x);
 };
 
 }

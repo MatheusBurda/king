@@ -9,7 +9,7 @@
 #include "Player.h"
 #include "stdafx.h"
 
-#define PATH_BACKGROUND_FIELD "./assets/Backgrounds/level1.png"
+#define PATH_BACKGROUND_FIELD "./assets/Backgrounds/montanha.png"
 #define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/montanha.png"
 
 class Level {
@@ -21,7 +21,7 @@ private:
     sf::Vector2u levelMapSize;
     Background back;
     EventManager* pEventManager;
-    bool levelRunning;
+    int levelRunning;
     char path[100];
     int reachEnd;
 
@@ -36,7 +36,8 @@ public:
     void setP2(Player* p2) { player2 = p2; }
     CollisionManager* getCols() { return &colis; }
     void renderAll();
-    bool isLevelRunning() const { return levelRunning; }
+    void centerView();
+    int isLevelRunning() const { return levelRunning; }
     void addEntity(Entity* ent) { _list->addEntity(ent); }
     //function used to save the Level in a txt
     void saveLvl();

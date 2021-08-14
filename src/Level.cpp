@@ -11,7 +11,7 @@ back(sf::Vector2f(float(graphicM->getWindowSize().x / 2), float(graphicM->getWin
 reachEnd(1000) {
     strcpy(this->path, path);
     pEventManager = EventManager::getInstance();
-    levelRunning = true;
+    levelRunning = 1;
 
     if (player1) {
         _list->addEntity(player1);
@@ -34,35 +34,28 @@ Level::~Level() {
 }
 
 void Level::exec(float dt) {
-
     if (player1->getShowing() || (player2 && player2->getShowing())) {
-
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
         colis.toCollide();
         //Condition to end level because reached the end
-        if (player1->getPosition().x > reachEnd) {
-            levelRunning = false;
-            return;
-        }
-        if (player2 && player2->getPosition().x > reachEnd) {
-            levelRunning = false;
-            return;
+        if (player1->getPosition().x >= reachEnd) {
+            if (player2) {
+                if (player2->getPosition().x >= reachEnd) {
+                    levelRunning = -1;
+                } else
+                    levelRunning = 1;
+            } else
+                levelRunning = -1;
         }
     } else
-        levelRunning = false;
+        levelRunning = 0;
 }
 
 /* Run all graphic events */
 void Level::renderAll() {
-    sf::Vector2f viewPosition;
-    if (player2 == NULL) {
-        viewPosition = player1->getPosition();
-    } else{
-        viewPosition = (player1->getPosition() + player2->getPosition()) / 2.0f;
-    }
-    graphicM->centerView(viewPosition);
+    centerView();
 
     //back.render();
     /* Alterar */
@@ -72,6 +65,33 @@ void Level::renderAll() {
         if ((*_list)[i]->getShowing())
             (*_list)[i]->render();
     }
+}
+
+void Level::centerView() {
+    sf::Vector2f viewPosition, viewSize;
+
+    if (player2 == NULL) {
+        viewPosition = player1->getPosition();
+    } else {
+        viewPosition = (player1->getPosition() + player2->getPosition()) / 2.0f;
+    }
+
+    /* viewSize.y = static_cast<float>(graphicM->getWindowSize().y) / 2.0f;
+    viewSize.x = static_cast<float>(graphicM->getWindowSize().x) / 2.0f;
+
+    // Set position on y axis 
+    if (viewPosition.y + (viewSize.y / 2.0f) >= levelMapSize.y)
+        viewPosition.y = (levelMapSize.y) - (viewSize.y / 2.0f);
+    if (viewPosition.y - (viewSize.y / 2.0f) <= 120.0f)
+        viewPosition.y = (viewSize.y / 2.0f);
+
+    // Set position on x axis 
+    if (viewPosition.x - (viewSize.x / 2.0f) <= 2 * PLATFORM_WIDTH - 45)
+        viewPosition.x = 2 * PLATFORM_WIDTH - 45 + viewSize.x / 2.0f;
+    if (viewPosition.x + (viewSize.x / 2.0f) >= levelMapSize.x)
+        viewPosition.x = levelMapSize.x - (viewSize.x / 2.0f); */
+
+    graphicM->centerView(viewPosition);
 }
 
 void Level::saveLvl() {

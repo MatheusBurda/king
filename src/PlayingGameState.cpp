@@ -16,9 +16,10 @@ PlayingGameState::~PlayingGameState() {
 void PlayingGameState::update(float dt) {
     pLevel->exec(dt);
 
-    if (!pLevel->isLevelRunning()) {
+    if (pLevel->isLevelRunning() == 0)
+        endLevel(false);
+    else if (pLevel->isLevelRunning() == -1)
         endLevel(true);
-    }
 }
 
 void PlayingGameState::render() {
@@ -28,10 +29,17 @@ void PlayingGameState::render() {
 void PlayingGameState::endLevel(bool lvlEnded) {
     pLevel = NULL;
     if (lvlEnded) {
-        pGame->setCurrentLevel(2);
-        changeState(stateID::endGame);
+        if (pGame->getCurrentLevel() == 2) {
+            pGame->setLvlEnded(false);
+            changeState(stateID::endGame);
+        } else {
+            pGame->setLvlEnded(true);
+            pGame->setCurrentLevel(2);
+            changeState(stateID::newGame);
+        }
     } else {
-        changeState(stateID::mainMenu);
+        pGame->setLvlEnded(false);
+        changeState(stateID::endGame);
     }
 }
 
