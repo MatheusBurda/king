@@ -40,34 +40,43 @@ void Wizard::update(float dt) {
         velocity.y *= -1;
     else if ((position.y < maxHeight) && velocity.y < 0)
         velocity.y *= -1;
-
-    /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RETIRAR - FAZER NO PROJETIL */
-    if (totalTimeFromAttack >= attackTime && getShowing()) {
-        fireball->setShowing(false);
-        setIsAttacking(true);
-    }
-
     changePosition(Vector2f(position.x, velocity.y * dt + position.y));
-
     updateSprite(dt);
 
     /* It will attack if its possible */
     attackCooldown += dt;
-    if (attackCooldown >= attackTime * 10 && !fireball->getShowing()){
+    if (attackCooldown >= attackTime * 10 && !fireball->getShowing() && getShowing()){
         /* *************************************************** Adiciona aqui a condiçao do player estar perto ou nao dele para poder atacar */
-        isAttacking = true;
+        if (abs(getNearestPlayer()->getPosition().x - position.x) <= WIZARD_ATTACKX) {
+            isAttacking = true;
+            if (getNearestPlayer()->getPosition().x - position.x > 0) {
+                setFacingLeft(false);
+            }
+            else
+                setFacingLeft(true);
+            attackCooldown = 0;
+        }
     }
 
 }
 
 /* Throws Fireball at players direction*/
 void Wizard::attack() {
+    Player* pPlayer = getNearestPlayer();
+    int deltax, deltay;
+    deltax = abs(pPlayer->getPosition().x - position.x);
+    deltay = abs(pPlayer->getPosition().y - position.y);
+    float teta = atanf(deltax / deltay);
+    
+    float vx, vy;
+    vx = WIZARD_FIREBALL_VELOCITY * sin(teta);
+    vy = WIZARD_FIREBALL_VELOCITY * cos(teta);
     if (facingLeft()) {
         fireball->changePosition(getPosition() - sf::Vector2f(WIZARD_WIDTH, 0));
-        fireball->setVelocity(sf::Vector2f(-FIREBALL_VELOCITYX, FIREBALL_VELOCITYX));
+        fireball->setVelocity(sf::Vector2f(-vx, vy));
     } else {
         fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
-        fireball->setVelocity(sf::Vector2f(FIREBALL_VELOCITYX, FIREBALL_VELOCITYX));
+        fireball->setVelocity(sf::Vector2f(vx, vy));
     }
     fireball->setShowing(true);
     setIsAttacking(false);

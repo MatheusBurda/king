@@ -26,13 +26,10 @@ void CollisionManager::toCollide() {
 
                 intersectX = abs(dx) - (ent1->getHitbox().x / 2 + ent2->getHitbox().x / 2);
                 intersectY = abs(dy) - (ent1->getHitbox().y / 2 + ent2->getHitbox().y / 2);
+
                 if (attackP) {
                     attackPlayer(ent1, ent2, dx, dy);
-                    enemyMotion(ent1, ent2, dx, dy);
                 }
-                attackP = (ent1->getId() == ID::player && ent2->getId() == ID::boss) || (ent2->getId() == ID::player && ent1->getId() == ID::boss);
-                if (attackP)
-                    attackBoss(ent1, ent2, dx, dy);
                 if (intersectX < 0.0f && intersectY < 0.0f) { //Condition to collide...
                     if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
                         collidePlayer(ent1, ent2, dx, dy, intersectX, intersectY);
@@ -223,33 +220,6 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
         (static_cast<Player*>(ent2))->getHurt(PROJECTILE_DAMAGE);
     }
 }
-//function to movement enemy
-void CollisionManager::enemyMotion(Entity* ent1, Entity* ent2, float dx, float dy) {
-    if (abs(dx) < ENEMY_MOTIONX_MAX && abs(dx) > ENEMY_MOTIONX_MIN) {
-        if (dx > 0) {
-            if (ent1->getId() == ID::player) {
-                (static_cast<Character*>(ent2))->setVelocity(sf::Vector2f(-ENEMY_VELOCITYX, ent2->getVelocity().y));
-                ent2->setFacingLeft(true);
-            } else if (ent2->getId() == ID::player) {
-                (static_cast<Character*>(ent1))->setVelocity(sf::Vector2f(-ENEMY_VELOCITYX, ent1->getVelocity().y));
-                ent1->setFacingLeft(true);
-            }
-        } else {
-            if (ent1->getId() == ID::player) {
-                (static_cast<Character*>(ent2))->setVelocity(sf::Vector2f(ENEMY_VELOCITYX, ent2->getVelocity().y));
-                ent2->setFacingLeft(false);
-            } else if (ent2->getId() == ID::player) {
-                (static_cast<Character*>(ent1))->setVelocity(sf::Vector2f(ENEMY_VELOCITYX, ent1->getVelocity().y));
-                ent1->setFacingLeft(true);
-            }
-        }
-    } else {
-        if (ent1->getId() == ID::player)
-            ent2->setVelocity(sf::Vector2f(0, ent2->getVelocity().y));
-        else
-            ent1->setVelocity(sf::Vector2f(0, ent1->getVelocity().y));
-    }
-}
 
 //player melee attack function
 void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2, float dx, float dy) {
@@ -281,27 +251,7 @@ void CollisionManager::attackPlayer(Entity* ent1, Entity* ent2, float dx, float 
         }
     }
 }
-void CollisionManager::attackBoss(Entity* ent1, Entity* ent2, float dx, float dy) {
-    if (abs(dy) < 100 && abs(dx) < BOSS_ATTACK) {
-        if (dx > 0) {
-            if (ent1->getId() == ID::boss && (static_cast<Character*>(ent1))->getIsAttacking() && !ent1->facingLeft()) {
-                (static_cast<Character*>(ent2))->getHurt(BOSS_DMG);
-                (static_cast<Character*>(ent1))->setIsAttacking(false);
-            } else if (ent2->getId() == ID::boss && (static_cast<Character*>(ent2))->getIsAttacking() && ent2->facingLeft()) {
-                (static_cast<Character*>(ent1))->getHurt(BOSS_DMG);
-                (static_cast<Character*>(ent2))->setIsAttacking(false);
-            }
-        } else {
-            if (ent1->getId() == ID::boss && (static_cast<Character*>(ent1))->getIsAttacking() && ent1->facingLeft()) {
-                (static_cast<Character*>(ent2))->getHurt(BOSS_DMG);
-                (static_cast<Character*>(ent1))->setIsAttacking(false);
-            } else if (ent2->getId() == ID::boss && (static_cast<Character*>(ent2))->getIsAttacking() && !ent2->facingLeft()) {
-                (static_cast<Character*>(ent1))->getHurt(BOSS_DMG);
-                (static_cast<Character*>(ent2))->setIsAttacking(false);
-            }
-        }
-    }
-}
+
 //function to collide a platform with another entity
 void CollisionManager::collidePlatform(Entity* ent1, Entity* ent2, float dx, float dy, float intersectX, float intersectY) {
     switch (ent2->getId()) {

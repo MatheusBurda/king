@@ -16,5 +16,15 @@ Enemy::~Enemy() {
 }
 
 Player* Enemy::getNearestPlayer() {
-    return pPlayer1;
+    int x1, x2;
+    if (pPlayer2) {
+        x1 = abs(pPlayer1->getPosition().x - position.x);
+        x2 = abs(pPlayer2->getPosition().x - position.x);
+        if (x1 < x2)
+            return pPlayer1;
+        else
+            return pPlayer2;
+    }
+    else
+        return pPlayer1;
 }

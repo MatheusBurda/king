@@ -22,25 +22,39 @@ void Boss::update(float dt) {
 
     velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
 
-    if (totalTimeFromAttack >= attackTime) {
-        setIsAttacking(true);
-        totalTimeFromAttack = 0;
-    }
 
     if (velocity.y > 700)
         velocity = Vector2f(velocity.x, 700);
 
     changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
-
+    motionBoss();
     updateSprite(dt);
 
     /* It will attack if its possible */
     attackCooldown += dt;
     if (attackCooldown >= attackTime * 10) {
-        /* *************************************************** Adiciona aqui a condiçao do player estar perto ou nao dele para poder atacar */
+        if (abs(getNearestPlayer()->getPosition().x - position.x) <= BOSS_ATTACKX)
         isAttacking = true;
+        attackCooldown = 0;
+    }
+    if (isAttacking) {
+        attack();
     }
 }
+void Boss::motionBoss() {
+    float dx = getNearestPlayer()->getPosition().x - position.x;
+        if (abs(dx) < BOSS_MOTIONX_MAX && abs(dx) > BOSS_MOTIONX_MIN) {
+            if (dx > 0) {
+                setVelocity(sf::Vector2f(BOSS_VELOCITYX, getVelocity().y));
+                setFacingLeft(false);
+            }else {
+                setVelocity(sf::Vector2f(-BOSS_VELOCITYX, getVelocity().y));
+                setFacingLeft(true);
+            }
+        }else {
+               setVelocity(sf::Vector2f(0, getVelocity().y));
+        }
+    }
 
 void Boss::save() {
     if (getShowing()) {
@@ -67,4 +81,15 @@ void Boss::updateSprite(float dt) {
     /* Idle */
     else
         sprite->Update(0, dt, facingLeft(), position);
+}
+void Boss::attack() {
+    int dx = getNearestPlayer()->getPosition().x - position.x;
+    if (abs(dx) <= BOSS_ATTACKX) {
+        if (facingLeft() && dx < 0)
+            getNearestPlayer()->getHurt(BOSS_DMG);
+        else if (!facingLeft() && dx > 0)
+            getNearestPlayer()->getHurt(BOSS_DMG);
+        setIsAttacking(false);
+    }
+                
 }

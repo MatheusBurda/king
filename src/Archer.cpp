@@ -24,9 +24,7 @@ void Archer::update(float dt) {
         arrow->setShowing(false);
     }
     velocity = Vector2f(0, velocity.y + GRAVITY * dt);
-    if (!arrow->getShowing() && getShowing()) {
-        setIsAttacking(true);
-    }
+
 
     if (velocity.y > 700)
         velocity = Vector2f(velocity.x, 700);
@@ -37,19 +35,31 @@ void Archer::update(float dt) {
 
     /* It will attack if its possible */
     attackCooldown += dt;
-    if (attackCooldown >= attackTime * 4 && !arrow->getShowing()) {
+    if (attackCooldown >= attackTime * 4 && !arrow->getShowing() && getShowing()) {
         /* *************************************************** Adiciona aqui a condiçao do player estar perto ou nao dele para poder atacar */
+        if(abs(getNearestPlayer()->getPosition().x-position.x)<= ARCHER_ATTACKX)
         isAttacking = true;
+        if (getNearestPlayer()->getPosition().x - position.x > 0) {
+            setFacingLeft(false);
+        }
+        else
+            setFacingLeft(true);
+        attackCooldown = 0;
     }
 }
 
 void Archer::attack() {
+    Player* pPlayer = getNearestPlayer();
+    sf::Vector2f posPlayer = pPlayer->getPosition();
+    int deltaH = (posPlayer.y- position.y);
+    float time = abs(posPlayer.x - position.x)/ARROW_VELOCITYX;
+    int vy = -(deltaH+GRAVITY*time*time/2)/time;
     if (facingLeft()) {
         arrow->changePosition(getPosition() - sf::Vector2f(ARCHER_WIDTH, 0));
-        arrow->setVelocity(sf::Vector2f(-ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
+        arrow->setVelocity(sf::Vector2f(-ARROW_VELOCITYX, vy));
     } else {
-        arrow->changePosition(getPosition() + sf::Vector2f(ARCHER_WIDTH, 0));
-        arrow->setVelocity(sf::Vector2f(ARROW_VELOCITYX, -sqrt(ARROW_HMAX * GRAVITY * 2)));
+        arrow->changePosition(getPosition()+sf::Vector2f(ARCHER_WIDTH, 0));
+        arrow->setVelocity(sf::Vector2f(ARROW_VELOCITYX, vy));
     }
     arrow->setShowing(true);
     setIsAttacking(false);

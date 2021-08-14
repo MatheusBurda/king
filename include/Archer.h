@@ -12,6 +12,7 @@
 #define ARCHER_VELOCITYX 300
 #define ARCHER_MOTIONX_MAX 500
 #define ARCHER_MOTIONX_MIN 200
+#define ARCHER_ATTACKX 1000
 
 
 class Animation;

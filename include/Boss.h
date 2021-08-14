@@ -4,14 +4,15 @@
 class Animation;
 
 #define BOSS_PATH "./assets/Boss/BossSpritesheet.png"
-#define BOSS_VELOCITYX 300
+#define BOSS_VELOCITYX 400
 #define BOSS_MOTIONX_MAX 500
-#define BOSS_MOTIONX_MIN 200
+#define BOSS_MOTIONX_MIN 100
 #define BOSS_HEIGHT 110
 #define BOSS_WIDTH 40
 #define BOSS_LIFE 4000
 #define BOSS_DMG 30
 #define BOSS_ATTACK 200
+#define BOSS_ATTACKX 100
 
 class Boss : public Enemy {
 private:
@@ -23,6 +24,7 @@ public:
     void initializeSprite();
     void update(float dt);
     void save();
-    void attack() { }
+    void attack();
     void updateSprite(float dt);
+    void motionBoss();
 };

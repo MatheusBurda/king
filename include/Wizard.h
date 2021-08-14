@@ -8,6 +8,9 @@
 #define WIZARD_DAMAGE 25
 #define WIZARD_VELOCITY 100
 #define MAX_VAR_HEIGHT 200
+#define WIZARD_ATTACKX 500
+#define WIZARD_FIREBALL_VELOCITY 500
+
 
 class Animation;
 class Player;
