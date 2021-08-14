@@ -41,24 +41,23 @@ void Wizard::update(float dt) {
         velocity.y *= -1;
     else if ((position.y < maxHeight) && velocity.y < 0)
         velocity.y *= -1;
+
     changePosition(Vector2f(position.x, velocity.y * dt + position.y));
+
     updateSprite(dt);
 
     /* It will attack if its possible */
     attackCooldown += dt;
-    if (attackCooldown >= attackTime * 10 && !fireball->getShowing() && getShowing()){
-        /* *************************************************** Adiciona aqui a condiçao do player estar perto ou nao dele para poder atacar */
+    if (attackCooldown >= attackTime * 10 && !fireball->getShowing() && getShowing()) {
         if (abs(getNearestPlayer()->getPosition().x - position.x) <= WIZARD_ATTACKX) {
             isAttacking = true;
             if (getNearestPlayer()->getPosition().x - position.x > 0) {
                 setFacingLeft(false);
-            }
-            else
+            } else
                 setFacingLeft(true);
             attackCooldown = 0;
         }
     }
-
 }
 
 /* Throws Fireball at players direction*/
@@ -68,18 +67,16 @@ void Wizard::attack() {
     deltax = abs(pPlayer->getPosition().x - position.x);
     deltay = abs(pPlayer->getPosition().y - position.y);
     float teta = atanf(deltax / deltay);
-    
+
     float vx, vy;
     vx = WIZARD_FIREBALL_VELOCITY * sin(teta);
     vy = WIZARD_FIREBALL_VELOCITY * cos(teta);
+
     if (facingLeft()) {
-        fireball->changePosition(getPosition() - sf::Vector2f(WIZARD_WIDTH, 0));
-        fireball->setVelocity(sf::Vector2f(-vx, vy));
+        fireball->shoot(getPosition() - sf::Vector2f(WIZARD_WIDTH, 0), sf::Vector2f(-vx, vy));
     } else {
-        fireball->changePosition(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0));
-        fireball->setVelocity(sf::Vector2f(vx, vy));
+        fireball->shoot(getPosition() + sf::Vector2f(WIZARD_WIDTH, 0), sf::Vector2f(vx, vy));
     }
-    fireball->setShowing(true);
     setIsAttacking(false);
     totalTimeFromAttack = 0;
 }
@@ -113,11 +110,11 @@ void Wizard::save() {
 void Wizard::updateSprite(float dt) {
     if (isAttacking) {
         totalTimeFromAttack += dt;
-        if (totalTimeFromAttack < attackTime) {
+        if (totalTimeFromAttack < attackTime)
             sprite->Update(2, dt, facingLeft(), position);
-        } else {
+        else
             attack();
-        }
+
     } else
         sprite->Update(0, dt, facingLeft(), position);
 }

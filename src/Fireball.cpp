@@ -4,7 +4,7 @@
 #include "GraphicManager.h"
 
 Fireball::Fireball(sf::Vector2f pos) :
-Entity(ID::fireball, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT)) {
+Projectile(ID::fireball, pos, sf::Vector2f(FIREBALL_WIDTH, FIREBALL_HEIGHT), FIREBALL_DAMAGE) {
     setShowing(false);
     initializeSprite();
 }
@@ -13,11 +13,8 @@ Fireball::~Fireball() {
 }
 
 void Fireball::update(float dt) {
-    if (velocity.x < 0)
-        setFacingLeft(true);
-    else
-        setFacingLeft(false);
     if (getShowing()) {
+        updateActive(dt);
         changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
         sprite->Update(0, dt, facingLeft(), position);
     }

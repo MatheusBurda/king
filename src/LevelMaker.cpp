@@ -208,6 +208,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     sf::Vector2f vel;
     int life, points;
 
+/* ************************************************************************* */
     ifstream Player1(("./assets/Saves/Player1.txt"), ios::in);
     if (!Player1) {
         cout << "Cant Open txt on Load Map" << endl;
@@ -216,6 +217,8 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     Player1 >> pos.x >> pos.y >> vel.x >> vel.y >> life >> points >> facingLeft;
     setPlayer1(sf::Vector2f(pos), sf::Vector2f(vel), life, points, facingLeft);
     Player1.close();
+
+/* ************************************************************************* */
 
     if (p2 != NULL) {
         ifstream Player2(("./assets/Saves/Player2.txt"), ios::in);
@@ -228,6 +231,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
         setPlayer2(sf::Vector2f(pos), sf::Vector2f(vel), life, points, facingLeft);
         Player2.close();
     }
+/* ************************************************************************* */
 
     int type;
     ifstream Platform(("./assets/Saves/Platform.txt"), ios::in);
@@ -238,17 +242,19 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     while (Platform >> pos.x >> pos.y >> type)
         buildPlatform(sf::Vector2f(pos.x, pos.y), type);
     Platform.close();
+/* ************************************************************************* */
 
     ifstream Wall(("./assets/Saves/Wall.txt"), ios::in);
     if (!Wall) {
         cout << "Cant Open txt on Load Map" << endl;
         exit(100);
     }
-    /*  char wallPath[100]; */
+
     while (Wall >> pos.x >> pos.y >> facingLeft >> type) {
         buildWall(sf::Vector2f(pos.x, pos.y), type, facingLeft);
     }
     Wall.close();
+/* ************************************************************************* */
 
     ifstream Lava(("./assets/Saves/Lava.txt"), ios::in);
     if (!Lava) {
@@ -258,6 +264,8 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     while (Lava >> pos.x >> pos.y)
         buildLava(sf::Vector2f(pos.x, pos.y));
     Lava.close();
+/* ************************************************************************* */
+
     ifstream SpiderWeb(("./assets/Saves/SpiderWeb.txt"), ios::in);
     if (!SpiderWeb) {
         cout << "Cant Open txt on Load Map" << endl;
@@ -266,6 +274,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     while (SpiderWeb >> pos.x >> pos.y)
         buildWeb(sf::Vector2f(pos.x, pos.y));
     SpiderWeb.close();
+/* ************************************************************************* */
 
     ifstream Archer("./assets/Saves/Archer.txt");
     if (!Archer) {
@@ -275,6 +284,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     while (Archer >> pos.x >> pos.y >> vel.x >> vel.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing >> life >> facingLeft)
         buildArcher(pos, vel, posProj, velProj, showing, life, facingLeft);
     Archer.close();
+/* ************************************************************************* */
 
     ifstream Wizard("./assets/Saves/Wizard.txt");
     if (!Wizard) {
@@ -285,6 +295,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     while (Wizard >> pos.x >> pos.y >> vel.x >> vel.y >> posProj.x >> posProj.y >> velProj.x >> velProj.y >> showing >> life >> facingLeft >> minH >> maxH)
         buildWizard(pos, vel, posProj, velProj, showing, life, facingLeft, minH, maxH);
     Wizard.close();
+/* ************************************************************************* */
 
     ifstream Boss("./assets/Saves/Boss.txt");
     if (!Boss) {
@@ -295,6 +306,7 @@ Level* LevelMaker::loadMap(Player* p1, Player* p2) {
     if (Boss >> pos.x >> pos.y >> vel.x >> vel.y >> life >> facingLeft)
         buildBoss(pos, vel, life, facingLeft);
     Boss.close();
+/* ************************************************************************* */
 
     return lvl;
 }

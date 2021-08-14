@@ -4,12 +4,14 @@
 
 class Projectile : public Entity {
 protected:
-    float timeActive;
     int Damage;
+    float timeActive;
+    static const float maxTimeActive;
 
 public:
-    Projectile(sf::Vector2f pos, sf::Vector2f hit, int damage, int timeActive, ID::ids id);
-    virtual ~Projectile() { }
-    void rotate() { }
-    int getDamage() const { return Damage; }
+    Projectile(ID::ids id, sf::Vector2f pos, sf::Vector2f hit, int damage);
+    virtual ~Projectile();
+    void shoot(sf::Vector2f pos, sf::Vector2f velo);
+    void updateActive(float dt);
+    int getDamage() const;
 };

@@ -3,7 +3,7 @@
 #include "Animation.h"
 
 Arrow::Arrow(sf::Vector2f pos) :
-Entity(ID::arrow, pos, sf::Vector2f(ARROW_WIDTH, ARROW_HEIGHT)) {
+Projectile(ID::arrow, pos, sf::Vector2f(ARROW_WIDTH, ARROW_HEIGHT), ARROW_DAMAGE) {
     setShowing(false);
     initializeSprite();
 }
@@ -12,11 +12,8 @@ Arrow::~Arrow() {
 }
 
 void Arrow::update(float dt) {
-    if (velocity.x < 0)
-        setFacingLeft(false);
-    else
-        setFacingLeft(true);
     if (getShowing()) {
+        updateActive(dt);
         velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
         changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
         sprite->Update(0, dt, facingLeft(), position);
