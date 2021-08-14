@@ -1,6 +1,7 @@
 #include "Wizard.h"
 
 #include "Animation.h"
+#include <math.h>
 
 const float Wizard::attackTime = 0.3;
 

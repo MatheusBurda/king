@@ -14,6 +14,8 @@ Arrow::~Arrow() {
 void Arrow::update(float dt) {
     if (velocity.x < 0)
         setFacingLeft(false);
+    else
+        setFacingLeft(true);
     if (getShowing()) {
         velocity = Vector2f(velocity.x, velocity.y + GRAVITY * dt);
         changePosition(Vector2f(velocity.x * dt + position.x, velocity.y * dt + position.y));
