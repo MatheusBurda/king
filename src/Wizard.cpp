@@ -66,7 +66,7 @@ void Wizard::attack() {
     int deltax, deltay;
     deltax = abs(pPlayer->getPosition().x - position.x);
     deltay = abs(pPlayer->getPosition().y - position.y);
-    float teta = atanf(deltax / deltay);
+    float teta = atan2f(deltax, deltay);
 
     float vx, vy;
     vx = WIZARD_FIREBALL_VELOCITY * sin(teta);
@@ -91,7 +91,7 @@ void Wizard::save() {
             abort();
         }
         file << getPosition().x << ' '
-             << getPosition().y<< ' '
+             << getPosition().y << ' '
              << getVelocity().x << ' '
              << getVelocity().y << ' '
              << fireball->getPosition().x << ' '
