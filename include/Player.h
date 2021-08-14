@@ -44,7 +44,7 @@ public:
     const bool isPlayer1() const { return player1; }
     void reset();
     void save();
-    void updatePoints(int pt);
     int getPoints() { return points; }
     void setPoints(int pt) { points = pt; }
+    void operator+=(int pt);
 };

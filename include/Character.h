@@ -27,5 +27,5 @@ public:
     virtual void save() = 0;
     void setLife(int lf) { life = lf; }
     int getLife() const;
-
+    virtual void updateSprite(float dt) = 0;
 };

@@ -23,7 +23,6 @@ Player::~Player() {
 
 /* Updates the position and velocity of player */
 void Player::update(float dt) {
-
     if (life <= 0)
         setShowing(false);
 
@@ -42,13 +41,12 @@ void Player::update(float dt) {
 
 /* Initialize the texture on the Animation */
 void Player::initializeSprite() {
-    if(player1)
+    if (player1)
         sprite->initializeTexture(PLAYER_1_PATH, sf::Vector2u(4, 6));
-    else{
+    else {
         sprite->initializeTexture(PLAYER_2_PATH, sf::Vector2u(4, 6));
         pc.setKeys(sf::Keyboard::Up, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::RControl);
     }
-
 }
 
 /* Returns a row of the spritesheet of the character if can attack. */
@@ -119,7 +117,7 @@ void Player::reset() {
     initializeSprite();
 }
 
-/* function to save the player in a txt */
+/* Function to save the player in a txt */
 void Player::save() {
     ofstream file;
     if (isPlayer1()) {
@@ -128,7 +126,7 @@ void Player::save() {
             cout << "ERROR TO OPEN FILE" << endl;
             abort();
         }
-        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << getVelocity().y<<' '<< getLife() <<' '<<points<< ' '<<facingLeft() << endl;
+        file << getPosition().x << ' ' << getPosition().y - 30 << ' ' << getVelocity().x << ' ' << getVelocity().y << ' ' << getLife() << ' ' << points << ' ' << facingLeft() << endl;
         file.close();
     } else {
         file.open("./assets/Saves/Player2.txt");
@@ -141,6 +139,6 @@ void Player::save() {
     }
 }
 
-void Player::updatePoints(int pt) {
+void Player::operator+=(int pt) {
     points += pt;
 }

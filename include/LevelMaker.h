@@ -51,7 +51,7 @@ private:
     void setPlayer2(sf::Vector2f pos);
     void setPlayer2(sf::Vector2f pos, sf::Vector2f vel, int life, int points, int facingLeft);
     void buildWizard(sf::Vector2f pos);
-    void buildWizard(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int  facingLeft);
+    void buildWizard(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int  facingLeft, int minH, int maxH);
     void buildArcher(sf::Vector2f pos);
     void buildArcher(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f posProj, sf::Vector2f velProj, int showing, int life, int  facingLeft);
     void buildWall(sf::Vector2f pos, int type, bool faceLeft);

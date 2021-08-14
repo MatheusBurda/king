@@ -24,4 +24,5 @@ public:
     void update(float dt);
     void save();
     void attack() { }
+    void updateSprite(float dt);
 };
