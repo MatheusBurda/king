@@ -1,1 +1,1 @@
-./assets/Backgrounds/montanha.png 17100
+./assets/Backgrounds/montanha.png 9450

@@ -3,7 +3,7 @@
 #include "GraphicManager.h"
 
 SpiderWeb::SpiderWeb(sf::Vector2f pos) :
-Obstacle(pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT),0.5, ID::spiderweb) {
+Obstacle(pos, sf::Vector2f(SPIDER_WIDTH, SPIDER_HEIGHT),2, ID::spiderweb) {
     sprite->initializeTexture(SPIDER_PATH, sf::Vector2u(1, 1));
 }
 

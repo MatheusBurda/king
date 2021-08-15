@@ -133,8 +133,8 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
         attackEnemy(ent2, ent1);
         break;
     case ID::spiderweb:
-        ent1->setVelocity(ent1->getVelocity()*(static_cast<Obstacle*>(ent2)->getEffect()));
-        break;
+       ent1->setVelocity(ent1->getVelocity()/(static_cast<Obstacle*>(ent2)->getEffect()));
+       break;
     case ID::lava:
         (static_cast<Character*>(ent1))->getHurt(static_cast<Obstacle*>(ent2)->getEffect());
         break;
