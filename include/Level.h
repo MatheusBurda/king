@@ -9,8 +9,8 @@
 #include "Player.h"
 #include "stdafx.h"
 
-#define PATH_BACKGROUND_FIELD "./assets/Backgrounds/montanha.png"
-#define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/logo.png"
+#define PATH_BACKGROUND_FIELD "./assets/Backgrounds/field.png"
+#define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/Castle.png"
 
 class Level {
 private:

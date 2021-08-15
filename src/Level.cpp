@@ -59,9 +59,7 @@ void Level::exec(float dt) {
 void Level::renderAll() {
     centerView();
 
-    //back.render();
-    /* Alterar */
-    //back.changePos(player1->getPosition());
+    back.render();
 
     for (int i = 0; i < _list->getSize(); i++) {
         if ((*_list)[i]->getShowing())
@@ -78,22 +76,8 @@ void Level::centerView() {
         viewPosition = (player1->getPosition() + player2->getPosition()) / 2.0f;
     }
 
-    /* viewSize.y = static_cast<float>(graphicM->getWindowSize().y) / 2.0f;
-    viewSize.x = static_cast<float>(graphicM->getWindowSize().x) / 2.0f;
-
-    // Set position on y axis 
-    if (viewPosition.y + (viewSize.y / 2.0f) >= levelMapSize.y)
-        viewPosition.y = (levelMapSize.y) - (viewSize.y / 2.0f);
-    if (viewPosition.y - (viewSize.y / 2.0f) <= 120.0f)
-        viewPosition.y = (viewSize.y / 2.0f);
-
-    // Set position on x axis 
-    if (viewPosition.x - (viewSize.x / 2.0f) <= 2 * PLATFORM_WIDTH - 45)
-        viewPosition.x = 2 * PLATFORM_WIDTH - 45 + viewSize.x / 2.0f;
-    if (viewPosition.x + (viewSize.x / 2.0f) >= levelMapSize.x)
-        viewPosition.x = levelMapSize.x - (viewSize.x / 2.0f); */
-
     graphicM->centerView(viewPosition);
+    back.changePos(viewPosition);
 }
 
 void Level::saveLvl() {
