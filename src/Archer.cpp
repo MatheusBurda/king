@@ -50,7 +50,12 @@ void Archer::attack() {
     sf::Vector2f posPlayer = pPlayer->getPosition();
     int deltaH = (posPlayer.y - position.y);
     float time = abs(posPlayer.x - position.x) / ARROW_VELOCITYX;
-    int vy = -(deltaH + GRAVITY * time * time / 2) / time;
+    
+    int vy;
+    if (deltaH < 0)
+        vy = -(deltaH + GRAVITY * time * time / 2) / time;
+    else
+        vy = -(-deltaH + GRAVITY * time * time / 2) / time;
 
     if (facingLeft()) {
         arrow->shoot(getPosition() - sf::Vector2f(ARCHER_WIDTH, 0), sf::Vector2f(-ARROW_VELOCITYX, vy));

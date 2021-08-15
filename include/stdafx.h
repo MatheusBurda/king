@@ -24,18 +24,7 @@ using std::string;
 #define WIDTH 1280
 #define HEIGHT 720
 
-/* =================================================== */
-/*                      PLAYER                         */
-/* =================================================== */
 
-#define PLAYER_VELOCITY 600.f
-#define JUMP_VELOCITY 3000.f
-#define PLAYER_LIFE 20000
-#define PLAYER_DAMAGE 25
-#define PLAYER_WIDTH 46
-#define PLAYER_HEIGHT 105
-#define PLAYER_JUMP 200
-#define PLAYER_ATTACK 150 //Pixels that the sword hit the enemy
 
 /* =================================================== */
 /*                     ENEMY                           */

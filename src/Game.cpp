@@ -30,26 +30,48 @@ Game::~Game() {
 void Game::startStates() {
     State* pNewState = NULL;
 
-    pNewState = new MainMenuState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+    try {
+        pNewState = new MainMenuState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new NewGameState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new NewGameState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new PlayingGameState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new PlayingGameState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new PauseMenuState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new PauseMenuState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new LoadGameState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new LoadGameState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new LeaderboardState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new LeaderboardState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
 
-    pNewState = new EndGameState(pInputM, this);
-    vectorOfStates.push_back(pNewState);
+        pNewState = new EndGameState(pInputM, this);
+        if (pNewState == NULL)
+            throw 0;
+        vectorOfStates.push_back(pNewState);
+
+    } catch (int err) {
+        if (err == 0){
+            cout << "Error allocating states " << endl;
+            exit(1);
+        }
+    }
 
     changeCurrentState(stateID::mainMenu);
 }
@@ -133,6 +155,6 @@ bool Game::isPlaying() const {
     return lvlEnded;
 }
 
-void Game::setLvlEnded(bool x){
+void Game::setLvlEnded(bool x) {
     lvlEnded = x;
 }

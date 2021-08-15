@@ -80,6 +80,8 @@ void Boss::updateSprite(float dt) {
     else
         sprite->Update(0, dt, facingLeft(), position);
 }
+
+
 void Boss::attack() {
     int dx = getNearestPlayer()->getPosition().x - position.x;
     if (abs(dx) <= BOSS_ATTACKX) {
@@ -89,5 +91,4 @@ void Boss::attack() {
             getNearestPlayer()->getHurt(BOSS_DMG);
         setIsAttacking(false);
     }
-                
 }

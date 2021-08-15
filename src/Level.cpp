@@ -34,7 +34,9 @@ Level::~Level() {
 }
 
 void Level::exec(float dt) {
-    if (player1->getShowing() || (player2 && player2->getShowing())) {
+    if (player1->getShowing()) {
+        if (player2 && !player2->getShowing())
+            levelRunning = 0;
         /* Update all entities */
         _list->updateAll(dt);
         /* Collide all entities */
