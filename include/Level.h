@@ -39,7 +39,6 @@ public:
     void centerView();
     int isLevelRunning() const { return levelRunning; }
     void addEntity(Entity* ent) { _list->addEntity(ent); }
-    //function used to save the Level in a txt
     void saveLvl();
     void setEnd(int end) { reachEnd = end; }
     int getNumLevel();
