@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Obstacle.h"
 
 #define LAVA_PATH "./assets/Platforms/Lava.png"
 
@@ -8,7 +8,7 @@
 #define LAVA_WIDTH 225
 #define LAVA_HEIGHT 45
 
-class Lava : public Entity {
+class Lava : public Obstacle {
 public:
     Lava(sf::Vector2f pos);
     ~Lava();

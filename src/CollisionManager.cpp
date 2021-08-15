@@ -133,10 +133,10 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
         attackEnemy(ent2, ent1);
         break;
     case ID::spiderweb:
-        ent1->setVelocity(sf::Vector2f(ent1->getVelocity().x / 2, ent1->getVelocity().y / 2));
+        ent1->setVelocity(ent1->getVelocity()*(static_cast<Obstacle*>(ent2)->getEffect()));
         break;
     case ID::lava:
-        (static_cast<Character*>(ent1))->getHurt(LAVA_DAMAGE);
+        (static_cast<Character*>(ent1))->getHurt(static_cast<Obstacle*>(ent2)->getEffect());
         break;
     default:
         break;
@@ -213,11 +213,11 @@ void CollisionManager::attackEnemy(Entity* ent1, Entity* ent2) {
     if (ent1->getId() == ID::player || ent1->getId() == ID::player2) {
         ent2->setShowing(false);
         ent2->setVelocity(sf::Vector2f(0.0f, 0.0f));
-        (static_cast<Player*>(ent1))->getHurt(PROJECTILE_DAMAGE);
+        (static_cast<Player*>(ent1))->getHurt(static_cast<Projectile*>(ent2)->getDamage());
     } else {
         ent1->setShowing(false);
         ent1->setVelocity(sf::Vector2f(0.0f, 0.0f));
-        (static_cast<Player*>(ent2))->getHurt(PROJECTILE_DAMAGE);
+        (static_cast<Player*>(ent2))->getHurt(static_cast<Projectile*>(ent1)->getDamage());
     }
 }
 

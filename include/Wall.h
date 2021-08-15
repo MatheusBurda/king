@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Obstacle.h"
 #include "stdafx.h"
 
 #define WALL_PATH_DIRT "./assets/Platforms/DirtWall.png"
@@ -12,7 +12,7 @@
 
 class Animation;
 class GraphicManager;
-class Wall : public Entity {
+class Wall : public Obstacle {
 private:
     int wallType;
 

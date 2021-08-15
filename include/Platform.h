@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Obstacle.h"
 
 #define PLATFORM_PATH_DIRT "./assets/Platforms/DirtBlock.png"
 #define PLATFORM_PATH_BRICK "./assets/Platforms/BrickBlock.png"
@@ -11,7 +11,7 @@
 
 class GraphicManager;
 
-class Platform : public Entity {
+class Platform : public Obstacle {
 private:
     int platType;
 

@@ -4,7 +4,7 @@
 #include "GraphicManager.h"
 
 Lava::Lava(sf::Vector2f pos) :
-Entity(ID::lava, pos, sf::Vector2f(LAVA_WIDTH, LAVA_HEIGHT)) {
+    Obstacle(pos, sf::Vector2f(LAVA_WIDTH, LAVA_HEIGHT), LAVA_DAMAGE,ID::lava) {
     sprite->initializeTexture(LAVA_PATH, sf::Vector2u(3, 1));
 }
 

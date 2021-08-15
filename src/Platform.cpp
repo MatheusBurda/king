@@ -4,7 +4,7 @@
 #include <string.h>
 
 Platform::Platform(sf::Vector2f pos, int platType) :
-Entity(ID::platform, pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT)),
+   Obstacle(pos, sf::Vector2f(PLATFORM_WIDTH, PLATFORM_HEIGHT),0, ID::platform),
 platType(platType) {
     initializeSprite();
 }

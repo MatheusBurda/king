@@ -5,7 +5,7 @@
 #include "string.h"
 
 Wall::Wall(sf::Vector2f pos, int wallType, bool facingLeft) :
-Entity(ID::wall, pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT)),
+Obstacle(pos, sf::Vector2f(WALL_WIDTH, WALL_HEIGHT),0, ID::wall),
 wallType(wallType) {
     setFacingLeft(facingLeft);
     initializeSprite();

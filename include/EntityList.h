@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "Character.h"
 #include "List.h"
+#include"Obstacle.h"
+#include "Projectile.h"
 #include "stdafx.h"
 
 class EntityList {

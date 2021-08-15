@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Entity.h"
+#include "Obstacle.h"
 #define SPIDER_PATH "./assets/Platforms/SpiderWeb.png"
 
-class SpiderWeb : public Entity {
+class SpiderWeb : public Obstacle {
 public:
     SpiderWeb(sf::Vector2f pos);
     ~SpiderWeb();
