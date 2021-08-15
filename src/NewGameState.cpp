@@ -77,11 +77,11 @@ void NewGameState::startNewLevel(bool isOnePLayer) {
 
     if (currentLevel <= 1) {
         LevelMaker* maker = new LevelMaker();
-        pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 1);
+        pLevel = maker->buildMap(PATH_BACKGROUND_FIELD, player1, player2, 1);
         delete (maker);
     } else if (currentLevel == 2) {
         LevelMaker* maker = new LevelMaker();
-        pLevel = maker->buildMap("./assets/Backgrounds/montanha.png", player1, player2, 2);
+        pLevel = maker->buildMap(PATH_BACKGROUND_CASTLE, player1, player2, 2);
         delete (maker);
     }
 

@@ -13,9 +13,9 @@ OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 CC := g++
 
 # Flags
-CPPFLAGS := -Iinclude # -I folder_to_includes
+CPPFLAGS := -Iinclude -O2
 CFLAGS   := -Wall
-LDFLAGS  := -Llib
+LDFLAGS  := -Llib 
 LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system
 
 .PHONY: all clean build

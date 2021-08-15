@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Entity.h"
 #include "Character.h"
+#include "Entity.h"
 #include "List.h"
-#include"Obstacle.h"
+#include "Obstacle.h"
 #include "Projectile.h"
 #include "stdafx.h"
 

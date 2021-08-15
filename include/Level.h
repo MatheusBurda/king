@@ -10,7 +10,7 @@
 #include "stdafx.h"
 
 #define PATH_BACKGROUND_FIELD "./assets/Backgrounds/montanha.png"
-#define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/montanha.png"
+#define PATH_BACKGROUND_CASTLE "./assets/Backgrounds/logo.png"
 
 class Level {
 private:

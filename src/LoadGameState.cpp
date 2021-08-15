@@ -23,20 +23,20 @@ void LoadGameState::update(float dt) {
     }
     char info;
 
-    if (Player2>>info) {
+    if (Player2 >> info) {
         lvl = maker->loadMap(pGame->getPLayer1(), pGame->getPLayer2());
     } else
         lvl = maker->loadMap(pGame->getPLayer1(), NULL);
     Player2.close();
 
-
     if (!lvl) {
-        cout << "FAZER AS COISAS DE LOAD DERAM ERRADO" << endl;
+        cout << "ERROR LOADING LEVEL" << endl;
         changeState(stateID::mainMenu);
     } else {
         pGame->setLevel(lvl);
         changeState(stateID::playing);
         pGame->setCurrentLevel(lvl->getNumLevel());
+        pGame->setLvlEnded(false);
     }
     delete (maker);
 }

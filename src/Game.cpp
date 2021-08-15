@@ -67,7 +67,7 @@ void Game::startStates() {
         vectorOfStates.push_back(pNewState);
 
     } catch (int err) {
-        if (err == 0){
+        if (err == 0) {
             cout << "Error allocating states " << endl;
             exit(1);
         }
@@ -86,6 +86,8 @@ void Game::exec() {
         /* Get the elapsed time from last loop */
         dt = time.getElapsedTime().asSeconds();
         time.restart();
+        if (dt > 0.01)
+            dt = 0.01;
         /* Clear the screen to draw new stuff */
         pGraphicM->clear();
         /* Call update and render of current state */

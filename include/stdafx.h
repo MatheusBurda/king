@@ -33,8 +33,8 @@ using std::string;
 #define ENEMY_LIFE 2000
 #define ENEMY_DAMAGE 25
 #define ENEMY_VELOCITYX 300 
-#define ENEMY_MOTIONX_MAX 500 //max pixels that enemy identify the player
-#define ENEMY_MOTIONX_MIN 200 //min pixels that enemy identify the player
+#define ENEMY_MOTIONX_MAX 500
+#define ENEMY_MOTIONX_MIN 200 
 
 /* =================================================== */
 /*                     WIZARD                          */
@@ -102,13 +102,3 @@ using std::string;
 
 #define SPIDER_WIDTH 220
 #define SPIDER_HEIGHT 45
-
-/* =================================================== */
-/*                     BOSS                            */
-/* =================================================== */
-
-#define BOSS_HEIGHT 110
-#define BOSS_WIDTH 40
-#define BOSS_LIFE 4000
-#define BOSS_DMG 30
-#define BOSS_ATTACK 200
