@@ -20,7 +20,7 @@ LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system
 
 .PHONY: all clean build
 
-all: build $(PROJECT) run
+all: build $(PROJECT)
 
 $(PROJECT): $(OBJ)
 	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
@@ -40,8 +40,5 @@ clean:
 	@ $(RM) -r $(OBJ_DIR) $(PROJECT) $(BIN_DIR)
 
 rebuild: clean all
-
-run:
-	./$(PROJECT)
 
 -include $(OBJ:.o=.d)
