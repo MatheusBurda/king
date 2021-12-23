@@ -44,6 +44,7 @@ void CollisionManager::toCollide() {
             }
         }
     }
+
 }
 
 //function to move the entities using their velocity as reference (X axis)
@@ -66,11 +67,12 @@ void CollisionManager::moveY(Entity* ent1, Entity* ent2, float intersectY) {
 
 //player isnt allouwed to stop above enemy and vice versa
 void CollisionManager::notAbove(Entity* ent1, Entity* ent2, float intersectX, float dx) {
-    if (ent1->getPosition().y > ent2->getPosition().y)
+    if (ent1->getPosition().y > ent2->getPosition().y){
         if (dx > 0)
             ent2->Move(sf::Vector2f(-intersectX, 0.0f));
         else
             ent2->Move(sf::Vector2f(intersectX, 0.0f));
+    }
     else if (dx > 0)
         ent1->Move(sf::Vector2f(-intersectX, 0.0f));
     else
@@ -133,8 +135,8 @@ void CollisionManager::collidePlayer(Entity* ent1, Entity* ent2, float dx, float
         attackEnemy(ent2, ent1);
         break;
     case ID::spiderweb:
-       ent1->setVelocity(ent1->getVelocity()/(static_cast<Obstacle*>(ent2)->getEffect()));
-       break;
+        ent1->setVelocity(ent1->getVelocity() / (static_cast<Obstacle*>(ent2)->getEffect()));
+        break;
     case ID::lava:
         (static_cast<Character*>(ent1))->getHurt(static_cast<Obstacle*>(ent2)->getEffect());
         break;

@@ -1,7 +1,6 @@
 #include "GraphicManager.h"
 
 /* Singleton design pattern - Only one instance will be created */
-
 GraphicManager* GraphicManager::instance = NULL;
 
 /* Returns a pointer to the GraphicManager. */
@@ -24,7 +23,6 @@ texturesMap() {
 
 GraphicManager::~GraphicManager() {
     deleteAllTextures();
-
     delete (window);
 }
 

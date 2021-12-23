@@ -23,6 +23,11 @@ void StateMachine::changeCurrentState(SM::stateID id) {
 }
 
 void StateMachine::execCurrentState(float dt) {
+
+    mapStates[currentStateID]->update(dt);
+    mapStates[currentStateID]->render();
+
+
     vectorOfStates[currentStateID]->update(dt);
     vectorOfStates[currentStateID]->render();
 }
