@@ -3,7 +3,7 @@
 A C++ Object Oriented game made using the SFML library, for the Técnicas de Programação (Programing Techniques) course at UTFPR.
 There is a video showing the game running [here](https://www.youtube.com/watch?v=h4fTbRznCiw).
 
-![BallCollision](./assets/Backgrounds/gid.gif)
+![gif](https://user-images.githubusercontent.com/48896951/195713123-ea0db7c1-16c7-4de5-84b1-4f520662ebd9.gif)
 
 ## Prerequisites
 
